@@ -1,102 +1,93 @@
 {
-  "pet": [
-    {
-      "_id": "p001",
-      "name": "Max",
-      "gender": "male",
-      "size": "medium",
-      "shelterName": {
+    "pet": [{
+        "_id": "p001",
+        "name": "Max",
+        "gender": "male",
+        "size": "medium",
+        "type": "dog",
+        "age": "5",
+        "shelterName": {
+            "_id": "s101",
+            "name": "Dogs for life",
+            "imgUrl": [
+                "url"
+            ]
+        },
+        "description": "Big batata, soft at edges, can be used for a great veg soup",
+        "imgUrl": "",
+        "tags": [
+            "good with children",
+            "friendly"
+        ]
+    }],
+    "order": [{
+        "_id": "o1225",
+        "cretatedAt": 9898989,
+        "buyer": "mini-user",
+        "totalPrice": 20,
+        "units": "kg",
+        "shop": {
+            "_id": "v102",
+            "name": "Hapirat Hadebil",
+            "title": "Wahad Shop",
+            "imgUrl": "",
+            "rate": 5
+        },
+        "items": [{
+            "_id": "v140",
+            "name": "Batata Ksbia",
+            "amount": 2
+        }],
+        "status": "pending"
+    }],
+    "shelter": [{
         "_id": "s101",
         "name": "Dogs for life",
-        "imgUrl": [
-          "url"
-        ]
-      },
-      "description": "Big batata, soft at edges, can be used for a great veg soup",
-      "imgUrl": "",
-      "tags": [
-        "good with children",
-        "friendly"
-      ]
-    }
-  ],
-  "order": [
-    {
-      "_id": "o1225",
-      "cretatedAt": 9898989,
-      "buyer": "mini-user",
-      "totalPrice": 20,
-      "units": "kg",
-      "shop": {
-        "_id": "v102",
-        "name": "Hapirat Hadebil",
-        "title": "Wahad Shop",
-        "imgUrl": "",
-        "rate": 5
-      },
-      "items": [
+        "owner": {
+            "_id": "u101",
+            "fullName": "user1",
+            "imgUrl": "/img/img1.jpg"
+        },
+        "title": "Lovely dogs",
+        "desc": "Dogs looking for partner for life",
+        "tags": [
+            "big dogs",
+            "funny dogs"
+        ],
+        "imgUrls": [
+            "shop.jpg",
+            "more1.jpg",
+            "more2.jpg"
+        ],
+        "location": {
+            "name": "Haifa",
+            "lat": 32.9898,
+            "lng": 12.28
+        },
+        "reviews": [{
+            "id": "madeId",
+            "txt": "Great shelter! ther care about the dogs",
+            "rate": 4,
+            "by": {
+                "_id": "u102",
+                "fullName": "user2",
+                "imgUrl": "/img/img2.jpg"
+            }
+        }]
+    }],
+    "user": [{
+            "_id": "u101",
+            "fullName": "User 1",
+            "imgUrl": "/img/img1.jpg",
+            "userName": "user1",
+            "password": "secret"
+        },
         {
-          "_id": "v140",
-          "name": "Batata Ksbia",
-          "amount": 2
-        }
-      ],
-      "status": "pending"
-    }
-  ],
-  "shelter": [
-    {
-      "_id": "s101",
-      "name": "Dogs for life",
-      "owner": {
-        "_id": "u101",
-        "fullName": "user1",
-        "imgUrl": "/img/img1.jpg"
-      },
-      "title": "Lovely dogs",
-      "desc": "Dogs looking for partner for life",
-      "tags": [
-        "big dogs",
-        "funny dogs"
-      ],
-      "imgUrls": [
-        "shop.jpg",
-        "more1.jpg",
-        "more2.jpg"
-      ],
-      "location": {
-        "name": "Haifa",
-        "lat": 32.9898,
-        "lng": 12.28
-      },
-      "reviews": [
-        {
-          "id": "madeId",
-          "txt": "Great shelter! ther care about the dogs",
-          "rate": 4,
-          "by": {
             "_id": "u102",
-            "fullName": "user2",
-            "imgUrl": "/img/img2.jpg"
-          }
+            "fullName": "User 2",
+            "imgUrl": "/img/img2.jpg",
+            "userName": "user2",
+            "password": "secret"
         }
-      ]
-    }
-  ],
-  "user": [
-    {
-      "_id": "u101",
-      "fullName": "User 1",
-      "imgUrl": "/img/img1.jpg",
-      "userName": "user1",
-      "password": "secret"
-    },
-    {
-      "_id": "u102",
-      "fullName": "User 2",
-      "imgUrl": "/img/img2.jpg",
-      "userName": "user2",
-      "password": "secret"
-    }
-  ]
+    ]
 }
