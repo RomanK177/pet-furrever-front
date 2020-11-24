@@ -1,7 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import homePage from '../views/home-page.vue';
-import petApp from '../views/pet-app.vue';
+import petApp from '../views/pet/pet-app.vue';
+import petDetails from '../views/pet/pet-details.vue';
+import petEdit from '../views/pet/pet-edit.vue';
+import signup from '../views/signup.vue';
+import ownerDetails from '../views/owner/owner-details.vue';
 
 Vue.use(VueRouter)
 
@@ -14,6 +18,22 @@ const routes = [
   {
     path: '/pet',
     component: petApp
+  },
+  {
+    path: '/pet/edit/:id?',
+    component: petEdit
+  },
+  {
+    path: '/pet/:id',
+    component: petDetails
+  },
+  {
+    path: '/signup',
+    component: signup
+  },
+  {
+    path: '/owner',
+    component: ownerDetails
   }
   // {
   //   path: '/about',
