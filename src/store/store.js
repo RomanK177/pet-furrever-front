@@ -9,16 +9,13 @@ import reviewStore from '@/modules/review-store.js';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-    petStore,
-    userStore,
-    rescueStore,
-    reviewStore
-  }
+    state: {},
+    mutations: {},
+    actions: {},
+    modules: {
+        petStore,
+        userStore,
+        rescueStore,
+        reviewStore
+    }
 })
