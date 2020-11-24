@@ -1,19 +1,23 @@
 {
-  "item": [
+  "pet": [
     {
-      "_id": "v140",
-      "title": "Batata Ksbia",
-      "price": 12,
-      "unit": "kg",
-      "shop": {
+      "_id": "p001",
+      "name": "Max",
+      "gender": "male",
+      "size": "medium",
+      "shelterName": {
         "_id": "s101",
-        "name": "Hapirat HaRaev",
-        "imgUrl": "url",
-        "rate": 2
+        "name": "Dogs for life",
+        "imgUrl": [
+          "url"
+        ]
       },
       "description": "Big batata, soft at edges, can be used for a great veg soup",
       "imgUrl": "",
-      "tags": ["organic", "veg", "root"]
+      "tags": [
+        "good with children",
+        "friendly"
+      ]
     }
   ],
   "order": [
@@ -27,7 +31,7 @@
         "_id": "v102",
         "name": "Hapirat Hadebil",
         "title": "Wahad Shop",
-        "imgUrl" : "",
+        "imgUrl": "",
         "rate": 5
       },
       "items": [
@@ -38,31 +42,38 @@
         }
       ],
       "status": "pending"
-    }    
+    }
   ],
-  "shop": [
+  "shelter": [
     {
       "_id": "s101",
-      "name": "Hapirat HaRaev",
+      "name": "Dogs for life",
       "owner": {
         "_id": "u101",
         "fullName": "user1",
         "imgUrl": "/img/img1.jpg"
       },
-      "title": "ahla hanot",
-      "desc": "mamash ahla hanot organit",
-      "tags": ["meat", "organic"],
-      "imgUrls": ["shop.jpg", "more1.jpg", "more2.jpg"],
+      "title": "Lovely dogs",
+      "desc": "Dogs looking for partner for life",
+      "tags": [
+        "big dogs",
+        "funny dogs"
+      ],
+      "imgUrls": [
+        "shop.jpg",
+        "more1.jpg",
+        "more2.jpg"
+      ],
       "location": {
-        "name" : "Paris",
+        "name": "Haifa",
         "lat": 32.9898,
         "lng": 12.28
       },
       "reviews": [
         {
-          "id" :"madeId",
-          "txt": "a great place to dine..",
-          "rate" : 4,
+          "id": "madeId",
+          "txt": "Great shelter! ther care about the dogs",
+          "rate": 4,
           "by": {
             "_id": "u102",
             "fullName": "user2",
@@ -77,17 +88,15 @@
       "_id": "u101",
       "fullName": "User 1",
       "imgUrl": "/img/img1.jpg",
-      "isAdmin": false,
-      "userName" : "user1",
-      "password" : "secret"
+      "userName": "user1",
+      "password": "secret"
     },
     {
       "_id": "u102",
       "fullName": "User 2",
       "imgUrl": "/img/img2.jpg",
-      "isAdmin": false,
-      "userName" : "user2",
-      "password" : "secret"
+      "userName": "user2",
+      "password": "secret"
     }
   ]
 }
