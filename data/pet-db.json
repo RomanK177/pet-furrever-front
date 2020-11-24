@@ -6,6 +6,7 @@
             "gender": "male",
             "size": "medium",
             "type": "dog",
+            "breed": "mixed",
             "age": 5,
             "isAdopted": false,
             "owner": {
@@ -13,7 +14,7 @@
                 "name": "Dogs for life",
                 "imgUrl": "url"
             },
-            "description": "Big batata, soft at edges, can be used for a great veg soup",
+            "description": "The sweetest dog who loves to cuddle and play fetch.",
             "imgUrls": [
                 "url"
             ],
@@ -27,15 +28,17 @@
         {
             "_id": "o1225",
             "cretatedAt": 9898989,
-            "adopter": "mini-user",
+            "user": {
+                "_id": "u104",
+                "name": "Joe Hannigan"
+            },
             "owner": {
                 "_id": "v102",
-                "name": "Hapirat Hadebil"
+                "name": "Purrfect Cats"
             },
             "pet": {
                 "_id": "v140",
-                "name": "Batata Ksbia",
-                "amount": 2
+                "name": "Winston"
             },
             "status": "pending"
         }
@@ -43,20 +46,22 @@
     "owners": [
         {
             "_id": "s101",
-            "name": "Dogs for life",
+            "name": "Farm Friends",
             "pets": [
-                "u101"
+                "u101",
+                "u234",
+                "u287"
             ],
-            "title": "Lovely dogs",
-            "desc": "Dogs looking for partner for life",
+            "title": "Cutest barn yard animals",
+            "desc": "Looking for a barn forever home",
             "tags": [
-                "big dogs",
-                "funny dogs"
+                "baby pigs",
+                "sweet cows"
             ],
             "imgUrls": [
-                "shop.jpg",
-                "more1.jpg",
-                "more2.jpg"
+                "piggy.jpg",
+                "moo.jpg",
+                "chicken.jpg"
             ],
             "location": {
                 "name": "Haifa",
@@ -65,8 +70,8 @@
             },
             "reviews": [
                 {
-                    "id": "madeId",
-                    "txt": "Great shelter! they care about the dogs",
+                    "_id": "r107",
+                    "txt": "Great rescue! I adopted my pet pig from them, and I Couldn’t be happier",
                     "rate": 4,
                     "by": {
                         "_id": "u102",
@@ -80,16 +85,18 @@
     "users": [
         {
             "_id": "u101",
-            "fullName": "User 1",
-            "imgUrl": "/img/img1.jpg",
-            "userName": "user1",
+            "fullName": "Ari Cohen",
+            "imgUrl": "/img/ari.jpg",
+            "userName": "ari123",
+            "email": "ari@gmail.com",
             "password": "secret"
         },
         {
             "_id": "u102",
-            "fullName": "User 2",
-            "imgUrl": "/img/img2.jpg",
-            "userName": "user2",
+            "fullName": "Alex Briggs",
+            "imgUrl": "/img/alex.jpg",
+            "userName": "alex123",
+            "email": "alex@gmail.com",
             "password": "secret"
         }
     ]
