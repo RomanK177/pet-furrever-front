@@ -1,5 +1,5 @@
 <template>
-<section class="review-add"></section>
+<section class="owner-review"></section>
 </template>
 
 <script>
