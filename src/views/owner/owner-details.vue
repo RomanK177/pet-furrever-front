@@ -19,7 +19,7 @@ export default {
       owner: null
     };
   },
-  created(){
+  async created(){
     var ownerId = this.$router.params.id;
     const currOwner = await ownerService.getOwnerById(ownerId);
     this.owner = currOwner;
