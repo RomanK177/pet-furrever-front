@@ -1,5 +1,10 @@
 <template>
-<section class="user-details"></section>
+<section class="user-details">
+<h1>User Prfoile</h1>
+
+
+
+</section>
 </template>
 
 <script>
