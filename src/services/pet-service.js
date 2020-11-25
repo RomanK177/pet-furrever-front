@@ -19,23 +19,23 @@ function query(filter = null, sortBy = 'name') {
         const stockStr = (filter.stock) ? `&inStock=true` : '';
         filterStr = searchStr + stockStr + typeStr;
     }
-    return httpService.get(`pet?sort=${sortBy}${filterStr}`)
+    // return httpService.get(`pet?sort=${sortBy}${filterStr}`)
 }
 
 function getById(id) {
-    return httpService.get(`pet/${id}`)
+    // return httpService.get(`pet/${id}`)
 }
 
 function remove(id) {
-    return httpService.delete(`pet/${id}`)
+    // return httpService.delete(`pet/${id}`)
 }
 
 function save(pet) {
     if (!pet._id) {
         pet.createdAt = Date.now();
-        return httpService.post(`pet`, pet)
+        // return httpService.post(`pet`, pet)
     } else {
-        return httpService.put(`pet/${pet._id}`, pet)
+        // return httpService.put(`pet/${pet._id}`, pet)
     }
 }
 

@@ -19,7 +19,7 @@ export const petStore = {
             },
             "description": "The sweetest dog who loves to cuddle and play fetch.",
             "imgUrls": [
-                "url"
+                "@/src/assets/imgs/pets/max1.jpg"
             ],
             "tags": [
                 "good with children",
