@@ -58,12 +58,8 @@
         <br />
         <select v-model="user.houseStatus">
           <option value="appartment">Appartment</option>
-          <option value="garden">
-            House with garden
-          </option>
-          <option value="farm">
-            Farm
-          </option>
+          <option value="garden">House with garden</option>
+          <option value="farm">Farm</option>
         </select>
         <button>Submit</button>
       </form>
@@ -137,15 +133,11 @@ export default {
       }
     },
   },
-  computed: {
-    getEmptyUser() {
-      var emptyUser = this.$store.getters.getEmptyUser;
-      this.user = emptyUser;
-    },
-    getEmptyOwner() {
-      var emptyOwner = this.$store.getters.getEmptyOwner;
-      this.owner = emptyOwner;
-    },
+  created() {
+    var emptyUser = this.$store.getters.getEmptyUser;
+    this.user = emptyUser;
+    var emptyOwner = this.$store.getters.getEmptyOwner;
+    this.owner = emptyOwner;
   },
 };
 </script>
