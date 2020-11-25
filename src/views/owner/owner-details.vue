@@ -1,5 +1,5 @@
 <template>
-<section class="rescue-details"></section>
+<section class="owner-details"></section>
 </template>
 
 <script>
