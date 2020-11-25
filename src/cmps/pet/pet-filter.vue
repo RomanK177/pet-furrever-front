@@ -1,12 +1,8 @@
 <template>
   <section class="pet-filter">
     <h1>I am Filter</h1>
-    <input
-      type="text"
-      placeholder="Search for pets..."
-      v-model="filter.txt"
-      @input="debFilter"
-    />
+    <input type="text" placeholder="Search for pets..." v-model="filter.txt" />
+    <my-select />
   </section>
 </template>
 

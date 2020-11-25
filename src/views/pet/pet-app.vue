@@ -1,18 +1,18 @@
 <template>
   <section class="pet-app">
-    <filter />
+    <pet-filter />
   </section>
 </template>
 
 <script>
-import filter from "../../cmps/pet/pet-filter";
+import petFilter from "../../cmps/pet/pet-filter";
 export default {
-  name: "Pet App",
+  name: "pet-app.vue",
   props: {
     msg: String,
   },
   components: {
-    filter,
+    petFilter,
   },
 };
 </script>
