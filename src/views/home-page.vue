@@ -1,10 +1,13 @@
 <template>
   <div class="home">
-    <!-- <carousel></carousel> -->
-    <div class="hero-img">
-      <img src="../assets/imgs/homepage/hero1.jpg" height="300px" alt="" />
-    </div>
+    <carousel></carousel>
+    <!-- <div class="hero-img">
+      <img src="../assets/imgs/homepage/hero1.2.png" alt="" class="hero-image" />
+    </div> -->
     <section class="adopt-reasons">
+      <div class=heart>
+        Why Should I Adopt?
+      </div>
       <p>
         There are so many reasons why you should adopt a pet, but the most
         important reason is that you will be saving a life, and your pet will
@@ -20,6 +23,7 @@
         life now - find your new furry best friend!
       </p>
       <button>View All Animals!</button>
+    </section>
       <section class="testimonies">
         <!-- <review></review> -->
         <div class="testimony">
@@ -46,7 +50,6 @@
           </p>
         </div>
       </section>
-    </section>
   </div>
 </template>
 
