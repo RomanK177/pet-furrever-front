@@ -32,6 +32,7 @@ export default {
   },
   methods: {
     changeFilter(filter) {
+      console.log("filter in change filter", filter);
       this.$store.dispatch({ type: "filterPets", filter });
     },
     deletePet(petId) {
