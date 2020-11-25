@@ -1,15 +1,19 @@
 <template>
   <div class="home">
-    <h1>Pet FURRever</h1>
+    <carousel></carousel>
+    <h1>Homepage</h1>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 
+import appHeader from '../cmps/app-header.vue'
+import carousel from '../cmps/carousel.vue'
 export default {
   name: 'Home',
   components: {
+    appHeader,
+    carousel
   }
 }
 </script>
