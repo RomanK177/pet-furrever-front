@@ -1,4 +1,4 @@
-import { petService } from '../../services/pet-service.js';
+import { petService } from '../services/pet-service.js';
 
 export const petStore = {
     strict: true,
