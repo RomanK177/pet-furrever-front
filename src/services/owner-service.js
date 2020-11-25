@@ -4,7 +4,7 @@ export const ownerService = {
 }
 
 function getEmptyOwner() {
-    var user = {
+    var owner = {
         name: '',
         userName: '',
         password: '',
@@ -16,7 +16,7 @@ function getEmptyOwner() {
         tags: [],
         imgUrl: '',
     }
-    return user;
+    return owner;
 }
 
 // async function signUp(user) {

@@ -23,7 +23,7 @@ export default {
       user: null,
     };
   },
-  created(){
+  async created(){
     var userId = this.$router.params.id;
     const currUser = await userService.getUserById(userId);
     this.user = currUser;
