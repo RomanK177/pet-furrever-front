@@ -9,18 +9,14 @@ import { reviewStore } from './modules/review.store.js';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-    petStore,
-    userStore,
-    ownerStore,
-    reviewStore
-  }
+    state: {},
+    getters: {},
+    mutations: {},
+    actions: {},
+    modules: {
+        petStore,
+        userStore,
+        ownerStore,
+        reviewStore
+    }
 })

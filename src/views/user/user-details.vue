@@ -10,23 +10,27 @@
     <h2 v-if="user.ownPet">Own a pet</h2>
     <h2 v-if="user.ownedPet">Owned a pet</h2>
     <h2>{{ user.familyStatus }}</h2>
-    <h2>{{user.houseStatus}}</h2>
+    <h2>{{ user.houseStatus }}</h2>
     <!-- Add tags from elemnts -->
   </section>
 </template>
 
 <script>
-import { userService } from '../../services/user-service';
+import { userService } from "../../services/user-service";
 export default {
   data() {
     return {
       user: null,
     };
   },
+<<<<<<< HEAD
   async created(){
+=======
+  async created() {
+>>>>>>> 64fa4098a8f260d883d8ed82b43bb237d566aaf1
     var userId = this.$router.params.id;
     const currUser = await userService.getUserById(userId);
     this.user = currUser;
-  }
+  },
 };
 </script>
