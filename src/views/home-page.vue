@@ -1,10 +1,13 @@
 <template>
   <div class="home">
-    <!-- <carousel></carousel> -->
-    <div class="hero-img">
-      <img src="../assets/imgs/homepage/hero1.jpg" height="300px" alt="" />
-    </div>
+    <carousel></carousel>
+    <!-- <div class="hero-img">
+      <img src="../assets/imgs/homepage/hero1.2.png" alt="" class="hero-image" />
+    </div> -->
     <section class="adopt-reasons">
+      <div class="heart">
+        <h1>Why Should I Adopt?</h1>
+      </div>
       <p>
         There are so many reasons why you should adopt a pet, but the most
         important reason is that you will be saving a life, and your pet will
@@ -20,10 +23,15 @@
         life now - find your new furry best friend!
       </p>
       <button>View All Animals!</button>
-      <section class="testimonies">
-        <!-- <review></review> -->
-        <div class="testimony">
+    </section>
+    <section class="testimonies">
+      <!-- <review></review> -->
+      <div class="testimony">
+        <div class="testimony-img">
           <img src="../assets/imgs/homepage/testimony1.jpg" alt="" />
+          <h1>Sarah</h1>
+        </div>
+        <div class="testimony-p">
           <p>
             Hello! My name is Sarah, and I adopted my incredible dog named
             Martin from "Dog Luvers". He saved me in so many ways. I used to be
@@ -35,17 +43,24 @@
             mom! Please adopt and save a life while improving your own!
           </p>
         </div>
-           <div class="testimony">
+      </div>
+      <div class="testimony">
+        <div class="testimony-img">
           <img src="../assets/imgs/homepage/testimony2.jpg" alt="" />
+          <h1>Dom</h1>
+        </div>
+        <div class="testimony-p">
           <p>
-            Hi, I'm Dom and I adopted this stallion of a dog named Kita from "Adopt-A-Pup Rescue".
-            I couldn't imagine my life without this little dude. He is my best bud, we do everything together,
-            I woudln't give him up for the world. Adopting Kita is the best decision I've ever made, and Pet Furrever 
-            made this proccess so easy and delightful. Thank you so much Pet Furrever and Adop-A-Pup, I will forever
-            be thankful to you guys.
+            Hi, I'm Dom and I adopted this stallion of a dog named Kita from
+            "Adopt-A-Pup Rescue". I couldn't imagine my life without this little
+            dude. He is my best bud, we do everything together, I woudln't give
+            him up for the world. Adopting Kita is the best decision I've ever
+            made, and Pet Furrever made this proccess so easy and delightful.
+            Thank you so much Pet Furrever and Adop-A-Pup, I will forever be
+            thankful to you guys.
           </p>
         </div>
-      </section>
+      </div>
     </section>
   </div>
 </template>

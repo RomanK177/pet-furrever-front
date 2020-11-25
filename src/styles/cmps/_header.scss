@@ -1,0 +1,37 @@
+h1.logo{
+    margin: 0;
+    text-transform: uppercase;
+
+
+}
+
+
+.nav-link{
+color: orange;
+text-decoration: none;
+border: 1px solid orange;
+padding: 5px;
+margin-left: 2px;
+margin-right: 2px;
+border-radius: 5px;
+}
+
+.nav-link:hover{
+    color: white;
+    background-color: orange;
+}
+
+.navbar{
+margin-top: 6px;
+}
+.header{
+border: 1px solid orange;  
+border-radius: 5px;
+padding: 20px;
+margin-bottom: 5px;
+margin-top: 5px;
+}
+
+.logo span{
+    color: orange;
+}

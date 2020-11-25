@@ -2,7 +2,8 @@
     box-sizing: border-box;
 }
 html {
-    font-family: "Courier New", Courier, monospace;
+    // font-family: "Courier New", Courier, monospace;
+    font-family: quicksand;
     // We will select our font
 }
 
@@ -13,3 +14,12 @@ body {
 img {
     width: 100%;
 }
+
+@font-face{
+    font-family: quicksand;
+    src: url('~@/assets/fonts/Quicksand/static/Quicksand-Regular.ttf');
+}
+
+@font-face{
+    font-family: quicksand-bold;
+    src: url('~@/assets/fonts/Quicksand/static/Quicksand-Bold.ttf');}
