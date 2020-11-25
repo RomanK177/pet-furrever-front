@@ -1,15 +1,18 @@
 <template>
   <section class="pet-app">
-    <pet-filter />
+    <pet-filter @filter="changeFilter" />
   </section>
 </template>
 
 <script>
-import petFilter from "../../cmps/pet/pet-filter";
+import petFilter from "../../cmps/pet/filtering/pet-filter";
 export default {
   name: "pet-app.vue",
-  props: {
-    msg: String,
+  props: {},
+  methods: {
+    changeFilter(filter) {
+      this.$store.dispatch({ type: "filterPets", filter });
+    },
   },
   components: {
     petFilter,

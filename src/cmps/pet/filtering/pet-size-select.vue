@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="value" filterable placeholder="Select">
+  <el-select v-model="value" placeholder="Select Pet Size" @change="emitChange">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -16,28 +16,29 @@ export default {
     return {
       options: [
         {
-          value: "Option1",
-          label: "Option1",
+          value: "Small",
+          label: "Small",
         },
         {
-          value: "Option2",
-          label: "Option2",
+          value: "Medium",
+          label: "Medium",
         },
         {
-          value: "Option3",
-          label: "Option3",
+          value: "Large",
+          label: "Large",
         },
         {
-          value: "Option4",
-          label: "Option4",
-        },
-        {
-          value: "Option5",
-          label: "Option5",
+          value: "Giant",
+          label: "Giant",
         },
       ],
       value: "",
     };
+  },
+  methods: {
+    emitChange() {
+      this.$emit("input", this.value);
+    },
   },
 };
 </script>
