@@ -1,8 +1,7 @@
 <template>
   <div class="home">
     <h1>Homepage</h1>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="../assets/logo.png" />
   </div>
 </template>
 
@@ -10,8 +9,7 @@
 // @ is an alias to /src
 
 export default {
-  name: 'Home',
-  components: {
-  }
-}
+  name: "Home",
+  components: {},
+};
 </script>
