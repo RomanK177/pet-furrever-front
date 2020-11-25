@@ -1,19 +1,63 @@
 <template>
   <div class="home">
-    <carousel></carousel>
-    <h1>Homepage</h1>
+    <!-- <carousel></carousel> -->
+    <div class="hero-img">
+      <img src="../assets/imgs/homepage/hero1.jpg" height="300px" alt="" />
+    </div>
+    <section class="adopt-reasons">
+      <p>
+        There are so many reasons why you should adopt a pet, but the most
+        important reason is that you will be saving a life, and your pet will
+        love you forever for that!
+      </p>
+      <p>
+        Research shows that having a pet improves your quality of of life by
+        making you a happier person! Taking care of an animal releases
+        endorphins in your brain, which causes you to be happier! It's been
+        shown that taking care of a pet is psychologically, emotionally and
+        physically beneficial to their companions. Let's not forget the
+        uncoditional love from your pet! What are you waiting for?! Improve your
+        life now - find your new furry best friend!
+      </p>
+      <button>View All Animals!</button>
+      <section class="testimonies">
+        <!-- <review></review> -->
+        <div class="testimony">
+          <img src="../assets/imgs/homepage/testimony1.jpg" alt="" />
+          <p>
+            Hello! My name is Sarah, and I adopted my incredible dog named
+            Martin from "Dog Luvers". He saved me in so many ways. I used to be
+            really depressed before I adopted Martin, and would have the hardest
+            time getting out of bed. Walking him every morning really gave me a
+            purpose to get out of bed each morning, and slowly I started coming
+            out of my depression. His uncoditional love truly changed me, and I
+            feel like the luckiest person in the world to get to be Martin's Dog
+            mom! Please adopt and save a life while improving your own!
+          </p>
+        </div>
+           <div class="testimony">
+          <img src="../assets/imgs/homepage/testimony2.jpg" alt="" />
+          <p>
+            Hi, I'm Dom and I adopted this stallion of a dog named Kita from "Adopt-A-Pup Rescue".
+            I couldn't imagine my life without this little dude. He is my best bud, we do everything together,
+            I woudln't give him up for the world. Adopting Kita is the best decision I've ever made, and Pet Furrever 
+            made this proccess so easy and delightful. Thank you so much Pet Furrever and Adop-A-Pup, I will forever
+            be thankful to you guys.
+          </p>
+        </div>
+      </section>
+    </section>
   </div>
 </template>
 
 <script>
-
-import appHeader from '../cmps/app-header.vue'
-import carousel from '../cmps/carousel.vue'
+import appHeader from "../cmps/app-header.vue";
+import carousel from "../cmps/carousel.vue";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
     appHeader,
-    carousel
-  }
-}
+    carousel,
+  },
+};
 </script>
