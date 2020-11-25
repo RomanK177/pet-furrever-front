@@ -1,7 +1,9 @@
 <template>
-  <section class="pet-app">
-    <pet-filter @filter="changeFilter" />
-  </section>
+<section class="pet-app">
+  <pet-filter @filter="changeFilter" />
+  <pet-list></pet-list>
+  <app-footer></app-footer>
+</section>
 </template>
 
 <script>
