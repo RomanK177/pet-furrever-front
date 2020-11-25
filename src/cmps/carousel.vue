@@ -1,8 +1,7 @@
+
 <template>
   <el-carousel indicator-position="outside">
-    <!-- <el-carousel-item v-for="item in 4" :key="item"> -->
     <el-carousel-item v-for="imgUrl in imgUrls" :key="imgUrl">
-      <!-- <h3>{{ imgUrl }}</h3> -->
       <img :src="imgUrl" alt="" />
     </el-carousel-item>
   </el-carousel>
@@ -20,11 +19,6 @@ export default {
       ],
     };
   },
-  //   methods: {
-  //     getImgUrl: function (imagePath) {
-  //       return require("@/assets/" + imagePath);
-  //     },
-  //   },
 };
 </script>
 
@@ -32,9 +26,7 @@ export default {
 
 
 <style>
-.el-carousel__container{
-    height: 500px;
-}
+
 
 .el-carousel__item h3 {
   color: #475669;
@@ -42,7 +34,7 @@ export default {
   opacity: 0.75;
   line-height: 300px;
   margin: 0;
-  object-fit: cover;
+  object-fit: inherit;
 }
 
 .el-carousel__item:nth-child(2n) {
@@ -52,4 +44,7 @@ export default {
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
+/* img {
+    height: 500px;
+} */
 </style>
