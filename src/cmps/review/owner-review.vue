@@ -1,10 +1,9 @@
 <template>
-<section class="review-add"></section>
+<section class="owner-review"></section>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
   props: {
     msg: String
   }
