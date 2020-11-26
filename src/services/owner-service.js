@@ -4,7 +4,8 @@ export const ownerService = {
     getEmptyOwner,
     login,
     signUp,
-    logout
+    logout,
+    getOwnerById
 }
 
 function getEmptyOwner() {
@@ -24,6 +25,10 @@ function getEmptyOwner() {
     return owner;
 }
 
+function getOwnerById(ownerId){
+    return httpService.get(`owner/${ownerId}`);
+}
+
 async function login(ownerCred) {
     const user = await httpService.post('auth/login', ownerCred)
     return _handleLogin(user)
@@ -39,6 +44,6 @@ async function logout() {
 }
 
 function _handleLogin(user) {
-    sessionStorage.setItem('user', JSON.stringify(user))
+    sessionStorage.setItem('owner', JSON.stringify(user))
     return user;
 }
