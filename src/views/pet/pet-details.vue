@@ -29,11 +29,11 @@ export default {
         owner: {
           _id: "s101",
           name: "Dogs for life",
-          imgUrl: require("../assets/imgs/homepage/testimony1.jpg"),
+          imgUrl: require("@/assets/imgs/homepage/testimony1.jpg"),
         },
         description:
           "Sweetest pup. He's incredibly smart. Loves to play frisbee, and run!",
-        imgUrls: [require("../assets/imgs/pets/aussie.jpg")],
+        imgUrls: [require("@/assets/imgs/pets/aussie.jpg")],
         tags: ["cute", "puppy", "friendly"],
       },
     };
