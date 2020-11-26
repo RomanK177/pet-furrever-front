@@ -5,9 +5,7 @@
       <router-link to="/" class="nav-link">Home</router-link>
       <router-link to="/pet" class="nav-link">Our Pets</router-link>
       <!-- Karin changes:  -->
-      <!-- <router-link to="/owner" class="nav-link">Profile</router-link> -->
-      <!-- <router-link :to="'/user/' + loggedinUser._id" class="nav-link">Profile</router-link> -->
-      <!-- <router-link to="/owner/s101" class="nav-link">Profile</router-link> -->
+      <!-- <router-link v-if="loggedinUser" to="/user/u101" class="nav-link">Profile</router-link> -->
       <router-link to="/user/u101" class="nav-link">Profile</router-link>
       <!-- Changes end   -->
       <router-link to="/signup" class="nav-link">SignUp</router-link>
