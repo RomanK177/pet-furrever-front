@@ -6,6 +6,7 @@
       :user="loggedUser"
       :pets="petsForPreview"
       @deletePet="deletePet"
+      @updateLikes="updateLikes"
     ></pet-list>
     <app-footer></app-footer>
   </section>
@@ -40,6 +41,12 @@ export default {
       this.$store.dispatch({
         type: "deletePet",
         petId,
+      });
+    },
+    updateLikes(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
       });
     },
     goToAddPet() {

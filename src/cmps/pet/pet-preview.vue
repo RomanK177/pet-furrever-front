@@ -24,25 +24,7 @@
         :to="`/user/${pet.owner._id}`"
         >{{ pet.owner.name }}</router-link
       >
-      <div class="flex space-between align-center">
-        <img
-          :class="{ treatClicked: treat }"
-          @click.stop="toggleTreat"
-          v-if="pet.type === 'dog'"
-          class="svg-symbol treat"
-          src="../../assets/svgs/dog-bone.svg"
-          alt=""
-        />
-        <img
-          :class="{ treatClicked: treat }"
-          @click.stop="toggleTreat"
-          v-if="pet.type === 'cat'"
-          class="svg-symbol treat"
-          src="../../assets/svgs/fish.svg"
-          alt=""
-        />
-        <span class="treats-count">{{ pet.numOfTreats }}</span>
-      </div>
+      <pet-likes :pet="pet" @updateLikes="emitUpdateLikes" />
     </div>
     <div class="card-btns flex">
       <button v-show="user && user.isAdmin" @click.stop="emitDelete">x</button>
@@ -53,6 +35,7 @@
 
 <script>
 import { utilService } from "../../services/util-service.js";
+import petLikes from "./pet-likes";
 export default {
   props: {
     pet: Object,
@@ -69,26 +52,21 @@ export default {
     emitDelete() {
       this.$emit("deletePet", this.pet._id);
     },
+    emitUpdateLikes(pet) {
+      this.$emit("updateLikes", pet);
+    },
     editPet() {
       this.$router.push(`/edit/${this.pet._id}`);
-    },
-    toggleTreat() {
-      if (this.treat === false) {
-      }
-      this.treat = !this.treat;
     },
   },
   computed: {},
   created() {
     this.storedLikes = utilService.loadFromStorage("likes_db");
-    // if (
-    //   this.storedLikes === undefined ||
-    //   !this.storedLikes.likedPets.find((petId) => petId === this.pet._id)
-    // ) {
-    //   this.storedLikes = { likedPets: [] };
-    //   utilService.storeToStorage("likes_db", storedLikes);
-    //   return (this.treat = false);
-    // } else this.treat = true;
+    if (this.storedLikes.find((id) => id === this.pet._id)) this.treat = true;
+    else this.treat = false;
+  },
+  components: {
+    petLikes,
   },
 };
 </script>

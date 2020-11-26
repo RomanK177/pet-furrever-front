@@ -25,6 +25,7 @@ export const petStore = {
             state.pets.unshift(pet)
         },
         updatePet(state, { pet }) {
+            console.log("🚀 ~ file: pet.store.js ~ line 31 ~ updatePet ~ pet", pet)
             const idx = state.pets.findIndex(currPet => currPet._id === pet._id)
             state.pets.splice(idx, 1, pet)
         },
@@ -32,6 +33,7 @@ export const petStore = {
             const idx = state.pets.findIndex(pet => pet._id === petId)
             state.pets.splice(idx, 1);
         },
+
         setFilter(state, { filter }) {
             state.filter = filter;
         },
@@ -46,12 +48,12 @@ export const petStore = {
         },
         async savePet({ commit }, { pet }) {
             const action = (pet._id) ? 'updatePet' : 'savePet'
-            const savedPet = await petService.save(pet)
+            const savedPet = await petService.savePet(pet)
             commit({ type: action, pet: savedPet });
             return savedPet;
         },
         async deletePet({ commit }, payload) {
-            const removedPet = petService.remove(payload.petId)
+            const removedPet = petService.removePet(payload.petId)
             commit(payload)
             return removedPet
         },
@@ -64,7 +66,7 @@ export const petStore = {
             return await petService.query(null, null)
         },
         async getById(context, { id }) {
-            const pet = await petService.getById(id)
+            const pet = await petService.getPetById(id)
             return pet
         },
         getEmpty() {
