@@ -19,10 +19,11 @@ function query(filter = null, sortBy = 'name') {
     if (filter) {
         const searchStr = (filter.txt) ? `&q=${filter.txt}` : '';
         const typeStr = (filter.type === 'All') ? '' : `&type=${filter.type}`;
+        const sizeStr = (filter.size === 'All') ? '' : `&size=${filter.size}`;
         const stockStr = (filter.stock) ? `&inStock=true` : '';
-        filterStr = searchStr + stockStr + typeStr;
+        filterStr = searchStr + sizeStr + stockStr + typeStr;
     }
-    let path = `${BASE_URL}/pets${filterStr}`;
+    let path = `${BASE_URL}/pets?${filterStr}`;
     console.log("🚀 ~ file: pet-service.js ~ line 27 ~ query ~ path", path)
     return axios.get(path)
         .then(res => {

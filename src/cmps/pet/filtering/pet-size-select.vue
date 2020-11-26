@@ -16,19 +16,19 @@ export default {
     return {
       options: [
         {
-          value: "Small",
+          value: "small",
           label: "Small",
         },
         {
-          value: "Medium",
+          value: "medium",
           label: "Medium",
         },
         {
-          value: "Large",
+          value: "large",
           label: "Large",
         },
         {
-          value: "Giant",
+          value: "giant",
           label: "Giant",
         },
       ],
