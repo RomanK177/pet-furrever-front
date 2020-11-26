@@ -6,6 +6,7 @@ import petDetails from '../views/pet/pet-details.vue';
 import petEdit from '../views/pet/pet-edit.vue';
 import signup from '../views/signup.vue';
 import ownerDetails from '../views/owner/owner-details.vue';
+import ownerEdit from '../views/owner/owner-edit.vue';
 import userDetails from '../views/user/user-details.vue'
 
 Vue.use(VueRouter)
@@ -35,6 +36,10 @@ const routes = [
   {
     path: '/owner',
     component: ownerDetails
+  },
+  {
+    path: '/owner/edit/:id',
+    component: ownerEdit
   },
   {
     path: '/profile',
