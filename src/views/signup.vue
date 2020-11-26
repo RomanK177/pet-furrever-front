@@ -4,7 +4,7 @@
     <h3>Do you want to signup as adopter or as owner of pet?</h3>
     <button @click="adopter">Adopter</button>
     <button @click="petOwner">Pet Owner</button>
-    <section class="adopter-container" v-if="user.userType === 'adopter'">
+    <section class="adopter-container" v-if="userType === 'adopter'">
       <div>
         Welcome to our site! we hope you'll find you'r perfect furry friend!
       </div>
@@ -64,33 +64,33 @@
         <button>Submit</button>
       </form>
     </section>
-    <section v-if="user.userType === 'owner'" class="owner-container">
+    <section v-if="userType === 'owner'" class="owner-container">
       <div>
         Welcome to our site! we appriciate that you choose us to share your pet
         for adoption!
       </div>
       <form @submit.prevent="signUp">
-        <label>Name: <input type="text" v-model="user.user.name" required /></label>
+        <label>Name: <input type="text" v-model="user.fullName" required /></label>
         <br />
         <label
-          >User name: <input type="text" v-model="user.user.userName" required
+          >User name: <input type="text" v-model="user.userName" required
         /></label>
         <br />
         <label
-          >password: <input type="password" v-model="user.user.password" required
+          >password: <input type="password" v-model="user.password" required
         /></label>
         <br />
         <label
-          >Email: <input type="email" v-model="user.user.email" required
+          >Email: <input type="email" v-model="user.email" required
         /></label>
         <br />
         <label>
-          Telephone: <input type="tel" v-model.number="user.user.tel" required
+          Telephone: <input type="tel" v-model.number="user.tel" required
         /></label>
         <br />
         <label
           >How many years are you activate (only for shelter / agancy):
-          <input type="number" v-model="user.user.ownerData.activityYears" required
+          <input type="number" v-model="user.ownerData.activityYears" required
         /></label>
         <br />
         <label>Location: <input type="text" required v-model="user.ownerData.location" /></label>
@@ -108,14 +108,19 @@ export default {
   data() {
     return {
       user: null,
+      userType: null
     };
   },
   methods: {
     adopter() {
-      this.user.userType = 'adopter';
+    this.userType = 'adopter';
+    var emptyUser = userService.getEmptyUser(this.userType);
+    this.user = emptyUser;
     },
     petOwner() {
-      this.user.userType = 'owner';
+      this.userType = 'owner';
+      var emptyUser = userService.getEmptyUser(this.userType);
+      this.user = emptyUser;
     },
     signUp() {
         this.$store.dispatch({
@@ -123,12 +128,6 @@ export default {
           userCred: this.user,
         });
     }
-  },
-  created() {
-    var emptyUser = this.$store.getters.getEmptyUser;
-    this.user = emptyUser;
-    var emptyOwner = this.$store.getters.getEmptyOwner;
-    this.owner = emptyOwner;
   },
 };
 </script>

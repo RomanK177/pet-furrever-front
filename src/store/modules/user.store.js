@@ -9,9 +9,6 @@ export const userStore = {
         users: []
     },
     getters: {
-        getEmptyUser() {
-            return userService.getEmptyUser();
-        },
         getLoggedInUser(state) {
             return state.loggedInUser;
         },

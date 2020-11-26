@@ -1,9 +1,9 @@
 <template>
   <section class="owner-details">
-    <h1>Welcome {{ user.name }}</h1>
+    <h1>Welcome {{ user.fullName }}</h1>
     <router-link :to="'/user/edit/' +user._id"></router-link>
     <img class="user-profile-picture" :src="imgUrlProfile" />
-    <p>Name: {{ user.name }}</p>
+    <p>Name: {{ user.fullName }}</p>
     <p>Email: {{ user.email }}</p>
     <p>Telephone: {{ user.tel }}</p>
     <p>Activity years: {{ user.ownerData.activityYears }}</p>

@@ -45,7 +45,7 @@ function _getEmptyOwner() {
     var owner = {
         ..._getCommonUserFields(),
         userType: 'owner',
-        activityYears: 0,
+        activityYears: '0',
         title: '',
         desc: '',
         tags: [],
