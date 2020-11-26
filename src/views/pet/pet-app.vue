@@ -54,5 +54,9 @@ export default {
     petList,
     appFooter
   },
+  created() {
+    this.$store.dispatch({ type: "loadPets" });
+    this.$store.dispatch({ type: "loadUsers" });
+  }
 };
 </script>
