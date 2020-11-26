@@ -21,7 +21,20 @@
             "tags": [
                 "good with children",
                 "friendly"
-            ]
+            ],
+            "comments": [
+                {
+                    "userName": "Guest",
+                    "_id": "c123",
+                    "comment": "I just sent him a treat! He's so cute!"
+                },
+                {
+                    "userName": "Alex",
+                    "_id": "c124",
+                    "comment": "How is he still available for adoption?! He's adorable."
+                }
+            ],
+            "numOfTreats": 20
         }
     ],
     "adoptions": [

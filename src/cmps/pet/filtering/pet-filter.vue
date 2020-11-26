@@ -1,9 +1,11 @@
 <template>
   <section class="pet-filter">
     <h1>I am Filter</h1>
-    <search-input v-model="filter.txt" @input="debFilter" />
-    <pet-type-select @input="emitFilter" v-model="filter.type" />
-    <pet-size-select @input="emitFilter" v-model="filter.size" />
+    <div class="flex">
+      <search-input v-model="filter.txt" @input="debFilter" />
+      <pet-type-select @input="emitFilter" v-model="filter.type" />
+      <pet-size-select @input="emitFilter" v-model="filter.size" />
+    </div>
   </section>
 </template>
 

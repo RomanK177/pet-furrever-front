@@ -24,15 +24,15 @@ export default {
     return {
       options: [
         {
-          value: "Cats",
+          value: "cat",
           label: "Cats",
         },
         {
-          value: "Dogs",
+          value: "dog",
           label: "Dogs",
         },
         {
-          value: "Pigs",
+          value: "pig",
           label: "Pigs",
         },
         {
