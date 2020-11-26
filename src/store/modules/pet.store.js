@@ -21,14 +21,14 @@ export const petStore = {
         setPets(state, { pets }) {
             state.pets = pets
         },
-        saveToy(state, { pet }) {
+        savePet(state, { pet }) {
             state.pets.unshift(pet)
         },
-        updateToy(state, { pet }) {
-            const idx = state.pets.findIndex(currToy => currToy._id === pet._id)
+        updatePet(state, { pet }) {
+            const idx = state.pets.findIndex(currPet => currPet._id === pet._id)
             state.pets.splice(idx, 1, pet)
         },
-        deleteToy(state, { petId }) {
+        deletePet(state, { petId }) {
             const idx = state.pets.findIndex(pet => pet._id === petId)
             state.pets.splice(idx, 1);
         },
@@ -45,15 +45,15 @@ export const petStore = {
             commit({ type: 'setPets', pets })
         },
         async savePet({ commit }, { pet }) {
-            const action = (pet._id) ? 'updateToy' : 'saveToy'
-            const savedToy = await petService.save(pet)
-            commit({ type: action, pet: savedToy });
-            return savedToy;
+            const action = (pet._id) ? 'updatePet' : 'savePet'
+            const savedPet = await petService.save(pet)
+            commit({ type: action, pet: savedPet });
+            return savedPet;
         },
         async deletePet({ commit }, payload) {
-            const removedToy = petService.remove(payload.petId)
+            const removedPet = petService.remove(payload.petId)
             commit(payload)
-            return removedToy
+            return removedPet
         },
         async filterPets({ commit, state }, { filter }) {
             const pets = await petService.query(filter, state.sortBy)
@@ -68,7 +68,7 @@ export const petStore = {
             return pet
         },
         getEmpty() {
-            return petService.getEmptyToy()
+            return petService.getEmptyPet()
         },
     },
 
