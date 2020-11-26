@@ -8,6 +8,7 @@
       :pet="pet"
       :user="user"
       @deletePet="emitDelete"
+      @updateLikes="emitUpdateLikes"
       @click.native="showDetails(pet._id)"
     />
   </section>
@@ -27,6 +28,9 @@ export default {
   methods: {
     emitDelete(petId) {
       this.$emit("deletePet", petId);
+    },
+    async emitUpdateLikes(pet) {
+      await this.$emit("updateLikes", pet);
     },
     showDetails(petId) {
       this.$router.push(`/pet/${petId}`);
