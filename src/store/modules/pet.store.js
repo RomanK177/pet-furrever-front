@@ -3,56 +3,7 @@ import { petService } from '../../services/pet-service.js';
 export const petStore = {
     strict: true,
     state: {
-        pets: [{
-                "_id": "p001",
-                "name": "Max",
-                "gender": "male",
-                "size": "medium",
-                "type": "dog",
-                "breed": "mixed",
-                "age": 5,
-                "isAdopted": false,
-                "owner": {
-                    "_id": "s101",
-                    "name": "Dogs for life",
-                    "imgUrl": "url"
-                },
-                "description": "The sweetest dog who loves to cuddle and play fetch.",
-                "imgUrls": [
-                    "max1.jpg"
-                ],
-                "tags": [
-                    "good with children",
-                    "friendly"
-                ]
-            },
-            {
-                "_id": "p002",
-                "name": "Dorin",
-                "gender": "female",
-                "size": "small",
-                "type": "cat",
-                "breed": "persian",
-                "age": 8,
-                "isAdopted": false,
-                "owner": {
-                    "_id": "s102",
-                    "name": "Furry Friends",
-                    "imgUrl": "url"
-                },
-                "description": "Grumpy cat.",
-                "imgUrls": [
-                    "dorin1.jpg"
-                ],
-                "tags": [
-                    "lazy",
-                    "agressive"
-                ]
-            },
-
-
-
-        ],
+        pets: [],
         filter: {
             type: "All",
             txt: "",

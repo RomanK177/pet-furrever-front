@@ -11,6 +11,9 @@ export const petService = {
     getEmptyPet
 }
 
+const BASE_URL = 'http://localhost:3000'
+
+
 function query(filter = null, sortBy = 'name') {
     var filterStr = '';
     if (filter) {
@@ -19,6 +22,13 @@ function query(filter = null, sortBy = 'name') {
         const stockStr = (filter.stock) ? `&inStock=true` : '';
         filterStr = searchStr + stockStr + typeStr;
     }
+    let path = `${BASE_URL}/pets${filterStr}`;
+    console.log("🚀 ~ file: pet-service.js ~ line 27 ~ query ~ path", path)
+    return axios.get(path)
+        .then(res => {
+            return res.data
+        })
+
     // return httpService.get(`pet?sort=${sortBy}${filterStr}`)
 }
 

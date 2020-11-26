@@ -1,6 +1,6 @@
 <template>
   <section class="pet-app">
-    <pet-filter @filter="changeFilter" />
+    <pet-filter @filter="changeFilter" @sort="setSort" />
     <pet-list
       v-if="petsForPreview"
       :user="loggedUser"
@@ -44,10 +44,17 @@ export default {
     goToAddPet() {
       this.$router.push("/edit");
     },
+    setSort(sortBy) {
+      this.$store.dispatch({ type: "sortPets", sortBy });
+    },
   },
   components: {
     petFilter,
     petList,
+  },
+  created() {
+    this.$store.dispatch({ type: "loadPets" });
+    this.$store.dispatch({ type: "loadUsers" });
   },
 };
 </script>
