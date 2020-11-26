@@ -13,8 +13,8 @@
 
 <script>
 import petFilter from "../../cmps/pet/filtering/pet-filter.vue";
-import petList from '../../cmps/pet/pet-list.vue'
-import appFooter from '../../cmps/app-footer.vue'
+import petList from "../../cmps/pet/pet-list.vue";
+import appFooter from "../../cmps/app-footer.vue";
 export default {
   name: "pet-app.vue",
   props: {},
@@ -52,7 +52,11 @@ export default {
   components: {
     petFilter,
     petList,
-    appFooter
+    appFooter,
+  },
+  created() {
+    this.$store.dispatch({ type: "loadPets" });
+    this.$store.dispatch({ type: "loadUsers" });
   },
 };
 </script>
