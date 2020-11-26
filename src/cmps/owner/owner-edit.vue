@@ -42,9 +42,17 @@ export default {
         }
     },
     created(){
-        this.ownerToEdit = this.$store.getters.getEmptyOwner;
+      const ownerId = this.$route.params.id;
+      this.getOwner(ownerId);
     },
   methods: {
+      async getOwner(ownerId) {
+        const owner = await this.$store.dispatch({
+          type: "getOwnerById",
+          ownerId,
+        });
+        this.user = user;
+      },
     async onUploadImgProfile(ev) {
       this.isLoading = true;
       const res = await uploadImg(ev);

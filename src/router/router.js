@@ -8,6 +8,7 @@ import signup from '../views/signup.vue';
 import ownerDetails from '../views/owner/owner-details.vue';
 import ownerEdit from '../views/owner/owner-edit.vue';
 import userDetails from '../views/user/user-details.vue'
+import userEdit from '../views/user/user-edit.vue';
 
 Vue.use(VueRouter)
 
@@ -34,7 +35,7 @@ const routes = [
     component: signup
   },
   {
-    path: '/owner',
+    path: '/owner/:id',
     component: ownerDetails
   },
   {
@@ -42,8 +43,12 @@ const routes = [
     component: ownerEdit
   },
   {
-    path: '/profile',
+    path: '/user/:id',
     component: userDetails
+  },
+  {
+    path: '/user/edit:id',
+    component: userEdit
   }
   // {
   //   path: '/about',

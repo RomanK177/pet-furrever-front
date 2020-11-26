@@ -17,8 +17,9 @@ function getEmptyUser() {
         userName: '',
         password: '',
         email: '',
-        tel: 0,
+        tel: '0',
         dateOfBirth: '',
+        imgUrl: '',
         ownPet: false,
         ownedPet: false,
         familyStatus: '',
@@ -27,19 +28,19 @@ function getEmptyUser() {
     return user;
 }
 function getUsers() {
-    return httpService.get('user');
+    return httpService.get('users');
 }
 
 function getById(userId) {
-    return httpService.get(`user/${userId}`);
+    return httpService.get(`users/${userId}`);
 }
 
 function remove(userId) {
-    return httpService.delete(`user/${userId}`);
+    return httpService.delete(`users/${userId}`);
 }
 
 function update(user) {
-    return httpService.put(`user/${user._id}`, user);
+    return httpService.put(`users/${user._id}`, user);
 }
 
 async function login(userCred) {
