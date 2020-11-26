@@ -1,4 +1,4 @@
-import {httpService} from './http-service.js'
+import { httpService } from './http-service.js'
 import axios from 'axios';
 
 
@@ -11,7 +11,7 @@ export const petService = {
     getEmptyPet
 }
 
-const BASE_URL = 'http://localhost:3000'
+// const BASE_URL = 'http://localhost:3000'
 
 
 function query(filter = null, sortBy = 'name') {
@@ -25,13 +25,13 @@ function query(filter = null, sortBy = 'name') {
         filterStr = searchStr + sizeStr + stockStr + typeStr;
         sortStr = filter.sortBy
     }
-    let path = `${BASE_URL}/pets?_sort=${sortStr}${filterStr}`;
-    return axios.get(path)
-        .then(res => {
-            return res.data
-        })
+    // let path = `${BASE_URL}/pets?_sort=${sortStr}${filterStr}`;
+    // return axios.get(path)
+    //     .then(res => {
+    //         return res.data
+    //     })
 
-    // return httpService.get(`pet?sort=${sortBy}${filterStr}`)
+    return httpService.get(`pets?_sort=${sortBy}${filterStr}`)
 }
 
 function getPetById(id) {

@@ -17,7 +17,24 @@
       />
     </div>
     <p>{{ pet.description }}</p>
-    <p>{{ pet.owner.name }}</p>
+    <div class="flex space-between align-center">
+      <p>{{ pet.owner.name }}</p>
+      <div class="flex space-between align-center">
+        <img
+          v-if="pet.type === 'dog'"
+          class="svg-symbol"
+          src="../../assets/svgs/dog-bone.svg"
+          alt=""
+        />
+        <img
+          v-if="pet.type === 'cat'"
+          class="svg-symbol"
+          src="../../assets/svgs/fish.svg"
+          alt=""
+        />
+        <span>{{ pet.numOfTreats }}</span>
+      </div>
+    </div>
     <div class="card-btns flex">
       <button v-show="user && user.isAdmin" @click.stop="emitDelete">x</button>
       <button v-show="user && user.isAdmin" @click.stop="editPet">Edit</button>
