@@ -5,8 +5,8 @@ import signup from '../views/signup.vue';
 import petApp from '../views/pet/pet-app.vue';
 import petDetails from '../views/pet/pet-details.vue';
 import petEdit from '../views/pet/pet-edit.vue';
-import userDetails from '../views/pet/pet-details.vue';
-import userEdit from '../views/pet/pet-edit.vue';
+import userDetails from '../views/user/user-details.vue';
+import userEdit from '../views/user/user-edit.vue';
 
 
 Vue.use(VueRouter)
@@ -34,13 +34,14 @@ const routes = [
     component: petDetails
   },
   {
-    path: '/user/edit:id?',
+    path: '/user/edit/:id',
     component: userEdit
   },
   {
     path: '/user/:id',
     component: userDetails
   },
+  
   
 
   // {

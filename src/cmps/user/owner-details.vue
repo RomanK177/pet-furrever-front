@@ -1,19 +1,19 @@
 <template>
   <section class="owner-details">
-    <h1>Welcome {{ owner.name }}</h1>
-    <router-link to="/owner/edit/ +owner._id"></router-link>
-    <img class="owner-profile-picture" :src="imgUrlProfile" />
-    <p>Name: {{ owner.name }}</p>
-    <p>Email: {{ owner.email }}</p>
-    <p>Telephone: {{ owner.tel }}</p>
-    <p>Activity years: {{ owner.activityYears }}</p>
-    <p>Title: {{ owner.title }}</p>
-    <p>Description: {{ owner.desc }}</p>
+    <h1>Welcome {{ user.name }}</h1>
+    <router-link :to="'/user/edit/' +user._id"></router-link>
+    <img class="user-profile-picture" :src="imgUrlProfile" />
+    <p>Name: {{ user.name }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Telephone: {{ user.tel }}</p>
+    <p>Activity years: {{ user.ownerData.activityYears }}</p>
+    <p>Title: {{ user.ownerData.title }}</p>
+    <p>Description: {{ user.ownerData.desc }}</p>
     <!-- Add tags from elemnts -->
     <img
       class="owner-imgs"
       id="imgUploader2"
-      v-for="(imgUrl, idx) in owner.imgUrls"
+      v-for="(imgUrl, idx) in user.ownerData.imgUrls"
       :key="idx"
       :src="imgUrl"
     />
@@ -23,27 +23,29 @@
 <script>
 import { uploadImg } from "./../../services/img-upload-service.js";
 export default {
-  data() {
-    return {
-      owner: null,
-    };
+  props:{
+    user: Object
   },
   created(){
-    var ownerId = this.$route.params.id;
-    getUser(ownerId);
+    // var userId = this.$route.params.id;
+    // getUser(userId);
   },
   methods: {
-    async getOwner(ownerId){
-    var owner = await this.$store.dispatch({
-      type: 'getOwnerById',
-      ownerId
-    })
-    this.owner = owner;
-    }
+    // async getUser(userId){
+    // var user = await this.$store.dispatch({
+    //   type: 'getUserById',
+    //   userId
+    // })
+    // this.user = user;
+    // }
   },
   computed:{
     imgUrlProfile(){
-      if(!this.owner.imgUrlProfile) return require('../../assets/imgs/profile-logo.png')
+      if(!this.user.imgUrlProfile){
+       return require('../../assets/imgs/profile-logo.png')  
+      } else {
+        return this.user.imgUrlProfile;
+      }
     }
   }
 };

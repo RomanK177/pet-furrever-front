@@ -1,7 +1,7 @@
 <template>
   <section class="user-details">
-    <adopter-details v-if="user && user.userType === 'adopter'" />
-    <ownerDetails v-if="user && user.userType === 'owner'" />
+    <adopter-details v-if="user && user.userType === 'adopter'" :user="user" />
+    <ownerDetails v-if="user && user.userType === 'owner'" :user="user" />
   </section>
 </template>
 
@@ -26,12 +26,6 @@ export default {
         userId,
       });
       this.user = user;
-    },
-  },
-  computed: {
-    imgUrlProfile() {
-      if (!this.user.imgUrlProfile)
-        return require("../../assets/imgs/profile-logo.png");
     },
   },
   components:{

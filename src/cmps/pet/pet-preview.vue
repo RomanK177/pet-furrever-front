@@ -21,7 +21,7 @@
     <div class="flex space-between align-center">
       <router-link
         @click.native="$event.stopImmediatePropagation()"
-        :to="`/owner/${pet.owner._id}`"
+        :to="`/user/${pet.owner._id}`"
         >{{ pet.owner.name }}</router-link
       >
       <div class="flex space-between align-center">
