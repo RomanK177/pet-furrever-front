@@ -16,15 +16,16 @@ const BASE_URL = 'http://localhost:3000'
 
 function query(filter = null, sortBy = 'name') {
     var filterStr = '';
+    var sortStr = '';
     if (filter) {
         const searchStr = (filter.txt) ? `&q=${filter.txt}` : '';
         const typeStr = (filter.type === 'All') ? '' : `&type=${filter.type}`;
         const sizeStr = (filter.size === 'All') ? '' : `&size=${filter.size}`;
         const stockStr = (filter.stock) ? `&inStock=true` : '';
         filterStr = searchStr + sizeStr + stockStr + typeStr;
+        sortStr = filter.sortBy
     }
-    let path = `${BASE_URL}/pets?${filterStr}`;
-    console.log("🚀 ~ file: pet-service.js ~ line 27 ~ query ~ path", path)
+    let path = `${BASE_URL}/pets?_sort=${sortStr}${filterStr}`;
     return axios.get(path)
         .then(res => {
             return res.data

@@ -1,5 +1,5 @@
 <template>
-  <el-select v-model="value" placeholder="Select Pet Size" @change="emitChange">
+  <el-select v-model="value" placeholder="Sort By" @change="emitChange">
     <el-option
       v-for="item in options"
       :key="item.value"
@@ -16,24 +16,16 @@ export default {
     return {
       options: [
         {
-          value: "All",
-          label: "All",
+          value: "type",
+          label: "Type",
         },
         {
-          value: "small",
-          label: "Small",
+          value: "size",
+          label: "Size",
         },
         {
-          value: "medium",
-          label: "Medium",
-        },
-        {
-          value: "large",
-          label: "Large",
-        },
-        {
-          value: "giant",
-          label: "Giant",
+          value: "name",
+          label: "Name",
         },
       ],
       value: "",

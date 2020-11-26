@@ -24,6 +24,10 @@ export default {
     return {
       options: [
         {
+          value: "All",
+          label: "All",
+        },
+        {
           value: "cat",
           label: "Cats",
         },

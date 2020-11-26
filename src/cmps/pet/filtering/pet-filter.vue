@@ -5,6 +5,7 @@
       <search-input v-model="filter.txt" @input="debFilter" />
       <pet-type-select @input="emitFilter" v-model="filter.type" />
       <pet-size-select @input="emitFilter" v-model="filter.size" />
+      <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
     </div>
   </section>
 </template>
@@ -12,6 +13,7 @@
 <script>
 import petTypeSelect from "./pet-type-select";
 import petSizeSelect from "./pet-size-select";
+import petSortSelect from "./pet-sort-select ";
 import searchInput from "./search-input";
 
 export default {
@@ -21,6 +23,7 @@ export default {
         txt: "",
         type: "All",
         size: "All",
+        sortBy: null,
       },
       debTime: null,
     };
@@ -42,6 +45,7 @@ export default {
     searchInput,
     petTypeSelect,
     petSizeSelect,
+    petSortSelect,
   },
 };
 </script>
