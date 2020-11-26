@@ -16,7 +16,12 @@
           @change="onUploadImgProfile"
         />
       </template>
-      <img v-else src="../../assets/imgs/loading.gif" width="200" height="200"/>
+      <img
+        v-else
+        src="../../assets/imgs/loading.gif"
+        width="200"
+        height="200"
+      />
       <label>Name: <input type="text" v-model="userToEdit.name" /></label>
       <label>Email: <input type="email" v-model="userToEdit.email" /></label>
       <label>Telephone: <input type="tel" v-model="userToEdit.tel" /></label>
@@ -56,11 +61,11 @@
 </template>
 
 <script>
-import { uploadImg } from './../../services/img-upload-service.js';
+import { uploadImg } from "./../../services/img-upload-service.js";
 
 export default {
-  props:{
-    userToEdit: Object
+  props: {
+    userToEdit: Object,
   },
   created() {
     // const ownerId = this.$route.params.id;
@@ -77,7 +82,7 @@ export default {
     async onUploadImgProfile(ev) {
       this.isLoading = true;
       const res = await uploadImg(ev);
-      this.owner.imgUrlProfile = res.url;
+      this.userToEdit.imgUrlProfile = res.url;
       this.isLoading = false;
     },
     //     async onUploadImgs(ev) {
@@ -86,10 +91,17 @@ export default {
     //   this.owner.imgUrls.push(res.url);
     //   // this.isLoading = false;
     // },
+    saveEdit() {
+      this.$store.dispatch({
+        type: "updateUser",
+        savedUser: this.userToEdit,
+      });
+      this.$router.push(`/user/${this.userToEdit._id}`);
+    },
   },
   computed: {
     imgUrlProfile() {
-      if (!this.userToEdit.imgUrlProfile){
+      if (!this.userToEdit.imgUrlProfile) {
         return require("../../assets/imgs/profile-logo.png");
       } else {
         return this.userToEdit.imgUrlProfile;

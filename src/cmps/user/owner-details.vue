@@ -1,7 +1,8 @@
 <template>
   <section class="owner-details">
     <h1>Welcome {{ user.fullName }}</h1>
-    <router-link :to="'/user/edit/' +user._id"></router-link>
+    <!-- <router-link :to="'/user/edit/' +user._id">Edit profile</router-link>
+    <br /> -->
     <img class="user-profile-picture" :src="imgUrlProfile" />
     <p>Name: {{ user.fullName }}</p>
     <p>Email: {{ user.email }}</p>

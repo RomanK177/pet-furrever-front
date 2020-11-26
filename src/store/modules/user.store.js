@@ -45,8 +45,12 @@ export const userStore = {
                 user: null
             })
         },
-        async getUserById({commit}, {userId}){
+        async getUserById({ commit }, { userId }) {
             const user = await userService.getById(userId);
+            return user;
+        },
+        async updateUser({ commit }, { savedUser }) {
+            const user = await userService.update(savedUser);
             return user;
         }
     },
