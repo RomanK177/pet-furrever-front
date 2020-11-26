@@ -1,7 +1,9 @@
 <template>
   <section class="pet-details" v-if="pet">
     <h1>{{ pet.name }}</h1>
-      <img v-for="(imgUrl, index) in pet.imgUrls" :key="index" :src="require(`@/assets/imgs/pets/${imgUrl}`)" alt="" class="pet-details-img" />
+    <div class="pet-details-images">
+      <img v-for="(imgUrl, index) in pet.imgUrls" :key="index" :src="require(`@/assets/imgs/pets/${imgUrl}`)" alt="" :class="{item0: index === 0, item1: index === 1, item2: index === 2, item3: index === 3, item4: index === 4}" />
+      </div>
     <!-- <img :src="require(`@/assets/imgs/pets/${pet.imgUrls[0]}`)" alt="" class="pet-details-img" /> -->
     <p class="treats"> Treat Count: {{ pet.numOfTreats }}</p>
     <button class="adopt-btn">Adopt Me!</button>
