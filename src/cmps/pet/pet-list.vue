@@ -29,7 +29,7 @@ export default {
       this.$emit("deletePet", petId);
     },
     showDetails(petId) {
-      this.$router.push(`/${petId}`);
+      this.$router.push(`/pet/${petId}`);
     },
   },
 };

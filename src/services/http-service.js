@@ -7,7 +7,7 @@ import router from './../router/router.js';
 
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
-    : '//localhost:3030/'
+    : '//localhost:3000/'
 
 export const httpService = {
     get(endpoint, data) {

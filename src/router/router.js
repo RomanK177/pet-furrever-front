@@ -5,10 +5,10 @@ import petApp from '../views/pet/pet-app.vue';
 import petDetails from '../views/pet/pet-details.vue';
 import petEdit from '../views/pet/pet-edit.vue';
 import signup from '../views/signup.vue';
-import ownerDetails from '../views/owner/owner-details.vue';
-import ownerEdit from '../views/owner/owner-edit.vue';
-import userDetails from '../views/user/user-details.vue'
-import userEdit from '../views/user/user-edit.vue';
+// import ownerDetails from '../views/owner/owner-details.vue';
+// import ownerEdit from '../views/owner/owner-edit.vue';
+// import userDetails from '../views/user/user-details.vue'
+// import userEdit from '../views/user/user-edit.vue';
 
 Vue.use(VueRouter)
 
@@ -34,22 +34,22 @@ const routes = [
     path: '/signup',
     component: signup
   },
-  {
-    path: '/owner/:id',
-    component: ownerDetails
-  },
-  {
-    path: '/owner/edit/:id',
-    component: ownerEdit
-  },
-  {
-    path: '/user/:id',
-    component: userDetails
-  },
-  {
-    path: '/user/edit:id',
-    component: userEdit
-  }
+  // {
+  //   path: '/owner/:id',
+  //   component: ownerDetails
+  // },
+  // {
+  //   path: '/owner/edit/:id',
+  //   component: ownerEdit
+  // },
+  // {
+  //   path: '/user/:id',
+  //   component: userDetails
+  // },
+  // {
+  //   path: '/user/edit:id',
+  //   component: userEdit
+  // }
   // {
   //   path: '/about',
   //   name: 'About',
