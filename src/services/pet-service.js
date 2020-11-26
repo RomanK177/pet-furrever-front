@@ -42,10 +42,15 @@ function save(pet) {
 function getEmptyPet() {
     const pet = {
         name: '',
-        price: null,
-        type: null,
-        createdAt: null,
-        inStock: true
+        gender: '',
+        size: '',
+        type: '',
+        breed: '',
+        age: '',
+        adoptedAt: '',
+        owner: {},
+        description: '',
+        imgUrls: [],
+        tags: [],
     };
-    return Promise.resolve(pet)
 }

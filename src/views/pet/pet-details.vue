@@ -6,7 +6,12 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    pet: Object
+  },
+  data(){
+    return{
+      
+    }
   }
 }
 </script>
