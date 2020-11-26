@@ -8,7 +8,7 @@
             "type": "dog",
             "breed": "mixed",
             "age": 5,
-            "isAdopted": false,
+            "adoptedAt": 9898989,
             "owner": {
                 "_id": "s101",
                 "name": "Dogs for life",
@@ -89,7 +89,12 @@
             "imgUrl": "/img/ari.jpg",
             "userName": "ari123",
             "email": "ari@gmail.com",
-            "password": "secret"
+            "password": "secret",
+            "dateOfBirth": "f",
+            "ownPet": false,
+            "ownedPet": false,
+            "familyStatus": "",
+            "houseStatus": ""
         },
         {
             "_id": "u102",
@@ -97,7 +102,12 @@
             "imgUrl": "/img/alex.jpg",
             "userName": "alex123",
             "email": "alex@gmail.com",
-            "password": "secret"
+            "password": "secret",
+            "dateOfBirth": "f",
+            "ownPet": false,
+            "ownedPet": false,
+            "familyStatus": "",
+            "houseStatus": ""
         }
     ]
 }
