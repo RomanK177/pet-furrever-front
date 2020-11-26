@@ -41,6 +41,10 @@ export const ownerStore = {
         type: 'setOwner',
         user: null
       })
+    },
+    async getOwnerById({commit}, {ownerId}){
+      const owner = await userService.getById(ownerId);
+      return owner;
     }
   },
 }
