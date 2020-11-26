@@ -1,13 +1,13 @@
-// import {httpService} from './http.service.js'
+import {httpService} from './http-service.js'
 import axios from 'axios';
 
 
 
 export const petService = {
     query,
-    getById,
-    remove,
-    save,
+    getPetById,
+    removePet,
+    savePet,
     getEmptyPet
 }
 
@@ -32,15 +32,21 @@ function query(filter = null, sortBy = 'name') {
     // return httpService.get(`pet?sort=${sortBy}${filterStr}`)
 }
 
-function getById(id) {
-    // return httpService.get(`pet/${id}`)
+function getPetById(id) {
+    // return axios.get(`${BASE_URL}/pets/${id}`)
+    // .then(res => res.data)
+
+    // const url = `${BASE_URL}/pets/${id}`
+    // const res = await axios.get(url)
+    // const resId = res.data
+    return httpService.get(`pets/${id}`)
 }
 
-function remove(id) {
+function removePet(id) {
     // return httpService.delete(`pet/${id}`)
 }
 
-function save(pet) {
+function savePet(pet) {
     if (!pet._id) {
         pet.createdAt = Date.now();
         // return httpService.post(`pet`, pet)

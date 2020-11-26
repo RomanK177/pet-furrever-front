@@ -1,7 +1,7 @@
 <template>
-  <section class="pet-details">
+  <section class="pet-details" v-if="pet">
     <h1>{{ pet.name }}</h1>
-    <img :src="pet.imgUrls" alt="" class="pet-details-img" />
+    <img :src="require(`@/assets/imgs/pets/${pet.imgUrls[0]}`)" alt="" class="pet-details-img" />
     <p class="treats"> Treat Count: {{ pet.numOfTreats }}</p>
     <button class="adopt-btn">Adopt Me!</button>
     <button class="treat-btn">Send Me a Treat!</button>
@@ -28,52 +28,54 @@
 </template>
 
 <script>
+import {petService} from '../../services/pet-service.js'
 export default {
   name: "petDetails",
-  // props: {
-  //   pet: Object,
-  // },
   data() {
     return {
-      pet: {
-        id: "s101",
-        name: "Winston",
-        gender: "male",
-        size: "medium",
-        type: "dog",
-        breed: "Australian Shepherd",
-        age: 1,
-        adoptedAt: null,
-        owner: {
-          _id: "s101",
-          name: "Dogs for life",
-          imgUrl: require("@/assets/imgs/homepage/testimony1.jpg"),
-        },
-        description:
-          "Sweetest pup. He's incredibly smart. Loves to play frisbee, and run!",
-        imgUrls: [require("@/assets/imgs/pets/aussie.jpg")],
-        tags: ["cute", "puppy", "friendly"],
-        comments: [
-          {
-            userName: "Guest",
-            _id: "c123",
-            comment: "I just sent him a treat! He's so cute!",
-          },
-          {
-            userName: "Alex",
-            _id: "c124",
-            comment: "How is he still available for adoption?! He's adorable.",
-          },
-        ],
-        numOfTreats: 20,
-      },
+      pet: null
+      // pet: {
+      //   id: "s101",
+      //   name: "Winston",
+      //   gender: "male",
+      //   size: "medium",
+      //   type: "dog",
+      //   breed: "Australian Shepherd",
+      //   age: 1,
+      //   adoptedAt: null,
+      //   owner: {
+      //     _id: "s101",
+      //     name: "Dogs for life",
+      //     imgUrl: require("@/assets/imgs/homepage/testimony1.jpg"),
+      //   },
+      //   description:
+      //     "Sweetest pup. He's incredibly smart. Loves to play frisbee, and run!",
+      //   imgUrls: [require("@/assets/imgs/pets/aussie.jpg")],
+      //   tags: ["cute", "puppy", "friendly"],
+      //   comments: [
+      //     {
+      //       userName: "Guest",
+      //       _id: "c123",
+      //       comment: "I just sent him a treat! He's so cute!",
+      //     },
+      //     {
+      //       userName: "Alex",
+      //       _id: "c124",
+      //       comment: "How is he still available for adoption?! He's adorable.",
+      //     },
+      //   ],
+      //   numOfTreats: 20,
+      // },
     };
   },
-  created() {
-    // const { id } = this.$route.params;
-    // console.log(id)
-    // const pet =  await petService.getById(id)
-    // this.pet = pet;
+  async created() {
+    const { id } = this.$route.params;
+    console.log(id)
+    const pet =  await petService.getPetById(id)
+    this.pet = pet;
   },
+  components: {
+
+  }
 };
 </script>
