@@ -56,11 +56,7 @@ export default {
   },
   created() {
     this.$store.dispatch({ type: "loadPets" });
-    this.$store.dispatch({ type: "loadUsers" });
+    // this.$store.dispatch({ type: "loadUsers" });
   },
-  created() {
-    this.$store.dispatch({ type: "loadPets" });
-    this.$store.dispatch({ type: "loadUsers" });
-  }
 };
 </script>
