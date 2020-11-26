@@ -18,6 +18,7 @@ function getEmptyOwner() {
         title: '',
         desc: '',
         tags: [],
+        imgUrlProfile: '',
         imgUrl: '',
     }
     return owner;
