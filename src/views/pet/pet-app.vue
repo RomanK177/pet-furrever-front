@@ -7,7 +7,9 @@
 </template>
 
 <script>
-import petFilter from "../../cmps/pet/filtering/pet-filter";
+import petFilter from "../../cmps/pet/filtering/pet-filter.vue";
+import petList from '../../cmps/pet/pet-list.vue'
+import appFooter from '../../cmps/app-footer.vue'
 export default {
   name: "pet-app.vue",
   props: {},
@@ -18,6 +20,8 @@ export default {
   },
   components: {
     petFilter,
+    petList,
+    appFooter
   },
 };
 </script>
