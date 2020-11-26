@@ -3,29 +3,7 @@ import { petService } from '../../services/pet-service.js';
 export const petStore = {
     strict: true,
     state: {
-        pets: [{
-            "_id": "p001",
-            "name": "Max",
-            "gender": "male",
-            "size": "medium",
-            "type": "dog",
-            "breed": "mixed",
-            "age": 5,
-            "isAdopted": false,
-            "owner": {
-                "_id": "s101",
-                "name": "Dogs for life",
-                "imgUrl": "url"
-            },
-            "description": "The sweetest dog who loves to cuddle and play fetch.",
-            "imgUrls": [
-                "url"
-            ],
-            "tags": [
-                "good with children",
-                "friendly"
-            ]
-        }],
+        pets: [],
         filter: {
             type: "All",
             txt: "",
@@ -66,13 +44,13 @@ export const petStore = {
             const pets = await petService.query()
             commit({ type: 'setPets', pets })
         },
-        async saveToy({ commit }, { pet }) {
+        async savePet({ commit }, { pet }) {
             const action = (pet._id) ? 'updateToy' : 'saveToy'
             const savedToy = await petService.save(pet)
             commit({ type: action, pet: savedToy });
             return savedToy;
         },
-        async deleteToy({ commit }, payload) {
+        async deletePet({ commit }, payload) {
             const removedToy = petService.remove(payload.petId)
             commit(payload)
             return removedToy
