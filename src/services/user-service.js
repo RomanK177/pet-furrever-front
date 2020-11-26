@@ -11,22 +11,49 @@ export const userService = {
     update,
 }
 
-function getEmptyUser() {
-    var user = {
+function getEmptyUser(type){
+    return type === 'adopter' ? _getEmptyAdopter() : _getEmptyOwner();
+}
+
+function _getCommonUserFields() {
+    return {
         fullName: '',
         userName: '',
         password: '',
         email: '',
         tel: '0',
-        dateOfBirth: '',
-        imgUrl: '',
-        ownPet: false,
-        ownedPet: false,
-        familyStatus: '',
-        houseStatus: ''
+        imgUrlProfile: '',
+    }
+}
+
+function _getEmptyAdopter() {
+    var user = {
+        ..._getCommonUserFields(),
+        userType: 'adopter',
+        adopterData:{
+            dateOfBirth: '',
+            ownPet: false,
+            ownedPet: false,
+            familyStatus: '',
+            houseStatus: ''
+        }
     }
     return user;
 }
+
+function _getEmptyOwner() {
+    var owner = {
+        ..._getCommonUserFields(),
+        userType: 'owner',
+        activityYears: 0,
+        title: '',
+        desc: '',
+        tags: [],
+        imgUrls: [],
+    }
+    return owner;
+}
+
 function getUsers() {
     return httpService.get('users');
 }

@@ -19,7 +19,7 @@ export const ownerStore = {
     }
   },
   actions: {
-    async signup({ commit }, { ownerCred }) {
+    async signupOwner({ commit }, { ownerCred }) {
       const owner = await ownerService.signup(ownerCred);
       commit({
         type: 'setOwner',
