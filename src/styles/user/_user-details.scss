@@ -5,8 +5,20 @@
     }
 }
 
-.owner-imgs{
-    width: 200px;
-    height: 200px;
-    border: 1px solid black;
+// .owner-imgs{
+//     width: 400px;
+//     height: 300px;
+//     border: 1px solid black;
+// }
+
+.owner-details-images{
+    display: grid;
+    height: 60vh;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(2,1fr);
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+    object-fit: cover;
+    height: 100%;
+    margin-top: 20px;
 }
