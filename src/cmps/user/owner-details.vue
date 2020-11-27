@@ -1,9 +1,7 @@
 <template>
   <section class="owner-details">
     <h1>Welcome {{ user.fullName }}</h1>
-    <router-link v-if="checkIfOwner" :to="'/user/edit/' + user._id"
-      >Edit profile</router-link
-    >
+    <router-link v-if="checkIfOwner" :to="'/user/edit/' + user._id">Edit profile</router-link>
     <br />
     <img class="user-profile-picture" :src="imgUrlProfile" />
     <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
@@ -44,18 +42,8 @@ export default {
   props: {
     user: Object,
   },
-  created() {
-    // var userId = this.$route.params.id;
-    // getUser(userId);
-  },
   methods: {
-    // async getUser(userId){
-    // var user = await this.$store.dispatch({
-    //   type: 'getUserById',
-    //   userId
-    // })
-    // this.user = user;
-    // }
+
   },
   computed: {
     imgUrlProfile() {
@@ -68,7 +56,7 @@ export default {
     checkIfOwner() {
       var loggedInUser = this.$store.getters.getLoggedInUser;
       if(!loggedInUser) return false;
-      else if(loggedInUser._id === owner._id) return true;
+      else if(loggedInUser._id === this.user._id) return true;
       else return false;
     },
   },
