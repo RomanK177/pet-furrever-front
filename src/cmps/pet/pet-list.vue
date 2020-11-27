@@ -1,7 +1,7 @@
 
 
 <template>
-  <section class="pet-list full flex f-center wrap">
+  <section class="pet-list full flex f-center space-around wrap">
     <pet-preview
       v-for="pet in pets"
       :key="pet._id"
@@ -29,8 +29,8 @@ export default {
     emitDelete(petId) {
       this.$emit("deletePet", petId);
     },
-    async emitUpdateLikes(pet) {
-      await this.$emit("updateLikes", pet);
+    emitUpdateLikes(pet) {
+      this.$emit("updateLikes", pet);
     },
     showDetails(petId) {
       this.$router.push(`/pet/${petId}`);

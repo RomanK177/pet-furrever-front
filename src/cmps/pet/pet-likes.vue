@@ -37,25 +37,44 @@ export default {
     };
   },
   methods: {
+    // toggleTreat() {
+    //   if (this.treat === false) {
+    //     this.storedLikes.push(this.pet._id);
+    //     utilService.storeToStorage("likes_db", this.storedLikes);
+    //     this.pet.numOfTreats++;
+    //     this.$emit("updateLikes", this.pet);
+    //   } else {
+    //     let idx = this.storedLikes.indexOf(this.pet._id);
+    //     this.storedLikes.splice(idx, 1);
+    //     utilService.storeToStorage("likes_db", this.storedLikes);
+    //     this.pet.numOfTreats--;
+    //     this.$emit("updateLikes", this.pet);
+    //   }
+    //   this.treat = !this.treat;
+    // },
     toggleTreat() {
-      if (this.treat === false) {
-        this.storedLikes.push(this.pet._id);
-        utilService.storeToStorage("likes_db", this.storedLikes);
-        this.pet.numOfTreats++;
-        this.$emit("updateLikes", this.pet);
-      } else {
-        let idx = this.storedLikes.indexOf(this.pet._id);
-        this.storedLikes.splice(idx, 1);
-        utilService.storeToStorage("likes_db", this.storedLikes);
-        this.pet.numOfTreats--;
-        this.$emit("updateLikes", this.pet);
-      }
-      this.treat = !this.treat;
+      this.pet.numOfTreats++;
+      this.$emit("updateLikes", this.pet);
+      this.treat = true;
+      this.storedLikes.push(this.pet._id);
+      console.log(
+        "🚀 ~ file: pet-likes.vue ~ line 60 ~ toggleTreat ~ this.storedLikes",
+        this.storedLikes
+      );
+      utilService.storeToStorage("likes_db", this.storedLikes);
+      // if (this.treat === false) {
+      // } else {
+      //   let idx = this.storedLikes.indexOf(this.pet._id);
+      //   this.storedLikes.splice(idx, 1);
+      //   utilService.storeToStorage("likes_db", this.storedLikes);
+      //   this.$emit("updateLikes", this.pet);
+      // }
     },
   },
   computed: {},
   created() {
     this.storedLikes = utilService.loadFromStorage("likes_db");
+    if (this.storedLikes === undefined) this.storedLikes = [];
     if (this.storedLikes.find((id) => id === this.pet._id)) this.treat = true;
     else this.treat = false;
   },

@@ -19,11 +19,19 @@ $cardWidth:300px;
         color: blue;
         font-weight: bold;
     }
+    & .card-info {
+        padding: 10px;
+        height: 50%;
+    }
 }
 
 .card-img {
     width: $cardWidth;
     height: 230px;
+}
+
+.card-img:hover {
+    cursor: pointer;
 }
 
 .svg-symbol {
