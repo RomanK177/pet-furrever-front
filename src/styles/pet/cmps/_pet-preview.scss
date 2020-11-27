@@ -1,9 +1,10 @@
+$cardWidth:300px;
 .pet-card {
     border: 1px solid black;
     border-radius: 20px;
     overflow: hidden;
     margin: 10px;
-    width: 250px;
+    width: $cardWidth;
     & .male {
         filter: invert(34%) sepia(13%) saturate(2927%) hue-rotate(183deg) brightness(92%) contrast(95%);
     }
@@ -13,10 +14,15 @@
     & .treats-count {
         padding: 10px;
     }
+    & a {
+        text-decoration: none;
+        color: blue;
+        font-weight: bold;
+    }
 }
 
 .card-img {
-    width: 250px;
+    width: $cardWidth;
     height: 230px;
 }
 
