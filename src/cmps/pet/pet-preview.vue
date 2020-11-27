@@ -2,29 +2,31 @@
 <template>
   <section class="pet-card flex column space-between">
     <img class="card-img" v-if="pet.imgUrls" :src="imgUrl" />
-    <div class="flex space-between align-center">
-      <h3>{{ pet.name }}</h3>
-      <img
-        class="svg-symbol male"
-        v-if="pet.gender === 'male'"
-        src="../../assets/svgs/male-symbol.svg"
-        alt=""
-      />
-      <img
-        class="svg-symbol female"
-        v-if="pet.gender === 'female'"
-        src="../../assets/svgs/female-symbol.svg"
-        alt=""
-      />
-    </div>
-    <p>{{ pet.description }}</p>
-    <div class="flex space-between align-center">
-      <router-link
-        @click.native="$event.stopImmediatePropagation()"
-        :to="`/user/${pet.owner._id}`"
-        >{{ pet.owner.name }}</router-link
-      >
-      <pet-likes :pet="pet" @updateLikes="emitUpdateLikes" />
+    <div class="card-info flex column space-between">
+      <div class="flex space-between align-center">
+        <h3>{{ pet.name }}</h3>
+        <img
+          class="svg-symbol male"
+          v-if="pet.gender === 'male'"
+          src="../../assets/svgs/male-symbol.svg"
+          alt=""
+        />
+        <img
+          class="svg-symbol female"
+          v-if="pet.gender === 'female'"
+          src="../../assets/svgs/female-symbol.svg"
+          alt=""
+        />
+      </div>
+      <p>{{ pet.description }}</p>
+      <div class="flex space-between align-center">
+        <router-link
+          @click.native="$event.stopImmediatePropagation()"
+          :to="`/user/${pet.owner._id}`"
+          >{{ pet.owner.name }}</router-link
+        >
+        <pet-likes :pet="pet" @updateLikes="emitUpdateLikes" />
+      </div>
     </div>
     <div class="card-btns flex">
       <button v-show="user && user.isAdmin" @click.stop="emitDelete">x</button>

@@ -49,12 +49,11 @@ function removePet(id) {
 }
 
 function savePet(pet) {
-    console.log("🚀 ~ file: pet-service.js ~ line 52 ~ savePet ~ pet", pet)
     if (!pet._id) {
         pet.createdAt = Date.now();
-        return httpService.post(`pet`, pet)
+        return httpService.post(`pets`, pet)
     } else {
-        return httpService.put(`pet/${pet._id}`, pet)
+        return httpService.put(`pets/${pet._id}`, pet)
     }
 }
 
