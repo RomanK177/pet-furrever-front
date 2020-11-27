@@ -23,7 +23,8 @@ export const userStore = {
     },
     actions: {
         async signUp({ commit }, { userCred }) {
-            const user = await userService.signup(userCred);
+            debugger
+            const user = await userService.signUp(userCred);
             commit({
                 type: 'setUser',
                 user

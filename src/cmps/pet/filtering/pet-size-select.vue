@@ -42,6 +42,7 @@ export default {
   methods: {
     emitChange() {
       this.$emit("input", this.value);
+      if (this.value === "All") this.value = "";
     },
   },
 };

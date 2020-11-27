@@ -17,6 +17,13 @@
           src="../../assets/svgs/fish.svg"
           alt=""
         />
+        <img
+          :class="{ treatClicked: treat }"
+          v-if="pet.type === 'pig' || pet.type === 'horse'"
+          class="svg-symbol treat"
+          src="../../assets/svgs/carrot.svg"
+          alt=""
+        />
       </div>
       <span class="treats-count">{{ pet.numOfTreats }}</span>
     </div>

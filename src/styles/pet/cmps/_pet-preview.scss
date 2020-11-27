@@ -27,7 +27,13 @@ $cardWidth:300px;
     }
     & .adopted {
         position: absolute;
-        top: 0;
+        text-align: center;
+        top: 5px;
+        left: ($cardWidth/2);
+        transform: translateX(-50%);
+        background-color: rgb(166, 255, 50);
+        border-radius: 5px;
+        padding: 5px 20px 5px 20px;
     }
 }
 

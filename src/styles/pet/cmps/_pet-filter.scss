@@ -4,3 +4,20 @@
         flex: 1 1 0px
     }
 }
+
+.el-input__inner {
+    border: 1px solid orange;
+}
+
+.el-input--suffix .el-input__inne {
+    border: 1px solid orange;
+}
+
+.el-input.is-active .el-input__inner,
+.el-input__inner:focus {
+    border: 1px solid brown;
+}
+
+.el-select .el-input.is-focus .el-input__inner {
+    border: 1px solid brown;
+}
