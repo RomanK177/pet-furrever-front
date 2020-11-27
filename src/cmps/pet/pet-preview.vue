@@ -61,6 +61,10 @@ export default {
   },
   computed: {},
   created() {
+    if (this.storedLikes === undefined) {
+      this.storedLikes= []
+      utilService.storeToStorage("likes_db", this.storedLikes)
+    }
     this.storedLikes = utilService.loadFromStorage("likes_db");
     if (this.storedLikes.find((id) => id === this.pet._id)) this.treat = true;
     else this.treat = false;
