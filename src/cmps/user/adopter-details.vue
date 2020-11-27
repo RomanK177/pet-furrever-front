@@ -44,7 +44,7 @@ export default {
   computed: {
     imgUrlProfile() {
       if (!this.user.imgUrlProfile){
-        return require("../../assets/imgs/profile-logo.png");
+        return this.user.imgUrlProfile = require("../../assets/imgs/profile-logo.png");
       } else {
         return this.user.imgUrlProfile;
       }
