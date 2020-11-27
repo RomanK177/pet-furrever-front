@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       treat: false,
-      storedLikes: undefined,
+      storedLikes: [],
     };
   },
   methods: {
