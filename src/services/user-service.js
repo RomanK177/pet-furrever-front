@@ -11,7 +11,7 @@ export const userService = {
     update,
 }
 
-function getEmptyUser(type){
+function getEmptyUser(type) {
     return type === 'adopter' ? _getEmptyAdopter() : _getEmptyOwner();
 }
 
@@ -30,7 +30,7 @@ function _getEmptyAdopter() {
     var user = {
         ..._getCommonUserFields(),
         userType: 'adopter',
-        adopterData:{
+        adopterData: {
             dateOfBirth: '',
             ownPet: false,
             ownedPet: false,
@@ -45,11 +45,29 @@ function _getEmptyOwner() {
     var owner = {
         ..._getCommonUserFields(),
         userType: 'owner',
-        activityYears: '0',
-        title: '',
-        desc: '',
-        tags: [],
-        imgUrls: [],
+        ownerData: {
+            activityYears: '0',
+            title: '',
+            desc: '',
+            tags: [],
+            imgUrls: [],
+            location: {
+                name: '',
+                lat: '',
+                lang: ''
+            },
+            reviews: [
+                {
+                    txt: '',
+                    rate: 5,
+                    by: {
+                        userId: '',
+                        fullName: '',
+                        imgUrl: ''
+                    }
+                }
+            ]
+        }
     }
     return owner;
 }

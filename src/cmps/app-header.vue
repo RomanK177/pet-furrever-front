@@ -9,15 +9,24 @@
       <router-link to="/user/a002" class="nav-link">Profile</router-link>
       <!-- Changes end   -->
       <router-link to="/signup" class="nav-link">SignUp</router-link>
-      <router-link to="/login" class="nav-link">Login</router-link>
+      <a @click="loginOpen = !loginOpen" class="nav-link">Login</a>
+      <!-- <router-link to="/login" class="nav-link">Login</router-link> -->
     </nav>
+    <login v-if="loginOpen" class="login" />
   </section>
 </template>
 
 <script>
+import login from './login.vue';
+
 export default {
   props: {
     msg: String,
+  },
+  data(){
+    return{
+      loginOpen: false,
+    }
   },
   // Karin changes //
   computed: {
@@ -26,5 +35,13 @@ export default {
     },
     // Changes end //
   },
+  methods:{
+    // openLoginModal(){
+
+    // }
+  },
+  components:{
+    login
+  }
 };
 </script>

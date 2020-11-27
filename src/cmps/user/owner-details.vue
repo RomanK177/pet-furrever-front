@@ -20,14 +20,23 @@
         v-for="(imgUrl, idx) in user.ownerData.imgUrls"
         :key="idx"
         :src="imgUrl"
-        class="`item${idx}`"
+                 :class="{
+            item0: idx === 0,
+            item1: idx === 1,
+            item2: idx === 2,
+            item3: idx === 3,
+            item4: idx === 4,
+          }"
       />
     </div>
+    <owner-review :owner="user"/>
   </section>
 </template>
 
 <script>
 import { uploadImg } from "./../../services/img-upload-service.js";
+import ownerReview from './../../cmps/user/owner-review.vue';
+
 export default {
   props: {
     user: Object,
@@ -35,6 +44,7 @@ export default {
   created() {
     // var userId = this.$route.params.id;
     // getUser(userId);
+    console.log(this.user)
   },
   methods: {
     // async getUser(userId){
@@ -54,5 +64,8 @@ export default {
       }
     },
   },
+  components:{
+    ownerReview
+  }
 };
 </script>
