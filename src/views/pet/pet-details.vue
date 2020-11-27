@@ -1,7 +1,7 @@
 <template>
-  <section class="pet-details" v-if="pet">
-    <div class="pet-details-container">
-      <div class="pet-details-images">
+  <section class="details" v-if="pet">
+    <div class="details-container">
+      <div class="details-images">
         <img
           v-for="(imgUrl, index) in pet.imgUrls"
           :key="index"
