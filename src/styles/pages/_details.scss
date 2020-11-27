@@ -1,5 +1,5 @@
 .details-container{
-    max-width: 1000px;
+    // max-width: 1000px;
     margin: 0 auto;
     padding-inline-start: 40px;
     padding-inline-end: 40px;
@@ -32,8 +32,7 @@
     }
     
     .treatClicked {
-        filter: invert(70%) sepia(43%) saturate(3723%) hue-rotate(65deg) brightness(113%) contrast(96%);
-    }
+        filter: invert(78%) sepia(9%) saturate(2434%) hue-rotate(115deg) brightness(78%) contrast(92%);    }
 
 
 }
@@ -83,5 +82,7 @@
         text-align: center;
         padding: 20px;
         font-family: quicksand-bold;
+       
+
     }
 }
