@@ -47,3 +47,11 @@ function _handleLogin(user) {
     sessionStorage.setItem('owner', JSON.stringify(user))
     return user;
 }
+
+function getEmptyAdoptionRequest(){
+    var adoptionRequest = {
+        userId: '',
+        petId: '',
+        adoptionStatus: ''
+    }
+}

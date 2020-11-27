@@ -6,9 +6,8 @@
     padding: 20px;
 }
 
-.adopt-btn {
-    padding-top: 10px;
-    padding-bottom: 10px;
+.el-button{
+   padding: 10px;
     font-size: large;
     color: white;
     background-color: orange;
@@ -17,8 +16,50 @@
     &:hover{
         background-color: white;
         color: orange;
+        border: 1px solid orange;
     }
 
+    .el-message-box__close:hover{
+        color: orange;
+    }
+
+}
+
+.el-button--primary:focus, .el-button--primary:hover{
+    color: orange;
+    background-color: white;
+    border: 1px solid orange;
+}
+
+.el-button--text:focus, .el-button--text:hover {
+    color: orange;
+    background-color: white;
+    border: 1px solid orange;
+}
+
+.el-button--primary:hover{
+    background-color: white;
+    border: 1px solid orange;
+    color: orange;
+}
+
+.el-message-box__headerbtn:hover .el-message-box__close:hover{
+color: orange;
+}
+
+.el-message-box__headerbtn:active .el-message-box__close:active{
+    color: orange;
+}
+
+.el-button--primary.is-active, .el-button--primary:active, .el-button--primary:focus, .el-button--primary{
+    color: white;
+    background-color: orange;
+    border-color: orange;
+}
+
+
+.el-message-box__message{
+    font-family: quicksand-bold;
 }
 
 .treat-btn{
