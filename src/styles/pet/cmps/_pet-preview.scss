@@ -1,6 +1,6 @@
 $cardWidth:300px;
 .pet-card {
-    border: 1px solid black;
+    border: 1px solid sandybrown;
     border-radius: 20px;
     overflow: hidden;
     margin: 10px;
@@ -16,7 +16,7 @@ $cardWidth:300px;
     }
     & a {
         text-decoration: none;
-        color: blue;
+        color: black;
         font-weight: bold;
     }
     & .card-info {
@@ -27,7 +27,10 @@ $cardWidth:300px;
 
 .card-img {
     width: $cardWidth;
-    height: 230px;
+    height: 260px;
+    padding: 10px;
+    border-radius: 20px;
+    object-fit: cover;
 }
 
 .card-img:hover {
@@ -45,5 +48,11 @@ $cardWidth:300px;
 }
 
 .treatClicked {
-    filter: invert(70%) sepia(43%) saturate(3723%) hue-rotate(65deg) brightness(113%) contrast(96%);
+    // filter: invert(70%) sepia(43%) saturate(3723%) hue-rotate(65deg) brightness(113%) contrast(96%);
+    filter: invert(78%) sepia(9%) saturate(2434%) hue-rotate(115deg) brightness(78%) contrast(92%);
+
 }
+
+
+ 
+ 
