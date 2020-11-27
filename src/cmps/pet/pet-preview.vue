@@ -32,6 +32,7 @@
       <button v-show="user && user.isAdmin" @click.stop="emitDelete">x</button>
       <button v-show="user && user.isAdmin" @click.stop="editPet">Edit</button>
     </div>
+    <span v-if="pet.adoptedAt">ADOPTED</span>
   </section>
 </template>
 
@@ -46,8 +47,6 @@ export default {
   data() {
     return {
       imgUrl: require(`../../assets/imgs/pets/${this.pet.imgUrls[0]}`),
-      treat: false,
-      storedLikes: undefined,
     };
   },
   methods: {
