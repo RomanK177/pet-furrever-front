@@ -53,6 +53,10 @@ export const userStore = {
         async updateUser({ commit }, { savedUser }) {
             const user = await userService.update(savedUser);
             return user;
+        },
+        async addReview({commit}, { review }){
+            const review1 = await userService.addReview(review);
+            return review;
         }
     },
 }

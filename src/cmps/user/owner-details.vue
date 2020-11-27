@@ -30,7 +30,7 @@
         }"
       />
     </div>
-    <owner-review :owner="user" />
+    <owner-review :user="user" />
   </section>
 </template>
 

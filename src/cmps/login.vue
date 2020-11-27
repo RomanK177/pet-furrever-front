@@ -3,7 +3,7 @@
     <div class="login modal-content">
       <button @click="closeModal">X</button>
       <h1>Login</h1>
-      <form @submit.prevent="login">
+      <form @submit="login">
         <label
           >User name: <input type="text" v-model="userCred.userName" /></label>
         <br />
