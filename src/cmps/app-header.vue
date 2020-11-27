@@ -35,14 +35,10 @@ export default {
   data() {
     return {
       loginOpen: false,
-      loggedinUser: null,
+      loggedinUser: this.$store.getters.getLoggedInUser,
     };
   },
-  // Karin changes //
   computed: {
-    setUser() {
-      this.loggedinUser = this.this.$store.getters.getLoggedInUser;
-    },
     loggedinUserName() {
       if (this.loggedinUser) {
         return this.loggedinUser.userName;
@@ -50,9 +46,7 @@ export default {
         return "Guest";
       }
 
-      // console.log(this.$store.getters.getLoggedInUser)
     },
-    // Changes end //
   },
   methods: {
     logout() {

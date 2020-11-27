@@ -89,8 +89,13 @@ function update(user) {
 }
 
 async function login(userCred) {
-    const user = await httpService.post('auth/login', userCred)
-    return _handleLogin(user)
+    // const user = await httpService.post('auth/login', userCred)
+    getUsers().then(users => {
+       var user = users.find(user => {
+            return user.userName === userCred.userName;
+        })
+        return _handleLogin(user)
+    });
 }
 
 async function signUp(userCred) {
