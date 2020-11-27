@@ -25,6 +25,10 @@ $cardWidth:300px;
         padding: 10px;
         height: 50%;
     }
+    & .adopted {
+        position: absolute;
+        top: 0;
+    }
 }
 
 .card-img {

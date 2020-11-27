@@ -32,7 +32,7 @@
       <button v-show="user && user.isAdmin" @click.stop="emitDelete">x</button>
       <button v-show="user && user.isAdmin" @click.stop="editPet">Edit</button>
     </div>
-    <span v-if="pet.adoptedAt">ADOPTED</span>
+    <span class="adopted" v-if="pet.adoptedAt">ADOPTED</span>
   </section>
 </template>
 
