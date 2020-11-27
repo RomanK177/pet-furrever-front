@@ -94,11 +94,12 @@ async function login(userCred) {
 }
 
 async function signUp(userCred) {
-    const user = await httpService.post('auth/signup', userCred)
+    // const user = await httpService.post('auth/signup', userCred);
+    const user = await httpService.post('users', userCred);
     return _handleLogin(user)
 }
 async function logout() {
-    await httpService.post('auth/logout');
+    // await httpService.post('auth/logout');
     sessionStorage.clear();
 }
 

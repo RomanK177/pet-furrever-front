@@ -1,24 +1,50 @@
 <template>
-<section class="login">
-  <form>
-    <label>User name: <input type="text" v-model="userCred.userName"></label>
-    <label>Password: <input type="password" v-model="userCred.password"></label>
-  </form>
-</section>
+  <section class="login modal">
+    <div class="login modal-content">
+      <button @click="closeModal">X</button>
+      <h1>Login</h1>
+      <form @submit.prevent="login">
+        <label
+          >User name: <input type="text" v-model="userCred.userName" /></label>
+        <br />
+        <label
+          >Password: <input type="password" v-model="userCred.password" /></label>
+        <br />
+        <button>Login</button>
+      </form>
+    </div>
+  </section>
 </template>
 
 <script>
+import eventBus from "./../services/event-bus-service.js";
 export default {
   // props: {
   //   msg: String
   // },
-  data(){
-    return{
+  data() {
+    return {
       userCred: {
         userName: null,
-        password: null
-      }
-    }
-  }
-}
+        password: null,
+      },
+    };
+  },
+  methods: {
+    login() {
+      console.log("login", this.userCred);
+      // this.$store.dispatch({
+      //   type: 'login',
+      //   userCred: this.userCred
+      // });
+
+      this.$router.push("/");
+      // eventBus.$emit('loginDone');
+      eventBus.$emit("closeModal");
+    },
+    closeModal() {
+      eventBus.$emit("closeModal");
+    },
+  },
+};
 </script>

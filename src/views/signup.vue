@@ -8,7 +8,7 @@
       <div>
         Welcome to our site! we hope you'll find you'r perfect furry friend!
       </div>
-      <form @sumbit.prevent="signUp">
+      <form @submit.prevent="signUp">
         <label
           >Full name: <input type="text" v-model="user.fullName" required
         /></label>
@@ -123,10 +123,12 @@ export default {
       this.user = emptyUser;
     },
     signUp() {
+      console.log(this.user)
         this.$store.dispatch({
           type: "signUp",
           userCred: this.user,
         });
+        this.$router.push('/')
     }
   },
 };
