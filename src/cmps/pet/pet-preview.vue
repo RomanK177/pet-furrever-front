@@ -2,7 +2,8 @@
 <template>
   <section class="pet-card flex column space-between">
     <img class="card-img" v-if="pet.imgUrls" :src="imgUrl" />
-    <div class="card-info flex column space-between">
+    <!-- <div class="card-info flex column space-between"> -->
+    <div class="card-info">
       <div class="flex space-between align-center">
         <h3>{{ pet.name }}</h3>
         <img

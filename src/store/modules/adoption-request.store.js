@@ -8,7 +8,7 @@ export const userStore = {
         adoptionRequests: [],
     },
     getters: {
-        getadoptionRequests(state) {
+        getAdoptionRequests(state) {
             return state.adoptionRequests;
         },
         // getUsers(state) {

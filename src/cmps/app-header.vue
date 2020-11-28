@@ -1,6 +1,7 @@
 <template>
   <section class="header flex space-around">
-    <h1 class="logo">Pet <span>Furr</span>ever</h1>
+    <router-link to="/" class="logo">Pet <span>Furr</span>ever</router-link>
+    <!-- <h1 class="logo">Pet <span>Furr</span>ever</h1> -->
     <nav class="navbar">
       <span>Hello: {{ loggedinUserName }}</span>
       <router-link to="/" class="nav-link">Home</router-link>

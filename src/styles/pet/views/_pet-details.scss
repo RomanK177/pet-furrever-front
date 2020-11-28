@@ -1,8 +1,18 @@
 
 .pet-details-container, .petowner-details-container, .comments-container{
-    border: 1px solid beige;
+    border: 1px solid orange;
     margin: 20px;
     border-radius: 5px;
+    padding: 20px;
+    background-color: white;
+}
+
+.bio-adoption-container{
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    justify-content: space-between;
     padding: 20px;
 }
 
@@ -95,10 +105,7 @@ color: orange;
 
 
 .pet-details-container{
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: space-between;
-    // background-color: white;
+   flex-grow: 1;
 
     .details h1{
         background-color: white;
@@ -109,5 +116,13 @@ color: orange;
 
     }
 
+}
+
+.petowner-details-container{
+    text-align: center;
+}
+
+.comment-input{
+    margin-left: 40px;
 }
 
