@@ -8,7 +8,6 @@
       @deletePet="deletePet"
       @updateLikes="updateLikes"
     ></pet-list>
-    <app-footer></app-footer>
   </section>
 </template>
 

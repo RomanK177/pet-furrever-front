@@ -28,7 +28,7 @@ export default {
 <style>
 
 
-.el-carousel__item h3 {
+/* .el-carousel__item h3 {
   color: #475669;
   font-size: 18px;
   opacity: 0.75;
@@ -44,7 +44,7 @@ export default {
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
 }
-/* img {
+img {
     height: 500px;
 } */
 </style>

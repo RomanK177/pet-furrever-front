@@ -1,0 +1,51 @@
+.main-footer{
+    justify-content: center;
+    box-shadow: inset 0 1px 0 #e1e0e0;
+    background-color: #f8f8f8;
+}
+
+.footer-container {
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+    color: #292929;
+    padding-top: 5rem;
+    padding-bottom: 1.875rem;
+}
+
+
+
+.logofooter-span{
+    color: orange;
+}
+
+small {
+    color: #a6a6a6;
+    font-size: 0.8125rem;
+    font-weight: 400;
+}
+
+.pixel {
+    color: #939292;
+    font-family: Lato-bold;
+}
+
+.nav-social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    ul, li{
+        list-style-type: none;
+    }
+}
+
+.social-facebook, .social-instagram, .social-twitter{
+    height: 20px;
+    width: 20px;
+    margin: 10px;
+}

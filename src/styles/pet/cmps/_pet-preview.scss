@@ -1,8 +1,13 @@
 $cardWidth:300px;
 .pet-card {
     position: relative;
-    border: 1px solid black;
-    border: 1px solid sandybrown;
+    // border: 1px solid black;
+    // border: 1px solid sandybrown;
+    // -webkit-box-shadow: -1px 5px 12px -4px #000000; 
+    // box-shadow: -1px 5px 12px -4px #000000;
+    -webkit-box-shadow: 1px 4px 13px -2px #949494; 
+box-shadow: 1px 4px 13px -2px #949494;
+    background-color: white;
     border-radius: 20px;
     overflow: hidden;
     margin: 10px;

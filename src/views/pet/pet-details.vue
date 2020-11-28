@@ -18,22 +18,15 @@
       </div>
       <div class="bio-adoption-container flex wrap">
         <div class="pet-details-container">
-          <h1 class="pet-details-name">{{ pet.name }}</h1>
+          <h1 class="pet-details-name">Hi, I'm {{ pet.name }}!</h1>
           <hr />
-          <button
-            class="btn treat-btn"
-            :pet="pet"
-            @updateLikes="emitUpdateLikes"
-          >
-            Send Me a Treat!
-          </button>
           <pet-likes
             :pet="pet"
             @updateLikes="emitUpdateLikes"
             id="animated-example"
             class="animated tada"
           />
-          <h4 class="pet-about">About:</h4>
+          <h4 class="pet-about">Meet {{ pet.name }}!</h4>
           <p>{{ pet.description }}</p>
           <div class="pet-bio-container flex wrap space-between">
             <p class="pet-details-age">Age: {{ pet.age }}</p>
@@ -69,11 +62,12 @@
             alt=""
             class="owner-img"
           />
-          <p class="pet-details-owner-name">Rescue: {{ pet.owner.name }}</p>
+          <p class="pet-details-owner-name">From: {{ pet.owner.name }}</p>
           <!-- <button class="btn adopt-btn" @click="adopt">
             Adopt Me!
           </button> -->
-            <el-button type="text" @click="adopt">Adopt Me!</el-button>
+          <el-button type="text" @click="adopt">Adopt Me!</el-button>
+        </div>
         </div>
         <div class="comments-container">
           <h1 class="pet-details-comments-title">Comments</h1>
@@ -87,17 +81,16 @@
               {{ comment.userName }}: {{ comment.comment }}
             </li>
           </ul>
-          <input type="text" placeholder="Add a Comment">
+          <input class="comment-input" type="text" placeholder="Add a Comment" />
         </div>
       </div>
-    </div>
   </section>
 </template>
 
 <script>
 import { petService } from "../../services/pet-service.js";
 import petLikes from "../../cmps/pet/pet-likes.vue";
-import notLoggedIn from '../../cmps/pet/not-loggedin.vue'
+import notLoggedIn from "../../cmps/pet/not-loggedin.vue";
 export default {
   name: "petDetails",
   data() {
@@ -116,20 +109,19 @@ export default {
       const loggedInUser = this.$store.getters.getLoggedInUser;
       // loggedInUser = this.loggedInUser
       if (loggedInUser === null) {
-        this.open()
+        this.open();
       }
     },
-    open(){
-    //  this.isModal = true
+    open() {
+      //  this.isModal = true
       console.log("You need to log in!");
-      this.$alert('Please Log In In Order To Send An Adoption Request.', {
-          confirmButtonText: 'OK',
-        });
-
+      this.$alert("Please Log In In Order To Send An Adoption Request.", {
+        confirmButtonText: "OK",
+      });
+    },
+     showButton(){
+      console.log(this.$route)
     }
-    
-    
-    
   },
   async created() {
     const { id } = this.$route.params;
@@ -139,7 +131,7 @@ export default {
   },
   components: {
     petLikes,
-    notLoggedIn
+    notLoggedIn,
   },
 };
 </script>
