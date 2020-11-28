@@ -16,17 +16,21 @@ img {
     width: 100%;
 }
 
-@font-face{
+ul {
+    list-style-type: none;
+}
+
+@font-face {
     font-family: quicksand;
-    src: url('~@/assets/fonts/Quicksand/static/Quicksand-Regular.ttf');
+    src: url("~@/assets/fonts/Quicksand/static/Quicksand-Regular.ttf");
 }
 
-@font-face{
+@font-face {
     font-family: quicksand-bold;
-    src: url('~@/assets/fonts/Quicksand/static/Quicksand-Bold.ttf');
+    src: url("~@/assets/fonts/Quicksand/static/Quicksand-Bold.ttf");
 }
 
-@font-face{
+@font-face {
     font-family: quicksand-medium;
-    src: url('~@/assets/fonts/Quicksand/static/Quicksand-Medium.ttf');
+    src: url("~@/assets/fonts/Quicksand/static/Quicksand-Medium.ttf");
 }

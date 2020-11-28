@@ -3,36 +3,7 @@
     <div class="details-container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex wrap">
-        <div class="pet-details-container">
-          <h1 class="pet-details-name">Hi, I'm {{ pet.name }}!</h1>
-          <hr />
-          <pet-likes
-            :pet="pet"
-            @updateLikes="emitUpdateLikes"
-            id="animated-example"
-            class="animated tada"
-          />
-          <h4 class="pet-about">Meet {{ pet.name }}!</h4>
-          <p>{{ pet.description }}</p>
-          <div class="pet-bio-container flex wrap space-between">
-            <p class="pet-details-age">Age: {{ pet.age }}</p>
-            <img
-              class="svg-symbol male"
-              v-if="pet.gender === 'male'"
-              src="../../assets/svgs/male-symbol.svg"
-              alt=""
-            />
-            <img
-              class="svg-symbol female"
-              v-if="pet.gender === 'female'"
-              src="../../assets/svgs/female-symbol.svg"
-              alt=""
-            />
-            <p class="pet-details-gender">Gender: {{ pet.gender }}</p>
-            <img src="../../assets/imgs/search.png" alt="" class="breed-icon" />
-            <p class="pet-details-breed">Breed: {{ pet.breed }}</p>
-          </div>
-        </div>
+        <details-about :pet="pet"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column">
@@ -62,35 +33,22 @@
             <hr />
             <p class="pet-details-owner-name">{{ pet.owner.tel }}</p>
             <hr />
-            <!-- <button class="btn adopt-btn" @click="adopt">
-            Adopt Me!
-          </button> -->
           </div>
         </div>
       </div>
-      <div class="comments-container">
-        <h1 class="pet-details-comments-title">Comments</h1>
-        <hr />
-        <ul>
-          <li
-            v-for="(comment, index) in pet.comments"
-            :key="index"
-            class="pet-details-comments"
-          >
-            {{ comment.userName }}: {{ comment.comment }}
-          </li>
-        </ul>
-        <input class="comment-input" type="text" placeholder="Add a Comment" />
-      </div>
+      <pet-comments :pet="pet"></pet-comments>
     </div>
   </section>
 </template>
 
 <script>
 import { petService } from "../../services/pet-service.js";
-import petLikes from "../../cmps/pet/pet-likes.vue";
 import notLoggedIn from "../../cmps/pet/not-loggedin.vue";
-import detailsImages from '../../cmps/pet/details-images.vue'
+import detailsImages from "../../cmps/pet/details-images.vue";
+import detailsAbout from "../../cmps/pet/details-about.vue";
+import petComments from "../../cmps/pet/pet-comments.vue";
+
+
 export default {
   name: "petDetails",
   data() {
@@ -102,9 +60,6 @@ export default {
   },
 
   methods: {
-    emitUpdateLikes(pet) {
-      this.$emit("updateLikes", pet);
-    },
     adopt() {
       const loggedInUser = this.$store.getters.getLoggedInUser;
       // loggedInUser = this.loggedInUser
@@ -130,9 +85,10 @@ export default {
     this.pet = pet;
   },
   components: {
-    petLikes,
     notLoggedIn,
-    detailsImages
+    detailsImages,
+    detailsAbout,
+    petComments
   },
 };
 </script>

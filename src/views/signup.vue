@@ -77,7 +77,7 @@
         /></label>
         <br />
         <label
-          >password: <input type="password" v-model="user.password" required
+          >Password: <input type="password" v-model="user.password" required
         /></label>
         <br />
         <label

@@ -1,7 +1,7 @@
 <template>
   <section class="user-details">
     <adopter-details v-if="user && user.userType === 'adopter'" :user="user" />
-    <ownerDetails v-if="user && user.userType === 'owner'" :user="user" />
+    <owner-details v-if="user && user.userType === 'owner'" :user="user" />
   </section>
 </template>
 

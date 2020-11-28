@@ -67,6 +67,11 @@ export default {
   props: {
     userToEdit: Object,
   },
+  data() {
+    return {
+      isLoading: false,
+    };
+  },
   created() {
     // const ownerId = this.$route.params.id;
     // this.getOwner(ownerId);

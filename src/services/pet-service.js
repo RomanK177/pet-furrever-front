@@ -48,7 +48,10 @@ function removePet(id) {
     // return httpService.delete(`pet/${id}`)
 }
 
-function savePet(pet) {
+function savePet(pet, user) {
+    // For front end test only
+    pet.owner = user; 
+    //
     if (!pet._id) {
         pet.createdAt = Date.now();
         return httpService.post(`pets`, pet)
@@ -70,5 +73,23 @@ function getEmptyPet() {
         description: '',
         imgUrls: [],
         tags: [],
-    };
+        comments: [
+            {
+                comment: '',
+                by: {
+                    userName: '',
+                    userId: '',
+                }
+            },
+            {
+                comment: '',
+                by: {
+                    userName: '',
+                    userId: '',
+                }
+            }
+        ],
+        numOfTreats: ''
+    }
+    return pet;
 }
