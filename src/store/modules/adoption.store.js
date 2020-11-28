@@ -13,8 +13,8 @@ export const adoptionStore = {
       
     },
     mutations: {
-        setAdoptionRequests(state, {adoptionRequests}){
-            state.adoptionRequests = adoptionRequests
+        setAdoptionRequests(state, {requests}){
+            state.adoptionRequests = requests;
         }
     },
     actions: {
