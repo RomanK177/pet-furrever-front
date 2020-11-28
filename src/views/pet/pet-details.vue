@@ -7,8 +7,10 @@
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column">
-              <el-button type="text" @click="adopt">Adopt Me!</el-button>
-              <!-- <div  v-if="!sendRequest" v-if="sendRequest">Adopt Request Sent!</div> -->
+              <el-button type="text" @click="adopt"
+                >Adopt Me!</el-button
+              >
+              <div>Adoption Request Sent!</div>
               <button @click="allAdoptions">do it</button>
               <div class="save-pet flex space-between">
                 <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
@@ -40,6 +42,7 @@
       </div>
       <pet-comments :pet="pet"></pet-comments>
     </div>
+    <div v-if="adoptions"></div>
   </section>
 </template>
 
@@ -58,7 +61,7 @@ export default {
       pet: null,
       loggedInUser: null,
       isActive: false,
-      adoptions: []
+      adoptions: [],
       // isModal: false
     };
   },
@@ -68,35 +71,34 @@ export default {
       const loggedInUser = this.$store.getters.getLoggedInUser;
       if (loggedInUser === null) {
         this.open();
-      } 
-      else {
-        this.sendRequest
+      } else {
+        this.sendRequest();
+        console.log('request sent')
       }
-    
     },
-    sendRequest(){
-         const req = {
-          _id: utilService.makeId(),
-          createdAt: Date.now(),
-          user: {
-            _id: this.loggedInUser._id,
-            name: this.loggedInUser.fullName,
-          },
-          owner: {
-            _id: this.pet.owner._id,
-            name: this.pet.owner.name,
-          },
-          pet: {
-            _id: this.pet._id,
-            name: this.pet.name,
-          },
-          status: "pending",
-        };
-        this.$store.dispatch({
-          type: "addAdoptionRequest",
-          request: req,
-        });
-      },
+    sendRequest() {
+      const req = {
+        _id: utilService.makeId(),
+        createdAt: Date.now(),
+        user: {
+          _id: this.loggedInUser._id,
+          name: this.loggedInUser.fullName,
+        },
+        owner: {
+          _id: this.pet.owner._id,
+          name: this.pet.owner.name,
+        },
+        pet: {
+          _id: this.pet._id,
+          name: this.pet.name,
+        },
+        status: "pending",
+      };
+      this.$store.dispatch({
+        type: "addAdoptionRequest",
+        request: req,
+      });
+    },
     open() {
       this.$alert(
         "Please Log In or Sign Up In Order To Send An Adoption Request.",
@@ -105,14 +107,27 @@ export default {
         }
       );
     },
-       allAdoptions(){
-      const loadedAdoptions = this.$store.getters.getAdoptionRequests
-      this.adoptions = loadedAdoptions
-      console.log('computeddd', this.adoptions)
-    }
+      allAdoptions() {
+      const loadedAdoptions = this.$store.getters.getAdoptionRequests;
+      // this.adoptions = loadedAdoptions
+      const blah = loadedAdoptions.filter((adoption) => {
+        adoption.user._id === this.loggedInUser._id 
+      });
+          console.log('blah is', blah)
+    
+      if (blah) {
+        // this.isActive = true;
+        console.log('blah is true', blah)
+        return true;
+      } else {
+        console.log('blah is false', blah)
+        return false;
+      }
+      // console.log('computeddd', this.adoptions)
+    },
   },
-  computed : {
- 
+  computed: {
+  
   },
 
   async created() {
@@ -122,7 +137,6 @@ export default {
     this.pet = pet;
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     this.$store.dispatch({ type: "loadAdoptionRequests" });
-
   },
   components: {
     notLoggedIn,
