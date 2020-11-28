@@ -57,7 +57,8 @@ export const userStore = {
             return user;
         },
         async addReview({ commit }, { ownerId, review }) {
-            const review = await userService.addReview(ownerId, review);
+            const savedReview = await userService.addReview(ownerId, review);
+            return savedReview
         }
     },
 }
