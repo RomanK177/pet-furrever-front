@@ -3,7 +3,7 @@
     <div class="login modal-content">
       <button @click="closeModal">X</button>
       <h1>Login</h1>
-      <form @submit.prevent="login">
+      <form @submit="login">
         <label
           >User name: <input type="text" v-model="userCred.userName" /></label>
         <br />
@@ -19,9 +19,6 @@
 <script>
 import eventBus from "./../services/event-bus-service.js";
 export default {
-  // props: {
-  //   msg: String
-  // },
   data() {
     return {
       userCred: {
@@ -32,13 +29,11 @@ export default {
   },
   methods: {
     login() {
-      console.log("login", this.userCred);
-      // this.$store.dispatch({
-      //   type: 'login',
-      //   userCred: this.userCred
-      // });
-
-      this.$router.push("/");
+      this.$store.dispatch({
+        type: 'login',
+        userCred: this.userCred
+      });
+      // this.$router.push('/');
       // eventBus.$emit('loginDone');
       eventBus.$emit("closeModal");
     },

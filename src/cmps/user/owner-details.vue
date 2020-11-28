@@ -1,9 +1,10 @@
 <template>
   <section class="owner-details">
     <h1>Welcome {{ user.fullName }}</h1>
-    <router-link :to="'/user/edit/' + user._id">Edit profile</router-link>
+    <router-link v-if="checkIfOwner" :to="'/user/edit/' + user._id">Edit profile</router-link>
     <br />
     <img class="user-profile-picture" :src="imgUrlProfile" />
+    <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
     <p><span class="bold">Name:</span> {{ user.fullName }}</p>
     <p><span class="bold">Email:</span> {{ user.email }}</p>
     <p><span class="bold">Telephone:</span> {{ user.tel }}</p>
@@ -20,40 +21,29 @@
         v-for="(imgUrl, idx) in user.ownerData.imgUrls"
         :key="idx"
         :src="imgUrl"
-                 :class="{
-            item0: idx === 0,
-            item1: idx === 1,
-            item2: idx === 2,
-            item3: idx === 3,
-            item4: idx === 4,
-          }"
+        :class="{
+          item0: idx === 0,
+          item1: idx === 1,
+          item2: idx === 2,
+          item3: idx === 3,
+          item4: idx === 4,
+        }"
       />
     </div>
-    <owner-review :owner="user"/>
+    <owner-review :user="user" />
   </section>
 </template>
 
 <script>
 import { uploadImg } from "./../../services/img-upload-service.js";
-import ownerReview from './../../cmps/user/owner-review.vue';
+import ownerReview from "./../../cmps/user/owner-review.vue";
 
 export default {
   props: {
     user: Object,
   },
-  created() {
-    // var userId = this.$route.params.id;
-    // getUser(userId);
-    console.log(this.user)
-  },
   methods: {
-    // async getUser(userId){
-    // var user = await this.$store.dispatch({
-    //   type: 'getUserById',
-    //   userId
-    // })
-    // this.user = user;
-    // }
+
   },
   computed: {
     imgUrlProfile() {
@@ -63,9 +53,15 @@ export default {
         return this.user.imgUrlProfile;
       }
     },
+    checkIfOwner() {
+      var loggedInUser = this.$store.getters.getLoggedInUser;
+      if(!loggedInUser) return false;
+      else if(loggedInUser._id === this.user._id) return true;
+      else return false;
+    },
   },
-  components:{
-    ownerReview
-  }
+  components: {
+    ownerReview,
+  },
 };
 </script>
