@@ -19,7 +19,7 @@
           alt=""
         />
       </div>
-      <p>{{ pet.description }}</p>
+      <p class="pet-description">{{ pet.description }}</p>
       <div class="flex space-between align-center">
         <router-link
           @click.native="$event.stopImmediatePropagation()"

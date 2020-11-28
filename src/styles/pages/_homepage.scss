@@ -1,26 +1,38 @@
-
 .home {
     margin: auto 0;
-
-    
 }
 
-.homepage-pet-list{
+.homepage-pet-list {
     background-color: #f8f8f8;
     padding: 20px;
     margin: 20px;
+    & .pet-list {
+        width: 80%;
+        & .pet-card {
+            width: 300px;
+            height: 300px;
+            & .card-img {
+                width: 300px;
+                height: 150px;
+                object-fit: contain;
+            }
+            & .pet-description {
+                display: none;
+            }
+        }
+    }
 }
 
-.pets-of-the-week{
+.pets-of-the-week {
     text-align: center;
     color: orange;
 }
 
-.adopt-container{
+.adopt-container {
     justify-content: center;
 }
 
-.adopt-reasons{
+.adopt-reasons {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -36,17 +48,16 @@
     border: 1px solid orange;
     border-radius: 5px;
     margin: 10px;
-
-
-    p{
-    margin: 10px;
-    font-size: 1.3rem;
-    padding: 10px;
-    border-radius: 10px;
-    height: fit-content;
+    p {
+        margin: 10px;
+        font-size: 1.3rem;
+        padding: 10px;
+        border-radius: 10px;
+        height: fit-content;
     }
 }
-.adopt-reasons button{
+
+.adopt-reasons button {
     color: orange;
     text-decoration: none;
     border: 1px solid orange;
@@ -57,13 +68,13 @@
     font-size: large;
     font-family: quicksand-bold;
     font-size: bold;
-
 }
 
-.adopt-reasons button:hover{
-   background-color: palegoldenrod;
+.adopt-reasons button:hover {
+    background-color: palegoldenrod;
 }
-.adopt-reasons h1{
+
+.adopt-reasons h1 {
     width: 250px;
     height: 250px;
     background-color: #fff;
@@ -72,25 +83,18 @@
     background-color: seashell;
     color: orange;
     text-align: center;
-
-    .adopt-circle{
+    .adopt-circle {
         font-weight: quicksand-medium;
     }
-
 }
-
-
-
-
 
 .testimonies {
     display: flex;
     // justify-content: center;
     flex-direction: column;
-
 }
 
-.testimony{
+.testimony {
     display: flex;
     padding: 20px;
     border: 1px solid orange;
@@ -100,26 +104,22 @@
     font-size: 1.3rem;
     // background-color: sandybrown;
     background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
-
-
-    p{
+    p {
         padding-left: 20px;
-        padding-right: 20px; 
+        padding-right: 20px;
     }
-    h1{
+    h1 {
         text-align: center;
     }
-
-    img{
-    height: 200px;
-    width: 200px;
-    border-radius: 50%;
-    object-fit: cover;
+    img {
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        object-fit: cover;
     }
 }
 
-
-.our-pets-btn{
+.our-pets-btn {
     background-color: orange;
     color: white;
     text-decoration: none;
@@ -130,17 +130,14 @@
     justify-content: center;
     font-family: quicksand-medium;
     font-size: large;
-   
-    &:hover{
+    &:hover {
         background-color: white;
         color: orange;
         border: 1px solid orange;
     }
-
 }
 
-.heart li{
-list-style-type: circle;
-font-size: 1.5rem;
+.heart li {
+    list-style-type: circle;
+    font-size: 1.5rem;
 }
-
