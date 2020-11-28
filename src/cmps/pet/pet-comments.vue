@@ -87,14 +87,6 @@ export default {
       // this.comments.push(addedComment)
     },
 
-    // computed: {
-    //   setComments() {
-    //     this.comments = this.pet.comments;
-    //     const addedComment = addComment();
-    //     this.comments.push(addedComment);
-    //   },
-    // },
-
     //   updateMessage: async function () {
     //   this.message = 'updated'
     //   console.log(this.$el.textContent) // => 'not updated'
@@ -102,15 +94,7 @@ export default {
     //   console.log(this.$el.textContent) // => 'updated'
     // },
   },
-  // watch: {
-  //   addComment() {
-  //     this.$store.dispatch({
-  //       type: "addComment",
-  //       petId: this.$route.params.id,
-  //       comment: JSON.parse(JSON.stringify(this.comment)),
-  //     });
-  //   },
-  // },
+  
   // computed: {
   //   commentsForDisplay(){
   //    const commentsForDisplay = this.$store.getter.commentsForDisplay

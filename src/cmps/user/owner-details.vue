@@ -1,10 +1,12 @@
 <template>
   <section class="owner-details">
-    <h1>Welcome {{ user.fullName }}</h1>
-    <div v-if="checkIfOwner">
-      <router-link :to="'/user/edit/' + user._id">Edit profile</router-link>
+    <section class="owner-action flex reverse" v-if="checkIfOwner">
+      <router-link :to="'/user/edit/' + user._id">Edit profile</router-link> ||
       <router-link to="/pet/edit">Add pet</router-link>
-    </div>
+      <adoption-request />
+    </section>
+    <h1 v-if="checkIfOwner">Welcome {{ user.fullName }}</h1>
+    <h1 v-else>{{ user.fullName }}</h1>
     <br />
     <img class="user-profile-picture" :src="imgUrlProfile" />
     <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
@@ -18,7 +20,7 @@
     <p><span class="bold">Title:</span> {{ user.ownerData.title }}</p>
     <p><span class="bold">Description:</span> {{ user.ownerData.desc }}</p>
     <!-- Add tags from elemnts -->
-    <div class="details-images flex wrap">
+    <div class="details-images">
       <img
         id="imgUploader2"
         v-for="(imgUrl, idx) in user.ownerData.imgUrls"
@@ -38,14 +40,19 @@
 </template>
 
 <script>
-import { uploadImg } from "./../../services/img-upload-service.js";
-import ownerReview from "./../../cmps/user/owner-review.vue";
 import eventBus from "./../../services/event-bus-service.js";
-import { userService } from '../../services/user-service.js';
+import { uploadImg } from "./../../services/img-upload-service.js";
+import { userService } from "../../services/user-service.js";
+import ownerReview from "./../../cmps/user/owner-review.vue";
+import adoptionRequest from "./adoption-request.vue";
 
 export default {
   props: {
     user: Object,
+  },
+  data() {
+    return {
+    };
   },
   methods: {},
   computed: {
@@ -62,9 +69,18 @@ export default {
       else if (loggedInUser._id === this.user._id) return true;
       else return false;
     },
+    getAdoptionRequests() {
+      this.requests = this.$store.getters.getAdoptionRequests;
+    },
+  },
+  async created() {
+    this.$store.dispatch({
+      type: "loadAdoptionRequests",
+    });
   },
   components: {
     ownerReview,
+    adoptionRequest,
   },
 };
 </script>
