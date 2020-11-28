@@ -72,7 +72,8 @@ export default {
       if (loggedInUser === null) {
         this.open();
       } else {
-        this.sendRequest;
+        this.sendRequest();
+        console.log('request sent')
       }
     },
     sendRequest() {
@@ -106,23 +107,27 @@ export default {
         }
       );
     },
-  },
-  computed: {
-    allAdoptions() {
+      allAdoptions() {
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
       // this.adoptions = loadedAdoptions
       const blah = loadedAdoptions.filter((adoption) => {
-        adoption.user._id === this.loggedInUser._id &&
-          this.pet._id === adoption.pet._id;
+        adoption.user._id === this.loggedInUser._id 
       });
-      // if (blah) {
-      //   // this.isActive = true;
-      //   return true;
-      // } else {
-      //   return false;
-      // }
-      console.log('computeddd', this.adoptions)
+          console.log('blah is', blah)
+    
+      if (blah) {
+        // this.isActive = true;
+        console.log('blah is true', blah)
+        return true;
+      } else {
+        console.log('blah is false', blah)
+        return false;
+      }
+      // console.log('computeddd', this.adoptions)
     },
+  },
+  computed: {
+  
   },
 
   async created() {
