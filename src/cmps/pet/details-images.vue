@@ -1,9 +1,9 @@
 <template>
   <div class="details-images">
     <img
-      v-for="(imgUrl, index) in pet.imgUrls"
+      v-for="(imgUrl, index) in urls"
       :key="index"
-      :src="getUrl(imgUrl)"
+      :src="imgUrl"
       alt=""
       :class="{
         item0: index === 0,
@@ -22,13 +22,29 @@ export default {
     pet: {
       type: Object,
     },
-    methods: {
-      getUrl(url) {
-        let urlStart = url.slice(0, 4);
-        if (urlStart === "http") return url;
-        else return require(`../../assets/imgs/pets/${url}`);
-      },
-    },
+  },
+  data() {
+    return {
+      urls: null,
+    };
+  },
+  computed: {
+    // getUrl() {
+    //   let newUrls = this.pet.urls.map((url) => {
+    //     let urlStart = url.slice(0, 4);
+    //     if (urlStart === "http") return url;
+    //     else return require(`../../assets/imgs/pets/${url}`);
+    //   });
+    //   this.urls = newUrls;
+    // },
+  },
+  created() {
+    let newUrls = this.pet.imgUrls.map((url) => {
+      let urlStart = url.slice(0, 4);
+      if (urlStart === "http") return url;
+      else return require(`../../assets/imgs/pets/${url}`);
+    });
+    this.urls = newUrls;
   },
 };
 </script>
