@@ -8,6 +8,8 @@
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column">
               <el-button type="text" @click="adopt">Adopt Me!</el-button>
+              <!-- <div  v-if="!sendRequest" v-if="sendRequest">Adopt Request Sent!</div> -->
+              <button @click="allAdoptions">do it</button>
               <div class="save-pet flex space-between">
                 <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
                 <button class="favorite-pet">Favorite {{ pet.name }}</button>
@@ -55,6 +57,8 @@ export default {
     return {
       pet: null,
       loggedInUser: null,
+      isActive: false,
+      adoptions: []
       // isModal: false
     };
   },
@@ -64,8 +68,14 @@ export default {
       const loggedInUser = this.$store.getters.getLoggedInUser;
       if (loggedInUser === null) {
         this.open();
-      } else {
-        const req = {
+      } 
+      else {
+        this.sendRequest
+      }
+    
+    },
+    sendRequest(){
+         const req = {
           _id: utilService.makeId(),
           createdAt: Date.now(),
           user: {
@@ -84,22 +94,35 @@ export default {
         };
         this.$store.dispatch({
           type: "addAdoptionRequest",
-          request: req
+          request: req,
         });
-      }
-    },
+      },
     open() {
-      this.$alert("Please Log In or Sign Up In Order To Send An Adoption Request.", {
-        confirmButtonText: "OK",
-      });
+      this.$alert(
+        "Please Log In or Sign Up In Order To Send An Adoption Request.",
+        {
+          confirmButtonText: "OK",
+        }
+      );
     },
+       allAdoptions(){
+      const loadedAdoptions = this.$store.getters.getAdoptionRequests
+      this.adoptions = loadedAdoptions
+      console.log('computeddd', this.adoptions)
+    }
   },
+  computed : {
+ 
+  },
+
   async created() {
     const { id } = this.$route.params;
     console.log(id);
     const pet = await petService.getPetById(id);
     this.pet = pet;
     this.loggedInUser = this.$store.getters.getLoggedInUser;
+    this.$store.dispatch({ type: "loadAdoptionRequests" });
+
   },
   components: {
     notLoggedIn,

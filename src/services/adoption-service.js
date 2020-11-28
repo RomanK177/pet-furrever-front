@@ -16,5 +16,6 @@ function add(adoption) {
 
 function query(){
     return httpService.get(`adoptions`)
+    
 
 }
