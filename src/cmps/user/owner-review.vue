@@ -37,14 +37,22 @@ export default {
   },
   data() {
     return {
-      // TODO: Decide if need to change original object or to fit this object to the original
+      // TODO: move to by to the backend
+      // For frontend test only!!!!!
       review: {
         txt: null,
         rate: null,
-        from: this.$store.getters.getLoggedInUser
-          ? this.$store.getters.getLoggedInUser
+        by:{
+        userId: this.$store.getters.getLoggedInUser
+          ? this.$store.getters.getLoggedInUser._id
+          : null,
+          fullName: this.$store.getters.getLoggedInUser
+          ? this.$store.getters.getLoggedInUser.fullName
           : "Guest",
-        to: this.user._id,
+          imgUrl:  this.$store.getters.getLoggedInUser
+          ? this.$store.getters.getLoggedInUser.imgUrl
+          : null,
+        }
       },
     };
   },
@@ -60,6 +68,7 @@ export default {
     addReview() {
       this.$store.dispatch({
         type: "addReview",
+        userId: this.$route.params.id,
         review: JSON.parse(JSON.stringify(this.review)),
       });
     },

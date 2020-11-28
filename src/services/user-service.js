@@ -93,10 +93,15 @@ function update(user) {
 async function login(userCred) {
     // const user = await httpService.post('auth/login', userCred)
     // For front end test only //
-    getUsers().then(users => {
+   return getUsers().then(users => {
         var user = users.find(user => {
             return user.userName === userCred.userName;
-        })
+        });
+
+        if (!user) {
+            throw Error('login failed')
+        }
+
         return _handleLogin(user)
     });
 }
@@ -111,9 +116,10 @@ async function logout() {
     sessionStorage.clear();
 }
 
-async function addReview(review) {
+//For frontend test only - relace by backend
+async function addReview(userId, review) {
     review._id = utilService.makeId();
-    var user = await getById(review.to);
+    var user = await getById(userId);
     user.ownerData.reviews.push(review);
     console.log(user.ownerData.reviews)
     console.log(user)

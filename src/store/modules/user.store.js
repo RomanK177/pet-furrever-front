@@ -1,11 +1,8 @@
 import { userService } from '../../services/user-service.js';
 
-var localLoggedinUser = null;
-if (sessionStorage.user) localLoggedinUser = JSON.parse(sessionStorage.user);
-
 export const userStore = {
     state: {
-        loggedInUser: localLoggedinUser,
+        loggedInUser: null,
         users: []
     },
     getters: {
@@ -22,8 +19,13 @@ export const userStore = {
         }
     },
     actions: {
+        setUser({ commit}, { user} ) {
+            commit({
+                type: 'setUser',
+                user
+            })
+        },
         async signUp({ commit }, { userCred }) {
-            debugger
             const user = await userService.signUp(userCred);
             commit({
                 type: 'setUser',
@@ -54,8 +56,8 @@ export const userStore = {
             const user = await userService.update(savedUser);
             return user;
         },
-        async addReview({commit}, { review }){
-            const review1 = await userService.addReview(review);
+        async addReview({ commit }, { userId, review }) {
+            const review1 = await userService.addReview(userId, review);
             return review;
         }
     },

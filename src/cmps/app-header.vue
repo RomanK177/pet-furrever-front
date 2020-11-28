@@ -35,17 +35,18 @@ export default {
   data() {
     return {
       loginOpen: false,
-      loggedinUser: this.$store.getters.getLoggedInUser,
     };
   },
   computed: {
+    loggedinUser() {
+      return this.$store.getters.getLoggedInUser ? true : false;
+    },
     loggedinUserName() {
-      if (this.loggedinUser) {
-        return this.loggedinUser.userName;
+      if (this.$store.getters.getLoggedInUser) {
+        return this.$store.getters.getLoggedInUser.userName;
       } else {
         return "Guest";
       }
-
     },
   },
   methods: {

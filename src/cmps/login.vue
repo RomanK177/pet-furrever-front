@@ -3,6 +3,7 @@
     <div class="login modal-content">
       <button @click="closeModal">X</button>
       <h1>Login</h1>
+      <div v-if="loginFailed">Login Failed</div>
       <form @submit="login">
         <label
           >User name: <input type="text" v-model="userCred.userName" /></label>
@@ -25,17 +26,23 @@ export default {
         userName: null,
         password: null,
       },
+      loginFailed: false
     };
   },
   methods: {
-    login() {
-      this.$store.dispatch({
-        type: 'login',
-        userCred: this.userCred
-      });
+    async login() {
+      try {
+        await this.$store.dispatch({
+          type: 'login',
+          userCred: this.userCred
+        });
+
+        eventBus.$emit("closeModal");
+      } catch(err) {
+        this.loginFailed = true
+      }
       // this.$router.push('/');
       // eventBus.$emit('loginDone');
-      eventBus.$emit("closeModal");
     },
     closeModal() {
       eventBus.$emit("closeModal");
