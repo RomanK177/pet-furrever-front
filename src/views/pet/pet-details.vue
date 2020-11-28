@@ -1,21 +1,7 @@
 <template>
   <section class="details" v-if="pet">
     <div class="details-container">
-      <div class="details-images">
-        <img
-          v-for="(imgUrl, index) in pet.imgUrls"
-          :key="index"
-          :src="require(`@/assets/imgs/pets/${imgUrl}`)"
-          alt=""
-          :class="{
-            item0: index === 0,
-            item1: index === 1,
-            item2: index === 2,
-            item3: index === 3,
-            item4: index === 4,
-          }"
-        />
-      </div>
+      <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex wrap">
         <div class="pet-details-container">
           <h1 class="pet-details-name">Hi, I'm {{ pet.name }}!</h1>
@@ -45,45 +31,58 @@
             <p class="pet-details-gender">Gender: {{ pet.gender }}</p>
             <img src="../../assets/imgs/search.png" alt="" class="breed-icon" />
             <p class="pet-details-breed">Breed: {{ pet.breed }}</p>
-            <!-- <ul>
-      <li
-        v-for="(tag, index) in pet.tags"
-        :key="index"
-        class="pet-details-tags"
-      >
-        {{ tag }}
-      </li>
-      </ul> -->
           </div>
         </div>
-        <div class="petowner-details-container">
-          <img
-            :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)"
-            alt=""
-            class="owner-img"
-          />
-          <p class="pet-details-owner-name">From: {{ pet.owner.name }}</p>
-          <!-- <button class="btn adopt-btn" @click="adopt">
+        <div class="more-container">
+          <div class="likes-adopt-container">
+            <div class="adopt-fav flex column">
+              <el-button type="text" @click="adopt">Adopt Me!</el-button>
+              <div class="save-pet flex space-between">
+                <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
+                <button class="favorite-pet">Favorite {{ pet.name }}</button>
+              </div>
+            </div>
+            <hr />
+            <div class="help-pet flex">
+              <button class="sponsor">Sponsor</button>
+              <button class="share">Share</button>
+            </div>
+          </div>
+          <div class="petowner-details-container">
+            <img
+              :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)"
+              alt=""
+              class="owner-img"
+            />
+            <p class="pet-details-owner-name">{{ pet.owner.name }}</p>
+            <p>Location Address</p>
+            <p class="pet-details-owner-name">{{ pet.owner.location }}</p>
+            <hr />
+            <p class="pet-details-owner-name">{{ pet.owner.email }}</p>
+            <hr />
+            <p class="pet-details-owner-name">{{ pet.owner.tel }}</p>
+            <hr />
+            <!-- <button class="btn adopt-btn" @click="adopt">
             Adopt Me!
           </button> -->
-          <el-button type="text" @click="adopt">Adopt Me!</el-button>
-        </div>
-        </div>
-        <div class="comments-container">
-          <h1 class="pet-details-comments-title">Comments</h1>
-          <hr />
-          <ul>
-            <li
-              v-for="(comment, index) in pet.comments"
-              :key="index"
-              class="pet-details-comments"
-            >
-              {{ comment.userName }}: {{ comment.comment }}
-            </li>
-          </ul>
-          <input class="comment-input" type="text" placeholder="Add a Comment" />
+          </div>
         </div>
       </div>
+      <div class="comments-container">
+        <h1 class="pet-details-comments-title">Comments</h1>
+        <hr />
+        <ul>
+          <li
+            v-for="(comment, index) in pet.comments"
+            :key="index"
+            class="pet-details-comments"
+          >
+            {{ comment.userName }}: {{ comment.comment }}
+          </li>
+        </ul>
+        <input class="comment-input" type="text" placeholder="Add a Comment" />
+      </div>
+    </div>
   </section>
 </template>
 
@@ -91,6 +90,7 @@
 import { petService } from "../../services/pet-service.js";
 import petLikes from "../../cmps/pet/pet-likes.vue";
 import notLoggedIn from "../../cmps/pet/not-loggedin.vue";
+import detailsImages from '../../cmps/pet/details-images.vue'
 export default {
   name: "petDetails",
   data() {
@@ -119,9 +119,9 @@ export default {
         confirmButtonText: "OK",
       });
     },
-     showButton(){
-      console.log(this.$route)
-    }
+    showButton() {
+      console.log(this.$route);
+    },
   },
   async created() {
     const { id } = this.$route.params;
@@ -132,6 +132,7 @@ export default {
   components: {
     petLikes,
     notLoggedIn,
+    detailsImages
   },
 };
 </script>
