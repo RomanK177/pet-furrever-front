@@ -1,6 +1,6 @@
 <template>
   <section class="owner-review" v-if="user.ownerData.reviews">
-    <h1 class="reviews-header">Reviews</h1>
+    <h1 class="review-header">Reviews</h1>
     <hr />
     <form v-if="checkIfOwner" @submit="addReview">
       <label
@@ -17,12 +17,12 @@
       <li
         v-for="(review, idx) in user.ownerData.reviews"
         :key="idx"
-        class="details-comments"
+        class="review"
       >
-        <span class="bold">Rate: </span>{{ review.rate }}
-        <br />
         <span class="bold">From: </span>{{ review.by.fullName }}
         <img :src="review.by.imgUrl" />
+        <br />
+        <span class="bold">Rate: </span>{{ review.rate }}
         <br />
         {{ review.txt }}
       </li>
@@ -42,17 +42,17 @@ export default {
       review: {
         txt: null,
         rate: null,
-        by:{
-        userId: this.$store.getters.getLoggedInUser
-          ? this.$store.getters.getLoggedInUser._id
-          : null,
+        by: {
+          userId: this.$store.getters.getLoggedInUser
+            ? this.$store.getters.getLoggedInUser._id
+            : null,
           fullName: this.$store.getters.getLoggedInUser
-          ? this.$store.getters.getLoggedInUser.fullName
-          : "Guest",
-          imgUrl:  this.$store.getters.getLoggedInUser
-          ? this.$store.getters.getLoggedInUser.imgUrl
-          : null,
-        }
+            ? this.$store.getters.getLoggedInUser.fullName
+            : "Guest",
+          imgUrl: this.$store.getters.getLoggedInUser
+            ? this.$store.getters.getLoggedInUser.imgUrl
+            : null,
+        },
       },
     };
   },
@@ -68,7 +68,7 @@ export default {
     addReview() {
       this.$store.dispatch({
         type: "addReview",
-        userId: this.$route.params.id,
+        ownerId: this.$route.params.id,
         review: JSON.parse(JSON.stringify(this.review)),
       });
     },

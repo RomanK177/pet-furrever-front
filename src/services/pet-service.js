@@ -19,7 +19,7 @@ export const petService = {
 
 function query(filter = null, sortBy = 'name') {
     var filterStr = '';
-    var sortStr = '';
+    var sortStr = 'name';
     if (filter) {
         const searchStr = (filter.txt) ? `&q=${filter.txt}` : '';
         const typeStr = (filter.type === 'All') ? '' : `&type=${filter.type}`;
@@ -34,7 +34,7 @@ function query(filter = null, sortBy = 'name') {
     //         return res.data
     //     })
 
-    return httpService.get(`pets?_sort=${sortBy}${filterStr}`)
+    return httpService.get(`pets?_sort=${sortStr}${filterStr}`)
 }
 
 function getPetById(id) {
@@ -51,7 +51,10 @@ function removePet(id) {
     // return httpService.delete(`pet/${id}`)
 }
 
-function savePet(pet) {
+function savePet(pet, user) {
+    // For front end test only
+    pet.owner = user; 
+    //
     if (!pet._id) {
         pet.createdAt = Date.now();
         return httpService.post(`pets`, pet)
@@ -89,3 +92,4 @@ async function addComment(petId, comment) {
     update(pet);
 }
 
+        

@@ -33,7 +33,6 @@ export const petStore = {
             state.pets.unshift(pet)
         },
         updatePet(state, { pet }) {
-            console.log("🚀 ~ file: pet.store.js ~ line 31 ~ updatePet ~ pet", pet)
             const idx = state.pets.findIndex(currPet => currPet._id === pet._id)
             state.pets.splice(idx, 1, pet)
         },
@@ -59,7 +58,7 @@ export const petStore = {
 
         },
         async savePet({ commit }, { pet }) {
-            const action = (pet._id) ? 'updatePet' : 'savePet'
+            const action = (pet._id) ? 'updatePet' : 'savePet';
             const savedPet = await petService.savePet(pet)
             commit({ type: action, pet: savedPet });
             return savedPet;

@@ -7,7 +7,7 @@
     <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
     <router-link to="/pet" class="our-pets-btn">View All Our Pets!</router-link>
     <div class="homepage-pet-list">
-      <pet-list v-if="petsForPreview" :pets="petsForPreview"></pet-list>
+      <pet-list v-if="petsForPreview" :pets="filteredPets"></pet-list>
     </div>
     <div class="adopt-container flex">
       <section class="adopt-reasons">
@@ -97,6 +97,11 @@ export default {
   computed: {
     petsForPreview() {
       return this.$store.getters.petsForPreview;
+    },
+    filteredPets() {
+      return this.petsForPreview
+        .filter((pet) => pet.adoptedAt === null)
+        .slice(0, 3);
     },
   },
   created() {

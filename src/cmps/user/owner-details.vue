@@ -1,7 +1,10 @@
 <template>
   <section class="owner-details">
     <h1>Welcome {{ user.fullName }}</h1>
-    <router-link v-if="checkIfOwner" :to="'/user/edit/' + user._id">Edit profile</router-link>
+    <div v-if="checkIfOwner">
+    <router-link :to="'/user/edit/' + user._id">Edit profile</router-link>
+    <router-link to="/pet/edit">Add pet</router-link>
+    </div>
     <br />
     <img class="user-profile-picture" :src="imgUrlProfile" />
     <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->

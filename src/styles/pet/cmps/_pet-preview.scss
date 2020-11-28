@@ -1,34 +1,46 @@
 $cardWidth:300px;
+$sexSymbolSize:20px;
 .pet-card {
     position: relative;
     // border: 1px solid black;
     // border: 1px solid sandybrown;
     // -webkit-box-shadow: -1px 5px 12px -4px #000000; 
     // box-shadow: -1px 5px 12px -4px #000000;
-    -webkit-box-shadow: 1px 4px 13px -2px #949494; 
-box-shadow: 1px 4px 13px -2px #949494;
+    -webkit-box-shadow: 1px 4px 13px -2px #949494;
+    box-shadow: 1px 4px 13px -2px #949494;
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
     margin: 10px;
     width: $cardWidth;
-    & .male {
-        filter: invert(34%) sepia(13%) saturate(2927%) hue-rotate(183deg) brightness(92%) contrast(95%);
-    }
-    & .female {
-        filter: invert(23%) sepia(39%) saturate(4216%) hue-rotate(287deg) brightness(95%) contrast(84%);
-    }
-    & .treats-count {
-        padding: 10px;
-    }
-    & a {
-        text-decoration: none;
-        color: black;
-        font-weight: bold;
-    }
     & .card-info {
-        padding: 10px;
-        height: 50%;
+        padding: 0 10px;
+        height: 35%;
+        & h3 {
+            margin: 5px;
+        }
+        & .pet-description {
+            margin: 5px 10px;
+        }
+        & .male {
+            width: $sexSymbolSize;
+            height: $sexSymbolSize;
+            filter: invert(34%) sepia(13%) saturate(2927%) hue-rotate(183deg) brightness(92%) contrast(95%);
+        }
+        & .female {
+            width: $sexSymbolSize;
+            height: $sexSymbolSize;
+            filter: invert(23%) sepia(39%) saturate(4216%) hue-rotate(287deg) brightness(95%) contrast(84%);
+        }
+        & .treats-count {
+            padding: 10px;
+        }
+        & a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            padding-left: 10px;
+        }
     }
     & .adopted {
         position: absolute;
