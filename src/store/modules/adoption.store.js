@@ -8,18 +8,20 @@ export const adoptionStore = {
     },
     getters: {
         getAdoptionRequests(state) {
+            // console.log(state.addAdoptionRequests)
             return state.adoptionRequests;
         },
       
     },
     mutations: {
-        setAdoptionRequests(state, {adoptionRequests}){
-            state.adoptionRequests = adoptionRequests
+        setAdoptionRequests(state, {adoptions}){
+            state.adoptionRequests = adoptions
         }
     },
     actions: {
        async loadAdoptionRequests({commit}){
         const adoptions = await adoptionService.query()
+        console.log('adoptions', adoptions)
         commit({ type: 'setAdoptionRequests', adoptions })
        },
         async addAdoptionRequest({ commit }, { request }){
