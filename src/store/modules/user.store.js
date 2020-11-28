@@ -56,9 +56,8 @@ export const userStore = {
             const user = await userService.update(savedUser);
             return user;
         },
-        async addReview({ commit }, { userId, review }) {
-            const review1 = await userService.addReview(userId, review);
-            return review;
+        async addReview({ commit }, { ownerId, review }) {
+            const review = await userService.addReview(ownerId, review);
         }
     },
 }
