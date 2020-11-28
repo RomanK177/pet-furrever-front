@@ -1,5 +1,5 @@
 
-.pet-details-container, .petowner-details-container, .comments-container{
+.pet-details-container, .petowner-details-container, .comments-container, .likes-adopt-container{
     border: 1px solid orange;
     margin: 20px;
     border-radius: 5px;
@@ -18,10 +18,13 @@
 
 .el-button{
    padding: 10px;
-    font-size: large;
-    color: white;
-    background-color: orange;
+    font-size: 1.6rem;
+    color: orange;
+    background-color: white;
     font-family: quicksand-bold;
+    text-align: center;
+    display: flex;
+    margin: 0 auto;
 
     &:hover{
         background-color: white;
@@ -131,3 +134,46 @@ color: orange;
     margin-left: 40px;
 }
 
+.help-pet {
+    button{
+    padding: 10px;
+    margin: 10px;
+    color: orange;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    border-radius: 5px;
+    border: 1px solid orange;
+    }
+
+    :hover{
+        color: white;
+        background-color: orange;
+        cursor: pointer;
+    }
+}
+
+hr{
+    border: 1px solid beige;
+}
+
+.like-svg{
+    height: 20px;
+    width: 20px;
+}
+
+.save-pet{
+    margin-top: 10px;
+    background-color: orange;
+    padding: 10px;
+
+    button{
+        border: none;
+        background-color: orange;
+        
+    }
+}
+
+.likes-adopt-container{
+    background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
+}
