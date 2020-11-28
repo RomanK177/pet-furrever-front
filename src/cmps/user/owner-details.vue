@@ -2,8 +2,8 @@
   <section class="owner-details">
     <h1>Welcome {{ user.fullName }}</h1>
     <div v-if="checkIfOwner">
-    <router-link :to="'/user/edit/' + user._id">Edit profile</router-link>
-    <router-link to="/pet/edit">Add pet</router-link>
+      <router-link :to="'/user/edit/' + user._id">Edit profile</router-link>
+      <router-link to="/pet/edit">Add pet</router-link>
     </div>
     <br />
     <img class="user-profile-picture" :src="imgUrlProfile" />
@@ -40,14 +40,14 @@
 <script>
 import { uploadImg } from "./../../services/img-upload-service.js";
 import ownerReview from "./../../cmps/user/owner-review.vue";
+import eventBus from "./../../services/event-bus-service.js";
+import { userService } from '../../services/user-service.js';
 
 export default {
   props: {
     user: Object,
   },
-  methods: {
-
-  },
+  methods: {},
   computed: {
     imgUrlProfile() {
       if (!this.user.imgUrlProfile) {
@@ -58,8 +58,8 @@ export default {
     },
     checkIfOwner() {
       var loggedInUser = this.$store.getters.getLoggedInUser;
-      if(!loggedInUser) return false;
-      else if(loggedInUser._id === this.user._id) return true;
+      if (!loggedInUser) return false;
+      else if (loggedInUser._id === this.user._id) return true;
       else return false;
     },
   },

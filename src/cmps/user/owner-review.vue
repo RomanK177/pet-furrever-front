@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import eventBus from './../../services/event-bus-service.js';
+
 export default {
   props: {
     user: Object,
@@ -71,6 +73,7 @@ export default {
         ownerId: this.$route.params.id,
         review: JSON.parse(JSON.stringify(this.review)),
       });
+      eventBus.$emit('reviewAdded')
     },
   },
 };
