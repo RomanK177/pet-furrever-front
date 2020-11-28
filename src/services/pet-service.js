@@ -87,8 +87,8 @@ async function addComment(petId, comment) {
     comment._id = utilService.makeId();
     var pet = await getPetById(petId);
     pet.comments.push(comment);
-    console.log(pet.comments)
-    console.log(pet)
+    // console.log(pet.comments)
+    // console.log(pet)
     update(pet);
 }
 
