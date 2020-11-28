@@ -6,6 +6,7 @@
       <app-header></app-header>
     </div>
     <router-view />
+    <app-footer></app-footer>
   </div>
 </template>
 

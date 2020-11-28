@@ -16,7 +16,6 @@
       </div>
 </template>
 <script>
-// import { petService } from "../../services/pet-service.js";
 export default {
   name: "detailImages",
    props: {
@@ -24,17 +23,6 @@ export default {
       type: Object,
     },
   },
-//   data() {
-//     return {
-//       pet: null,
-//     };
-//   },
-//   async created() {
-//     const { id } = this.$route.params;
-//     console.log(id);
-//     const pet = await petService.getPetById(id);
-//     this.pet = pet;
-//   },
 };
 </script>
 
