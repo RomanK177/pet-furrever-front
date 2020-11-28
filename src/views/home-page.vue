@@ -13,7 +13,7 @@
       <section class="adopt-reasons">
         <h3>We Can Help You Find The <span>Purr</span>fect Pet!</h3>
         <div class="heart">
-          <h1>Why Should I Adopt?</h1>
+          <h1 class="adopt-circle">Why Should I Adopt?</h1>
         </div>
         <ul class="heart">
           <li>You'll be saving a life</li>

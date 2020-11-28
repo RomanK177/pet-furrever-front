@@ -25,11 +25,11 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
-    font-size: large;
     // padding-bottom: 20px;
-    font-family: quicksand-medium;
+    font-family: quicksand;
     background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
-    color: black;
+    color: #292929;
+    font-size: 1.2rem;
     // border: 1px solid orange;
     max-width: 600px;
     padding: 20px;
@@ -40,10 +40,9 @@
 
     p{
     margin: 10px;
-    // border: 3px solid white;
+    font-size: 1.3rem;
     padding: 10px;
     border-radius: 10px;
-    // max-width: 400px;
     height: fit-content;
     }
 }
@@ -74,8 +73,13 @@
     color: orange;
     text-align: center;
 
+    .adopt-circle{
+        font-weight: quicksand-medium;
+    }
 
 }
+
+
 
 
 
@@ -93,6 +97,7 @@
     border-radius: 5px;
     margin: 10px;
     width: 600px;
+    font-size: 1.3rem;
     // background-color: sandybrown;
     background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
 
@@ -113,17 +118,6 @@
     }
 }
 
-// .testimony img{
-//     height: 200px;
-//     width: 200px;
-//     border-radius: 50%;
-//     object-fit: cover;
-// }
-
-// .testimony-p{
-//     padding-left: 20px;
-//     padding-right: 20px;
-// }
 
 .our-pets-btn{
     background-color: orange;
@@ -147,29 +141,6 @@
 
 .heart li{
 list-style-type: circle;
+font-size: 1.5rem;
 }
 
-
-    // .heart {
-    //     position: relative;
-    //     // width: 300px;
-    //     // height: 200px;
-    //   }
-    //   .heart:before,
-    //   .heart:after {
-    //     position: absolute;
-    //     content: "";
-    //     left: 50px;
-    //     top: 0;
-    //     width: 50px;
-    //     height: 80px;
-    //     background: pink;
-    //     border-radius: 50px 50px 0 0;
-    //     transform: rotate(-45deg);
-    //     transform-origin: 0 100%;
-    //   }
-    //   .heart:after {
-    //     left: 0;
-    //     transform: rotate(45deg);
-    //     transform-origin: 100% 100%;
-    //   }

@@ -73,16 +73,21 @@ color: orange;
 }
 
 .treat-btn{
-    background-color: #39b89e;
-    border:1px solid #39b89e ;
+    // background-color: #39b89e;
+    // border:1px solid #39b89e ;
+    background-color: orange;
+    border:1px solid orange ;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: large;
+    font-family: quicksand;
+    font-size: 1.2rem;
+    // font-size: large;
 
     &:hover{
         background-color: white;
-        color: #39b89e;
+        // color: #39b89e;
+        color: orange;
     }
 }
 

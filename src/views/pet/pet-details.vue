@@ -18,15 +18,8 @@
       </div>
       <div class="bio-adoption-container flex wrap">
         <div class="pet-details-container">
-          <h1 class="pet-details-name">Hi, I'm {{ pet.name }}.</h1>
+          <h1 class="pet-details-name">Hi, I'm {{ pet.name }}!</h1>
           <hr />
-          <button
-            class="btn treat-btn"
-            :pet="pet"
-            @updateLikes="emitUpdateLikes"
-          >
-            Send Me a Treat!
-          </button>
           <pet-likes
             :pet="pet"
             @updateLikes="emitUpdateLikes"
@@ -126,6 +119,9 @@ export default {
         confirmButtonText: "OK",
       });
     },
+     showButton(){
+      console.log(this.$route)
+    }
   },
   async created() {
     const { id } = this.$route.params;
