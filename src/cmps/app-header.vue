@@ -6,20 +6,14 @@
       <span>Hello: {{ loggedinUserName }}</span>
       <router-link to="/" class="nav-link">Home</router-link>
       <router-link to="/pet" class="nav-link">Our Pets</router-link>
-      <!-- Karin changes:  -->
-      <router-link
-        v-if="loggedinUser"
-        :to="`/user/${loggedinUser._id}`"
-        class="nav-link"
-        >Profile</router-link
-      >
-      <!-- Changes end   -->
+      <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}`" class="nav-link">
+      Profile
+      </router-link>
       <router-link v-else to="/signup" class="nav-link">SignUp</router-link>
       <a v-if="!loggedinUser" @click="loginOpen = !loginOpen" class="nav-link"
         >Login</a
       >
       <a v-else @click="logout" class="nav-link">Logout</a>
-      <!-- <router-link to="/login" class="nav-link">Login</router-link> -->
     </nav>
     <login v-if="loginOpen" class="login" />
   </section>
@@ -40,7 +34,7 @@ export default {
   },
   computed: {
     loggedinUser() {
-      return this.$store.getters.getLoggedInUser ? true : false;
+      return this.$store.getters.getLoggedInUser ? this.$store.getters.getLoggedInUser : null;
     },
     loggedinUserName() {
       if (this.$store.getters.getLoggedInUser) {

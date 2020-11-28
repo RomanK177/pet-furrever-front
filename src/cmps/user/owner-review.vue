@@ -1,6 +1,6 @@
 <template>
   <section class="owner-review" v-if="user.ownerData.reviews">
-    <h1 class="reviews-header">Reviews</h1>
+    <h1 class="review-header">Reviews</h1>
     <hr />
     <form v-if="checkIfOwner" @submit="addReview">
       <label
@@ -14,15 +14,11 @@
       <button>Add review</button>
     </form>
     <ul>
-      <li
-        v-for="(review, idx) in user.ownerData.reviews"
-        :key="idx"
-        class="details-comments"
-      >
-        <span class="bold">Rate: </span>{{ review.rate }}
-        <br />
+      <li v-for="(review, idx) in user.ownerData.reviews" :key="idx" class="review">
         <span class="bold">From: </span>{{ review.by.fullName }}
         <img :src="review.by.imgUrl" />
+        <br />
+        <span class="bold">Rate: </span>{{ review.rate }}
         <br />
         {{ review.txt }}
       </li>
