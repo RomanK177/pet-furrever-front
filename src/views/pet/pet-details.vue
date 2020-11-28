@@ -47,7 +47,7 @@ import notLoggedIn from "../../cmps/pet/not-loggedin.vue";
 import detailsImages from "../../cmps/pet/details-images.vue";
 import detailsAbout from "../../cmps/pet/details-about.vue";
 import petComments from "../../cmps/pet/pet-comments.vue";
-
+import { utilService } from "../../services/util-service.js";
 
 export default {
   name: "petDetails",
@@ -62,20 +62,36 @@ export default {
   methods: {
     adopt() {
       const loggedInUser = this.$store.getters.getLoggedInUser;
-      // loggedInUser = this.loggedInUser
       if (loggedInUser === null) {
         this.open();
+      } else {
+        const req = {
+          _id: utilService.makeId(),
+          createdAt: Date.now(),
+          user: {
+            _id: this.loggedInUser._id,
+            name: this.loggedInUser.fullName,
+          },
+          owner: {
+            _id: this.pet.owner._id,
+            name: this.pet.owner.name,
+          },
+          pet: {
+            _id: this.pet._id,
+            name: this.pet.name,
+          },
+          status: "pending",
+        };
+        this.$store.dispatch({
+          type: "addAdoptionRequest",
+          request: req
+        });
       }
     },
     open() {
-      //  this.isModal = true
-      console.log("You need to log in!");
-      this.$alert("Please Log In In Order To Send An Adoption Request.", {
+      this.$alert("Please Log In or Sign Up In Order To Send An Adoption Request.", {
         confirmButtonText: "OK",
       });
-    },
-    showButton() {
-      console.log(this.$route);
     },
   },
   async created() {
@@ -83,12 +99,13 @@ export default {
     console.log(id);
     const pet = await petService.getPetById(id);
     this.pet = pet;
+    this.loggedInUser = this.$store.getters.getLoggedInUser;
   },
   components: {
     notLoggedIn,
     detailsImages,
     detailsAbout,
-    petComments
+    petComments,
   },
 };
 </script>

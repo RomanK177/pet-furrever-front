@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import { petStore } from './modules/pet.store.js';
 import { userStore } from './modules/user.store.js';
+import {adoptionStore} from './modules/adoption.store.js'
 
 Vue.use(Vuex)
 
@@ -14,5 +15,6 @@ export default new Vuex.Store({
     modules: {
         petStore,
         userStore,
+        adoptionStore
     }
 })
