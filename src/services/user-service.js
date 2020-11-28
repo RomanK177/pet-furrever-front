@@ -121,8 +121,6 @@ async function addReview(userId, review) {
     review._id = utilService.makeId();
     var user = await getById(userId);
     user.ownerData.reviews.push(review);
-    console.log(user.ownerData.reviews)
-    console.log(user)
     update(user);
 }
 

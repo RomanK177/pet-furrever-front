@@ -2,7 +2,7 @@
   <div class="owner-edit">
     <h1>Edit your profile</h1>
     <form>
-      <template v-if="!isLoading">
+      <template v-if="!isLoadingProfile">
         <label for="imgUploader"
           >Choose your profile picture:
           <br />
@@ -22,19 +22,27 @@
         width="200"
         height="200"
       />
+      <br />
       <label>Name: <input type="text" v-model="userToEdit.name" /></label>
+      <br />
       <label>Email: <input type="email" v-model="userToEdit.email" /></label>
+      <br />
       <label>Telephone: <input type="tel" v-model="userToEdit.tel" /></label>
+      <br />
       <label
         >Activity years:
-        <input type="number" v-model="userToEdit.activityYears"
+        <input type="number" v-model="userToEdit.ownerData.activityYears"
       /></label>
-      <label>Title: <input type="text" v-model="userToEdit.title" /></label>
+      <br />
+      <label>Title: <input type="text" v-model="userToEdit.ownerData.title" /></label>
+      <br />
       <label
-        >Description: <input type="text" v-model="userToEdit.desc"
+        >Description: <input type="text" v-model="userToEdit.ownerData.desc"
       /></label>
+      <br />
       <label>Choose your browser from the list:</label>
-      <input list="tags" v-model="userToEdit.tags" />
+      <br />
+      <input list="tags" v-model="userToEdit.ownerData.tags" />
       <datalist id="tags">
         <option value="Variety of pets" />
         <option value="Care for all animals" />
@@ -42,19 +50,40 @@
         <option value="Cat lovers" />
         <option value="Big animals professionals" />
       </datalist>
-      <input
-        type="file"
-        name="img-uploader2"
-        id="imgUploader2"
-        @change="onUploadImgs"
-      />
+      <br />
+      <template v-if="!isLoadingImgs">
+        <label>Images:
+        <input
+          type="file"
+          name="img-uploader2"
+          id="imgUploader2"
+          @change="onUploadImgs"
+        />
+        </label>
+        <br />
+        <div class="details-images">
+          <img
+            :class="{
+              item0: index === 0,
+              item1: index === 1,
+              item2: index === 2,
+              item3: index === 3,
+              item4: index === 4,
+            }"
+            id="imgUploader2"
+            v-for="(imgUrl, index) in userToEdit.ownerData.imgUrls"
+            :key="index"
+            :src="imgUrl"
+          />
+        </div>
+      </template>
       <img
-        class="owner-imgs"
-        id="imgUploader2"
-        v-for="(imgUrl, idx) in user.imgUrls"
-        :key="idx"
-        :src="imgUrl"
+        v-else
+        src="../../assets/imgs/loading.gif"
+        width="150"
+        height="350"
       />
+      <br />
       <button>Save</button>
     </form>
   </div>
@@ -69,12 +98,12 @@ export default {
   },
   data() {
     return {
-      isLoading: false,
+      isLoadingProfile: false,
+      isLoadingImgs: false,
     };
   },
   created() {
-    // const ownerId = this.$route.params.id;
-    // this.getOwner(ownerId);
+console.log(this.userToEdit)
   },
   methods: {
     // async getOwner(ownerId) {
@@ -90,12 +119,12 @@ export default {
       this.userToEdit.imgUrlProfile = res.url;
       this.isLoading = false;
     },
-    //     async onUploadImgs(ev) {
-    //   // this.isLoading = true;
-    //   const res = await uploadImg(ev);
-    //   this.owner.imgUrls.push(res.url);
-    //   // this.isLoading = false;
-    // },
+    async onUploadImgs(ev) {
+      this.isLoading = true;
+      const res = await uploadImg(ev);
+      this.userToEdit.ownerData.imgUrls.push(res.url);
+      this.isLoading = false;
+    },
     saveEdit() {
       this.$store.dispatch({
         type: "updateUser",
