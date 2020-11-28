@@ -14,8 +14,8 @@ export const adoptionStore = {
       
     },
     mutations: {
-        setAdoptionRequests(state, {requests}){
-            state.adoptionRequests = requests;
+        setAdoptionRequests(state, {adoptions}){
+            state.adoptionRequests = adoptions
         }
     },
     actions: {

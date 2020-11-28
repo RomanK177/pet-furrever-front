@@ -3,7 +3,7 @@
     <section class="owner-action flex reverse" v-if="checkIfOwner">
       <router-link :to="'/user/edit/' + user._id">Edit profile</router-link> ||
       <router-link to="/pet/edit">Add pet</router-link>
-      <adoption-request :requests="requests" />
+      <adoption-request />
     </section>
     <h1 v-if="checkIfOwner">Welcome {{ user.fullName }}</h1>
     <h1 v-else>{{ user.fullName }}</h1>
@@ -52,7 +52,6 @@ export default {
   },
   data() {
     return {
-      requests: null,
     };
   },
   methods: {},
@@ -78,7 +77,6 @@ export default {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
     });
-    console.log(this.$store.getters.getAdoptionRequests);
   },
   components: {
     ownerReview,

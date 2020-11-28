@@ -2,9 +2,14 @@
 <template>
   <section class="adoption-request">
     <h1>Adoption request:</h1>
-    <ul>
-      <li v-for="(request, idx) in requests" :key="idx">
-        Request by: {{ request.name }} <button>Accept</button><button>Decline</button>
+    <ul v-if="requests">
+      <li class="adoption-request-list"  v-for="(request, idx) in requests" :key="idx">
+        Request by: {{ request.user.name }} 
+        <br />
+        Pet: {{ request.pet.name }}
+        <br />
+        <button>Accept</button
+        ><button>Decline</button>
       </li>
     </ul>
   </section>
@@ -12,15 +17,18 @@
 
 <script>
 export default {
-  props: {
-    requests: Array
+  data() {
+    return {
+    };
   },
   methods: {},
   computed: {
-    // getAdoptionRequest(){
-    //   this.requests = this.$store.getters.getAdoptionRequests;
-    // }
+    requests() {
+      return this.$store.getters.getAdoptionRequests;
+    },
   },
-  created() {},
+  created() {
+// this.getAdoptionRequest
+  },
 };
 </script>
