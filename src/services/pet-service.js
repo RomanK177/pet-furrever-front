@@ -1,4 +1,6 @@
 import { httpService } from './http-service.js'
+import { utilService } from './util-service.js';
+
 import axios from 'axios';
 
 
@@ -8,7 +10,8 @@ export const petService = {
     getPetById,
     removePet,
     savePet,
-    getEmptyPet
+    getEmptyPet,
+    addComment
 }
 
 // const BASE_URL = 'http://localhost:3000'
@@ -72,3 +75,17 @@ function getEmptyPet() {
         tags: [],
     };
 }
+
+function update(pet) {
+    return httpService.put(`pets/${pet._id}`, pet);
+}
+
+async function addComment(petId, comment) {
+    comment._id = utilService.makeId();
+    var pet = await getPetById(petId);
+    pet.comments.push(comment);
+    console.log(pet.comments)
+    console.log(pet)
+    update(pet);
+}
+
