@@ -2,7 +2,13 @@
 <template>
   <section class="pet-likes">
     <div class="flex space-between align-center">
-      <button v-if="$route.params.id" @click.stop="toggleTreat" class="btn treat-btn">Send Me A Treat!</button>
+      <!-- <button
+        v-if="$route.params.id"
+        @click.stop="toggleTreat"
+        class="btn treat-btn"
+      >
+        Send Me A Treat!
+      </button> -->
       <div @click.stop="toggleTreat">
         <img
           :class="{ treatClicked: treat }"
@@ -61,14 +67,12 @@ export default {
     //   this.treat = !this.treat;
     // },
     toggleTreat() {
+      // const tempPet = this.pet;
+      console.log("pet in pet likes", this.pet);
       this.pet.numOfTreats++;
       this.$emit("updateLikes", this.pet);
       this.treat = true;
       this.storedLikes.push(this.pet._id);
-      console.log(
-        "🚀 ~ file: pet-likes.vue ~ line 60 ~ toggleTreat ~ this.storedLikes",
-        this.storedLikes
-      );
       utilService.storeToStorage("likes_db", this.storedLikes);
       // if (this.treat === false) {
       // } else {
@@ -78,9 +82,9 @@ export default {
       //   this.$emit("updateLikes", this.pet);
       // }
     },
-    showButton(){
-      console.log(this.$route)
-    }
+    showButton() {
+      console.log(this.$route);
+    },
   },
   computed: {},
   created() {

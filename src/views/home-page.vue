@@ -7,7 +7,11 @@
     <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
     <router-link to="/pet" class="our-pets-btn">View All Our Pets!</router-link>
     <div class="homepage-pet-list">
-      <pet-list v-if="petsForPreview" :pets="filteredPets"></pet-list>
+      <pet-list
+        v-if="petsForPreview"
+        :pets="filteredPets"
+        @updateLikes="updateLikes"
+      ></pet-list>
     </div>
     <div class="adopt-container flex">
       <section class="adopt-reasons">
@@ -108,7 +112,14 @@ export default {
     this.$store.dispatch({ type: "loadPets" });
     // this.$store.dispatch({ type: "loadUsers" });
   },
-
+  methods: {
+    updateLikes(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
+    },
+  },
   components: {
     appHeader,
     carousel,

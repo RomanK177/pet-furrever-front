@@ -63,7 +63,6 @@ export default {
   },
   computed: {},
   created() {
-    console.log(this.pet);
     let urlStart = this.pet.imgUrls[0].slice(0, 4);
     if (urlStart === "http") this.imgUrl = this.pet.imgUrls[0];
     else this.imgUrl = require(`../../assets/imgs/pets/${this.pet.imgUrls[0]}`);
