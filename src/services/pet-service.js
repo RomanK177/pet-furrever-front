@@ -16,7 +16,7 @@ export const petService = {
 
 function query(filter = null, sortBy = 'name') {
     var filterStr = '';
-    var sortStr = '';
+    var sortStr = 'name';
     if (filter) {
         const searchStr = (filter.txt) ? `&q=${filter.txt}` : '';
         const typeStr = (filter.type === 'All') ? '' : `&type=${filter.type}`;
@@ -31,7 +31,7 @@ function query(filter = null, sortBy = 'name') {
     //         return res.data
     //     })
 
-    return httpService.get(`pets?_sort=${sortBy}${filterStr}`)
+    return httpService.get(`pets?_sort=${sortStr}${filterStr}`)
 }
 
 function getPetById(id) {

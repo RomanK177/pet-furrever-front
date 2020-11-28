@@ -25,7 +25,6 @@ export const petStore = {
             state.pets.unshift(pet)
         },
         updatePet(state, { pet }) {
-            console.log("🚀 ~ file: pet.store.js ~ line 31 ~ updatePet ~ pet", pet)
             const idx = state.pets.findIndex(currPet => currPet._id === pet._id)
             state.pets.splice(idx, 1, pet)
         },

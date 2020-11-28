@@ -99,7 +99,9 @@ export default {
       return this.$store.getters.petsForPreview;
     },
     filteredPets() {
-      return this.petsForPreview.filter((pet) => pet.adoptedAt === null);
+      return this.petsForPreview
+        .filter((pet) => pet.adoptedAt === null)
+        .slice(0, 3);
     },
   },
   created() {

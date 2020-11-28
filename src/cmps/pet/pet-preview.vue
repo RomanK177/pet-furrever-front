@@ -3,7 +3,7 @@
   <section class="pet-card flex column space-between">
     <img class="card-img" v-if="pet.imgUrls" :src="imgUrl" />
     <!-- <div class="card-info flex column space-between"> -->
-    <div class="card-info">
+    <div class="card-info flex column space-between">
       <div class="flex space-between align-center">
         <h3>{{ pet.name }}</h3>
         <img
@@ -20,7 +20,7 @@
         />
       </div>
       <p class="pet-description">{{ pet.description }}</p>
-      <div class="flex space-between align-center">
+      <div class="owner-treats flex space-between align-center">
         <router-link
           @click.native="$event.stopImmediatePropagation()"
           :to="`/user/${pet.owner._id}`"
@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      imgUrl: require(`../../assets/imgs/pets/${this.pet.imgUrls[0]}`),
+      imgUrl: null,
     };
   },
   methods: {
@@ -62,7 +62,11 @@ export default {
     },
   },
   computed: {},
-  created() {},
+  created() {
+    let urlStart = this.pet.imgUrls[0].slice(0, 4);
+    if (urlStart === "http") this.imgUrl = this.pet.imgUrls[0];
+    else this.imgUrl = require(`../../assets/imgs/pets/${this.pet.imgUrls[0]}`);
+  },
   components: {
     petLikes,
   },
