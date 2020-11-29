@@ -2,7 +2,7 @@
   <section class="details" v-if="pet">
     <div class="details-container">
       <details-images :pet="pet"></details-images>
-      <div class="bio-adoption-container flex wrap">
+      <div class="bio-adoption-container flex">
         <details-about :pet="pet"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">

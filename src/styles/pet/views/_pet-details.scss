@@ -9,6 +9,11 @@
     background-color: white;
 }
 
+.pet-details-container {
+    max-width: 500px;
+    height: 100%;
+}
+
 .bio-adoption-container {
     flex-wrap: wrap;
     max-width: 1000px;
@@ -100,8 +105,14 @@
 
 .pet-about {
     font-size: 25px;
-    text-decoration: underline;
-    margin-bottom: 0
+    // color: orange;
+    // text-decoration: underline;
+    margin-bottom: 0;
+    padding-left: 10px;
+}
+
+.pet-about-p {
+    padding: 10px;
 }
 
 .pet-details-container {
