@@ -5,11 +5,16 @@
      margin-top: 5px;
      padding: 10px 0px;
      font-size: 1.3rem;
-     color: orange;
-     border: 1px solid orange;
+    //  color: orange;
+    background-color: darkorange;
+    border: 1px solid beige;
+    color:white;
+    //  border: 1px solid orange;
      border-radius: 4px;
-     background-color: white;
-     font-family: quicksand-bold;
+    //  background-color: white;
+     font-family: quicksand-medium;
+     cursor: pointer;
+     user-select: none;
  }
  
  .fevorite {

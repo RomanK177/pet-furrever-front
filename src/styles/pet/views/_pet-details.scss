@@ -25,7 +25,7 @@
 
 .el-button {
     padding: 10px;
-    font-size: 1.6rem;
+    font-size: 2rem;
     color: orange;
     border: 1px solid orange;
     background-color: white;
@@ -43,6 +43,10 @@
     color: orange;
     background-color: white;
     border: 1px solid orange;
+}
+
+.el-button--primary.is-active, .el-button--primary:active, .el-button--primary:focus, .el-button--primary {
+    font-size: 1rem;
 }
 
 .el-button--text:focus,
