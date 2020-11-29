@@ -53,7 +53,6 @@ function removePet(id) {
 
 function savePet(pet, user) {
     // For front end test only
-    pet.owner = user; 
     //
     if (!pet._id) {
         pet.createdAt = Date.now();
@@ -91,5 +90,3 @@ async function addComment(petId, comment) {
     // console.log(pet)
     update(pet);
 }
-
-        

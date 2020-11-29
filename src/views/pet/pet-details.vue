@@ -3,7 +3,7 @@
     <div class="details-container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex wrap">
-        <details-about :pet="pet"></details-about>
+        <details-about @updateLikes="updateLikes" :pet="pet"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column">
@@ -97,7 +97,7 @@ export default {
         type: "addAdoptionRequest",
         request: req,
       });
-      this.allAdoptions()
+      this.allAdoptions();
     },
     open() {
       this.$alert(
@@ -112,10 +112,12 @@ export default {
     //   this.isActive = true
     // },
     allAdoptions() {
-      console.log('loggedin user id beggining', this.loggedInUser._id)
+      console.log("loggedin user id beggining", this.loggedInUser._id);
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
       console.log("loaded adoptions", loadedAdoptions);
-      const filteredAdoptions = loadedAdoptions.filter((adoption) => adoption.pet._id === this.pet._id);
+      const filteredAdoptions = loadedAdoptions.filter(
+        (adoption) => adoption.pet._id === this.pet._id
+      );
       const isSentRequest = filteredAdoptions.some(
         (adoption) => adoption.user._id === this.loggedInUser._id
       );
@@ -131,6 +133,12 @@ export default {
       //   this.isActive = false
       // }
     },
+    updateLikes(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
+    },
   },
   computed: {},
 
@@ -142,13 +150,12 @@ export default {
     console.log("created pet", pet);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     await this.$store.dispatch({ type: "loadAdoptionRequests" });
-    if (this.loggedInUser === null){
-      this.isActive = true
-      return
-    } else{
-        this.allAdoptions();
-      }
-  
+    if (this.loggedInUser === null) {
+      this.isActive = true;
+      return;
+    } else {
+      this.allAdoptions();
+    }
   },
 
   components: {
