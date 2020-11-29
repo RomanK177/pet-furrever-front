@@ -9,7 +9,7 @@
       >
         Send Me A Treat!
       </button>
-      <div @click.stop="toggleTreat">
+      <div class="flex align-center" @click.stop="toggleTreat">
         <img
           :class="{ treatClicked: treat }"
           v-if="pet.type === 'Dog'"
@@ -31,8 +31,8 @@
           src="../../assets/svgs/carrot.svg"
           alt=""
         />
+        <span class="treats-count">{{ pet.numOfTreats }}</span>
       </div>
-      <span class="treats-count">{{ pet.numOfTreats }}</span>
     </div>
   </section>
 </template>
