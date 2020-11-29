@@ -5,10 +5,14 @@
     }
 }
 
+.owner-action{
+    float: right;
+}
+
 .adoption-request{
     &-list{
         border-bottom: 1px solid black;
-        width: 600px;
+        width: 300px;
     }
 }
 // .owner-imgs{

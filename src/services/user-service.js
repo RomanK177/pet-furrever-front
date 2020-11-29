@@ -95,7 +95,7 @@ async function login(userCred) {
     // For front end test only //
    return getUsers().then(users => {
         var user = users.find(user => {
-            return user.userName === userCred.userName;
+            return user.userName === userCred.userName && user.password === userCred.password;
         });
 
         if (!user) {
