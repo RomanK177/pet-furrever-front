@@ -8,7 +8,7 @@ export const adoptionStore = {
     },
     getters: {
         getAdoptionRequests(state) {
-            // console.log(state.addAdoptionRequests)
+            console.log('from store' ,state.adoptionRequests)
             return state.adoptionRequests;
         },
       
@@ -16,17 +16,21 @@ export const adoptionStore = {
     mutations: {
         setAdoptionRequests(state, {adoptions}){
             state.adoptionRequests = adoptions
+        },
+        addAdoptionRequest(state, {adoptionRequest}){
+            state.adoptionRequests.push(adoptionRequest)
         }
     },
     actions: {
        async loadAdoptionRequests({commit}){
         const adoptions = await adoptionService.query()
-        console.log('adoptions', adoptions)
+        // console.log('adoptions', adoptions)
         commit({ type: 'setAdoptionRequests', adoptions })
        },
         async addAdoptionRequest({ commit }, { request }){
-            const addedRequest = await adoptionService.add(request)
-            return addedRequest
+            console.log('request', request)
+            const adoptionRequest = await adoptionService.add(request)
+           commit ({type: 'addAdoptionRequest', adoptionRequest})
         },
         
 

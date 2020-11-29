@@ -7,8 +7,10 @@
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column">
-              <el-button type="text" @click="adopt">Adopt Me!</el-button>
-              <div>Adoption Request Sent!</div>
+              <el-button v-if="isActive" type="text" @click="adopt"
+                >Adopt Me!</el-button
+              >
+              <div v-if="!isActive">Adoption Request Sent!</div>
               <button @click="allAdoptions">do it</button>
               <div class="save-pet flex space-between">
                 <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
@@ -40,7 +42,6 @@
       </div>
       <pet-comments :pet="pet"></pet-comments>
     </div>
-    <div v-if="adoptions"></div>
   </section>
 </template>
 
@@ -58,9 +59,7 @@ export default {
     return {
       pet: null,
       loggedInUser: null,
-      isActive: false,
-      adoptions: [],
-      // isModal: false
+      isActive: null,
     };
   },
 
@@ -72,9 +71,10 @@ export default {
       } else {
         this.sendRequest();
         console.log("request sent");
+        // this.allAdoptions();
       }
     },
-    sendRequest() {
+    async sendRequest() {
       const req = {
         _id: utilService.makeId(),
         createdAt: Date.now(),
@@ -92,10 +92,11 @@ export default {
         },
         status: "pending",
       };
-      this.$store.dispatch({
+      await this.$store.dispatch({
         type: "addAdoptionRequest",
         request: req,
       });
+      this.allAdoptions();
     },
     open() {
       this.$alert(
@@ -105,23 +106,31 @@ export default {
         }
       );
     },
+    // active(){
+    //   this.allAdoptions
+    //   this.isActive = true
+    // },
     allAdoptions() {
+      console.log("loggedin user id beggining", this.loggedInUser._id);
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
-      // this.adoptions = loadedAdoptions
-      const blah = loadedAdoptions.filter((adoption) => {
-        adoption.user._id === this.loggedInUser._id;
-      });
-      console.log("blah is", blah);
+      console.log("loaded adoptions", loadedAdoptions);
+      const filteredAdoptions = loadedAdoptions.filter(
+        (adoption) => adoption.pet._id === this.pet._id
+      );
+      const isSentRequest = filteredAdoptions.some(
+        (adoption) => adoption.user._id === this.loggedInUser._id
+      );
+      console.log("adoption user", filteredAdoptions);
+      console.log("pet id", this.pet._id);
+      console.log("loggedInUser", this.loggedInUser._id);
+      console.log("isSent", isSentRequest);
+      this.isActive = !isSentRequest;
 
-      if (blah) {
-        // this.isActive = true;
-        console.log("blah is true", blah);
-        return true;
-      } else {
-        console.log("blah is false", blah);
-        return false;
-      }
-      // console.log('computeddd', this.adoptions)
+      // if (isSentRequest) {
+      //  this.isActive = true;
+      // } else {
+      //   this.isActive = false
+      // }
     },
     updateLikes(pet) {
       this.$store.dispatch({
@@ -137,9 +146,17 @@ export default {
     console.log(id);
     const pet = await petService.getPetById(id);
     this.pet = pet;
+    console.log("created pet", pet);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
-    this.$store.dispatch({ type: "loadAdoptionRequests" });
+    await this.$store.dispatch({ type: "loadAdoptionRequests" });
+    if (this.loggedInUser === null) {
+      this.isActive = true;
+      return;
+    } else {
+      this.allAdoptions();
+    }
   },
+
   components: {
     notLoggedIn,
     detailsImages,
