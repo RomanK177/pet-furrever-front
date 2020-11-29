@@ -9,7 +9,7 @@
       class="animated tada"
     />
     <h4 class="pet-about">Meet {{ pet.name }}!</h4>
-    <p>{{ pet.description }}</p>
+    <p class="pet-about-p">{{ pet.description }}</p>
     <div class="pet-bio-container flex wrap space-between">
       <div class="pet-details-age flex column align-center">
          <img class="age-svg"
