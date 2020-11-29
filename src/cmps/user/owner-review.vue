@@ -1,5 +1,5 @@
 <template>
-  <section class="owner-review" v-if="user.ownerData.reviews">
+  <section class="owner-review" v-if="owner.ownerData.reviews">
     <h1 class="review-header">Reviews</h1>
     <hr />
     <form v-if="checkIfOwner" @submit="addReview">
@@ -15,7 +15,7 @@
     </form>
     <ul>
       <li
-        v-for="(review, idx) in user.ownerData.reviews"
+        v-for="(review, idx) in owner.ownerData.reviews"
         :key="idx"
         class="review"
       >
@@ -35,7 +35,7 @@ import eventBus from './../../services/event-bus-service.js';
 
 export default {
   props: {
-    user: Object,
+    owner: Object,
   },
   data() {
     return {
@@ -62,13 +62,13 @@ export default {
     checkIfOwner() {
       var loggedInUser = this.$store.getters.getLoggedInUser;
       if (loggedInUser) {
-        if (loggedInUser._id === this.user._id) return false;
+        if (loggedInUser._id === this.owner._id) return false;
       } else return true;
     },
   },
   methods: {
-    addReview() {
-      this.$store.dispatch({
+    async addReview() {
+      await this.$store.dispatch({
         type: "addReview",
         ownerId: this.$route.params.id,
         review: JSON.parse(JSON.stringify(this.review)),
