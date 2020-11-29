@@ -6,7 +6,7 @@
         <details-about :pet="pet"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
-            <div class="adopt-fav flex column justify-center">
+            <div class="adopt-fav flex column justify-center align-center">
               <el-button v-if="isActive" type="text" @click="adopt"
                 >Adopt Me!</el-button
               >
