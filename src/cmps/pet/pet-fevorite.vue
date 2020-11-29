@@ -1,11 +1,11 @@
 
 <template>
-  <section class="pet-fevorite">
+  <section class="favorite-pet">
     <div class="flex justify-center align-center" @click.stop="toggleFevorite">
       <img
-        class="fevorite"
+        class="like-svg fevorite"
         :class="{ isFevorite: isFevorite }"
-        src="../../assets/svgs/like.svg"
+        src="../../assets/svgs/heart2.svg"
         alt=""
       />
       <span>Favorite</span>

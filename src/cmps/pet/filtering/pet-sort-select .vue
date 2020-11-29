@@ -16,15 +16,15 @@ export default {
     return {
       options: [
         {
-          value: "type",
+          value: "Type",
           label: "Type",
         },
         {
-          value: "size",
+          value: "Size",
           label: "Size",
         },
         {
-          value: "name",
+          value: "Name",
           label: "Name",
         },
       ],

@@ -6,7 +6,7 @@
         <details-about :pet="pet"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
-            <div class="adopt-fav flex column">
+            <div class="adopt-fav flex column justify-center">
               <el-button v-if="isActive" type="text" @click="adopt"
                 >Adopt Me!</el-button
               >
@@ -22,43 +22,63 @@
             <hr />
             <div class="help-pet flex justify-center">
               <!-- <button class="sponsor">Sponsor</button> -->
-              <a href="https://www.facebook.com/login" target="_blank" class="share"> 
-              <img src="../../assets/svgs/share.svg" alt="" class="share-svg" />
-              Share</a>
+              <a
+                href="https://www.facebook.com/login"
+                target="_blank"
+                class="share"
+              >
+                <img
+                  src="../../assets/svgs/share.svg"
+                  alt=""
+                  class="share-svg"
+                />
+                Share</a
+              >
               <!-- <button class="share">Share</button> -->
             </div>
           </div>
           <div class="petowner-details-container">
-            <div class="pet-owner-details flex column space-between align-center">
-            <img
-              :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)"
-              alt=""
-              class="owner-img"
-            />
-            <router-link class="pet-details-owner-name"
-          :to="`/user/${pet.owner._id}`"
-          >{{ pet.owner.name }}</router-link>
-          </div>
+            <div
+              class="pet-owner-details flex column space-between align-center"
+            >
+              <img
+                :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)"
+                alt=""
+                class="owner-img"
+              />
+              <router-link
+                class="pet-details-owner-name"
+                :to="`/user/${pet.owner._id}`"
+                >{{ pet.owner.name }}</router-link
+              >
+            </div>
             <!-- <p class="pet-details-owner-name">{{ pet.owner.name }}</p> -->
             <p class="location-details flex flex-start">
-               <img src="../../assets/svgs/location.svg" alt="" class="location-svg" />
-              Location Address</p>
+              <img
+                src="../../assets/svgs/location.svg"
+                alt=""
+                class="location-svg"
+              />
+              Location Address
+            </p>
             <p class="pet-details-owner-location">{{ pet.owner.location }}</p>
             <hr />
             <p class="pet-details-owner-email flex flex-start">
-               <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
-               {{ pet.owner.email }}</p>
+              <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
+              {{ pet.owner.email }}
+            </p>
             <hr />
             <p class="pet-details-owner-tel flex flex-start">
               <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
-              {{ pet.owner.tel }}</p>
+              {{ pet.owner.tel }}
+            </p>
             <hr />
-          <!-- </div> -->
-          </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>
-      <pet-comments :pet="pet"></pet-comments>
+    </div>
+    <pet-comments :pet="pet"></pet-comments>
   </section>
 </template>
 
@@ -114,7 +134,7 @@ export default {
         type: "addAdoptionRequest",
         request: req,
       });
-      this.allAdoptions()
+      this.allAdoptions();
     },
     open() {
       this.$alert(
@@ -129,10 +149,12 @@ export default {
     //   this.isActive = true
     // },
     allAdoptions() {
-      console.log('loggedin user id beggining', this.loggedInUser._id)
+      console.log("loggedin user id beggining", this.loggedInUser._id);
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
       console.log("loaded adoptions", loadedAdoptions);
-      const filteredAdoptions = loadedAdoptions.filter((adoption) => adoption.pet._id === this.pet._id);
+      const filteredAdoptions = loadedAdoptions.filter(
+        (adoption) => adoption.pet._id === this.pet._id
+      );
       const isSentRequest = filteredAdoptions.some(
         (adoption) => adoption.user._id === this.loggedInUser._id
       );
@@ -159,13 +181,12 @@ export default {
     console.log("created pet", pet);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     await this.$store.dispatch({ type: "loadAdoptionRequests" });
-    if (this.loggedInUser === null){
-      this.isActive = true
-      return
-    } else{
-        this.allAdoptions();
-      }
-  
+    if (this.loggedInUser === null) {
+      this.isActive = true;
+      return;
+    } else {
+      this.allAdoptions();
+    }
   },
 
   components: {
