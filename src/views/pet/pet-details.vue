@@ -3,7 +3,7 @@
     <div class="details-container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex">
-        <details-about :pet="pet"></details-about>
+        <details-about :pet="pet" @updateLikes="updatePet"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column justify-center align-center">
@@ -17,7 +17,11 @@
                   <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
                   Favorite {{ pet.name }}</button>
               </div> -->
-              <pet-fevorite :pet="pet" :loggedInUser="loggedInUser" />
+              <pet-favorite
+                :pet="pet"
+                :loggedInUser="loggedInUser"
+                @updateFaforites="updateFaforites"
+              />
             </div>
             <hr />
             <div class="help-pet flex justify-center">
@@ -88,7 +92,7 @@ import notLoggedIn from "../../cmps/pet/not-loggedin.vue";
 import detailsImages from "../../cmps/pet/details-images.vue";
 import detailsAbout from "../../cmps/pet/details-about.vue";
 import petComments from "../../cmps/pet/pet-comments.vue";
-import petFevorite from "../../cmps/pet/pet-fevorite";
+import petFavorite from "../../cmps/pet/pet-favorite";
 import { utilService } from "../../services/util-service.js";
 
 export default {
@@ -111,6 +115,12 @@ export default {
         console.log("request sent");
         // this.allAdoptions();
       }
+    },
+    updatePet(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
     },
     async sendRequest() {
       const req = {
@@ -158,10 +168,10 @@ export default {
       const isSentRequest = filteredAdoptions.some(
         (adoption) => adoption.user._id === this.loggedInUser._id
       );
-      console.log("adoption user", filteredAdoptions);
-      console.log("pet id", this.pet._id);
-      console.log("loggedInUser", this.loggedInUser._id);
-      console.log("isSent", isSentRequest);
+      // console.log("adoption user", filteredAdoptions);
+      // console.log("pet id", this.pet._id);
+      // console.log("loggedInUser", this.loggedInUser._id);
+      // console.log("isSent", isSentRequest);
       this.isActive = !isSentRequest;
 
       // if (isSentRequest) {
@@ -170,15 +180,21 @@ export default {
       //   this.isActive = false
       // }
     },
+    updateFaforites(user) {
+      this.$store.dispatch({
+        type: "updateUser",
+        user,
+      });
+    },
   },
   computed: {},
 
   async created() {
     const { id } = this.$route.params;
-    console.log(id);
+    // console.log(id);
     const pet = await petService.getPetById(id);
     this.pet = pet;
-    console.log("created pet", pet);
+    // console.log("created pet", pet);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     await this.$store.dispatch({ type: "loadAdoptionRequests" });
     if (this.loggedInUser === null) {
@@ -194,7 +210,7 @@ export default {
     detailsImages,
     detailsAbout,
     petComments,
-    petFevorite,
+    petFavorite,
   },
 };
 </script>

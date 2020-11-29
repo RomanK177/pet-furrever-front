@@ -53,8 +53,9 @@ function removePet(id) {
 }
 
 function savePet(pet, user) {
-    // For front end test only
-    //
+    console.log("🚀 ~ file: pet-service.js ~ line 56 ~ savePet ~ pet", pet)
+        // For front end test only
+        //
     if (!pet._id) {
         pet.createdAt = Date.now();
         return httpService.post(`pets`, pet)

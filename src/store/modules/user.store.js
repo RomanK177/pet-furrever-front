@@ -19,7 +19,7 @@ export const userStore = {
         }
     },
     actions: {
-        setUser({ commit}, { user} ) {
+        setUser({ commit }, { user }) {
             commit({
                 type: 'setUser',
                 user
@@ -53,6 +53,7 @@ export const userStore = {
             return user;
         },
         async updateUser({ commit }, { savedUser }) {
+            console.log("🚀 ~ file: user.store.js ~ line 59 ~ updateUser ~ savedUser", savedUser)
             const user = await userService.update(savedUser);
             return user;
         },
