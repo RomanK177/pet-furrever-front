@@ -30,6 +30,7 @@
         font-size: 1rem;
         margin: 10px;
         font-family: quicksand;
+        align-self: flex-end;
     }
 
     .login-txt{
@@ -50,4 +51,10 @@
         left: 0;
         opacity: 0.6;
     }
+
+    .modal-content{
+        display: flex;
+        flex-direction: column;
+    }
 }
+
