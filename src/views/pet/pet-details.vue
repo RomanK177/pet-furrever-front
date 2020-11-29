@@ -12,11 +12,12 @@
               >
               <div v-if="!isActive">Adoption Request Sent!</div>
               <!-- <button @click="allAdoptions">do it</button> -->
-              <div class="save-pet flex space-between">
+              <!-- <div class="save-pet flex space-between">
                 <button class="favorite-pet flex space-between">
                   <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
                   Favorite {{ pet.name }}</button>
-              </div>
+              </div> -->
+              <pet-fevorite :pet="pet" :loggedInUser="loggedInUser" />
             </div>
             <hr />
             <div class="help-pet flex">
@@ -52,6 +53,7 @@ import notLoggedIn from "../../cmps/pet/not-loggedin.vue";
 import detailsImages from "../../cmps/pet/details-images.vue";
 import detailsAbout from "../../cmps/pet/details-about.vue";
 import petComments from "../../cmps/pet/pet-comments.vue";
+import petFevorite from "../../cmps/pet/pet-fevorite";
 import { utilService } from "../../services/util-service.js";
 
 export default {
@@ -163,6 +165,7 @@ export default {
     detailsImages,
     detailsAbout,
     petComments,
+    petFevorite,
   },
 };
 </script>

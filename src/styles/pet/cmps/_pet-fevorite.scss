@@ -1,0 +1,13 @@
+ $feforiteIconWidth: 25px;
+ .pet-fevorite {
+     margin-top: 5px;
+ }
+ 
+ .fevorite {
+     width: $feforiteIconWidth;
+ }
+ 
+ .isFevorite {
+     filter: invert(25%) sepia(71%) saturate(6719%) hue-rotate(353deg) brightness(113%) contrast(98%);
+     width: $feforiteIconWidth;
+ }
