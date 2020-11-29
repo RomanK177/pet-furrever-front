@@ -23,8 +23,15 @@
 @import "pet/cmps/pet-fevorite";
 @import "pet/cmps/pet-list";
 @import "pet/cmps/pet-preview";
-// USER //
+
+// USER & OWNER //
 @import "user/user-details";
+
+// Sign up
+@import "user/signup";
+// Login
+@import "user/login.scss";
+
 // REVIEW //
 @import "review/review";
 // PAGES //
