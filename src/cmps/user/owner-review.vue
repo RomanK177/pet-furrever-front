@@ -1,5 +1,5 @@
 <template>
-  <section class="owner-review" v-if="owner.ownerData.reviews">
+  <section class="owner-review details" v-if="owner.ownerData.reviews">
     <h1 class="review-header">Reviews</h1>
     <hr />
     <form v-if="checkIfOwner" @submit="addReview">

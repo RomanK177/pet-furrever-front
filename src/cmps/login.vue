@@ -4,7 +4,7 @@
       <button @click="closeModal">X</button>
       <h1>Login</h1>
       <div v-if="loginFailed">Login Failed</div>
-      <form @submit="login">
+      <form @submit="login" class="flex column align-center">
         <label
           >User name: <input type="text" v-model="userCred.userName" /></label>
         <br />
@@ -13,6 +13,7 @@
         <br />
         <button>Login</button>
       </form>
+      <img src="../assets/imgs/dog-login.png" alt="">
     </div>
   </section>
 </template>
