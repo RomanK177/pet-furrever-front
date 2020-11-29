@@ -1,5 +1,7 @@
-
-.pet-details-container, .petowner-details-container, .comments-container, .likes-adopt-container{
+.pet-details-container,
+.petowner-details-container,
+.comments-container,
+.likes-adopt-container {
     border: 1px solid orange;
     margin: 20px;
     border-radius: 5px;
@@ -7,7 +9,7 @@
     background-color: white;
 }
 
-.pet-details-container{
+.pet-details-container {
     max-width: 500px;
     height: 100%;
 }
@@ -21,8 +23,8 @@
     padding: 20px;
 }
 
-.el-button{
-   padding: 10px;
+.el-button {
+    padding: 10px;
     font-size: 1.6rem;
     color: orange;
     border: 1px solid orange;
@@ -31,78 +33,77 @@
     text-align: center;
     display: flex;
     margin: 0 auto;
-
-
-    .el-message-box__close:hover{
+    .el-message-box__close:hover {
         color: orange;
     }
-
 }
 
-.el-button--primary:focus, .el-button--primary:hover{
+.el-button--primary:focus,
+.el-button--primary:hover {
     color: orange;
     background-color: white;
     border: 1px solid orange;
 }
 
-.el-button--text:focus, .el-button--text:hover {
+.el-button--text:focus,
+.el-button--text:hover {
     background-color: orange;
     color: white;
     border: 1px solid white;
 }
 
-.el-button--primary:hover{
+.el-button--primary:hover {
     background-color: white;
     border: 1px solid orange;
     color: orange;
 }
 
-.el-message-box__headerbtn:hover .el-message-box__close:hover{
-color: orange;
-}
-
-.el-message-box__headerbtn:active .el-message-box__close:active{
+.el-message-box__headerbtn:hover .el-message-box__close:hover {
     color: orange;
 }
 
-.el-button--primary.is-active, .el-button--primary:active, .el-button--primary:focus, .el-button--primary{
+.el-message-box__headerbtn:active .el-message-box__close:active {
+    color: orange;
+}
+
+.el-button--primary.is-active,
+.el-button--primary:active,
+.el-button--primary:focus,
+.el-button--primary {
     color: white;
     background-color: orange;
     border-color: orange;
 }
 
-
-.el-message-box__message{
+.el-message-box__message {
     font-family: quicksand-bold;
 }
 
-.treat-btn{
+.treat-btn {
     background-color: orange;
-    border:1px solid orange ;
+    border: 1px solid orange;
     color: white;
     padding-top: 10px;
     padding-bottom: 10px;
     font-family: quicksand;
     font-size: 1.2rem;
-
-    &:hover{
+    &:hover {
         background-color: white;
         color: orange;
     }
 }
 
-.pet-details-name{
+.pet-details-name {
     font-family: quicksand-medium;
     font-size: 40px;
     margin-top: 0;
     margin-bottom: 2px;
-
-   .details h1{
+    .details h1 {
         background-color: white;
     }
 }
 
-.pet-about{
+.pet-about {
     font-size: 25px;
     // color: orange;
     // text-decoration: underline;
@@ -110,112 +111,97 @@ color: orange;
     padding-left: 10px;
 }
 
-.pet-about-p{
-    padding:10px;
-
+.pet-about-p {
+    padding: 10px;
 }
 
-.pet-details-container{
-   flex-grow: 1;
-
-
-    .details h1{
+.pet-details-container {
+    flex-grow: 1;
+    .details h1 {
         background-color: white;
     }
-
-    hr{
+    hr {
         border: 1px solid beige;
-
     }
-
 }
 
-.petowner-details-container{
+.petowner-details-container {
     text-align: center;
 }
 
-.comment-input{
+.comment-input {
     margin-left: 40px;
 }
 
 .help-pet {
-    button, .share{
-    padding: 10px;
-    margin: 10px;
-    color: orange;
-    background-color: white;
-    text-align: center;
-    display: flex;
-    border-radius: 5px;
-    border: 1px solid orange;
-    text-decoration: none;
+    button,
+    .share {
+        padding: 10px;
+        margin: 10px;
+        color: orange;
+        background-color: white;
+        text-align: center;
+        display: flex;
+        border-radius: 5px;
+        border: 1px solid orange;
+        text-decoration: none;
     }
-
-    .sponsor{
+    .sponsor {
         font-family: quicksand;
         font-size: 1rem;
     }
-
-    
-
-    :hover{
+     :hover {
         // color: white;
         // background-color: orange;
         cursor: pointer;
     }
 }
 
-
-
-hr{
+hr {
     border: 1px solid beige;
 }
 
-.like-svg, .location-svg, .email-svg, .phone-svg, .share-svg{
+.like-svg,
+.location-svg,
+.email-svg,
+.phone-svg,
+.share-svg {
     height: 20px;
     width: 20px;
     margin-right: 3px;
-
 }
 
-.share-svg{
+.share-svg {
     filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);
-
     // &:hover{
     //     filter: invert(100%) sepia(61%) saturate(2%) hue-rotate(354deg) brightness(110%) contrast(101%);
     //     // background-color: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);    
     // }
 }
 
-.gender-svg, .age-svg, .breed-svg {
+.gender-svg,
+.age-svg,
+.breed-svg {
     height: 30px;
     width: 50px;
 }
 
-.save-pet{
+.save-pet {
     margin-top: 10px;
     background-color: orange;
     padding: 10px;
-
-    button{
+    button {
         border: none;
         background-color: orange;
-        
     }
 }
 
-.likes-adopt-container{
+.likes-adopt-container {
     background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
 }
 
-.favorite-pet{
-    width: 100%;
-    font-size: 1rem;
-    // color: white;
-}
-
-.pet-details-owner-name{
-    font-size:1.2rem;
+.pet-details-owner-name {
+    font-size: 1.2rem;
     text-decoration: none;
     background-color: orange;
     border: 1px solid orange;
@@ -225,10 +211,9 @@ hr{
     color: white;
     font-family: quicksand-bold;
     cursor: pointer;
-
-    &:hover{
+    &:hover {
         background-color: white;
         border: 1px solid orange;
-        color:orange;
+        color: orange;
     }
 }

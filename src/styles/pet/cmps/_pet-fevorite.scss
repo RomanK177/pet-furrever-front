@@ -1,0 +1,23 @@
+ $foriteIconWidth: 25px;
+ .favorite-pet {
+     //  width: 100%;
+     //  font-size: 1rem;
+     margin-top: 5px;
+     padding: 10px 0px;
+     font-size: 1.3rem;
+     color: orange;
+     border: 1px solid orange;
+     border-radius: 4px;
+     background-color: white;
+     font-family: quicksand-bold;
+ }
+ 
+ .fevorite {
+     width: $foriteIconWidth;
+     filter: invert(99%) sepia(1%) saturate(0%) hue-rotate(191deg) brightness(89%) contrast(73%);
+ }
+ 
+ .isFevorite {
+     filter: invert(25%) sepia(71%) saturate(6719%) hue-rotate(353deg) brightness(113%) contrast(98%);
+     width: $foriteIconWidth;
+ }

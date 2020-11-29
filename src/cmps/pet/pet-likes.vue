@@ -12,21 +12,21 @@
       <div @click.stop="toggleTreat">
         <img
           :class="{ treatClicked: treat }"
-          v-if="pet.type === 'dog'"
+          v-if="pet.type === 'Dog'"
           class="svg-symbol treat"
           src="../../assets/svgs/dog-bone.svg"
           alt=""
         />
         <img
           :class="{ treatClicked: treat }"
-          v-if="pet.type === 'cat'"
+          v-if="pet.type === 'Cat'"
           class="svg-symbol treat"
           src="../../assets/svgs/fish.svg"
           alt=""
         />
         <img
           :class="{ treatClicked: treat }"
-          v-if="pet.type === 'pig' || pet.type === 'horse'"
+          v-if="pet.type === 'Pig' || pet.type === 'Horse'"
           class="svg-symbol treat"
           src="../../assets/svgs/carrot.svg"
           alt=""
@@ -87,7 +87,8 @@ export default {
   computed: {},
   created() {
     this.storedLikes = utilService.loadFromStorage("likes_db");
-    if (this.storedLikes === undefined) this.storedLikes = [];
+    if (this.storedLikes === undefined || this.storedLikes === null)
+      this.storedLikes = [];
     if (this.storedLikes.find((id) => id === this.pet._id)) this.treat = true;
     else this.treat = false;
   },
