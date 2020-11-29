@@ -20,17 +20,13 @@
    padding: 10px;
     font-size: 1.6rem;
     color: orange;
+    border: 1px solid orange;
     background-color: white;
     font-family: quicksand-bold;
     text-align: center;
     display: flex;
     margin: 0 auto;
 
-    &:hover{
-        background-color: white;
-        color: orange;
-        border: 1px solid orange;
-    }
 
     .el-message-box__close:hover{
         color: orange;
@@ -45,9 +41,9 @@
 }
 
 .el-button--text:focus, .el-button--text:hover {
-    color: orange;
-    background-color: white;
-    border: 1px solid orange;
+    background-color: orange;
+    color: white;
+    border: 1px solid white;
 }
 
 .el-button--primary:hover{
@@ -76,8 +72,6 @@ color: orange;
 }
 
 .treat-btn{
-    // background-color: #39b89e;
-    // border:1px solid #39b89e ;
     background-color: orange;
     border:1px solid orange ;
     color: white;
@@ -85,11 +79,9 @@ color: orange;
     padding-bottom: 10px;
     font-family: quicksand;
     font-size: 1.2rem;
-    // font-size: large;
 
     &:hover{
         background-color: white;
-        // color: #39b89e;
         color: orange;
     }
 }
@@ -115,6 +107,7 @@ color: orange;
 .pet-details-container{
    flex-grow: 1;
 
+
     .details h1{
         background-color: white;
     }
@@ -135,7 +128,7 @@ color: orange;
 }
 
 .help-pet {
-    button{
+    button, .share{
     padding: 10px;
     margin: 10px;
     color: orange;
@@ -144,22 +137,48 @@ color: orange;
     display: flex;
     border-radius: 5px;
     border: 1px solid orange;
+    text-decoration: none;
     }
 
+    .sponsor{
+        font-family: quicksand;
+        font-size: 1rem;
+    }
+
+    
+
     :hover{
-        color: white;
-        background-color: orange;
+        // color: white;
+        // background-color: orange;
         cursor: pointer;
     }
 }
+
+
 
 hr{
     border: 1px solid beige;
 }
 
-.like-svg{
+.like-svg, .location-svg, .email-svg, .phone-svg, .share-svg{
     height: 20px;
     width: 20px;
+    margin-right: 3px;
+
+}
+
+.share-svg{
+    filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);
+
+    // &:hover{
+    //     filter: invert(100%) sepia(61%) saturate(2%) hue-rotate(354deg) brightness(110%) contrast(101%);
+    //     // background-color: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);    
+    // }
+}
+
+.gender-svg, .age-svg, .breed-svg {
+    height: 30px;
+    width: 50px;
 }
 
 .save-pet{
@@ -182,4 +201,23 @@ hr{
     width: 100%;
     font-size: 1rem;
     // color: white;
+}
+
+.pet-details-owner-name{
+    font-size:1.2rem;
+    text-decoration: none;
+    background-color: orange;
+    border: 1px solid orange;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    color: white;
+    font-family: quicksand-bold;
+    cursor: pointer;
+
+    &:hover{
+        background-color: white;
+        border: 1px solid orange;
+        color:orange;
+    }
 }
