@@ -14,12 +14,12 @@
     height: 100%;
 }
 
-.bio-adoption-container {
-    flex-wrap: wrap;
+.bio-adoption-container{
+    // flex-wrap: wrap;
     max-width: 1000px;
     margin: 0 auto;
     background-color: #f8f8f8;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 20px;
 }
 
