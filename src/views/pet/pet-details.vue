@@ -11,10 +11,11 @@
                 >Adopt Me!</el-button
               >
               <div v-if="!isActive">Adoption Request Sent!</div>
-              <button @click="allAdoptions">do it</button>
+              <!-- <button @click="allAdoptions">do it</button> -->
               <div class="save-pet flex space-between">
-                <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
-                <button class="favorite-pet">Favorite {{ pet.name }}</button>
+                <button class="favorite-pet flex space-between">
+                  <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
+                  Favorite {{ pet.name }}</button>
               </div>
             </div>
             <hr />
