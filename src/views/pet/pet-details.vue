@@ -3,7 +3,7 @@
     <div class="details-container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex">
-        <details-about :pet="pet"></details-about>
+        <details-about :pet="pet" @updateLikes="updatePet"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column justify-center align-center">
@@ -115,6 +115,12 @@ export default {
         console.log("request sent");
         // this.allAdoptions();
       }
+    },
+    updatePet(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
     },
     async sendRequest() {
       const req = {
