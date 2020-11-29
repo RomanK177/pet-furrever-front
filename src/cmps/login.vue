@@ -1,18 +1,19 @@
 <template>
   <section class="login modal">
     <div class="login modal-content">
-      <button @click="closeModal">X</button>
-      <h1>Login</h1>
+      <button class="modal-close-btn" @click="closeModal">X</button>
+      <h1 class="login-txt">Welcome</h1>
       <div v-if="loginFailed">Login Failed</div>
-      <form @submit="login">
+      <form @submit="login" class="flex column align-center">
         <label
           >User name: <input type="text" v-model="userCred.userName" /></label>
         <br />
         <label
           >Password: <input type="password" v-model="userCred.password" /></label>
         <br />
-        <button>Login</button>
+        <button class="login-btn">Login</button>
       </form>
+      <img src="../assets/imgs/dog-login.png" alt="">
     </div>
   </section>
 </template>

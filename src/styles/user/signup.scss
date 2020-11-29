@@ -1,0 +1,14 @@
+.signup {
+    text-align: center;
+
+    & button {
+        color: orange;
+        text-decoration: none;
+        border: 1px solid orange;
+        padding: 5px;
+        margin-left: 2px;
+        margin-right: 2px;
+        border-radius: 5px;
+        background-color: white;
+    }
+}

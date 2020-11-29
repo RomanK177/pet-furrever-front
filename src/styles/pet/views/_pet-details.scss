@@ -91,9 +91,16 @@
     padding-bottom: 10px;
     font-family: quicksand;
     font-size: 1.2rem;
+    outline: none;
+   
     &:hover {
         background-color: white;
         color: orange;
+    }
+
+    :focus{
+        border: 1px solid orange;
+
     }
 }
 
