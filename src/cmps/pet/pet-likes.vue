@@ -2,13 +2,13 @@
 <template>
   <section class="pet-likes">
     <div class="flex space-between align-center">
-      <!-- <button
+      <button
         v-if="$route.params.id"
         @click.stop="toggleTreat"
         class="btn treat-btn"
       >
         Send Me A Treat!
-      </button> -->
+      </button>
       <div @click.stop="toggleTreat">
         <img
           :class="{ treatClicked: treat }"
@@ -67,8 +67,6 @@ export default {
     //   this.treat = !this.treat;
     // },
     toggleTreat() {
-      // const tempPet = this.pet;
-      console.log("pet in pet likes", this.pet);
       this.pet.numOfTreats++;
       this.$emit("updateLikes", this.pet);
       this.treat = true;

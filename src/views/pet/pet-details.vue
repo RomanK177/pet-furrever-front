@@ -3,13 +3,11 @@
     <div class="details-container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex wrap">
-        <details-about :pet="pet"></details-about>
+        <details-about @updateLikes="updateLikes" :pet="pet"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column">
-              <el-button type="text" @click="adopt"
-                >Adopt Me!</el-button
-              >
+              <el-button type="text" @click="adopt">Adopt Me!</el-button>
               <div>Adoption Request Sent!</div>
               <button @click="allAdoptions">do it</button>
               <div class="save-pet flex space-between">
@@ -73,7 +71,7 @@ export default {
         this.open();
       } else {
         this.sendRequest();
-        console.log('request sent')
+        console.log("request sent");
       }
     },
     sendRequest() {
@@ -107,28 +105,32 @@ export default {
         }
       );
     },
-      allAdoptions() {
+    allAdoptions() {
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
       // this.adoptions = loadedAdoptions
       const blah = loadedAdoptions.filter((adoption) => {
-        adoption.user._id === this.loggedInUser._id 
+        adoption.user._id === this.loggedInUser._id;
       });
-          console.log('blah is', blah)
-    
+      console.log("blah is", blah);
+
       if (blah) {
         // this.isActive = true;
-        console.log('blah is true', blah)
+        console.log("blah is true", blah);
         return true;
       } else {
-        console.log('blah is false', blah)
+        console.log("blah is false", blah);
         return false;
       }
       // console.log('computeddd', this.adoptions)
     },
+    updateLikes(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
+    },
   },
-  computed: {
-  
-  },
+  computed: {},
 
   async created() {
     const { id } = this.$route.params;
