@@ -56,6 +56,9 @@ export default {
       if (localFevorites.find((petId) => petId === this.pet._id))
         this.isFevorite = true;
       this.localFevorites = localFevorites;
+    } else {
+      if (!this.loggedInUser.favorites) this.loggedInUser.favorites = [];
+      this.$emit("updateFavorites", this.loggedInUser);
     }
   },
 };
