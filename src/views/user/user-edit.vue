@@ -1,7 +1,7 @@
 <template>
-  <section class="user-details">
+  <section class="user-details container">
     <adopter-edit v-if="userToEdit && userToEdit.userType === 'adopter'" :userToEdit="userToEdit" />
-    <owner-edit v-if="userToEdit && userToEdit.userType === 'owner'" :userToEdit="userToEdit" />
+    <owner-edit v-if="userToEdit && userToEdit.userType === 'owner'" :ownerToEdit="userToEdit" />
   </section>
 </template>
 

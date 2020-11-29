@@ -23,26 +23,28 @@
         height="200"
       />
       <br />
-      <label>Name: <input type="text" v-model="userToEdit.name" /></label>
+      <label>Name: <input type="text" v-model="ownerToEdit.name" /></label>
       <br />
-      <label>Email: <input type="email" v-model="userToEdit.email" /></label>
+      <label>Email: <input type="email" v-model="ownerToEdit.email" /></label>
       <br />
-      <label>Telephone: <input type="tel" v-model="userToEdit.tel" /></label>
+      <label>Telephone: <input type="tel" v-model="ownerToEdit.tel" /></label>
       <br />
       <label
         >Activity years:
-        <input type="number" v-model="userToEdit.ownerData.activityYears"
+        <input type="number" v-model="ownerToEdit.ownerData.activityYears"
       /></label>
       <br />
-      <label>Title: <input type="text" v-model="userToEdit.ownerData.title" /></label>
+      <label
+        >Title: <input type="text" v-model="ownerToEdit.ownerData.title"
+      /></label>
       <br />
       <label
-        >Description: <input type="text" v-model="userToEdit.ownerData.desc"
+        >Description: <input type="text" v-model="ownerToEdit.ownerData.desc"
       /></label>
       <br />
       <label>Choose your browser from the list:</label>
       <br />
-      <input list="tags" v-model="userToEdit.ownerData.tags" />
+      <input list="tags" v-model="ownerToEdit.ownerData.tags" />
       <datalist id="tags">
         <option value="Variety of pets" />
         <option value="Care for all animals" />
@@ -52,13 +54,14 @@
       </datalist>
       <br />
       <template v-if="!isLoadingImgs">
-        <label>Images:
-        <input
-          type="file"
-          name="img-uploader2"
-          id="imgUploader2"
-          @change="onUploadImgs"
-        />
+        <label
+          >Images:
+          <input
+            type="file"
+            name="img-uploader2"
+            id="imgUploader2"
+            @change="onUploadImgs"
+          />
         </label>
         <br />
         <div class="details-images">
@@ -71,7 +74,7 @@
               item4: index === 4,
             }"
             id="imgUploader2"
-            v-for="(imgUrl, index) in userToEdit.ownerData.imgUrls"
+            v-for="(imgUrl, index) in ownerToEdit.ownerData.imgUrls"
             :key="index"
             :src="imgUrl"
           />
@@ -94,7 +97,7 @@ import { uploadImg } from "./../../services/img-upload-service.js";
 
 export default {
   props: {
-    userToEdit: Object,
+    ownerToEdit: Object,
   },
   data() {
     return {
@@ -103,7 +106,18 @@ export default {
     };
   },
   created() {
-console.log(this.userToEdit)
+    let urlStart = this.ownerToEdit.imgUrlProfile.slice(0, 4);
+    if (urlStart === "http") this.imgUrl = this.this.ownerToEdit.imgUrlProfile;
+    else {
+      this.ownerToEdit.imgUrlProfile = require(`../../assets/imgs/person/${this.this.ownerToEdit.imgUrlProfile}`);
+    }
+
+    let newUrls = this.ownerToEdit.ownerData.imgUrls.map((imgUrl) => {
+      let urlStart = imgUrl.slice(0, 4);
+      if (urlStart === "http") return imgUrl;
+      else return require(`../../assets/imgs/owners/${imgUrl}`);
+    });
+    this.ownerToEdit.ownerData.imgUrls = newUrls;
   },
   methods: {
     // async getOwner(ownerId) {
@@ -116,29 +130,29 @@ console.log(this.userToEdit)
     async onUploadImgProfile(ev) {
       this.isLoading = true;
       const res = await uploadImg(ev);
-      this.userToEdit.imgUrlProfile = res.url;
+      this.ownerToEdit.imgUrlProfile = res.url;
       this.isLoading = false;
     },
     async onUploadImgs(ev) {
       this.isLoading = true;
       const res = await uploadImg(ev);
-      this.userToEdit.ownerData.imgUrls.push(res.url);
+      this.ownerToEdit.ownerData.imgUrls.push(res.url);
       this.isLoading = false;
     },
     saveEdit() {
       this.$store.dispatch({
         type: "updateUser",
-        savedUser: this.userToEdit,
+        savedUser: this.ownerToEdit,
       });
-      this.$router.push(`/user/${this.userToEdit._id}`);
+      this.$router.push(`/user/${this.ownerToEdit._id}`);
     },
   },
   computed: {
     imgUrlProfile() {
-      if (!this.userToEdit.imgUrlProfile) {
+      if (!this.ownerToEdit.imgUrlProfile) {
         return require("../../assets/imgs/profile-logo.png");
       } else {
-        return this.userToEdit.imgUrlProfile;
+        return this.ownerToEdit.imgUrlProfile;
       }
     },
   },

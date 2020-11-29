@@ -1,29 +1,29 @@
 <template>
   <section class="owner-details">
-    <section class="owner-action flex reverse" v-if="checkIfOwner">
-      <router-link :to="'/user/edit/' + user._id">Edit profile</router-link> ||
+    <div class="owner-action" v-if="checkIfOwner">
+      <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> ||
       <router-link to="/pet/edit">Add pet</router-link>
       <adoption-request />
-    </section>
-    <h1 v-if="checkIfOwner">Welcome {{ user.fullName }}</h1>
-    <h1 v-else>{{ user.fullName }}</h1>
+    </div>
+    <h1 v-if="checkIfOwner">Welcome {{ owner.fullName }}</h1>
+    <h1 v-else>{{ owner.fullName }}</h1>
     <br />
     <img class="user-profile-picture" :src="imgUrlProfile" />
     <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
-    <p><span class="bold">Name:</span> {{ user.fullName }}</p>
-    <p><span class="bold">Email:</span> {{ user.email }}</p>
-    <p><span class="bold">Telephone:</span> {{ user.tel }}</p>
+    <p><span class="bold">Name:</span> {{ owner.fullName }}</p>
+    <p><span class="bold">Email:</span> {{ owner.email }}</p>
+    <p><span class="bold">Telephone:</span> {{ owner.tel }}</p>
     <p>
       <span class="bold">Activity years:</span>
-      {{ user.ownerData.activityYears }}
+      {{ owner.ownerData.activityYears }}
     </p>
-    <p><span class="bold">Title:</span> {{ user.ownerData.title }}</p>
-    <p><span class="bold">Description:</span> {{ user.ownerData.desc }}</p>
+    <p><span class="bold">Title:</span> {{ owner.ownerData.title }}</p>
+    <p><span class="bold">Description:</span> {{ owner.ownerData.desc }}</p>
     <!-- Add tags from elemnts -->
     <div class="details-images">
       <img
         id="imgUploader2"
-        v-for="(imgUrl, idx) in user.ownerData.imgUrls"
+        v-for="(imgUrl, idx) in owner.ownerData.imgUrls"
         :key="idx"
         :src="imgUrl"
         :class="{
@@ -35,7 +35,7 @@
         }"
       />
     </div>
-    <owner-review :user="user" />
+    <owner-review :owner="owner" />
   </section>
 </template>
 
@@ -48,35 +48,48 @@ import adoptionRequest from "./adoption-request.vue";
 
 export default {
   props: {
-    user: Object,
+    owner: Object,
   },
   data() {
-    return {
-    };
+    return {};
   },
   methods: {},
   computed: {
     imgUrlProfile() {
-      if (!this.user.imgUrlProfile) {
+      if (!this.owner.imgUrlProfile) {
         return require("../../assets/imgs/profile-logo.png");
       } else {
-        return this.user.imgUrlProfile;
+        return this.owner.imgUrlProfile;
       }
     },
     checkIfOwner() {
       var loggedInUser = this.$store.getters.getLoggedInUser;
       if (!loggedInUser) return false;
-      else if (loggedInUser._id === this.user._id) return true;
+      else if (loggedInUser._id === this.owner._id) return true;
       else return false;
     },
     getAdoptionRequests() {
       this.requests = this.$store.getters.getAdoptionRequests;
     },
   },
-  async created() {
+  created() {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
     });
+
+    let urlStart = this.owner.imgUrlProfile.slice(0, 4);
+    if (urlStart === "http") {
+      this.owner.imgUrlProfile = this.this.owner.imgUrlProfile;
+    } else {
+      this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
+    }
+
+    let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
+      let urlStart = imgUrl.slice(0, 4);
+      if (urlStart === "http") return imgUrl;
+      else return require(`../../assets/imgs/owners/${imgUrl}`);
+    });
+    this.owner.ownerData.imgUrls = newUrls;
   },
   components: {
     ownerReview,
