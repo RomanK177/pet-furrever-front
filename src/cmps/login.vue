@@ -1,8 +1,8 @@
 <template>
   <section class="login modal">
     <div class="login modal-content">
-      <button @click="closeModal">X</button>
-      <h1>Login</h1>
+      <button class="modal-close-btn" @click="closeModal">X</button>
+      <h1 class="login-txt">Login</h1>
       <div v-if="loginFailed">Login Failed</div>
       <form @submit="login" class="flex column align-center">
         <label
