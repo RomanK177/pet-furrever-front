@@ -5,10 +5,10 @@
       <img
         class="fevorite"
         :class="{ isFevorite: isFevorite }"
-        src="../../assets/svgs/heart2.svg"
+        src="../../assets/svgs/like.svg"
         alt=""
       />
-      <span>Fevorite</span>
+      <span>Favorite</span>
     </div>
   </section>
 </template>
