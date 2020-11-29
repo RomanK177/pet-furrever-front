@@ -28,15 +28,15 @@ export default {
           label: "All",
         },
         {
-          value: "cat",
+          value: "Cat",
           label: "Cats",
         },
         {
-          value: "dog",
+          value: "Dog",
           label: "Dogs",
         },
         {
-          value: "pig",
+          value: "Pig",
           label: "Pigs",
         },
         {

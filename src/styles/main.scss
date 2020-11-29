@@ -3,19 +3,16 @@
 @import "basic/helpers";
 @import "basic/layout";
 @import "basic/buttons";
-
 // SETUP //
 @import "setup/typography";
 @import "setup/variables";
 @import "setup/mixins";
 @import "setup/functions";
-
 // CMPS //
 @import "cmps/header";
 @import "cmps/footer";
 @import "cmps/carousel";
 @import "cmps/login";
-
 // PET //
 // Pet - view //
 @import "pet/views/pet-app";
@@ -23,6 +20,7 @@
 @import "pet/views/pet-edit";
 // Pet - cmps //
 @import "pet/cmps/pet-filter";
+@import "pet/cmps/pet-fevorite";
 @import "pet/cmps/pet-list";
 @import "pet/cmps/pet-preview";
 
@@ -36,7 +34,6 @@
 
 // REVIEW //
 @import "review/review";
-
 // PAGES //
 @import "pages/homepage";
 @import "pages/details"

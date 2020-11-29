@@ -20,19 +20,19 @@ export default {
           label: "All",
         },
         {
-          value: "small",
+          value: "Small",
           label: "Small",
         },
         {
-          value: "medium",
+          value: "Medium",
           label: "Medium",
         },
         {
-          value: "large",
+          value: "Large",
           label: "Large",
         },
         {
-          value: "giant",
+          value: "Giant",
           label: "Giant",
         },
       ],

@@ -17,21 +17,21 @@ export const petStore = {
         petsForPreview(state) {
             return state.pets
         },
-        commentsForDisplay(state){
+        commentsForDisplay(state) {
             console.log('getter comments', state.comments)
             return state.comments
-            
+
         }
-        
+
     },
     mutations: {
         setPets(state, { pets }) {
             state.pets = pets
         },
-        setComments(state, {comments}){
+        setComments(state, { comments }) {
             state.comments = comments
         },
-        addComments(state, {comment}){
+        addComments(state, { comment }) {
             state.comments.push(comment)
         },
         savePet(state, { pet }) {
@@ -59,12 +59,12 @@ export const petStore = {
             commit({ type: 'setPets', pets })
 
         },
-        async loadComments({commit}){
+        async loadComments({ commit }) {
             const pets = await petService.query()
             console.log('pets from loadcomments', pets)
             const comments = pets.comments
             console.log('loadComments', comments)
-            commit({ type: 'setComments', comments})
+            commit({ type: 'setComments', comments })
 
         },
         async savePet({ commit }, { pet }) {
@@ -93,12 +93,12 @@ export const petStore = {
         getEmpty() {
             return petService.getEmptyPet()
         },
-        async addComment({ commit }, { petId, comment}) {
+        async addComment({ commit }, { petId, comment }) {
             const addedComment = await petService.addComment(petId, comment);
             // commit({ type: 'setComments', comment: addedComment })
             return addedComment
         }
-       
+
     },
 
 }

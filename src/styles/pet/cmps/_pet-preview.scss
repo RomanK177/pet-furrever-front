@@ -72,6 +72,10 @@ $sexSymbolSize:20px;
     filter: invert(100%) sepia(2%) saturate(1048%) hue-rotate(111deg) brightness(77%) contrast(98%);
 }
 
+.treat {
+    margin-right: 10px;
+}
+
 .treat:hover {
     cursor: pointer;
 }

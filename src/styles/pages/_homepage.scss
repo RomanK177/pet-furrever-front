@@ -133,15 +133,17 @@
 
 .our-pets-btn {
     background-color: orange;
+    border: 1px solid orange;
     color: white;
     text-decoration: none;
     padding: 10px;
     border-radius: 5px;
-    // text-align: center;
     display: flex;
     justify-content: center;
     font-family: quicksand-medium;
     font-size: large;
+    max-width: 200px;
+    margin: auto;
     &:hover {
         background-color: white;
         color: orange;
