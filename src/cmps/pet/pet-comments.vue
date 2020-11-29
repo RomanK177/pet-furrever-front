@@ -70,14 +70,14 @@ export default {
     };
   },
   methods: {
-    addComment() {
+    async addComment() {
       // this.$store.dispatch({
       //   type: "addComment",
       //   petId: this.$route.params.id,
       //   comment: JSON.parse(JSON.stringify(this.comment)),
       // });
       this.comments.push(this.comment)
-      this.$store.dispatch({
+      await this.$store.dispatch({
         type: "addComment",
         petId: this.$route.params.id,
         comment: JSON.parse(JSON.stringify(this.comment)),
