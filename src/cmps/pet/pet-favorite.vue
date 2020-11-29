@@ -33,6 +33,10 @@ export default {
           this.localFevorites.push(this.pet._id);
           this.isFevorite = true;
           utilService.storeToStorage("fevoritePets_db", this.localFevorites);
+        } else {
+          this.loggedInUser.favorites.push(this.pet._id);
+          this, (this.isFevorite = true);
+          this.$emit("updateFavorites", this.loggedInUser);
         }
       } else {
         if (this.loggedInUser === null) {
@@ -45,7 +49,7 @@ export default {
     },
   },
   computed: {},
-  created() {
+  async created() {
     if (this.loggedInUser === null) {
       let localFevorites = undefined;
       localFevorites = utilService.loadFromStorage("fevoritePets_db");
@@ -57,8 +61,21 @@ export default {
         this.isFevorite = true;
       this.localFevorites = localFevorites;
     } else {
-      if (!this.loggedInUser.favorites) this.loggedInUser.favorites = [];
-      this.$emit("updateFavorites", this.loggedInUser);
+      console.log(
+        "🚀 ~ file: pet-favorite.vue ~ line 65 ~ created ~ this.loggedInUser.favorites",
+        this.loggedInUser.favorites
+      );
+      if (
+        !this.loggedInUser.favorites ||
+        this.loggedInUser.favorites.length === 0
+      ) {
+        this.loggedInUser.favorites = [];
+        await this.$emit("updateFavorites", this.loggedInUser);
+      } else if (
+        this.loggedInUser.favorites.find((petId) => petId === this.pet._id)
+      ) {
+        this.isFevorite = true;
+      }
     }
   },
 };
