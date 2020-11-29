@@ -62,6 +62,8 @@ export default {
   },
   created() {
     this.$store.dispatch({ type: "loadPets" });
+    // this.$store.dispatch({ type: "loadAdoptionRequests" });
+
     // this.$store.dispatch({ type: "loadUsers" });
   },
 };
