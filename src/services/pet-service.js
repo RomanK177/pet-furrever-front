@@ -27,6 +27,7 @@ function query(filter = null, sortBy = 'name') {
         const stockStr = (filter.stock) ? `&inStock=true` : '';
         filterStr = searchStr + sizeStr + stockStr + typeStr;
         sortStr = filter.sortBy
+        console.log("🚀 ~ file: pet-service.js ~ line 30 ~ query ~ sortStr", sortStr)
     }
     // let path = `${BASE_URL}/pets?_sort=${sortStr}${filterStr}`;
     // return axios.get(path)
