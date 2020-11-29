@@ -11,22 +11,24 @@
     <h4 class="pet-about">Meet {{ pet.name }}!</h4>
     <p>{{ pet.description }}</p>
     <div class="pet-bio-container flex wrap space-between">
-      <p class="pet-details-age">Age: {{ pet.age }}</p>
-      <img
-        class="svg-symbol male"
-        v-if="pet.gender === 'male'"
-        src="../../assets/svgs/male-symbol.svg"
+      <div class="pet-details-age flex column align-center">
+         <img class="age-svg"
+        src="../../assets/svgs/age.svg"
         alt=""
       />
-      <img
-        class="svg-symbol female"
-        v-if="pet.gender === 'female'"
-        src="../../assets/svgs/female-symbol.svg"
+      <p class="pet-details-p">Age: {{ pet.age }}</p>
+      </div>
+      <div class="pet-details-gender flex column align-center">
+         <img class="gender-svg"
+        src="../../assets/svgs/gender.svg"
         alt=""
       />
-      <p class="pet-details-gender">Gender: {{ pet.gender }}</p>
-      <img src="../../assets/imgs/search.png" alt="" class="breed-icon" />
-      <p class="pet-details-breed">Breed: {{ pet.breed }}</p>
+      <p class="pet-details-p">Gender: {{ pet.gender }}</p>
+      </div>
+      <div class="pet-details-breed flex column align-center">
+      <img src="../../assets/svgs/breed.svg" alt="" class="breed-svg" />
+      <p class="pet-details-p">Breed: {{ pet.breed }}</p>
+      </div>
     </div>
   </div>
 </template>
