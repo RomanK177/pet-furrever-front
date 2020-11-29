@@ -181,6 +181,7 @@ export default {
       // }
     },
     updateFaforites(user) {
+      console.log("User in update favs", user);
       this.$store.dispatch({
         type: "updateUser",
         user,
