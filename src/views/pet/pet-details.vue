@@ -111,6 +111,7 @@ export default {
     //   this.isActive = true
     // },
     allAdoptions() {
+      console.log('loggedin user id beggining', this.loggedInUser._id)
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
       console.log("loaded adoptions", loadedAdoptions);
       const filteredAdoptions = loadedAdoptions.filter((adoption) => adoption.pet._id === this.pet._id);
@@ -140,8 +141,15 @@ export default {
     console.log("created pet", pet);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     await this.$store.dispatch({ type: "loadAdoptionRequests" });
-    this.allAdoptions();
+    if (this.loggedInUser === null){
+      this.isActive = true
+      return
+    } else{
+        this.allAdoptions();
+      }
+  
   },
+
   components: {
     notLoggedIn,
     detailsImages,
