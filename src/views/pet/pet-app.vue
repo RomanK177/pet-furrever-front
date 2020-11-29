@@ -6,7 +6,7 @@
       :user="loggedUser"
       :pets="petsForPreview"
       @deletePet="deletePet"
-      @updateLikes="updateLikes"
+      @updateLikes="updatePet"
     ></pet-list>
   </section>
 </template>
@@ -42,7 +42,7 @@ export default {
         petId,
       });
     },
-    updateLikes(pet) {
+    updatePet(pet) {
       this.$store.dispatch({
         type: "savePet",
         pet,
