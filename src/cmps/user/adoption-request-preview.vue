@@ -50,14 +50,12 @@ export default {
       this.areButtonsShown = false;
     },
     updateRequest(action) {
-      this.request.status = action;
+      if (action == true) this.request.status = "approved";
+      else this.request.status = "declined";
       this.$emit("updateAdoption", this.request);
     },
   },
   computed: {
-    requests() {
-      return this.$store.getters.getAdoptionRequests;
-    },
     sentTime() {
       let d = new Date(this.request.cretatedAt);
       return d.toDateString();
