@@ -68,7 +68,7 @@ export default {
     updateAdoption(adoption) {
       this.$store.dispatch({
         type: "saveAdoption",
-        user: adoption,
+        adoption,
       });
     },
   },
@@ -86,12 +86,16 @@ export default {
       return loggedInUser && loggedInUser._id === this.owner._id;
     },
 
-    getAdoptionRequests() {
-      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
-        (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
-      );
-      this.requests = filteredReqs;
-    },
+    // getAdoptionRequests() {
+    //   let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
+    //     (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
+    //   );
+    //   console.log(
+    //     "🚀 ~ file: owner-details.vue ~ line 93 ~ getAdoptionRequests ~ filteredReqs",
+    //     filteredReqs
+    //   );
+    //   this.requests = filteredReqs;
+    // },
     getLoggedInUser() {
       const loggedInUser = this.$store.getLoggedInUser;
       this.loggedInUser = loggedInUser;

@@ -46,7 +46,14 @@ export default {
   },
   computed: {
     requests() {
-      return this.$store.getters.getAdoptionRequests;
+      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
+        (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
+      );
+      console.log(
+        "🚀 ~ file: owner-details.vue ~ line 93 ~ getAdoptionRequests ~ filteredReqs",
+        filteredReqs
+      );
+      return filteredReqs;
     },
   },
   created() {

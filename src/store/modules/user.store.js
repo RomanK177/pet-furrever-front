@@ -15,7 +15,7 @@ export const userStore = {
     },
     mutations: {
         setUser(state, { user }) {
-            console.log("🚀 ~ file: user.store.js ~ line 18 ~ setUser ~ user", user)
+            // console.log("🚀 ~ file: user.store.js ~ line 18 ~ setUser ~ user", user)
             state.loggedInUser = user;
         },
         saveUser(state, { user }) {
@@ -25,7 +25,7 @@ export const userStore = {
             const idx = state.users.findIndex(currUser => currUser._id === user._id)
             state.users.splice(idx, 1, user)
         },
-        
+
     },
     actions: {
         setUser({ commit }, { user }) {
