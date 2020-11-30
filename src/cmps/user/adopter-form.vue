@@ -24,7 +24,7 @@
       <!-- Img Profile here  -->
       <el-form-item label="Date of birth" prop="dateOfBirth" required>
         <el-date-picker
-          v-model="user.adopterData.dateOfBirth"
+          v-model="user.dateOfBirth"
           type="date"
           placeholder="Select date and time"
         >

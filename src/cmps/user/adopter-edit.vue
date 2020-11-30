@@ -27,7 +27,7 @@
       <p>Telephone: <input type="text" v-model="userToEdit.tel" /></p>
       <p>
         Date of birth:
-        <input type="date" v-model="userToEdit.adopterData.dateOfBirth" />
+        <input type="date" v-model="userToEdit.dateOfBirth" />
       </p>
       <p v-if="userToEdit.adopterData.ownPet">Own a pet</p>
       <p v-if="userToEdit.adopterData.ownedPet">Owned a pet</p>

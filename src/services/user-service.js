@@ -25,6 +25,7 @@ function _getCommonUserFields() {
         email: '',
         tel: '0',
         imgUrlProfile: '',
+        dateOfBirth: '',
     }
 }
 
@@ -33,7 +34,6 @@ function _getEmptyAdopter() {
         ..._getCommonUserFields(),
         userType: 'adopter',
         adopterData: {
-            dateOfBirth: '',
             ownPet: false,
             ownedPet: false,
             familyStatus: '',
