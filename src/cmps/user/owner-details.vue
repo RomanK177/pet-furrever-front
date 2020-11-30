@@ -3,7 +3,6 @@
     <div class="owner-action" v-if="checkIfOwner">
       <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> ||
       <router-link to="/pet/edit">Add pet</router-link>
-      <adoption-request />
     </div>
     <h1 v-if="checkIfOwner">Welcome {{ owner.fullName }}</h1>
     <h1 v-else>{{ owner.fullName }}</h1>
@@ -35,6 +34,7 @@
         }"
       />
     </div>
+    <adoption-request v-if="checkIfOwner" />
     <owner-review :owner="owner" />
   </section>
 </template>
@@ -69,7 +69,10 @@ export default {
       else return false;
     },
     getAdoptionRequests() {
-      this.requests = this.$store.getters.getAdoptionRequests;
+      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
+        (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
+      );
+      this.requests = filteredReqs;
     },
   },
   created() {

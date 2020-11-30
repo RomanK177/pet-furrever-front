@@ -1,34 +1,52 @@
 
 <template>
   <section class="adoption-request">
-    <h1>Adoption request:</h1>
-    <ul v-if="requests">
-      <li class="adoption-request-list"  v-for="(request, idx) in requests" :key="idx">
-        Request by: {{ request.user.name }} 
-        <br />
-        Pet: {{ request.pet.name }}
-        <br />
-        <button>Accept</button
-        ><button>Decline</button>
+    <span class="request-togle" @click="togleListShow"
+      >Adoption requests: ({{ requests.length }})</span
+    >
+    <ul class="adoption-request-list" v-if="requests && showList">
+      <li>
+        <div class="requests-header flex">
+          <span class="requsted-by">From</span>
+          <span class="requsted-pet">Pet to adopt</span>
+          <span class="requsted-at">Date</span>
+          <span class="requsted-status">Status</span>
+        </div>
+      </li>
+      <li class="flex" v-for="(request, idx) in requests" :key="idx">
+        <adoption-request-preview :request="request" />
       </li>
     </ul>
   </section>
 </template>
 
 <script>
+import adoptionRequestPreview from "./adoption-request-preview.vue";
 export default {
   data() {
     return {
+      showList: false,
     };
   },
-  methods: {},
+  methods: {
+    async getAdopter() {
+      let adopter = await this.$store.getters.getUserById(adopterId);
+      return adopter;
+    },
+    togleListShow() {
+      this.showList = !this.showList;
+    },
+  },
   computed: {
     requests() {
       return this.$store.getters.getAdoptionRequests;
     },
   },
   created() {
-// this.getAdoptionRequest
+    // this.getAdoptionRequest
+  },
+  components: {
+    adoptionRequestPreview,
   },
 };
 </script>
