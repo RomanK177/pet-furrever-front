@@ -5,22 +5,61 @@
     }
 }
 
-.owner-action{
+.owner-action {
     float: right;
 }
 
-.adoption-request{
-    &-list{
+.request-togle {
+    font-weight: bold;
+    font-size: large;
+    padding: 10px 0;
+}
+
+.request-togle:hover {
+    cursor: pointer;
+}
+
+.adoption-request {
+    &-list {
         border-bottom: 1px solid black;
-        width: 300px;
+        // width: 300px;
+    }
+    & a {
+        text-decoration: none;
+        color: #000;
     }
 }
+
+.requests-header {
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.requsted-id {
+    width: 120px;
+}
+
+.requsted-by {
+    width: 100px;
+}
+
+.requsted-pet {
+    width: 130px;
+}
+
+.requsted-at {
+    width: 150px;
+}
+
+.requsted-status {
+    width: 100px;
+}
+
 // .owner-imgs{
 //     width: 400px;
 //     height: 300px;
 //     border: 1px solid black;
 // }
-
 // .owner-details-images{
 //     display: grid;
 //     height: 60vh;

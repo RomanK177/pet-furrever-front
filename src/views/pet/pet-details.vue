@@ -11,12 +11,6 @@
                 >Adopt Me!</el-button
               >
               <div v-if="!isActive">Adoption Request Sent!</div>
-              <!-- <button @click="allAdoptions">do it</button> -->
-              <!-- <div class="save-pet flex space-between">
-                <button class="favorite-pet flex space-between">
-                  <img src="../../assets/svgs/like.svg" alt="" class="like-svg" />
-                  Favorite {{ pet.name }}</button>
-              </div> -->
               <pet-favorite
                 :pet="pet"
                 :loggedInUser="loggedInUser"
@@ -38,7 +32,6 @@
                 />
                 Share</a
               >
-              <!-- <button class="share">Share</button> -->
             </div>
           </div>
           <div class="petowner-details-container">
@@ -56,7 +49,6 @@
                 >{{ pet.owner.name }}</router-link
               >
             </div>
-            <!-- <p class="pet-details-owner-name">{{ pet.owner.name }}</p> -->
             <p class="location-details flex flex-start">
               <img
                 src="../../assets/svgs/location.svg"
@@ -77,12 +69,16 @@
               {{ pet.owner.tel }}
             </p>
             <hr />
-            <!-- </div> -->
           </div>
         </div>
       </div>
     </div>
-    <pet-comments :pet="pet"></pet-comments>
+    <!-- <pet-comments :pet="pet"></pet-comments> -->
+    <pet-comments
+      :comments="pet.comments"
+      :loggedInUser="loggedInUser"
+      @addComment="updateComments"
+    ></pet-comments>
   </section>
 </template>
 
@@ -107,13 +103,11 @@ export default {
 
   methods: {
     adopt() {
-      const loggedInUser = this.$store.getters.getLoggedInUser;
-      if (loggedInUser === null) {
+      // const loggedInUser = this.$store.getters.getLoggedInUser;
+      if (this.loggedInUser === null) {
         this.open();
       } else {
         this.sendRequest();
-        console.log("request sent");
-        // this.allAdoptions();
       }
     },
     updatePet(pet) {
@@ -154,51 +148,36 @@ export default {
         }
       );
     },
-    // active(){
-    //   this.allAdoptions
-    //   this.isActive = true
-    // },
     allAdoptions() {
-      console.log("loggedin user id beggining", this.loggedInUser._id);
+      console.log("loggedinuser", this.loggedInUser);
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
-      console.log("loaded adoptions", loadedAdoptions);
       const filteredAdoptions = loadedAdoptions.filter(
         (adoption) => adoption.pet._id === this.pet._id
       );
       const isSentRequest = filteredAdoptions.some(
         (adoption) => adoption.user._id === this.loggedInUser._id
       );
-      // console.log("adoption user", filteredAdoptions);
-      // console.log("pet id", this.pet._id);
-      // console.log("loggedInUser", this.loggedInUser._id);
-      // console.log("isSent", isSentRequest);
       this.isActive = !isSentRequest;
-
-      // if (isSentRequest) {
-      //  this.isActive = true;
-      // } else {
-      //   this.isActive = false
-      // }
     },
     updateFavorites(user) {
-      console.log(
-        "🚀 ~ file: pet-details.vue ~ line 184 ~ updateFavorites ~ user",
-        user
-      );
+      sessionStorage.user = JSON.stringify(user);
       this.$store.dispatch({
         type: "updateUser",
         savedUser: user,
       });
     },
+    updateComments(comment) {
+      this.pet.comments.unshift(comment);
+      this.$store.dispatch({
+        type: "savePet",
+        pet: this.pet,
+      });
+    },
   },
-  computed: {},
-
   async created() {
     const { id } = this.$route.params;
-    // console.log(id);
     const pet = await petService.getPetById(id);
     this.pet = pet;
-    // console.log("created pet", pet);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     await this.$store.dispatch({ type: "loadAdoptionRequests" });
     if (this.loggedInUser === null) {

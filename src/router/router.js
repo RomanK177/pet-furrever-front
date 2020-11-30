@@ -9,53 +9,53 @@ import userDetails from '../views/user/user-details.vue';
 import userEdit from '../views/user/user-edit.vue';
 
 
+
 Vue.use(VueRouter)
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: homePage
-  },
-  {
-    path: '/signup',
-    component: signup
-  },
-  {
-    path: '/pet',
-    component: petApp
-  },
-  {
-    path: '/pet/edit/:id?',
-    component: petEdit
-  },
-  {
-    path: '/pet/:id',
-    component: petDetails
-  },
-  {
-    path: '/user/edit/:id',
-    component: userEdit
-  },
-  {
-    path: '/user/:id',
-    component: userDetails
-  },
-  
-  
+const routes = [{
+        path: '/',
+        name: 'Home',
+        component: homePage
+    },
+    {
+        path: '/signup',
+        component: signup
+    },
+    {
+        path: '/pet',
+        component: petApp
+    },
+    {
+        path: '/pet/edit/:id?',
+        component: petEdit
+    },
+    {
+        path: '/pet/:id',
+        component: petDetails
+    },
+    {
+        path: '/user/edit/:id',
+        component: userEdit
+    },
+    {
+        path: '/user/:id',
+        component: userDetails
+    },
 
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
+
+
+    // {
+    //   path: '/about',
+    //   name: 'About',
+    //   // route level code-splitting
+    //   // this generates a separate chunk (about.[hash].js) for this route
+    //   // which is lazy-loaded when the route is visited.
+    //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    // }
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router
