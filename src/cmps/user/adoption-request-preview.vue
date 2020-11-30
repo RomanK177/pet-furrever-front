@@ -50,8 +50,9 @@ export default {
       this.areButtonsShown = false;
     },
     updateRequest(action) {
-      if (action == true) this.request.status = "approved";
-      else this.request.status = "declined";
+      if (action == true) {
+        this.request.status = "approved";
+      } else this.request.status = "declined";
       this.$emit("updateAdoption", this.request);
     },
   },
