@@ -107,19 +107,19 @@ export default {
       type: "loadAdoptionRequests",
     });
 
-    // let urlStart = this.owner.imgUrlProfile.slice(0, 4);
-    // if (urlStart === "http") {
-    //   this.owner.imgUrlProfile = this.this.owner.imgUrlProfile;
-    // } else {
-    //   this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
-    // }
+    let urlStart = this.owner.imgUrlProfile.slice(0, 4);
+    if (urlStart === "http") {
+      this.owner.imgUrlProfile = this.this.owner.imgUrlProfile;
+    } else {
+      this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
+    }
 
-    // let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
-    //   let urlStart = imgUrl.slice(0, 4);
-    //   if (urlStart === "http") return imgUrl;
-    //   else return require(`../../assets/imgs/owners/${imgUrl}`);
-    // });
-    // this.owner.ownerData.imgUrls = newUrls;
+    let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
+      let urlStart = imgUrl.slice(0, 4);
+      if (urlStart === "http") return imgUrl;
+      else return require(`../../assets/imgs/owners/${imgUrl}`);
+    });
+    this.owner.ownerData.imgUrls = newUrls;
   },
   components: {
     ownerReview,

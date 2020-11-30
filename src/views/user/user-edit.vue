@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { userService } from "../../services/user-service";
+import { userService } from "../../services/user-service.js";
 import adopterEdit from './../../cmps/user/adopter-edit.vue';
 import ownerEdit from './../../cmps/user/owner-edit.vue';
 
@@ -16,18 +16,21 @@ export default {
       userToEdit: null,
     };
   },
-  created() {
+  async created() {
     const userId = this.$route.params.id;
-    this.getUser(userId);
+    const user = userService.getById(userId);
+    // this.getUser(userId);
+          this.userToEdit = user;
+
   },
   methods: {
-    async getUser(userId) {
-      const user = await this.$store.dispatch({
-        type: "getUserById",
-        userId,
-      });
-      this.userToEdit = user;
-    },
+    // async getUser(userId) {
+    //   const user = await this.$store.dispatch({
+    //     type: "getUserById",
+    //     userId,
+    //   });
+    //   this.userToEdit = user;
+    // },
   },
   computed: {
   },
