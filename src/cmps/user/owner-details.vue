@@ -34,7 +34,12 @@
         }"
       />
     </div>
-    <adoption-request @updateAdoption="updateAdoption" v-if="checkIfOwner" />
+    <adoption-request
+      @updateAdoption="updateAdoption"
+      @updatePet="updatePet"
+      v-if="checkIfOwner"
+      :requests="requests"
+    />
     <!-- <owner-review :owner="owner" /> -->
     <!-- <owner-review :owner="owner" :loggedInUser="loggedInUser" @addReview="updateReviews"/> -->
     <owner-review-updated
@@ -71,6 +76,12 @@ export default {
         adoption,
       });
     },
+    updatePet(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
+    },
   },
   computed: {
     imgUrlProfile() {
@@ -85,7 +96,12 @@ export default {
       var loggedInUser = this.$store.getters.getLoggedInUser;
       return loggedInUser && loggedInUser._id === this.owner._id;
     },
-
+    requests() {
+      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
+        (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
+      );
+      return filteredReqs;
+    },
     // getAdoptionRequests() {
     //   let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
     //     (req) => req.owner._id === this.$store.getters.getLoggedInUser._id

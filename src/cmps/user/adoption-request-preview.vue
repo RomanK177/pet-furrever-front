@@ -1,4 +1,4 @@
-
+ 
 <template>
   <section
     @mouseover="showButtons"
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { petService } from "../../services/pet-service.js";
 export default {
   name: "adoptionrequestPreview",
   props: {
@@ -36,13 +37,14 @@ export default {
   data() {
     return {
       areButtonsShown: false,
+      pet: undefined,
     };
   },
   methods: {
-    async getAdopter() {
-      let adopter = await this.$store.getters.getUserById(adopterId);
-      return adopter;
-    },
+    // async getAdopter() {
+    //   let adopter = await this.$store.getters.getUserById(adopterId);
+    //   return adopter;
+    // },
     showButtons() {
       this.areButtonsShown = true;
     },
@@ -52,6 +54,8 @@ export default {
     updateRequest(action) {
       if (action == true) {
         this.request.status = "approved";
+        this.pet.adoptedAt = Date.now();
+        this.$emit("updatePet", this.pet);
       } else this.request.status = "declined";
       this.$emit("updateAdoption", this.request);
     },
@@ -67,9 +71,14 @@ export default {
         this.request.status.slice(1)
       );
     },
+    getPetById() {
+      let pet = this.$store.getters.getPetById(this.request.pet._id);
+      return pet;
+    },
   },
-  created() {
-    // this.getAdoptionRequest
+  async created() {
+    const pet = await petService.getPetById(this.request.pet._id);
+    this.pet = pet;
   },
 };
 </script>
