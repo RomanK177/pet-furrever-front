@@ -6,7 +6,7 @@
       <div v-if="loginFailed">Login Failed</div>
       <form @submit="login" class="flex column align-center">
         <label
-          >User name: <input type="text" v-model="userCred.userName" /></label>
+          >Username: <input type="text" v-model="userCred.userName" /></label>
         <br />
         <label
           >Password: <input type="password" v-model="userCred.password" /></label>

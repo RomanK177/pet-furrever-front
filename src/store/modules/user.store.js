@@ -16,7 +16,15 @@ export const userStore = {
     mutations: {
         setUser(state, { user }) {
             state.loggedInUser = user;
-        }
+        },
+        saveUser(state, { user }) {
+            state.users.unshift(user)
+        },
+        updateUser(state, { user }) {
+            const idx = state.users.findIndex(currUser => currUser._id === user._id)
+            state.users.splice(idx, 1, user)
+        },
+        
     },
     actions: {
         setUser({ commit }, { user }) {
@@ -60,6 +68,12 @@ export const userStore = {
         async addReview({ commit }, { ownerId, review }) {
             const savedReview = await userService.addReview(ownerId, review);
             return savedReview
-        }
+        },
+        async saveUser({ commit }, { user }) {
+            const action = (user._id) ? 'updateUser' : 'saveUser';
+            const savedUser = await userService.update(user)
+            commit({ type: action, pet: savedUser });
+            return savedUser;
+        },
     },
 }
