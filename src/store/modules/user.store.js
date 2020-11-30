@@ -54,6 +54,10 @@ export const userStore = {
         },
         async updateUser({ commit }, { savedUser }) {
             const user = await userService.update(savedUser);
+            commit({
+                type: 'setUser',
+                user: savedUser
+            })
             return user;
         },
         async addReview({ commit }, { ownerId, review }) {

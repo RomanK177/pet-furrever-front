@@ -50,10 +50,9 @@ export default {
   },
   computed: {},
   async created() {
-    if (this.loggedInUser === null) {
-      let localFevorites = undefined;
-      localFevorites = utilService.loadFromStorage("fevoritePets_db");
-      if (localFevorites === undefined) {
+    if (!this.loggedInUser) {
+      let localFevorites = utilService.loadFromStorage("fevoritePets_db");
+      if (!localFevorites) {
         localFevorites = [];
         utilService.storeToStorage("fevoritePets_db", localFevorites);
       }
@@ -61,16 +60,12 @@ export default {
         this.isFevorite = true;
       this.localFevorites = localFevorites;
     } else {
-      console.log(
-        "🚀 ~ file: pet-favorite.vue ~ line 65 ~ created ~ this.loggedInUser.favorites",
-        this.loggedInUser.favorites
-      );
       if (
         !this.loggedInUser.favorites ||
         this.loggedInUser.favorites.length === 0
       ) {
-        this.loggedInUser.favorites = [];
         await this.$emit("updateFavorites", this.loggedInUser);
+        this.loggedInUser.favorites = [];
       } else if (
         this.loggedInUser.favorites.find((petId) => petId === this.pet._id)
       ) {
