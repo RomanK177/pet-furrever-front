@@ -7,7 +7,7 @@
       <p><span class="bold">Full name:</span> {{ user.fullName }}</p>
       <p><span class="bold">Email:</span> {{ user.email }}</p>
       <p><span class="bold">Telephone:</span> {{ user.tel }}</p>
-      <p><span class="bold">Date of birth:</span> {{ user.dateOfBirth }}</p>
+      <p><span class="bold">Date of birth:</span> {{ user.adopterData.dateOfBirth }}</p>
       <p class="bold">
         <span v-if="user.ownPet">Own a pet at the moment</span
         ><span v-else>Doesnt own a pet at the moment</span>
