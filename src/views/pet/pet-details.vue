@@ -166,8 +166,13 @@ export default {
         savedUser: user,
       });
     },
+<<<<<<< HEAD
     updateComments(comment) {
       this.pet.comments.push(comment);
+=======
+    updateComments(comment){
+      this.pet.comments.unshift(comment)
+>>>>>>> 8a729f433848c29662e8a67968a32dc3aedeeb7b
       this.$store.dispatch({
         type: "savePet",
         pet: this.pet,

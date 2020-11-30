@@ -39,7 +39,7 @@
     <!-- <owner-review :owner="owner" :loggedInUser="loggedInUser" @addReview="updateReviews"/> -->
     <owner-review-updated
       :reviews="owner.ownerData.reviews"
-      :loggedInUser="loggedInUser"
+      :loggedInUser="getLoggedInUser"
       @addReview="updateReviews"
     />
   </section>
@@ -57,14 +57,9 @@ export default {
   props: {
     owner: Object,
   },
-  data() {
-    return {
-      loggedInUser: null,
-    };
-  },
   methods: {
     updateReviews(review) {
-      this.owner.ownerData.reviews.push(review);
+      this.owner.ownerData.reviews.unshift(review);
       this.$store.dispatch({
         type: "saveUser",
         user: this.owner,
@@ -88,9 +83,7 @@ export default {
     },
     checkIfOwner() {
       var loggedInUser = this.$store.getters.getLoggedInUser;
-      if (!loggedInUser) return false;
-      else if (loggedInUser._id === this.owner._id) return true;
-      else return false;
+      return loggedInUser && loggedInUser._id === this.owner._id;
     },
 
     getAdoptionRequests() {
@@ -103,7 +96,12 @@ export default {
       const loggedInUser = this.$store.getLoggedInUser;
       this.loggedInUser = loggedInUser;
     },
+    getLoggedInUser() {
+      const loggedInUser = this.$store.getters.getLoggedInUser;
+      return loggedInUser;
+    },
   },
+
   created() {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
@@ -122,7 +120,6 @@ export default {
     //   else return require(`../../assets/imgs/owners/${imgUrl}`);
     // });
     // this.owner.ownerData.imgUrls = newUrls;
-    // this.getLoggedInUser()
   },
   components: {
     ownerReview,
