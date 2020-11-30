@@ -7,6 +7,7 @@
     <ul class="adoption-request-list" v-if="requests && showList">
       <li>
         <div class="requests-header flex">
+          <span class="requsted-id">Request Num</span>
           <span class="requsted-by">From</span>
           <span class="requsted-pet">Pet to adopt</span>
           <span class="requsted-at">Date</span>
@@ -14,7 +15,10 @@
         </div>
       </li>
       <li class="flex" v-for="(request, idx) in requests" :key="idx">
-        <adoption-request-preview :request="request" />
+        <adoption-request-preview
+          @updateAdoption="emiUpdateAdoption"
+          :request="request"
+        />
       </li>
     </ul>
   </section>
@@ -35,6 +39,9 @@ export default {
     },
     togleListShow() {
       this.showList = !this.showList;
+    },
+    emiUpdateAdoption(adoption) {
+      this.$emit("updateAdoption", adoption);
     },
   },
   computed: {

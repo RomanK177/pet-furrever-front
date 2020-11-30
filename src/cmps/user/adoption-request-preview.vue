@@ -6,6 +6,7 @@
     class="adoption-request-preview"
   >
     <div class="prev-content flex">
+      <span class="requsted-id">{{ request._id }}</span>
       <span class="requsted-by">
         <router-link :to="`/user/${request.user._id}`">{{
           request.user.name
@@ -19,8 +20,8 @@
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
       <div v-if="areButtonsShown">
-        <button @click="approveRequest">Approve</button>
-        <button @click="declineRequest">Decline</button>
+        <button @click="updateRequest(true)">Approve</button>
+        <button @click="updateRequest(false)">Decline</button>
       </div>
     </div>
   </section>
@@ -48,11 +49,9 @@ export default {
     hideButtons() {
       this.areButtonsShown = false;
     },
-    approveRequest() {
-      this.$emit("updateAdoption", this.pet);
-    },
-    declineRequest() {
-      this.$emit("updateAdoption", this.pet);
+    updateRequest(action) {
+      this.request.status = action;
+      this.$emit("updateAdoption", this.request);
     },
   },
   computed: {

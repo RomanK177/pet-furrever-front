@@ -34,7 +34,7 @@
         }"
       />
     </div>
-    <adoption-request v-if="checkIfOwner" />
+    <adoption-request @updateAdoption="updateAdoption" v-if="checkIfOwner" />
     <!-- <owner-review :owner="owner" /> -->
     <!-- <owner-review :owner="owner" :loggedInUser="loggedInUser" @addReview="updateReviews"/> -->
     <owner-review-updated
@@ -68,6 +68,12 @@ export default {
       this.$store.dispatch({
         type: "saveUser",
         user: this.owner,
+      });
+    },
+    updateAdoption(adoption) {
+      this.$store.dispatch({
+        type: "saveAdoption",
+        user: adoption,
       });
     },
   },
