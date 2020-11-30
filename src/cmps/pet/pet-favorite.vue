@@ -33,6 +33,10 @@ export default {
           this.localFevorites.push(this.pet._id);
           this.isFevorite = true;
           utilService.storeToStorage("fevoritePets_db", this.localFevorites);
+        } else {
+          this.loggedInUser.favorites.push(this.pet._id);
+          this, (this.isFevorite = true);
+          this.$emit("updateFavorites", this.loggedInUser);
         }
       } else {
         if (this.loggedInUser === null) {
@@ -45,11 +49,10 @@ export default {
     },
   },
   computed: {},
-  created() {
-    if (this.loggedInUser === null) {
-      let localFevorites = undefined;
-      localFevorites = utilService.loadFromStorage("fevoritePets_db");
-      if (localFevorites === undefined) {
+  async created() {
+    if (!this.loggedInUser) {
+      let localFevorites = utilService.loadFromStorage("fevoritePets_db");
+      if (!localFevorites) {
         localFevorites = [];
         utilService.storeToStorage("fevoritePets_db", localFevorites);
       }
@@ -57,8 +60,17 @@ export default {
         this.isFevorite = true;
       this.localFevorites = localFevorites;
     } else {
-      if (!this.loggedInUser.favorites) this.loggedInUser.favorites = [];
-      this.$emit("updateFavorites", this.loggedInUser);
+      if (
+        !this.loggedInUser.favorites ||
+        this.loggedInUser.favorites.length === 0
+      ) {
+        await this.$emit("updateFavorites", this.loggedInUser);
+        this.loggedInUser.favorites = [];
+      } else if (
+        this.loggedInUser.favorites.find((petId) => petId === this.pet._id)
+      ) {
+        this.isFevorite = true;
+      }
     }
   },
 };

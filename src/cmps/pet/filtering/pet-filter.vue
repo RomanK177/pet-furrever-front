@@ -1,6 +1,6 @@
 <template>
   <section class="pet-filter">
-    <h1>I am Filter</h1>
+    <!-- <h1>I am Filter</h1> -->
     <div class="flex filters">
       <search-input v-model="filter.txt" @input="debFilter" />
       <pet-type-select @input="emitFilter" v-model="filter.type" />
