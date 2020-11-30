@@ -68,7 +68,7 @@ export default {
     updateAdoption(adoption) {
       this.$store.dispatch({
         type: "saveAdoption",
-        user: adoption,
+        adoption,
       });
     },
   },
@@ -86,12 +86,16 @@ export default {
       return loggedInUser && loggedInUser._id === this.owner._id;
     },
 
-    getAdoptionRequests() {
-      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
-        (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
-      );
-      this.requests = filteredReqs;
-    },
+    // getAdoptionRequests() {
+    //   let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
+    //     (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
+    //   );
+    //   console.log(
+    //     "🚀 ~ file: owner-details.vue ~ line 93 ~ getAdoptionRequests ~ filteredReqs",
+    //     filteredReqs
+    //   );
+    //   this.requests = filteredReqs;
+    // },
     getLoggedInUser() {
       const loggedInUser = this.$store.getLoggedInUser;
       this.loggedInUser = loggedInUser;
@@ -107,19 +111,19 @@ export default {
       type: "loadAdoptionRequests",
     });
 
-    // let urlStart = this.owner.imgUrlProfile.slice(0, 4);
-    // if (urlStart === "http") {
-    //   this.owner.imgUrlProfile = this.this.owner.imgUrlProfile;
-    // } else {
-    //   this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
-    // }
+    let urlStart = this.owner.imgUrlProfile.slice(0, 4);
+    if (urlStart === "http") {
+      this.owner.imgUrlProfile = this.this.owner.imgUrlProfile;
+    } else {
+      this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
+    }
 
-    // let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
-    //   let urlStart = imgUrl.slice(0, 4);
-    //   if (urlStart === "http") return imgUrl;
-    //   else return require(`../../assets/imgs/owners/${imgUrl}`);
-    // });
-    // this.owner.ownerData.imgUrls = newUrls;
+    let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
+      let urlStart = imgUrl.slice(0, 4);
+      if (urlStart === "http") return imgUrl;
+      else return require(`../../assets/imgs/owners/${imgUrl}`);
+    });
+    this.owner.ownerData.imgUrls = newUrls;
   },
   components: {
     ownerReview,

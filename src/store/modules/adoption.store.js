@@ -19,7 +19,14 @@ export const adoptionStore = {
         },
         addAdoptionRequest(state, { adoptionRequest }) {
             state.adoptionRequests.push(adoptionRequest)
-        }
+        },
+        saveAdoption(state, { adoption }) {
+            state.adoptionRequests.unshift(adoption)
+        },
+        updateAdoption(state, { adoption }) {
+            const idx = state.adoptionRequests.findIndex(currAdoption => currAdoption._id === adoption._id)
+            state.adoptionRequests.splice(idx, 1, adoption)
+        },
     },
     actions: {
         async loadAdoptionRequests({ commit }) {
