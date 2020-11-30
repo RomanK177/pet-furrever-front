@@ -2,7 +2,7 @@
   <section class="owner-review details">
     <h1 class="review-header">Reviews</h1>
     <hr />
-    <form v-if="checkIfOwner" @submit="addReview">
+       <form @submit="addReview">
       <label
         ><span class="bold">Rate: </span
         ><input type="number" v-model.number="reviewToAdd.rate"
@@ -48,7 +48,7 @@ export default {
             userId: '',
           fullName: '',
           imgUrl: '',
-        },
+        }
         
       },
     };
@@ -61,15 +61,7 @@ export default {
       this.$emit("addReview", JSON.parse(JSON.stringify(this.reviewToAdd)));
       this.reviewToAdd.txt = "";
     },
-  },
-   computed: {
-    checkIfOwner() {
-      var loggedInUser = this.loggedInUser;
-      if (this.loggedInUser) {
-        if (this.loggedInUser._id === this.owner._id) return false;
-      } else return true;
-    },
-  },
+  }
  
 };
 </script>

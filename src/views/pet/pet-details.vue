@@ -168,7 +168,7 @@ export default {
       });
     },
     updateComments(comment){
-      this.pet.comments.push(comment)
+      this.pet.comments.unshift(comment)
       this.$store.dispatch({
         type: "savePet",
         pet: this.pet,

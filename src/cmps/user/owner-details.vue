@@ -36,7 +36,7 @@
       />
     </div>
     <!-- <owner-review :owner="owner" :loggedInUser="loggedInUser" @addReview="updateReviews"/> -->
-        <owner-review-updated :reviews="owner.ownerData.reviews" :loggedInUser="loggedInUser" @addReview="updateReviews"/>
+        <owner-review-updated :reviews="owner.ownerData.reviews" :loggedInUser="getLoggedInUser" @addReview="updateReviews"/>
 
   </section>
 </template>
@@ -53,19 +53,15 @@ export default {
   props: {
     owner: Object,
   },
-  data() {
-    return {
-      loggedInUser: null
-    };
-  },
   methods: {
        updateReviews(review){
-      this.owner.ownerData.reviews.push(review)
+      this.owner.ownerData.reviews.unshift(review)
       this.$store.dispatch({
         type: "saveUser",
         user: this.owner,
       });
     },
+    
   },
   computed: {
     imgUrlProfile() {
@@ -77,26 +73,27 @@ export default {
       }
     },
     checkIfOwner() {
-      // var loggedInUser = this.$store.getters.getLoggedInUser;
-      if (!this.loggedInUser) return false;
-      else if (loggedInUser._id === this.owner._id) return true;
-      else return false;
+      var loggedInUser = this.$store.getters.getLoggedInUser;
+      return (loggedInUser && loggedInUser._id === this.owner._id) 
     },
    
     getAdoptionRequests() {
       this.requests = this.$store.getters.getAdoptionRequests;
     },
     getLoggedInUser(){
-      const loggedInUser = this.$store.getLoggedInUser
-      this.loggedInUser = loggedInUser
+      const loggedInUser = this.$store.getters.getLoggedInUser
+     return loggedInUser
     }
+    
   
     
   },
+  
   created() {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
     });
+   
 
     // let urlStart = this.owner.imgUrlProfile.slice(0, 4);
     // if (urlStart === "http") {
@@ -111,7 +108,6 @@ export default {
     //   else return require(`../../assets/imgs/owners/${imgUrl}`);
     // });
     // this.owner.ownerData.imgUrls = newUrls;
-    // this.getLoggedInUser()
   },
   components: {
     ownerReview,

@@ -2,15 +2,6 @@
   <div class="comments-container">
     <h1 class="pet-details-comments-title">Comments</h1>
     <hr />
-    <ul>
-      <li
-        v-for="(comment, index) in comments"
-        :key="index"
-        class="pet-details-comments"
-      >
-        {{ comment.by.fullName }}: {{ comment.txt }}
-      </li>
-    </ul>
     <form @submit.prevent="addComment">
       <input
         v-model="commentToAdd.txt"
@@ -20,7 +11,15 @@
       />
       <button>Enter</button>
     </form>
-
+    <ul>
+      <li
+        v-for="(comment, index) in comments"
+        :key="index"
+        class="pet-details-comments"
+      >
+        {{ comment.by.fullName }}: {{ comment.txt }}
+      </li>
+    </ul>
   </div>
 </template>
 
