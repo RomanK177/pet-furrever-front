@@ -34,14 +34,14 @@
         }"
       />
     </div>
-<<<<<<< HEAD
     <adoption-request v-if="checkIfOwner" />
-    <owner-review :owner="owner" />
-=======
+    <!-- <owner-review :owner="owner" /> -->
     <!-- <owner-review :owner="owner" :loggedInUser="loggedInUser" @addReview="updateReviews"/> -->
-        <owner-review-updated :reviews="owner.ownerData.reviews" :loggedInUser="loggedInUser" @addReview="updateReviews"/>
-
->>>>>>> 0c3a060fa8a3a893f0bedea3ad190257ae748f7b
+    <owner-review-updated
+      :reviews="owner.ownerData.reviews"
+      :loggedInUser="loggedInUser"
+      @addReview="updateReviews"
+    />
   </section>
 </template>
 
@@ -51,7 +51,7 @@ import { uploadImg } from "./../../services/img-upload-service.js";
 import { userService } from "../../services/user-service.js";
 import ownerReview from "./../../cmps/user/owner-review.vue";
 import adoptionRequest from "./adoption-request.vue";
-import ownerReviewUpdated from '../user/owner-reviewUpdated'
+import ownerReviewUpdated from "../user/owner-reviewUpdated";
 
 export default {
   props: {
@@ -59,12 +59,12 @@ export default {
   },
   data() {
     return {
-      loggedInUser: null
+      loggedInUser: null,
     };
   },
   methods: {
-       updateReviews(review){
-      this.owner.ownerData.reviews.push(review)
+    updateReviews(review) {
+      this.owner.ownerData.reviews.push(review);
       this.$store.dispatch({
         type: "saveUser",
         user: this.owner,
@@ -73,7 +73,7 @@ export default {
   },
   computed: {
     imgUrlProfile() {
-      console.log('owner', this.owner)
+      console.log("owner", this.owner);
       if (!this.owner.imgUrlProfile) {
         return require("../../assets/imgs/profile-logo.png");
       } else {
@@ -81,24 +81,22 @@ export default {
       }
     },
     checkIfOwner() {
-      // var loggedInUser = this.$store.getters.getLoggedInUser;
-      if (!this.loggedInUser) return false;
+      var loggedInUser = this.$store.getters.getLoggedInUser;
+      if (!loggedInUser) return false;
       else if (loggedInUser._id === this.owner._id) return true;
       else return false;
     },
-   
+
     getAdoptionRequests() {
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
         (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
       );
       this.requests = filteredReqs;
     },
-    getLoggedInUser(){
-      const loggedInUser = this.$store.getLoggedInUser
-      this.loggedInUser = loggedInUser
-    }
-  
-    
+    getLoggedInUser() {
+      const loggedInUser = this.$store.getLoggedInUser;
+      this.loggedInUser = loggedInUser;
+    },
   },
   created() {
     this.$store.dispatch({

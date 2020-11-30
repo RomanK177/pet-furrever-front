@@ -74,8 +74,11 @@
       </div>
     </div>
     <!-- <pet-comments :pet="pet"></pet-comments> -->
-    <pet-comments :comments="pet.comments" :loggedInUser="loggedInUser" @addComment="updateComments"></pet-comments>
-
+    <pet-comments
+      :comments="pet.comments"
+      :loggedInUser="loggedInUser"
+      @addComment="updateComments"
+    ></pet-comments>
   </section>
 </template>
 
@@ -146,14 +149,8 @@ export default {
       );
     },
     allAdoptions() {
-<<<<<<< HEAD
-      // console.log("loggedin user id beggining", this.loggedInUser._id);
+      console.log("loggedinuser", this.loggedInUser);
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
-      // console.log("loaded adoptions", loadedAdoptions);
-=======
-      console.log('loggedinuser', this.loggedInUser)
-      const loadedAdoptions = this.$store.getters.getAdoptionRequests;
->>>>>>> 0c3a060fa8a3a893f0bedea3ad190257ae748f7b
       const filteredAdoptions = loadedAdoptions.filter(
         (adoption) => adoption.pet._id === this.pet._id
       );
@@ -161,7 +158,6 @@ export default {
         (adoption) => adoption.user._id === this.loggedInUser._id
       );
       this.isActive = !isSentRequest;
-
     },
     updateFavorites(user) {
       sessionStorage.user = JSON.stringify(user);
@@ -170,13 +166,13 @@ export default {
         savedUser: user,
       });
     },
-    updateComments(comment){
-      this.pet.comments.push(comment)
+    updateComments(comment) {
+      this.pet.comments.push(comment);
       this.$store.dispatch({
         type: "savePet",
         pet: this.pet,
       });
-    }
+    },
   },
   async created() {
     const { id } = this.$route.params;
