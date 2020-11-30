@@ -20,7 +20,7 @@
               <pet-favorite
                 :pet="pet"
                 :loggedInUser="loggedInUser"
-                @updateFaforites="updateFaforites"
+                @updateFavorites="updateFavorites"
               />
             </div>
             <hr />
@@ -180,10 +180,14 @@ export default {
       //   this.isActive = false
       // }
     },
-    updateFaforites(user) {
+    updateFavorites(user) {
+      console.log(
+        "🚀 ~ file: pet-details.vue ~ line 184 ~ updateFavorites ~ user",
+        user
+      );
       this.$store.dispatch({
         type: "updateUser",
-        user,
+        savedUser: user,
       });
     },
   },
