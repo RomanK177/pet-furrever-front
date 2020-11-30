@@ -159,9 +159,9 @@ export default {
     //   this.isActive = true
     // },
     allAdoptions() {
-      console.log("loggedin user id beggining", this.loggedInUser._id);
+      // console.log("loggedin user id beggining", this.loggedInUser._id);
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
-      console.log("loaded adoptions", loadedAdoptions);
+      // console.log("loaded adoptions", loadedAdoptions);
       const filteredAdoptions = loadedAdoptions.filter(
         (adoption) => adoption.pet._id === this.pet._id
       );
@@ -181,10 +181,7 @@ export default {
       // }
     },
     updateFavorites(user) {
-      console.log(
-        "🚀 ~ file: pet-details.vue ~ line 184 ~ updateFavorites ~ user",
-        user
-      );
+      sessionStorage.user = JSON.stringify(user);
       this.$store.dispatch({
         type: "updateUser",
         savedUser: user,

@@ -15,6 +15,7 @@ export const userStore = {
     },
     mutations: {
         setUser(state, { user }) {
+            console.log("🚀 ~ file: user.store.js ~ line 18 ~ setUser ~ user", user)
             state.loggedInUser = user;
         }
     },

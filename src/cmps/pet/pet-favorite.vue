@@ -44,6 +44,11 @@ export default {
           this.localFevorites.splice(idx, 1);
           this.isFevorite = false;
           utilService.storeToStorage("fevoritePets_db", this.localFevorites);
+        } else {
+          let idx = this.loggedInUser.favorites.indexOf(this.pet._id);
+          this.loggedInUser.favorites.splice(idx, 1);
+          this.isFevorite = false;
+          this.$emit("updateFavorites", this.loggedInUser);
         }
       }
     },
