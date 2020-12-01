@@ -1,6 +1,7 @@
 <template>
   <el-input
-    placeholder="Please input"
+    class="search-input"
+    placeholder="Search Pets"
     v-model="input"
     clearable
     @input="emitChange"

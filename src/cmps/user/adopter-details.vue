@@ -74,10 +74,6 @@ export default {
       return loggedInUser && loggedInUser._id === this.user._id;
     },
     requests() {
-      console.log(
-        "🚀 ~ file: adopter-details.vue ~ line 1 ~ requests ~ this.$store.getters.getAdoptionRequests",
-        this.$store.getters.getAdoptionRequests
-      );
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
         (req) => req.user._id === this.$store.getters.getLoggedInUser._id
       );

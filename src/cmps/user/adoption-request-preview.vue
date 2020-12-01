@@ -56,13 +56,17 @@ export default {
         this.request.status = "approved";
         this.pet.adoptedAt = Date.now();
         this.$emit("updatePet", this.pet);
-      } else this.request.status = "declined";
+      } else {
+        this.request.status = "declined";
+        this.pet.adoptedAt = null;
+        this.$emit("updatePet", this.pet);
+      }
       this.$emit("updateAdoption", this.request);
     },
   },
   computed: {
     sentTime() {
-      let d = new Date(this.request.cretatedAt);
+      let d = new Date(this.request.createdAt);
       return d.toDateString();
     },
     statusCap() {
