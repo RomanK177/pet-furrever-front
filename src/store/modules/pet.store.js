@@ -48,6 +48,7 @@ export const petStore = {
 
         },
         async savePet({ commit }, { pet }) {
+            console.log("🚀 ~ file: pet.store.js ~ line 56 ~ savePet ~ pet", pet)
             const action = (pet._id) ? 'updatePet' : 'savePet';
             const savedPet = await petService.savePet(pet)
             commit({ type: action, pet: savedPet });

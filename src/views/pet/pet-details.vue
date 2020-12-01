@@ -38,16 +38,19 @@
             <div
               class="pet-owner-details flex column space-between align-center"
             >
-              <img v-if="owner.imgUrlProfile"
-                :src="require(`@/assets/imgs/person/${owner.imgUrlProfile}`)"
+              <img
+                v-if="pet.owner.imgUrlProfile"
+                :src="
+                  require(`@/assets/imgs/person/${pet.owner.imgUrlProfile}`)
+                "
                 alt=""
                 class="owner-img"
-              /> 
+              />
               <router-link
                 class="pet-details-owner-name"
-                :to="`/user/${owner._id}`"
-                >{{ owner.fullName }}</router-link
-              > 
+                :to="`/user/${pet.owner._id}`"
+                >{{ pet.owner.fullName }}</router-link
+              >
             </div>
             <p class="location-details flex flex-start">
               <img
@@ -57,7 +60,9 @@
               />
               Location Address
             </p>
-            <p class="pet-details-owner-location">{{owner.ownerData.location.name}}</p>
+            <p class="pet-details-owner-location">
+              {{ pet.owner.ownerData.location.name }}
+            </p>
             <hr />
             <p class="pet-details-owner-email flex flex-start">
               <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
@@ -105,8 +110,8 @@ export default {
         fullName: "",
         ownerData: {
           location: {
-            name: ''
-          }
+            name: "",
+          },
         },
         imgUrlProfile: "",
       },
@@ -189,19 +194,18 @@ export default {
         pet: this.pet,
       });
     },
-
   },
   computed: {
-    getLoggedInUser(){
+    getLoggedInUser() {
       this.loggedInUser = this.$store.getters.getLoggedInUser;
-      return this.loggedInUser
-    }
+      return this.loggedInUser;
+    },
   },
   async created() {
     const { id } = this.$route.params;
     const pet = await petService.getPetById(id);
     this.pet = pet;
-    console.log(this.pet)
+    console.log(this.pet);
     // const ownerId = this.pet.owner._id;
     // const owner = await userService.getById(ownerId);
     // this.owner = owner;
