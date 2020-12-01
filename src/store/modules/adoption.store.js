@@ -35,9 +35,9 @@ export const adoptionStore = {
             commit({ type: 'setAdoptionRequests', adoptions })
         },
         // async addAdoptionRequest({ commit }, { request }) {
-        //     console.log('request', request)
-        //     const adoptionRequest = await adoptionService.add(request)
-        //     commit({ type: 'addAdoptionRequest', adoptionRequest })
+        // console.log('request', request)
+        // const adoptionRequest = await adoptionService.add(request)
+        // commit({ type: 'addAdoptionRequest', adoptionRequest })
         // },
         async saveAdoption({ commit }, { adoption }) {
 
