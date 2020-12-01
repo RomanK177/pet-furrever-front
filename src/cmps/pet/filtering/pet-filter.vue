@@ -19,7 +19,7 @@
         >
           <img
             class="like-svg fevorite"
-            :class="{ isFevorite: filter.favorite }"
+            :class="{ isFevorite: isFav }"
             src="../../../assets/svgs/heart2.svg"
             alt=""
           />
@@ -43,11 +43,11 @@ export default {
         txt: "",
         type: "All",
         size: "All",
-        favorite: false,
         sortBy: null,
       },
       debTime: null,
       isShowFilters: false,
+      isFav: false,
     };
   },
   methods: {
@@ -63,7 +63,8 @@ export default {
       this.isShowFilters = !this.isShowFilters;
     },
     toggleFevorite() {
-      this.filter.favorite = !this.filter.favorite;
+      this.isFav = !this.isFav;
+      this.$emit("isFav", this.isFav);
     },
     // emitSort() {
     // 	this.$emit('sort', this.sortBy);
