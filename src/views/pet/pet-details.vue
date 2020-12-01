@@ -38,17 +38,16 @@
             <div
               class="pet-owner-details flex column space-between align-center"
             >
-              <img
-                v-if="owner.imgUrlProfile"
+              <img v-if="owner.imgUrlProfile"
                 :src="require(`@/assets/imgs/person/${owner.imgUrlProfile}`)"
                 alt=""
                 class="owner-img"
-              />
+              /> 
               <router-link
                 class="pet-details-owner-name"
                 :to="`/user/${owner._id}`"
                 >{{ owner.fullName }}</router-link
-              >
+              > 
             </div>
             <p class="location-details flex flex-start">
               <img
@@ -58,9 +57,7 @@
               />
               Location Address
             </p>
-            <p class="pet-details-owner-location">
-              {{ owner.ownerData.location.name }}
-            </p>
+            <p class="pet-details-owner-location">{{owner.ownerData.location.name}}</p>
             <hr />
             <p class="pet-details-owner-email flex flex-start">
               <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
@@ -79,7 +76,7 @@
     <!-- <pet-comments :pet="pet"></pet-comments> -->
     <pet-comments
       :comments="pet.comments"
-      :loggedInUser="loggedInUser"
+      :loggedInUser="getLoggedInUser"
       @addComment="updateComments"
     ></pet-comments>
   </section>
@@ -108,8 +105,8 @@ export default {
         fullName: "",
         ownerData: {
           location: {
-            name: "",
-          },
+            name: ''
+          }
         },
         imgUrlProfile: "",
       },
@@ -162,15 +159,13 @@ export default {
     },
     open() {
       this.$alert(
-        `Please Log In or Sign Up In Order To Send An Adoption Request.
-        To Sign Up: <router-link :to="/signup">Click here</router-link>`,
+        `Please Log In or Sign Up In Order To Send An Adoption Request`,
         {
           confirmButtonText: "OK",
         }
       );
     },
     allAdoptions() {
-      console.log("loggedinuser", this.loggedInUser);
       const loadedAdoptions = this.$store.getters.getAdoptionRequests;
       const filteredAdoptions = loadedAdoptions.filter(
         (adoption) => adoption.pet._id === this.pet._id
@@ -194,6 +189,13 @@ export default {
         pet: this.pet,
       });
     },
+
+  },
+  computed: {
+    getLoggedInUser(){
+      this.loggedInUser = this.$store.getters.getLoggedInUser;
+      return this.loggedInUser
+    }
   },
   async created() {
     const { id } = this.$route.params;
