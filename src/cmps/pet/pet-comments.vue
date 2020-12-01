@@ -45,6 +45,7 @@ export default {
   },
   methods: {
     addComment() {
+      console.log('from add comment',this.loggedInUser)
       this.commentToAdd.by.fullName = !this.loggedInUser
         ? "Guest"
         : this.loggedInUser.fullName;
