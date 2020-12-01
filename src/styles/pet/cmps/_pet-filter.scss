@@ -1,5 +1,6 @@
 .pet-filter {
     position: relative;
+    left: 250px;
     margin: 10px;
     & div {
         flex: 1 1 0px
@@ -12,9 +13,13 @@
     left: 0;
 }
 
+.filters {
+    width: 150px;
+}
+
 .search-input {
-    position: relative;
-    left: 50px;
+    // position: absolute;
+    left: 250px;
     display: block;
     width: 300px;
     margin-left: auto;

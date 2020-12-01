@@ -9,7 +9,7 @@
       <button class="filters-togglebutton" @click="toggleFilters">
         Filter
       </button>
-      <div class="filters" v-if="isShowFilters">
+      <div class="filters flex column" v-if="isShowFilters">
         <pet-type-select @input="emitFilter" v-model="filter.type" />
         <pet-size-select @input="emitFilter" v-model="filter.size" />
         <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
