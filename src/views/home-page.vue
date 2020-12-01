@@ -3,7 +3,7 @@
     <!-- <carousel></carousel> -->
     <div class="hero-container">
       <div class="hero-content">
-      <h1>Find your furry best friend.</h1>
+        <h1>Find your furry best friend.</h1>
       </div>
       <!-- <img src="../assets/imgs/homepage/dogHero1.jpg" alt="" class="hero-image" /> -->
     </div>
@@ -13,7 +13,7 @@
       <pet-list
         v-if="petsForPreview"
         :pets="filteredPets"
-        @updateLikes="updateLikes"
+        @updateLikes="addTreat"
       ></pet-list>
     </div>
     <div class="adopt-container flex">
@@ -120,6 +120,12 @@ export default {
       this.$store.dispatch({
         type: "savePet",
         pet,
+      });
+    },
+    async addTreat(pet) {
+      await this.$store.dispatch({
+        type: "addTreat",
+        petId: pet._id,
       });
     },
   },

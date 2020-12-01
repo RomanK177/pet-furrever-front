@@ -76,16 +76,15 @@ export default {
         adoption,
       });
     },
-    updatePet(pet) {
-      this.$store.dispatch({
-        type: "savePet",
-        pet,
-      });
-    },
+    // updatePet(pet) {
+    //   this.$store.dispatch({
+    //     type: "savePet",
+    //     pet,
+    //   });
+    // },
   },
   computed: {
     imgUrlProfile() {
-      console.log("owner", this.owner);
       if (!this.owner.imgUrlProfile) {
         return require("../../assets/imgs/profile-logo.png");
       } else {

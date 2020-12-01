@@ -11,7 +11,8 @@ export const petService = {
     removePet,
     savePet,
     getEmptyPet,
-    addComment
+    addComment,
+    addTreat
 }
 
 // const BASE_URL = 'http://localhost:3000'
@@ -73,23 +74,16 @@ function getEmptyPet() {
         description: '',
         imgUrls: [],
         tags: [],
-        location: ""
     };
     return pet;
 }
 
-// function update(pet) {
-//     return httpService.put(`pets/${pet._id}`, pet);
-// }
-
-
-//Karin change
 async function addComment(petId, comment) {
-    debugger
-    // comment._id = utilService.makeId();
-    // var pet = await getPetById(petId);
-    // pet.comments.push(comment);
-    // console.log(pet.comments)
     console.log(petId,comment)
     return httpService.post(`pets/${petId}/comments`, comment);
+}
+
+async function addTreat(petId) {
+    console.log(petId)
+    return httpService.post(`pets/${petId}/treats`);
 }

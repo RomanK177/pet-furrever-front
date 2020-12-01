@@ -3,7 +3,7 @@
     <div class="details-container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex">
-        <details-about :pet="pet" @updateLikes="updatePet"></details-about>
+        <details-about :pet="pet" @updateLikes="addTreat"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column justify-center align-center">
@@ -38,16 +38,19 @@
             <div
               class="pet-owner-details flex column space-between align-center"
             >
-              <img v-if="pet.owner.imgUrlProfile"
-                :src="require(`@/assets/imgs/person/${pet.owner.imgUrlProfile}`)"
+              <img
+                v-if="pet.owner.imgUrlProfile"
+                :src="
+                  require(`@/assets/imgs/person/${pet.owner.imgUrlProfile}`)
+                "
                 alt=""
                 class="owner-img"
-              /> 
+              />
               <router-link
                 class="pet-details-owner-name"
                 :to="`/user/${pet.owner._id}`"
                 >{{ pet.owner.fullName }}</router-link
-              > 
+              >
             </div>
             <p class="location-details flex flex-start">
               <img
@@ -57,7 +60,9 @@
               />
               Location Address
             </p>
-            <p class="pet-details-owner-location">{{pet.owner.ownerData.location.name}}</p>
+            <p class="pet-details-owner-location">
+              {{ pet.owner.ownerData.location.name }}
+            </p>
             <hr />
             <p class="pet-details-owner-email flex flex-start">
               <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
@@ -119,10 +124,16 @@ export default {
         this.sendRequest();
       }
     },
-    updatePet(pet) {
+    // updatePet(pet) {
+    //   this.$store.dispatch({
+    //     type: "savePet",
+    //     pet,
+    //   });
+    // },
+    addTreat(pet) {
       this.$store.dispatch({
-        type: "savePet",
-        pet,
+        type: "addTreat",
+        petId: pet._id,
       });
     },
     // async getOwnerById() {
@@ -188,27 +199,26 @@ export default {
     //   });
     // },
 
-    addComment(comment){
+    addComment(comment) {
       this.$store.dispatch({
-        type: 'addComment',
+        type: "addComment",
         petId: this.pet._id,
-        comment
-      })
-      console.log(comment)
-    }
-    
+        comment,
+      });
+      console.log(comment);
+    },
   },
   computed: {
-    getLoggedInUser(){
+    getLoggedInUser() {
       this.loggedInUser = this.$store.getters.getLoggedInUser;
-      return this.loggedInUser
-    }
+      return this.loggedInUser;
+    },
   },
   async created() {
     const { id } = this.$route.params;
     const pet = await petService.getPetById(id);
     this.pet = pet;
-    console.log(this.pet)
+    console.log(this.pet);
     // const ownerId = this.pet.owner._id;
     // const owner = await userService.getById(ownerId);
     // this.owner = owner;

@@ -23,7 +23,6 @@ export const petStore = {
             state.pets = pets
         },
         savePet(state, { pet }) {
-            debugger
             state.pets.unshift(pet)
         },
         updatePet(state, { pet }) {
@@ -45,12 +44,10 @@ export const petStore = {
     actions: {
         async loadPets({ commit }) {
             const pets = await petService.query()
-            console.log(pets)
             commit({ type: 'setPets', pets })
 
         },
         async savePet({ commit }, { pet }) {
-            debugger
             const action = (pet._id) ? 'updatePet' : 'savePet';
             const savedPet = await petService.savePet(pet)
             commit({ type: action, pet: savedPet });
@@ -75,10 +72,15 @@ export const petStore = {
         },
         //Karin changes:
         async addComment(context, { petId, comment }) {
-            debugger
             const addedComment = await petService.addComment(petId, comment)
             // context.commit({type: 'addcomment', comment})
             return addedComment;
+        },
+        async addTreat(context, { petId }) {
+            const addedTreat = await petService.addTreat(petId)
+            console.log(addedTreat)
+            // context.commit({type: 'addcomment', comment})
+            return addedTreat;
         },
     },
 

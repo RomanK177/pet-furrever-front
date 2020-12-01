@@ -80,6 +80,19 @@ export default {
       //   this.$emit("updateLikes", this.pet);
       // }
     },
+    addTreat() {
+      this.$emit("addTreat", this.pet._id);
+      this.treat = true;
+      this.storedLikes.push(this.pet._id);
+      utilService.storeToStorage("likes_db", this.storedLikes);
+      // if (this.treat === false) {
+      // } else {
+      //   let idx = this.storedLikes.indexOf(this.pet._id);
+      //   this.storedLikes.splice(idx, 1);
+      //   utilService.storeToStorage("likes_db", this.storedLikes);
+      //   this.$emit("updateLikes", this.pet);
+      // }
+    },
     showButton() {
       console.log(this.$route);
     },
