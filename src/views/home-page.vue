@@ -1,23 +1,34 @@
 <template>
-  <div class="home">
-    <!-- <carousel></carousel> -->
-    <div class="hero-container">
+  <section class="home">
+    <div class="hero flex">
       <div class="hero-content">
-        <h1>Find your furry best friend.</h1>
+        <h1 class="container">Find your furry best friend.</h1>
+      <div class=" view-pets container">
+         <router-link to="/pet" class="our-pets-btn"
+        >View All Pets!</router-link
+      >
       </div>
-      <!-- <img src="../assets/imgs/homepage/dogHero1.jpg" alt="" class="hero-image" /> -->
+      </div>
     </div>
-    <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
-    <router-link to="/pet" class="our-pets-btn">View All Our Pets!</router-link>
-    <div class="homepage-pet-list">
+    <div class="our-pets container">
+      <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
+    </div>
+    <div class="homepage-pet-list container">
+      <h2 class="text-center">Most liked Pets</h2>
       <pet-list
         v-if="petsForPreview"
-        :pets="filteredPets"
+        :pets="mostLiked"
         @updateLikes="addTreat"
       ></pet-list>
-    </div>
-    <div class="adopt-container flex">
-      <section class="adopt-reasons">
+      <h2 class="text-center">Recently Adopted Pets</h2>
+      <pet-list
+        v-if="petsForPreview"
+        :pets="recentlyAdopted"
+        @updateLikes="updateLikes"
+      ></pet-list>
+       </div>
+    <section class="adopt-container flex">
+      <div class="adopt-reasons">
         <h3>We Can Help You Find The <span>Purr</span>fect Pet!</h3>
         <div class="heart">
           <h1 class="adopt-circle">Why Should I Adopt?</h1>
@@ -44,9 +55,9 @@
           uncoditional love from your pet! What are you waiting for?! Improve
           your life now - find your new furry best friend!
         </p>
+        </div>
         <!-- <button>View All Animals!</button> -->
-      </section>
-      <section class="testimonies">
+      <!-- <section class="testimonies"> -->
         <!-- <review></review> -->
         <div class="testimony">
           <div class="testimony-img">
@@ -84,9 +95,9 @@
             </p>
           </div>
         </div>
-      </section>
-    </div>
-  </div>
+      <!-- </section> -->
+    </section>
+  </section>
 </template>
 
 <script>
@@ -105,10 +116,21 @@ export default {
     petsForPreview() {
       return this.$store.getters.petsForPreview;
     },
-    filteredPets() {
-      return this.petsForPreview
-        .filter((pet) => pet.adoptedAt === null)
-        .slice(0, 4);
+    mostLiked() {
+      let notAdopted = this.petsForPreview.filter(
+        (pet) => pet.adoptedAt === null
+      );
+      let mostLiked = notAdopted.sort(function (a, b) {
+        return b.numOfTreats - a.numOfTreats;
+      });
+      return mostLiked.slice(0, 4);
+    },
+    recentlyAdopted() {
+      let adopted = this.petsForPreview.filter((pet) => pet.adoptedAt);
+      let mostRecent = adopted.sort(function (a, b) {
+        return b.adoptedAt - a.adoptedAt;
+      });
+      return mostRecent.slice(0, 4);
     },
   },
   created() {

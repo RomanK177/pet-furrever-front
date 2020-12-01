@@ -1,7 +1,7 @@
 
 
 <template>
-  <section class="pet-list full flex f-center space-around wrap">
+  <section class="pet-list container">
     <pet-preview
       v-for="pet in pets"
       :key="pet._id"

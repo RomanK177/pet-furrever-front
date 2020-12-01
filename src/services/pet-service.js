@@ -1,9 +1,4 @@
 import { httpService } from './http-service.js'
-import { utilService } from './util-service.js';
-
-import axios from 'axios';
-
-
 
 export const petService = {
     query,
@@ -25,8 +20,8 @@ function query(filter = null, sortBy = 'name') {
         const searchStr = (filter.txt) ? `&q=${filter.txt}` : '';
         const typeStr = (filter.type === 'All') ? '' : `&type=${filter.type}`;
         const sizeStr = (filter.size === 'All') ? '' : `&size=${filter.size}`;
-        const stockStr = (filter.stock) ? `&inStock=true` : '';
-        filterStr = searchStr + sizeStr + stockStr + typeStr;
+        // const favStr = (filter.favorites) ? `&inStock=true` : '';
+        filterStr = searchStr + sizeStr + typeStr;
         sortStr = filter.sortBy
     }
     // let path = `${BASE_URL}/pets?_sort=${sortStr}${filterStr}`;

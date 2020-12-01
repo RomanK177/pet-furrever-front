@@ -13,6 +13,18 @@
         <pet-type-select @input="emitFilter" v-model="filter.type" />
         <pet-size-select @input="emitFilter" v-model="filter.size" />
         <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
+        <div
+          class="flex justify-center align-center"
+          @click.stop="toggleFevorite"
+        >
+          <img
+            class="like-svg fevorite"
+            :class="{ isFevorite: isFav }"
+            src="../../../assets/svgs/heart2.svg"
+            alt=""
+          />
+          <span>Favorite</span>
+        </div>
       </div>
     </div>
   </section>
@@ -35,6 +47,7 @@ export default {
       },
       debTime: null,
       isShowFilters: false,
+      isFav: false,
     };
   },
   methods: {
@@ -48,6 +61,10 @@ export default {
     },
     toggleFilters() {
       this.isShowFilters = !this.isShowFilters;
+    },
+    toggleFevorite() {
+      this.isFav = !this.isFav;
+      this.$emit("isFav", this.isFav);
     },
     // emitSort() {
     // 	this.$emit('sort', this.sortBy);

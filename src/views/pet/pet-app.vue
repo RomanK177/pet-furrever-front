@@ -1,6 +1,6 @@
 <template>
   <section class="pet-app">
-    <pet-filter @filter="changeFilter" @sort="setSort" />
+    <pet-filter @filter="changeFilter" @sort="setSort" @isFav="toggleFav" />
     <pet-list
       v-if="petsForPreview"
       :user="loggedUser"
@@ -53,6 +53,7 @@ export default {
     setSort(sortBy) {
       this.$store.dispatch({ type: "sortPets", sortBy });
     },
+    toggleFav() {},
   },
   components: {
     petFilter,

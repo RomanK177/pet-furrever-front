@@ -35,6 +35,7 @@ export const petStore = {
         },
 
         setFilter(state, { filter }) {
+            console.log("🚀 ~ file: pet.store.js ~ line 39 ~ setFilter ~ filter", filter)
             state.filter = filter;
         },
         setSort(state, { sortBy }) {
@@ -73,7 +74,7 @@ export const petStore = {
         //Karin changes:
         async addComment(context, { petId, comment }) {
             const addedComment = await petService.addComment(petId, comment)
-            // context.commit({type: 'addcomment', comment})
+                // context.commit({type: 'addcomment', comment})
             return addedComment;
         },
         async addTreat(context, { petId }) {
