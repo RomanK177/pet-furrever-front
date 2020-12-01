@@ -31,7 +31,7 @@
       </div>
     </div>
     <hr>
-    <small>If you are interested in meeting or adopting {{pet.name}}, please inquire here on PetFurrever or reach out to {{pet.owner.name}}'s email {{pet.owner.email}}, and we will happily arrange the adoption for you if you are deemed a proper fit! Thank you. </small>
+    <small>If you are interested in meeting or adopting {{pet.name}}, please inquire here on PetFurrever or reach out to {{pet.owner.fullName}}'s email {{pet.owner.email}}, and we will happily arrange the adoption for you if you are deemed a proper fit! Thank you. </small>
   </div>
 </template>
 <script>
