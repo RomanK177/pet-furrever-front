@@ -38,17 +38,16 @@
             <div
               class="pet-owner-details flex column space-between align-center"
             >
-              <img
-                v-if="owner.imgUrlProfile"
-                :src="require(`@/assets/imgs/person/${owner.imgUrlProfile}`)"
+              <img v-if="pet.owner.imgUrlProfile"
+                :src="require(`@/assets/imgs/person/${pet.owner.imgUrlProfile}`)"
                 alt=""
                 class="owner-img"
               />
               <router-link
                 class="pet-details-owner-name"
-                :to="`/user/${owner._id}`"
-                >{{ owner.fullName }}</router-link
-              >
+                :to="`/user/${pet.owner._id}`"
+                >{{ pet.owner.fullName }}</router-link
+              > 
             </div>
             <p class="location-details flex flex-start">
               <img
@@ -58,18 +57,16 @@
               />
               Location Address
             </p>
-            <p class="pet-details-owner-location">
-              {{ owner.ownerData.location.name }}
-            </p>
+            <p class="pet-details-owner-location">{{pet.owner.ownerData.location.name}}</p>
             <hr />
             <p class="pet-details-owner-email flex flex-start">
               <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
-              {{ owner.email }}
+              {{ pet.owner.email }}
             </p>
             <hr />
             <p class="pet-details-owner-tel flex flex-start">
               <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
-              {{ owner.tel }}
+              {{ pet.owner.tel }}
             </p>
             <hr />
           </div>
@@ -102,17 +99,17 @@ export default {
       pet: null,
       loggedInUser: null,
       isActive: null,
-      owner: {
-        email: "",
-        tel: "",
-        fullName: "",
-        ownerData: {
-          location: {
-            name: "",
-          },
-        },
-        imgUrlProfile: "",
-      },
+      // owner: {
+      //   email: "",
+      //   tel: "",
+      //   fullName: "",
+      //   ownerData: {
+      //     location: {
+      //       name: ''
+      //     }
+      //   },
+      //   imgUrlProfile: "",
+      // },
     };
   },
 
@@ -163,7 +160,7 @@ export default {
     open() {
       this.$alert(
         `Please Log In or Sign Up In Order To Send An Adoption Request.
-        To Sign Up: <router-link to="/signup">Click here</router-link>`,
+        To Sign Up: <router-link :to="/signup">Click here</router-link>`,
         {
           confirmButtonText: "OK",
         }
@@ -199,9 +196,10 @@ export default {
     const { id } = this.$route.params;
     const pet = await petService.getPetById(id);
     this.pet = pet;
-    const ownerId = this.pet.owner._id;
-    const owner = await userService.getById(ownerId);
-    this.owner = owner;
+    console.log(this.pet)
+    // const ownerId = this.pet.owner._id;
+    // const owner = await userService.getById(ownerId);
+    // this.owner = owner;
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     await this.$store.dispatch({ type: "loadAdoptionRequests" });
     if (this.loggedInUser === null) {
