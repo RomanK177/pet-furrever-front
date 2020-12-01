@@ -24,7 +24,7 @@
         <router-link
           @click.native="$event.stopImmediatePropagation()"
           :to="`/user/${pet.owner._id}`"
-          >{{ pet.owner.name }}</router-link
+          >{{ pet.owner.fullName }}</router-link
         >
         <pet-likes :pet="pet" @updateLikes="emitUpdateLikes" />
       </div>

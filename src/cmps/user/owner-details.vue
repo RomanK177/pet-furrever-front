@@ -113,10 +113,6 @@ export default {
     //   this.requests = filteredReqs;
     // },
     getLoggedInUser() {
-      const loggedInUser = this.$store.getLoggedInUser;
-      this.loggedInUser = loggedInUser;
-    },
-    getLoggedInUser() {
       const loggedInUser = this.$store.getters.getLoggedInUser;
       return loggedInUser;
     },
