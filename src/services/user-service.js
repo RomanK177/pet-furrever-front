@@ -91,19 +91,11 @@ function update(user) {
 }
 
 async function login(userCred) {
-    // const user = await httpService.post('auth/login', userCred)
-    // For front end test only //
-   return getUsers().then(users => {
-        var user = users.find(user => {
-            return user.userName === userCred.userName && user.password === userCred.password;
-        });
-
-        if (!user) {
-            throw Error('login failed')
-        }
-
-        return _handleLogin(user)
-    });
+    const user = await httpService.post('auth/login', userCred)
+    if (!user) {
+        throw Error('login failed')
+    }
+    return _handleLogin(user)
 }
 
 async function signUp(userCred) {

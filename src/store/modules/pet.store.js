@@ -44,6 +44,7 @@ export const petStore = {
     actions: {
         async loadPets({ commit }) {
             const pets = await petService.query()
+            console.log(pets)
             commit({ type: 'setPets', pets })
 
         },
