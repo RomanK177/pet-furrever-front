@@ -38,15 +38,15 @@
             <div
               class="pet-owner-details flex column space-between align-center"
             >
-              <img v-if="owner.imgUrlProfile"
-                :src="require(`@/assets/imgs/person/${owner.imgUrlProfile}`)"
+              <img v-if="pet.owner.imgUrlProfile"
+                :src="require(`@/assets/imgs/person/${pet.owner.imgUrlProfile}`)"
                 alt=""
                 class="owner-img"
               /> 
               <router-link
                 class="pet-details-owner-name"
-                :to="`/user/${owner._id}`"
-                >{{ owner.fullName }}</router-link
+                :to="`/user/${pet.owner._id}`"
+                >{{ pet.owner.fullName }}</router-link
               > 
             </div>
             <p class="location-details flex flex-start">
@@ -57,7 +57,7 @@
               />
               Location Address
             </p>
-            <p class="pet-details-owner-location">{{owner.ownerData.location.name}}</p>
+            <p class="pet-details-owner-location">{{pet.owner.ownerData.location.name}}</p>
             <hr />
             <p class="pet-details-owner-email flex flex-start">
               <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
@@ -81,7 +81,6 @@
     ></pet-comments>
   </section>
 </template>
-
 <script>
 import { petService } from "../../services/pet-service.js";
 import notLoggedIn from "../../cmps/pet/not-loggedin.vue";
@@ -91,7 +90,6 @@ import petComments from "../../cmps/pet/pet-comments.vue";
 import petFavorite from "../../cmps/pet/pet-favorite";
 import { utilService } from "../../services/util-service.js";
 import { userService } from "../../services/user-service.js";
-
 export default {
   name: "petDetails",
   data() {
@@ -112,7 +110,6 @@ export default {
       },
     };
   },
-
   methods: {
     adopt() {
       // const loggedInUser = this.$store.getters.getLoggedInUser;
@@ -189,7 +186,6 @@ export default {
         pet: this.pet,
       });
     },
-
   },
   computed: {
     getLoggedInUser(){
@@ -214,7 +210,6 @@ export default {
       this.allAdoptions();
     }
   },
-
   components: {
     notLoggedIn,
     detailsImages,
