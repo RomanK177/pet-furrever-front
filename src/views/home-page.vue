@@ -3,32 +3,32 @@
     <div class="hero flex">
       <div class="hero-content">
         <h1 class="container">Find your furry best friend.</h1>
+      <div class=" view-pets container">
+         <router-link to="/pet" class="our-pets-btn"
+        >View All Pets!</router-link
+      >
+      </div>
       </div>
     </div>
     <div class="our-pets container">
       <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
-      <router-link to="/pet" class="our-pets-btn"
-        >View All Our Pets!</router-link
-      >
     </div>
-    <div class="homepage-pet-list">
-      <h2>Most liked Pets</h2>
+    <div class="homepage-pet-list container">
+      <h2 class="text-center">Most liked Pets</h2>
       <pet-list
         v-if="petsForPreview"
         :pets="mostLiked"
         @updateLikes="updateLikes"
       ></pet-list>
-    </div>
-    <div class="homepage-pet-list">
-      <h2>Recently Adopted Pets</h2>
+      <h2 class="text-center">Recently Adopted Pets</h2>
       <pet-list
         v-if="petsForPreview"
         :pets="recentlyAdopted"
         @updateLikes="updateLikes"
       ></pet-list>
-    </div>
-    <div class="adopt-container container flex">
-      <section class="adopt-reasons">
+       </div>
+    <section class="adopt-container flex">
+      <div class="adopt-reasons">
         <h3>We Can Help You Find The <span>Purr</span>fect Pet!</h3>
         <div class="heart">
           <h1 class="adopt-circle">Why Should I Adopt?</h1>
@@ -55,9 +55,9 @@
           uncoditional love from your pet! What are you waiting for?! Improve
           your life now - find your new furry best friend!
         </p>
+        </div>
         <!-- <button>View All Animals!</button> -->
-      </section>
-      <section class="testimonies">
+      <!-- <section class="testimonies"> -->
         <!-- <review></review> -->
         <div class="testimony">
           <div class="testimony-img">
@@ -95,8 +95,8 @@
             </p>
           </div>
         </div>
-      </section>
-    </div>
+      <!-- </section> -->
+    </section>
   </section>
 </template>
 
