@@ -1,7 +1,7 @@
 $cardWidth:300px;
 $sexSymbolSize:20px;
 .pet-card {
-    position: relative;
+    // position: relative;
     // border: 1px solid black;
     // border: 1px solid sandybrown;
     // -webkit-box-shadow: -1px 5px 12px -4px #000000; 
@@ -11,8 +11,8 @@ $sexSymbolSize:20px;
     background-color: white;
     border-radius: 20px;
     overflow: hidden;
-    margin: 10px;
-    width: $cardWidth;
+    // margin: 10px;
+    // width: $cardWidth;
     & .card-info {
         padding: 0 10px;
         height: 35%;
@@ -55,10 +55,8 @@ $sexSymbolSize:20px;
 }
 
 .card-img {
-    width: $cardWidth;
-    height: 260px;
-    padding: 10px;
-    border-radius: 20px;
+    // height: 260px;
+    height: 100%;
     object-fit: cover;
 }
 
