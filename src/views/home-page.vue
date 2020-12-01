@@ -105,7 +105,7 @@ export default {
     filteredPets() {
       return this.petsForPreview
         .filter((pet) => pet.adoptedAt === null)
-        .slice(0, 3);
+        .slice(0, 4);
     },
   },
   created() {

@@ -1,3 +1,4 @@
+
 <template>
   <section v-if="user" class="adopter-details">
     <h1>Welcome {{ user.fullName }}!</h1>
@@ -24,10 +25,16 @@
     <p>{{ user.familyStatus }}</p>
     <p>{{ user.houseStatus }}</p>
     <!-- Add tags from elemnts -->
+    <adoption-request
+      :requests="requests"
+      @updateAdoption="updateAdoption"
+      v-if="checkIfOwner"
+    />
   </section>
 </template>
 
 <script>
+import adoptionRequest from "./adoption-request.vue";
 export default {
   props: {
     user: Object,
@@ -35,6 +42,9 @@ export default {
   created() {
     // const userId = this.$route.params.id;
     // this.getUser(userId);
+    this.$store.dispatch({
+      type: "loadAdoptionRequests",
+    });
   },
   methods: {
     // async getUser(userId) {
@@ -44,6 +54,12 @@ export default {
     //   });
     //   this.user = user;
     // },
+    updateAdoption(adoption) {
+      this.$store.dispatch({
+        type: "saveAdoption",
+        adoption,
+      });
+    },
   },
   computed: {
     imgUrlProfile() {
@@ -57,6 +73,15 @@ export default {
       var loggedInUser = this.$store.getters.getLoggedInUser;
       return loggedInUser && loggedInUser._id === this.user._id;
     },
+    requests() {
+      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
+        (req) => req.user._id === this.$store.getters.getLoggedInUser._id
+      );
+      return filteredReqs;
+    },
+  },
+  components: {
+    adoptionRequest,
   },
 };
 </script>

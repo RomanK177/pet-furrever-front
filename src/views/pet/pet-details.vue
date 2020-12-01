@@ -42,7 +42,7 @@
                 :src="require(`@/assets/imgs/person/${pet.owner.imgUrlProfile}`)"
                 alt=""
                 class="owner-img"
-              /> 
+              />
               <router-link
                 class="pet-details-owner-name"
                 :to="`/user/${pet.owner._id}`"
@@ -135,7 +135,7 @@ export default {
     // },
     async sendRequest() {
       const req = {
-        _id: utilService.makeId(),
+        _id: null,
         createdAt: Date.now(),
         user: {
           _id: this.loggedInUser._id,
@@ -152,15 +152,15 @@ export default {
         status: "pending",
       };
       await this.$store.dispatch({
-        type: "addAdoptionRequest",
-        request: req,
+        type: "saveAdoption",
+        adoption: req,
       });
       this.allAdoptions();
     },
     open() {
       this.$alert(
         `Please Log In or Sign Up In Order To Send An Adoption Request.
-        To Sign Up: <router-link to="/signup">Click here</router-link>`,
+        To Sign Up: <router-link :to="/signup">Click here</router-link>`,
         {
           confirmButtonText: "OK",
         }
