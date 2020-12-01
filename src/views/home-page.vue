@@ -3,16 +3,25 @@
     <!-- <carousel></carousel> -->
     <div class="hero-container">
       <div class="hero-content">
-      <h1>Find your furry best friend.</h1>
+        <h1>Find your furry best friend.</h1>
       </div>
       <!-- <img src="../assets/imgs/homepage/dogHero1.jpg" alt="" class="hero-image" /> -->
     </div>
     <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
     <router-link to="/pet" class="our-pets-btn">View All Our Pets!</router-link>
     <div class="homepage-pet-list">
+      <h2>Most liked Pets</h2>
       <pet-list
         v-if="petsForPreview"
-        :pets="filteredPets"
+        :pets="mostLiked"
+        @updateLikes="updateLikes"
+      ></pet-list>
+    </div>
+    <div class="homepage-pet-list">
+      <h2>Recently Adopted Pets</h2>
+      <pet-list
+        v-if="petsForPreview"
+        :pets="recentlyAdopted"
         @updateLikes="updateLikes"
       ></pet-list>
     </div>
@@ -105,10 +114,21 @@ export default {
     petsForPreview() {
       return this.$store.getters.petsForPreview;
     },
-    filteredPets() {
-      return this.petsForPreview
-        .filter((pet) => pet.adoptedAt === null)
-        .slice(0, 4);
+    mostLiked() {
+      let notAdopted = this.petsForPreview.filter(
+        (pet) => pet.adoptedAt === null
+      );
+      let mostLiked = notAdopted.sort(function (a, b) {
+        return b.numOfTreats - a.numOfTreats;
+      });
+      return mostLiked.slice(0, 4);
+    },
+    recentlyAdopted() {
+      let adopted = this.petsForPreview.filter((pet) => pet.adoptedAt);
+      let mostRecent = adopted.sort(function (a, b) {
+        return b.adoptedAt - a.adoptedAt;
+      });
+      return mostRecent.slice(0, 4);
     },
   },
   created() {
