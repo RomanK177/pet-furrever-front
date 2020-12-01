@@ -12,6 +12,8 @@
           <span class="requsted-pet">Pet to adopt</span>
           <span class="requsted-at">Date</span>
           <span class="requsted-status">Status</span>
+          <span class="approve">Approve</span>
+          <span class="decline">Decline</span>
         </div>
       </li>
       <li class="flex" v-for="(request, idx) in requests" :key="idx">

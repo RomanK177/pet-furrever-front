@@ -19,9 +19,20 @@
       </span>
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
-      <div v-if="areButtonsShown">
-        <button @click="updateRequest(true)">Approve</button>
-        <button @click="updateRequest(false)">Decline</button>
+
+      <div class="approve">
+        <img
+          @click="updateRequest(true)"
+          src="../../assets/imgs/green-check.png"
+          alt=""
+        />
+      </div>
+      <div class="decline">
+        <img
+          @click="updateRequest(false)"
+          src="../../assets/imgs/red-x.png"
+          alt=""
+        />
       </div>
     </div>
   </section>
