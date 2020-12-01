@@ -1,14 +1,16 @@
 <template>
-  <div class="home">
-    <!-- <carousel></carousel> -->
-    <div class="hero-container">
+  <section class="home">
+    <div class="hero flex">
       <div class="hero-content">
-        <h1>Find your furry best friend.</h1>
+        <h1 class="container">Find your furry best friend.</h1>
       </div>
-      <!-- <img src="../assets/imgs/homepage/dogHero1.jpg" alt="" class="hero-image" /> -->
     </div>
-    <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
-    <router-link to="/pet" class="our-pets-btn">View All Our Pets!</router-link>
+    <div class="our-pets container">
+      <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
+      <router-link to="/pet" class="our-pets-btn"
+        >View All Our Pets!</router-link
+      >
+    </div>
     <div class="homepage-pet-list">
       <h2>Most liked Pets</h2>
       <pet-list
@@ -25,7 +27,7 @@
         @updateLikes="updateLikes"
       ></pet-list>
     </div>
-    <div class="adopt-container flex">
+    <div class="adopt-container container flex">
       <section class="adopt-reasons">
         <h3>We Can Help You Find The <span>Purr</span>fect Pet!</h3>
         <div class="heart">
@@ -95,7 +97,7 @@
         </div>
       </section>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
