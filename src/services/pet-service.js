@@ -51,11 +51,10 @@ function removePet(id) {
     // return httpService.delete(`pet/${id}`)
 }
 
-function savePet(pet, user) {
+function savePet(pet) {
     // For front end test only
     //
     if (!pet._id) {
-        pet.createdAt = Date.now();
         return httpService.post(`pets`, pet)
     } else {
         return httpService.put(`pets/${pet._id}`, pet)
@@ -79,15 +78,18 @@ function getEmptyPet() {
     return pet;
 }
 
-function update(pet) {
-    return httpService.put(`pets/${pet._id}`, pet);
-}
+// function update(pet) {
+//     return httpService.put(`pets/${pet._id}`, pet);
+// }
 
+
+//Karin change
 async function addComment(petId, comment) {
-    comment._id = utilService.makeId();
-    var pet = await getPetById(petId);
-    pet.comments.push(comment);
+    debugger
+    // comment._id = utilService.makeId();
+    // var pet = await getPetById(petId);
+    // pet.comments.push(comment);
     // console.log(pet.comments)
-    // console.log(pet)
-    update(pet);
+    console.log(petId,comment)
+    return httpService.post(`pets/${petId}/comments`, comment);
 }

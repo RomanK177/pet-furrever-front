@@ -77,7 +77,7 @@
     <pet-comments
       :comments="pet.comments"
       :loggedInUser="getLoggedInUser"
-      @addComment="updateComments"
+      @addComment="addComment"
     ></pet-comments>
   </section>
 </template>
@@ -179,13 +179,24 @@ export default {
         savedUser: user,
       });
     },
-    updateComments(comment) {
-      this.pet.comments.unshift(comment);
+    // updateComments(comment) {
+    //   debugger
+    //   this.pet.comments.unshift(comment);
+    //   this.$store.dispatch({
+    //     type: "savePet",
+    //     pet: this.pet,
+    //   });
+    // },
+
+    addComment(comment){
       this.$store.dispatch({
-        type: "savePet",
-        pet: this.pet,
-      });
-    },
+        type: 'addComment',
+        petId: this.pet._id,
+        comment
+      })
+      console.log(comment)
+    }
+    
   },
   computed: {
     getLoggedInUser(){
