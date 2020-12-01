@@ -71,7 +71,7 @@ function getEmptyPet() {
         breed: '',
         age: '',
         adoptedAt: '',
-        owner: {},
+        ownerId: null,
         description: '',
         imgUrls: [],
         tags: [],
