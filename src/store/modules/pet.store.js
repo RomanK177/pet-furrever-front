@@ -35,6 +35,7 @@ export const petStore = {
         },
 
         setFilter(state, { filter }) {
+            console.log("🚀 ~ file: pet.store.js ~ line 38 ~ setFilter ~ filter", filter)
             state.filter = filter;
         },
         setSort(state, { sortBy }) {
