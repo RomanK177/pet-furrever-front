@@ -2,7 +2,7 @@
   <section class="pet-edit">
     <h1 v-if="pet">Add pet</h1>
     <h1 v-else>Edit pet</h1>
-    <form @submit.prevent="edit">
+    <form v-if="pet" @submit.prevent="edit">
       <label>Pet name: <input type="text" v-model="pet.name" required /></label>
       <br />
       <label
@@ -72,7 +72,7 @@
       />
       <br />
       <label
-        >Location: <input type="text" required v-model="pet.location"
+        >Location: <input type="text" required v-model="pet.owner.location.name"
       /></label>
       <br />
       <button>Submit</button>
@@ -94,6 +94,7 @@ export default {
   },
   created() {
     this.pet = petService.getEmptyPet();
+    console.log('ppp', this.pet)
   },
   methods: {
     edit() {

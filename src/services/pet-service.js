@@ -71,11 +71,12 @@ function getEmptyPet() {
         breed: '',
         age: '',
         adoptedAt: '',
-        ownerId: null,
         description: '',
         imgUrls: [],
         tags: [],
+        location: ""
     };
+    return pet;
 }
 
 function update(pet) {

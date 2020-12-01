@@ -102,17 +102,17 @@ export default {
       pet: null,
       loggedInUser: null,
       isActive: null,
-      owner: {
-        email: "",
-        tel: "",
-        fullName: "",
-        ownerData: {
-          location: {
-            name: "",
-          },
-        },
-        imgUrlProfile: "",
-      },
+      // owner: {
+      //   email: "",
+      //   tel: "",
+      //   fullName: "",
+      //   ownerData: {
+      //     location: {
+      //       name: ''
+      //     }
+      //   },
+      //   imgUrlProfile: "",
+      // },
     };
   },
   methods: {
@@ -144,8 +144,8 @@ export default {
           name: this.loggedInUser.fullName,
         },
         owner: {
-          _id: this.owner._id,
-          name: this.owner.fullName,
+          _id: this.pet.owner._id,
+          name: this.pet.owner.fullName,
         },
         pet: {
           _id: this.pet._id,

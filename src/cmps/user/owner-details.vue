@@ -124,9 +124,7 @@ export default {
     });
 
     let urlStart = this.owner.imgUrlProfile.slice(0, 4);
-    if (urlStart === "http") {
-      this.owner.imgUrlProfile = this.this.owner.imgUrlProfile;
-    } else {
+    if (urlStart !== "http") {
       this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
     }
 
