@@ -160,7 +160,7 @@ export default {
     open() {
       this.$alert(
         `Please Log In or Sign Up In Order To Send An Adoption Request.
-        To Sign Up: <router-link to="/signup">Click here</router-link>`,
+        To Sign Up: <router-link :to="/signup">Click here</router-link>`,
         {
           confirmButtonText: "OK",
         }
