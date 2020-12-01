@@ -1,9 +1,12 @@
 <template>
   <div class="home">
-    <carousel></carousel>
-    <!-- <div class="hero-img">
-      <img src="../assets/imgs/homepage/hero1.2.png" alt="" class="hero-image" />
-    </div> -->
+    <!-- <carousel></carousel> -->
+    <div class="hero-container">
+      <div class="hero-content">
+      <h1>Find your furry best friend.</h1>
+      </div>
+      <!-- <img src="../assets/imgs/homepage/dogHero1.jpg" alt="" class="hero-image" /> -->
+    </div>
     <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
     <router-link to="/pet" class="our-pets-btn">View All Our Pets!</router-link>
     <div class="homepage-pet-list">

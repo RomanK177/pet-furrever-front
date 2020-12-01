@@ -81,7 +81,6 @@
     ></pet-comments>
   </section>
 </template>
-
 <script>
 import { petService } from "../../services/pet-service.js";
 import notLoggedIn from "../../cmps/pet/not-loggedin.vue";
@@ -91,7 +90,6 @@ import petComments from "../../cmps/pet/pet-comments.vue";
 import petFavorite from "../../cmps/pet/pet-favorite";
 import { utilService } from "../../services/util-service.js";
 import { userService } from "../../services/user-service.js";
-
 export default {
   name: "petDetails",
   data() {
@@ -112,7 +110,6 @@ export default {
       // },
     };
   },
-
   methods: {
     adopt() {
       // const loggedInUser = this.$store.getters.getLoggedInUser;
@@ -189,7 +186,6 @@ export default {
         pet: this.pet,
       });
     },
-
   },
   computed: {
     getLoggedInUser(){
@@ -214,7 +210,6 @@ export default {
       this.allAdoptions();
     }
   },
-
   components: {
     notLoggedIn,
     detailsImages,
