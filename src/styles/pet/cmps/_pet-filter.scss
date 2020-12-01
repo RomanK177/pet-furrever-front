@@ -8,9 +8,15 @@
 }
 
 .filters-togglebutton {
+    border: 1px solid gray;
+    background-color: orange;
     position: absolute;
     top: 0;
     left: 0;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    text-align: center;
 }
 
 .filters {

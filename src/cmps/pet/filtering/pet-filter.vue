@@ -6,9 +6,7 @@
         <search-input v-model="filter.txt" @input="debFilter" />
       </div>
 
-      <button class="filters-togglebutton" @click="toggleFilters">
-        Filter
-      </button>
+      <div class="filters-togglebutton" @click="toggleFilters">Filter</div>
       <div class="filters flex column" v-if="isShowFilters">
         <pet-type-select @input="emitFilter" v-model="filter.type" />
         <pet-size-select @input="emitFilter" v-model="filter.size" />
