@@ -72,7 +72,7 @@
       />
       <br />
       <label
-        >Location: <input type="text" required v-model="pet.owner.location.name"
+        >Location: <input type="text" required v-model="pet.owner.ownerData.location.name"
       /></label>
       <br />
       <button>Submit</button>
