@@ -38,16 +38,17 @@
             <div
               class="pet-owner-details flex column space-between align-center"
             >
-              <img v-if="owner.imgUrlProfile"
+              <img
+                v-if="owner.imgUrlProfile"
                 :src="require(`@/assets/imgs/person/${owner.imgUrlProfile}`)"
                 alt=""
                 class="owner-img"
-              /> 
+              />
               <router-link
                 class="pet-details-owner-name"
                 :to="`/user/${owner._id}`"
                 >{{ owner.fullName }}</router-link
-              > 
+              >
             </div>
             <p class="location-details flex flex-start">
               <img
@@ -57,7 +58,9 @@
               />
               Location Address
             </p>
-            <p class="pet-details-owner-location">{{owner.ownerData.location.name}}</p>
+            <p class="pet-details-owner-location">
+              {{ owner.ownerData.location.name }}
+            </p>
             <hr />
             <p class="pet-details-owner-email flex flex-start">
               <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
@@ -105,8 +108,8 @@ export default {
         fullName: "",
         ownerData: {
           location: {
-            name: ''
-          }
+            name: "",
+          },
         },
         imgUrlProfile: "",
       },
@@ -135,7 +138,7 @@ export default {
     // },
     async sendRequest() {
       const req = {
-        _id: utilService.makeId(),
+        _id: null,
         createdAt: Date.now(),
         user: {
           _id: this.loggedInUser._id,
@@ -152,8 +155,8 @@ export default {
         status: "pending",
       };
       await this.$store.dispatch({
-        type: "addAdoptionRequest",
-        request: req,
+        type: "saveAdoption",
+        adoption: req,
       });
       this.allAdoptions();
     },

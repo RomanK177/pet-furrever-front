@@ -34,12 +34,13 @@ export const adoptionStore = {
                 // console.log('adoptions', adoptions)
             commit({ type: 'setAdoptionRequests', adoptions })
         },
-        async addAdoptionRequest({ commit }, { request }) {
-            console.log('request', request)
-            const adoptionRequest = await adoptionService.add(request)
-            commit({ type: 'addAdoptionRequest', adoptionRequest })
-        },
+        // async addAdoptionRequest({ commit }, { request }) {
+        //     console.log('request', request)
+        //     const adoptionRequest = await adoptionService.add(request)
+        //     commit({ type: 'addAdoptionRequest', adoptionRequest })
+        // },
         async saveAdoption({ commit }, { adoption }) {
+
             const action = (adoption._id) ? 'updateAdoption' : 'saveAdoption';
             const savedAdoption = await adoptionService.saveAdoption(adoption)
             commit({ type: action, adoption: savedAdoption });

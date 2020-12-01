@@ -1,8 +1,24 @@
 .pet-filter {
+    position: relative;
     margin: 10px;
     & div {
         flex: 1 1 0px
     }
+}
+
+.filters-togglebutton {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.search-input {
+    position: relative;
+    left: 50px;
+    display: block;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .el-input__inner {

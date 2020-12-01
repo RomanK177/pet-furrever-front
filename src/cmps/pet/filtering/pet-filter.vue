@@ -1,11 +1,19 @@
 <template>
   <section class="pet-filter">
     <!-- <h1>I am Filter</h1> -->
-    <div class="flex filters">
-      <search-input v-model="filter.txt" @input="debFilter" />
-      <pet-type-select @input="emitFilter" v-model="filter.type" />
-      <pet-size-select @input="emitFilter" v-model="filter.size" />
-      <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
+    <div class="filters">
+      <div class="search-input">
+        <search-input v-model="filter.txt" @input="debFilter" />
+      </div>
+
+      <button class="filters-togglebutton" @click="toggleFilters">
+        Filter
+      </button>
+      <div class="filters" v-if="isShowFilters">
+        <pet-type-select @input="emitFilter" v-model="filter.type" />
+        <pet-size-select @input="emitFilter" v-model="filter.size" />
+        <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
+      </div>
     </div>
   </section>
 </template>
@@ -26,6 +34,7 @@ export default {
         sortBy: null,
       },
       debTime: null,
+      isShowFilters: false,
     };
   },
   methods: {
@@ -36,6 +45,9 @@ export default {
     debFilter() {
       if (this.debTime) clearTimeout(this.debTime);
       this.debTime = setTimeout(() => this.emitFilter(), 500);
+    },
+    toggleFilters() {
+      this.isShowFilters = !this.isShowFilters;
     },
     // emitSort() {
     // 	this.$emit('sort', this.sortBy);

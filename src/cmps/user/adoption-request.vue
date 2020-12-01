@@ -17,6 +17,7 @@
       <li class="flex" v-for="(request, idx) in requests" :key="idx">
         <adoption-request-preview
           @updateAdoption="emiUpdateAdoption"
+          @updatePet="emiUpdatePet"
           :request="request"
         />
       </li>
@@ -27,34 +28,32 @@
 <script>
 import adoptionRequestPreview from "./adoption-request-preview.vue";
 export default {
+  props: {
+    requests: Array,
+  },
   data() {
     return {
       showList: false,
     };
   },
   methods: {
-    async getAdopter() {
-      let adopter = await this.$store.getters.getUserById(adopterId);
-      return adopter;
-    },
     togleListShow() {
       this.showList = !this.showList;
     },
     emiUpdateAdoption(adoption) {
       this.$emit("updateAdoption", adoption);
     },
+    emiUpdatePet(pet) {
+      this.$emit("updatePet", pet);
+    },
   },
   computed: {
-    requests() {
-      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
-        (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
-      );
-      console.log(
-        "🚀 ~ file: owner-details.vue ~ line 93 ~ getAdoptionRequests ~ filteredReqs",
-        filteredReqs
-      );
-      return filteredReqs;
-    },
+    // requests() {
+    //   let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
+    //     (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
+    //   );
+    //   return filteredReqs;
+    // },
   },
   created() {
     // this.getAdoptionRequest

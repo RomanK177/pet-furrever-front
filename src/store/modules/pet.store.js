@@ -15,7 +15,7 @@ export const petStore = {
     getters: {
         petsForPreview(state) {
             return state.pets
-        }
+        },
 
     },
     mutations: {
