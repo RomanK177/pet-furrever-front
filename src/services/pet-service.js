@@ -24,32 +24,19 @@ function query(filter = null, sortBy = 'name') {
         filterStr = searchStr + sizeStr + typeStr;
         sortStr = filter.sortBy
     }
-    // let path = `${BASE_URL}/pets?_sort=${sortStr}${filterStr}`;
-    // return axios.get(path)
-    //     .then(res => {
-    //         return res.data
-    //     })
 
     return httpService.get(`pets?_sort=${sortStr}${filterStr}`)
 }
 
 function getPetById(id) {
-    // return axios.get(`${BASE_URL}/pets/${id}`)
-    // .then(res => res.data)
-
-    // const url = `${BASE_URL}/pets/${id}`
-    // const res = await axios.get(url)
-    // const resId = res.data
     return httpService.get(`pets/${id}`)
 }
 
 function removePet(id) {
-    // return httpService.delete(`pet/${id}`)
+    return httpService.delete(`pet/${id}`)
 }
 
 function savePet(pet) {
-    // For front end test only
-    //
     if (!pet._id) {
         return httpService.post(`pets`, pet)
     } else {
@@ -74,7 +61,6 @@ function getEmptyPet() {
 }
 
 async function addComment(petId, comment) {
-    console.log(petId,comment)
     return httpService.post(`pets/${petId}/comments`, comment);
 }
 

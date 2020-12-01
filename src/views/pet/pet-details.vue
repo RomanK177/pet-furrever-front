@@ -185,10 +185,10 @@ export default {
     },
     updateFavorites(user) {
       sessionStorage.user = JSON.stringify(user);
-      this.$store.dispatch({
-        type: "updateUser",
-        savedUser: user,
-      });
+      // this.$store.dispatch({
+      //   type: "updateUser",
+      //   savedUser: user,
+      // });
     },
     // updateComments(comment) {
     //   debugger

@@ -45,7 +45,7 @@
     <owner-review-updated
       :reviews="owner.ownerData.reviews"
       :loggedInUser="getLoggedInUser"
-      @addReview="updateReviews"
+      @addReview="addReview"
     />
   </section>
 </template>
@@ -63,11 +63,19 @@ export default {
     owner: Object,
   },
   methods: {
-    updateReviews(review) {
-      this.owner.ownerData.reviews.unshift(review);
-      this.$store.dispatch({
-        type: "saveUser",
-        user: this.owner,
+    // updateReviews(review) {
+    //   this.owner.ownerData.reviews.unshift(review);
+    //   this.$store.dispatch({
+    //     type: "saveUser",
+    //     user: this.owner,
+    //   });
+    //Karin changes - you can't update or save user from frontend (only if it's edit mode and)
+    async addReview(review) {
+      debugger
+      await this.$store.dispatch({
+        type: "addReview",
+        review: JSON.parse(JSON.stringify(review)),
+        ownerId: this.owner._id,
       });
     },
     updateAdoption(adoption) {
