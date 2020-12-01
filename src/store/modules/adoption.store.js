@@ -40,11 +40,15 @@ export const adoptionStore = {
         // commit({ type: 'addAdoptionRequest', adoptionRequest })
         // },
         async saveAdoption({ commit }, { adoption }) {
+            try {
 
-            const action = (adoption._id) ? 'updateAdoption' : 'saveAdoption';
-            const savedAdoption = await adoptionService.saveAdoption(adoption)
-            commit({ type: action, adoption: savedAdoption });
-            return savedAdoption;
+                const action = (adoption._id) ? 'updateAdoption' : 'saveAdoption';
+                const savedAdoption = await adoptionService.saveAdoption(adoption)
+                commit({ type: action, adoption: savedAdoption });
+                return savedAdoption;
+            } catch (err) {
+                console.error('Cannot save adoption.', err)
+            }
         },
 
     },
