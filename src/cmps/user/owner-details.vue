@@ -69,9 +69,8 @@ export default {
     //     type: "saveUser",
     //     user: this.owner,
     //   });
-    //Karin changes - you can't update or save user from frontend (only if it's edit mode and)
+
     async addReview(review) {
-      debugger
       await this.$store.dispatch({
         type: "addReview",
         review: JSON.parse(JSON.stringify(review)),
@@ -84,12 +83,12 @@ export default {
         adoption,
       });
     },
-    // updatePet(pet) {
-    //   this.$store.dispatch({
-    //     type: "savePet",
-    //     pet,
-    //   });
-    // },
+    updatePet(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
+    },
   },
   computed: {
     imgUrlProfile() {

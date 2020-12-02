@@ -142,12 +142,11 @@ export default {
     //   this.owner = owner;
     // },
     async sendRequest() {
+      debugger
       const req = {
-        _id: null,
-        createdAt: Date.now(),
-        user: {
-          _id: this.loggedInUser._id,
-          name: this.loggedInUser.fullName,
+        user: { 
+          _id: "",
+          name: "",
         },
         owner: {
           _id: this.pet.owner._id,
@@ -160,8 +159,8 @@ export default {
         status: "pending",
       };
       await this.$store.dispatch({
-        type: "saveAdoption",
-        adoption: req,
+        type: "addAdoptionRequest",
+        adoptionRequest: req,
       });
       this.allAdoptions();
     },
@@ -205,7 +204,6 @@ export default {
         petId: this.pet._id,
         comment,
       });
-      console.log(comment);
     },
   },
   computed: {
@@ -218,7 +216,6 @@ export default {
     const { id } = this.$route.params;
     const pet = await petService.getPetById(id);
     this.pet = pet;
-    console.log(this.pet);
     // const ownerId = this.pet.owner._id;
     // const owner = await userService.getById(ownerId);
     // this.owner = owner;
