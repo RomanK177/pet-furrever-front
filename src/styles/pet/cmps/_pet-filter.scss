@@ -1,50 +1,71 @@
 .pet-filter {
-    position: relative;
-    left: 250px;
-    margin: 10px;
+    // position: relative;
+    // margin: 10px;
     & div {
-        flex: 1 1 0px
+        // flex: 1 1 0px
+        display: flex;
+        justify-content: center;
     }
 }
 
 .filters-togglebutton {
-    border: 1px solid gray;
-    background-color: orange;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 30px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.filters {
-    width: 150px;
-}
-
-.search-input {
     // position: absolute;
-    left: 250px;
-    display: block;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    // top: 0;
+    // left: 0;
+    background-color: orange;
+    color: rgb(59, 59, 59);
+    border: 1px solid rgb(59, 59, 59);
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: quicksand-medium;
+    font-size: 1rem;
+    width: 250px;
+    color: white;
+}
+
+
+
+.el-input{
+    font-family: quicksand;
 }
 
 .el-input__inner {
-    border: 1px solid orange;
+    border: 1px solid rgb(63, 63, 63);
+    font-family: quicksand;
+    width: fit-content;
+
+
 }
 
 .el-input--suffix .el-input__inne {
-    border: 1px solid orange;
+    // border: 1px solid orange;
+    border: 1px solid rgb(63, 63, 63);
+    width: fit-content;
+
 }
 
 .el-input.is-active .el-input__inner,
 .el-input__inner:focus {
-    border: 1px solid brown;
+    border: 1px solid orange;
 }
 
 .el-select .el-input.is-focus .el-input__inner {
-    border: 1px solid brown;
+    border: 1px solid orange;
+}
+
+
+.filters{
+    width: 400px
+}
+
+.favorite-btn{
+    border: 1px solid rgb(63, 63, 63);
+    border-radius: 5px;
+    padding: 5px;
+    color:#606266;
+    font-size: inherit;
+}
+
+.shown-filters{
+    width: fit-content;
 }

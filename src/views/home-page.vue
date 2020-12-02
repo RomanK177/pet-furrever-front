@@ -3,32 +3,34 @@
     <div class="hero flex">
       <div class="hero-content">
         <h1 class="container">Find your furry best friend.</h1>
-      <div class=" view-pets container">
-         <router-link to="/pet" class="our-pets-btn"
-        >View All Pets!</router-link
-      >
-      </div>
+        <div class="view-pets container">
+          <router-link to="/pet" class="our-pets-btn"
+            >View All Pets</router-link
+          >
+        </div>
       </div>
     </div>
     <div class="our-pets container">
-      <h1 class="pets-of-the-week">Pets Available For Adoption!</h1>
+      <!-- <h1 class="pets-of-the-week">Pets Available For Adoption!</h1> -->
     </div>
     <div class="homepage-pet-list container">
-      <h2 class="text-center">Most liked Pets</h2>
+      <h2 class="text-center pets-of-the-week">
+        Most liked Pets Available For Adoption
+      </h2>
       <pet-list
         v-if="petsForPreview"
         :pets="mostLiked"
         @updateLikes="addTreat"
       ></pet-list>
-      <h2 class="text-center">Recently Adopted Pets</h2>
+      <h2 class="text-center pets-of-the-week">Recently Adopted Pets</h2>
       <pet-list
         v-if="petsForPreview"
         :pets="recentlyAdopted"
         @updateLikes="updateLikes"
       ></pet-list>
-       </div>
-    <section class="adopt-container flex">
-      <div class="adopt-reasons">
+    </div>
+    <div class="adopt-container flex container">
+      <section class="adopt-reasons">
         <h3>We Can Help You Find The <span>Purr</span>fect Pet!</h3>
         <div class="heart">
           <h1 class="adopt-circle">Why Should I Adopt?</h1>
@@ -46,7 +48,7 @@
         important reason is that you will be saving a life, and your pet will
         love you forever for that! -->
         </p>
-        <p>
+        <!-- <p>
           Research shows that having a pet improves your quality of of life by
           making you a happier person! Taking care of an animal releases
           endorphins in your brain, which causes you to be happier! It's been
@@ -54,10 +56,10 @@
           physically beneficial to their companions. Let's not forget the
           uncoditional love from your pet! What are you waiting for?! Improve
           your life now - find your new furry best friend!
-        </p>
-        </div>
+        </p> -->
         <!-- <button>View All Animals!</button> -->
-      <!-- <section class="testimonies"> -->
+      </section>
+      <section class="testimonies">
         <!-- <review></review> -->
         <div class="testimony">
           <div class="testimony-img">
@@ -67,6 +69,13 @@
           <div class="testimony-p">
             <p>
               Hello! My name is Sarah, and I adopted my incredible dog named
+              Martin from <span>"Dog Luvers"</span>. He saved me in so many ways. Walking him
+              every morning really gave me a purpose to get out of bed each
+              morning. His uncoditional love truly changed me. Please adopt and
+              save a life while improving your own!
+            </p>
+            <!-- <p>
+              Hello! My name is Sarah, and I adopted my incredible dog named
               Martin from "Dog Luvers". He saved me in so many ways. I used to
               be really depressed before I adopted Martin, and would have the
               hardest time getting out of bed. Walking him every morning really
@@ -75,7 +84,7 @@
               changed me, and I feel like the luckiest person in the world to
               get to be Martin's Dog mom! Please adopt and save a life while
               improving your own!
-            </p>
+            </p> -->
           </div>
         </div>
         <div class="testimony">
@@ -86,17 +95,25 @@
           <div class="testimony-p">
             <p>
               Hi, I'm Dom and I adopted this stallion of a dog named Kita from
+              <span>"Adopt-A-Pup Rescue"</span>. I couldn't imagine my life without this
+              little dude. Adopting is the best
+              decision I've ever made, and Pet Furrever made this proccess so
+              easy and delightful. Thank you so much Pet Furrever and
+              Adop-A-Pup.
+            </p>
+            <!-- <p>
+              Hi, I'm Dom and I adopted this stallion of a dog named Kita from
               "Adopt-A-Pup Rescue". I couldn't imagine my life without this
               little dude. He is my best bud, we do everything together, I
               woudln't give him up for the world. Adopting Kita is the best
               decision I've ever made, and Pet Furrever made this proccess so
               easy and delightful. Thank you so much Pet Furrever and
               Adop-A-Pup, I will forever be thankful to you guys.
-            </p>
+            </p> -->
           </div>
         </div>
-      <!-- </section> -->
-    </section>
+      </section>
+    </div>
   </section>
 </template>
 
