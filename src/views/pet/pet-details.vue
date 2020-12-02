@@ -3,7 +3,11 @@
     <div class="details container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex justify-center">
-        <details-about :pet="pet" @updateLikes="addTreat"></details-about>
+        <details-about
+          :pet="pet"
+          :loggedInUser="loggedInUser"
+          @updateLikes="addTreat"
+        ></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column justify-center align-center">
@@ -142,9 +146,9 @@ export default {
     //   this.owner = owner;
     // },
     async sendRequest() {
-      debugger
+      debugger;
       const req = {
-        user: { 
+        user: {
           _id: "",
           name: "",
         },

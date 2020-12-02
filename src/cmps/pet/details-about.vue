@@ -47,9 +47,12 @@
 import petLikes from "../pet/pet-likes.vue";
 import petFavorite from "../pet/pet-favorite.vue";
 export default {
-  name: "detailImages",
+  name: "detailAbout",
   props: {
     pet: {
+      type: Object,
+    },
+    loggedInUser: {
       type: Object,
     },
   },
@@ -58,6 +61,7 @@ export default {
       this.$emit("updateLikes", pet);
       console.log;
     },
+    computed: {},
   },
   components: {
     petLikes,
