@@ -1,6 +1,6 @@
 <template>
   <section class="header flex space-between container">
-    <router-link to="/" class="logo">Pet <span>Furr</span>ever</router-link>
+    <router-link to="/" class="logo">Pet <span>Furr</span>Ever</router-link>
     <nav class="navbar">
       <avatar :name="loggedinUserName" />
       <!-- <span>Hello: {{ loggedinUserName }}</span> -->
