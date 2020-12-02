@@ -102,17 +102,6 @@ export default {
       pet: null,
       loggedInUser: null,
       isActive: null,
-      // owner: {
-      //   email: "",
-      //   tel: "",
-      //   fullName: "",
-      //   ownerData: {
-      //     location: {
-      //       name: ''
-      //     }
-      //   },
-      //   imgUrlProfile: "",
-      // },
     };
   },
   methods: {
@@ -143,24 +132,10 @@ export default {
     // },
     async sendRequest() {
       debugger
-      const req = {
-        user: { 
-          _id: "",
-          name: "",
-        },
-        owner: {
-          _id: this.pet.owner._id,
-          name: this.pet.owner.fullName,
-        },
-        pet: {
-          _id: this.pet._id,
-          name: this.pet.name,
-        },
-        status: "pending",
-      };
+      const petId = this.pet._id
       await this.$store.dispatch({
         type: "addAdoptionRequest",
-        adoptionRequest: req,
+        petId,
       });
       this.allAdoptions();
     },

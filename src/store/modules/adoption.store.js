@@ -33,12 +33,9 @@ export const adoptionStore = {
             // console.log('adoptions', adoptions)
             commit({ type: 'setAdoptionRequests', adoptions })
         },
-        async addAdoptionRequest({ commit }, { adoptionRequest }) {
-            debugger
-            console.log('request', adoptionRequest)
+        async addAdoptionRequest({ commit }, { petId }) {
             try {
-                const addedAdoptionRequest = await adoptionService.addAdoptionRequest(adoptionRequest)
-                commit({ type: 'addAdoptionRequest', addAdoptionRequest })
+                const addedAdoptionRequest = await adoptionService.addAdoptionRequest(petId)
                 return addedAdoptionRequest;
             } catch (err) {
                 console.log('Cannot add request', err);

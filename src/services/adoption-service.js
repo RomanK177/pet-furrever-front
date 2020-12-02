@@ -10,14 +10,14 @@ export const adoptionService = {
 
 
 function query() {
-    return httpService.get(`adoptions`)
+    return httpService.get(`adoptions`);
 }
 
-function addAdoptionRequest(adoptionRequest) {
+function addAdoptionRequest(petId) {
     debugger
-    return httpService.post(`adoptions`, adoptionRequest)
+    return httpService.post(`adoptions`, {petId});
 }
 
 function updateAdoptionRequest(adoptionRequest) {
-    return httpService.put(`adoptions/${adoptionRequest._id}`, adoptionRequest)
+    return httpService.put(`adoptions/${adoptionRequest._id}`, adoptionRequest);
 }
