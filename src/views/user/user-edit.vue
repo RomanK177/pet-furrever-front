@@ -23,6 +23,7 @@ export default {
     };
   },
   async created() {
+    debugger
     const userId = this.$route.params.id;
     const user = await userService.getById(userId);
     this.userToEdit = user;

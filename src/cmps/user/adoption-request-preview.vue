@@ -62,18 +62,15 @@ export default {
     hideButtons() {
       this.areButtonsShown = false;
     },
-    // updateRequest(action) {
-    //   if (action == true) {
-    //     this.request.status = "approved";
-    //     this.pet.adoptedAt = Date.now();
-    //     this.$emit("updatePet", this.pet);
-    //   } else {
-    //     this.request.status = "declined";
-    //     this.pet.adoptedAt = null;
-    //     this.$emit("updatePet", this.pet);
-    //   }
-    //   this.$emit("updateAdoption", this.request);
-    // },
+    updateRequest(action) {
+      if (action === true) {
+        this.request.status = "approved";
+        // this.pet.adoptedAt = Date.now(); -> Mongo will do
+      } else {
+        this.request.status = "declined";
+      }
+      this.$emit("updateAdoption", this.request);
+    },
   },
   computed: {
     sentTime() {

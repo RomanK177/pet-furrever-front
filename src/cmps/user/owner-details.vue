@@ -40,7 +40,6 @@
     </div>
     <adoption-request
       @updateAdoption="updateAdoption"
-      @updatePet="updatePet"
       v-if="checkIfOwner"
       :requests="requests"
     />
@@ -81,16 +80,10 @@ export default {
         ownerId: this.owner._id,
       });
     },
-    updateAdoption(adoption) {
+    updateAdoption(adoptionRequest) {
       this.$store.dispatch({
-        type: "saveAdoption",
-        adoption,
-      });
-    },
-    updatePet(pet) {
-      this.$store.dispatch({
-        type: "savePet",
-        pet,
+        type: "updateAdoption",
+        adoptionRequest,
       });
     },
   },

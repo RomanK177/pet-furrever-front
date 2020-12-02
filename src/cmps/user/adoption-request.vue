@@ -19,7 +19,6 @@
       <li class="flex" v-for="(request, idx) in requests" :key="idx">
         <adoption-request-preview
           @updateAdoption="emiUpdateAdoption"
-          @updatePet="emiUpdatePet"
           :request="request"
         />
       </li>
@@ -45,9 +44,6 @@ export default {
     emiUpdateAdoption(adoption) {
       this.$emit("updateAdoption", adoption);
     },
-    // emiUpdatePet(pet) {
-    //   this.$emit("updatePet", pet);
-    // },
   },
   computed: {
     // requests() {

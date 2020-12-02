@@ -44,9 +44,8 @@ export const adoptionStore = {
         },
         async updateAdoptionRequest({ commit }, { adoptionRequest }) {
             try {
-                const action = (adoptionRequest._id) ? 'updateAdoption' : 'saveAdoption';
-                const savedAdoption = await adoptionService.saveAdoption(adoptionRequest)
-                commit({ type: action, adoptionRequest: savedAdoption });
+                const savedAdoption = await adoptionService.updateAdoptionRequest(adoptionRequest)
+                // commit({ type: 'updateAdoption', adoptionRequest: savedAdoption });
                 return savedAdoption;
             } catch (err) {
                 console.error('Cannot save adoption.', err)
