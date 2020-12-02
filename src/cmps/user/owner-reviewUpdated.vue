@@ -55,7 +55,6 @@ export default {
   },
   methods: {
     addReview() {
-      debugger
       // this.reviewToAdd.by.fullName = !this.loggedInUser
       //   ? "Guest"
       //   : this.loggedInUser.fullName;

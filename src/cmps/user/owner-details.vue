@@ -69,9 +69,8 @@ export default {
     //     type: "saveUser",
     //     user: this.owner,
     //   });
-    //Karin changes - you can't update or save user from frontend (only if it's edit mode and)
+
     async addReview(review) {
-      debugger
       await this.$store.dispatch({
         type: "addReview",
         review: JSON.parse(JSON.stringify(review)),
