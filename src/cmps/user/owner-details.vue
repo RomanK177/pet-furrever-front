@@ -1,5 +1,5 @@
 <template>
-  <section class="owner-details">
+  <section class="owner-details container">
     <div class="owner-action" v-if="checkIfOwner">
       <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> ||
       <router-link to="/pet/edit">Add pet</router-link>
