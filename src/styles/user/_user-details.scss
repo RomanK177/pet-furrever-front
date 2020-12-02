@@ -1,14 +1,24 @@
 .user {
     &-profile-picture {
-        width: 150px;
-        height: 150px;
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
     }
+}
+
+.bold{
+    font-family: quicksand-medium;
 }
 
 .owner-details{
     padding-top:80px;
 }
 
+.welcome{
+    text-align: center;
+    font-size: 2rem;
+}
 .owner-action {
     float: right;
 }
@@ -22,6 +32,13 @@
 .request-togle:hover {
     cursor: pointer;
 }
+
+.owner-info{
+    // border: 1px solid orange;
+    // text-align: center;
+    margin-left: 20px;
+}
+
 
 .adoption-request {
     &-list {
@@ -68,6 +85,7 @@
     & img {
         width: 20px;
         border-radius: 5px;
+        // object-fit: contain;
         margin-left: auto;
         margin-right: auto;
         display: block;
