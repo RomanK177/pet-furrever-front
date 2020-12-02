@@ -5,9 +5,9 @@ var axios = Axios.create({
 
 import router from './../router/router.js';
 
-const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/api/'
-    : '//localhost:3000/api/'
+const BASE_URL = process.env.NODE_ENV === 'production' ?
+    '/api/' :
+    '//localhost:3000/api/'
 
 export const httpService = {
     get(endpoint, data) {
@@ -41,4 +41,3 @@ async function ajax(endpoint, method = 'get', data = null) {
         throw err;
     }
 }
-

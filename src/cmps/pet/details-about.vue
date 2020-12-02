@@ -12,7 +12,7 @@
       <pet-favorite
         :pet="pet"
         :loggedInUser="loggedInUser"
-        @updateFavorites="updateFavorites"
+        @updateFavorites="emitUpdateFavorites"
       />
       <a href="https://www.facebook.com/login" target="_blank" class="share">
         <img src="../../assets/svgs/share.svg" alt="" class="share-svg" />
@@ -47,9 +47,12 @@
 import petLikes from "../pet/pet-likes.vue";
 import petFavorite from "../pet/pet-favorite.vue";
 export default {
-  name: "detailImages",
+  name: "detailAbout",
   props: {
     pet: {
+      type: Object,
+    },
+    loggedInUser: {
       type: Object,
     },
   },
@@ -58,6 +61,10 @@ export default {
       this.$emit("updateLikes", pet);
       console.log;
     },
+    emitUpdateFavorites(user) {
+      this.$emit("updateFavorites", user);
+    },
+    // computed: {},
   },
   components: {
     petLikes,

@@ -24,7 +24,7 @@ function _getCommonUserFields() {
         email: '',
         tel: '0',
         imgUrlProfile: '',
-        dateOfBirth: '',
+        favorites: []
     }
 }
 
@@ -57,17 +57,15 @@ function _getEmptyOwner() {
                 lat: '',
                 lang: ''
             },
-            reviews: [
-                {
-                    txt: '',
-                    rate: 5,
-                    by: {
-                        userId: '',
-                        fullName: '',
-                        imgUrl: ''
-                    }
+            reviews: [{
+                txt: '',
+                rate: 5,
+                by: {
+                    userId: '',
+                    fullName: '',
+                    imgUrl: ''
                 }
-            ]
+            }]
         }
     }
     return owner;
@@ -86,6 +84,7 @@ function remove(userId) {
 }
 
 function update(user) {
+    console.log("🚀 ~ file: user-service.js ~ line 87 ~ update ~ user", user)
     return httpService.put(`users/${user._id}`, user);
 }
 
@@ -115,4 +114,3 @@ function _handleLogin(user) {
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
 }
-

@@ -3,7 +3,12 @@
     <div class="details container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex justify-center">
-        <details-about :pet="pet" @updateLikes="addTreat"></details-about>
+        <details-about
+          :pet="pet"
+          :loggedInUser="getLoggedInUser"
+          @updateLikes="addTreat"
+          @updateFavorites="updateFavorites"
+        ></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column justify-center align-center">
@@ -102,17 +107,6 @@ export default {
       pet: null,
       loggedInUser: null,
       isActive: null,
-      // owner: {
-      //   email: "",
-      //   tel: "",
-      //   fullName: "",
-      //   ownerData: {
-      //     location: {
-      //       name: ''
-      //     }
-      //   },
-      //   imgUrlProfile: "",
-      // },
     };
   },
   methods: {
@@ -142,25 +136,11 @@ export default {
     //   this.owner = owner;
     // },
     async sendRequest() {
-      debugger
-      const req = {
-        user: { 
-          _id: "",
-          name: "",
-        },
-        owner: {
-          _id: this.pet.owner._id,
-          name: this.pet.owner.fullName,
-        },
-        pet: {
-          _id: this.pet._id,
-          name: this.pet.name,
-        },
-        status: "pending",
-      };
+      debugger;
+      const petId = this.pet._id;
       await this.$store.dispatch({
         type: "addAdoptionRequest",
-        adoptionRequest: req,
+        petId,
       });
       this.allAdoptions();
     },
@@ -183,11 +163,15 @@ export default {
       this.isActive = !isSentRequest;
     },
     updateFavorites(user) {
-      sessionStorage.user = JSON.stringify(user);
-      // this.$store.dispatch({
-      //   type: "updateUser",
-      //   savedUser: user,
-      // });
+      console.log(
+        "🚀 ~ file: pet-details.vue ~ line 191 ~ updateFavorites ~ user",
+        user
+      );
+      // sessionStorage.user = JSON.stringify(user);
+      this.$store.dispatch({
+        type: "updateUser",
+        savedUser: user,
+      });
     },
     // updateComments(comment) {
     //   debugger
