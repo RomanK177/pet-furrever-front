@@ -1,7 +1,7 @@
 <template>
   <div class="owner-edit">
     <h1>Edit your profile</h1>
-    <form>
+    <form v-if="ownerToEdit" @submit.prevent="saveEdit">
       <template v-if="!isLoadingProfile">
         <label for="imgUploader"
           >Choose your profile picture:
@@ -120,13 +120,6 @@ export default {
     this.ownerToEdit.ownerData.imgUrls = newUrls;
   },
   methods: {
-    // async getOwner(ownerId) {
-    //   const owner = await this.$store.dispatch({
-    //     type: "getOwnerById",
-    //     ownerId,
-    //   });
-    //   this.user = user;
-    // },
     async onUploadImgProfile(ev) {
       this.isLoading = true;
       const res = await uploadImg(ev);

@@ -84,12 +84,12 @@ export default {
         adoption,
       });
     },
-    // updatePet(pet) {
-    //   this.$store.dispatch({
-    //     type: "savePet",
-    //     pet,
-    //   });
-    // },
+    updatePet(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
+    },
   },
   computed: {
     imgUrlProfile() {
