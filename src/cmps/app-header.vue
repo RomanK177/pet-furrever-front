@@ -3,10 +3,14 @@
     <router-link to="/" class="logo">Pet <span>Furr</span>ever</router-link>
     <nav class="navbar">
       <span>Hello: {{ loggedinUserName }}</span>
-      <router-link to="/" class="nav-link">Home</router-link>
+      <!-- <router-link to="/" class="nav-link">Home</router-link> -->
       <router-link to="/pet" class="nav-link">Our Pets</router-link>
-      <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}`" class="nav-link">
-      Profile
+      <router-link
+        v-if="loggedinUser"
+        :to="`/user/${loggedinUser._id}`"
+        class="nav-link"
+      >
+        Profile
       </router-link>
       <router-link v-else to="/signup" class="nav-link">SignUp</router-link>
       <a v-if="!loggedinUser" @click="loginOpen = !loginOpen" class="nav-link"
@@ -33,7 +37,9 @@ export default {
   },
   computed: {
     loggedinUser() {
-      return this.$store.getters.getLoggedInUser ? this.$store.getters.getLoggedInUser : null;
+      return this.$store.getters.getLoggedInUser
+        ? this.$store.getters.getLoggedInUser
+        : null;
     },
     loggedinUserName() {
       if (this.$store.getters.getLoggedInUser) {
