@@ -64,7 +64,7 @@ export default {
     emitUpdateFavorites(user) {
       this.$emit("updateFavorites", user);
     },
-    computed: {},
+    // computed: {},
   },
   components: {
     petLikes,
