@@ -47,7 +47,6 @@ export default {
   },
   methods: {
     addComment() {
-      debugger;
       console.log("from add comment", this.loggedInUser);
       console.log(this.commentToAdd);
       // this.commentToAdd.by.fullName = !this.loggedInUser

@@ -1,5 +1,4 @@
 import { httpService } from './http-service.js';
-import { utilService } from './util-service.js';
 
 export const userService = {
     getEmptyUser,
@@ -99,21 +98,17 @@ async function login(userCred) {
 }
 
 async function signUp(userCred) {
-    // const user = await httpService.post('auth/signup', userCred);
-    const user = await httpService.post('users', userCred);
+    const user = await httpService.post('auth/signup', userCred);
     return _handleLogin(user)
 }
 async function logout() {
-    // await httpService.post('auth/logout');
+    await httpService.post('auth/logout');
     sessionStorage.clear();
 }
 
-//For frontend test only - relace by backend
-async function addReview(userId, review) {
-    review._id = utilService.makeId();
-    var user = await getById(userId);
-    user.ownerData.reviews.push(review);
-    update(user);
+async function addReview(ownerId, review) {
+    debugger
+    return httpService.post(`users/${ownerId}/reviews`, review);
 }
 
 function _handleLogin(user) {

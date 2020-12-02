@@ -2,7 +2,7 @@
   <section class="owner-review details" v-if="owner.ownerData.reviews">
     <h1 class="review-header">Reviews</h1>
     <hr />
-    <form v-if="checkIfOwner" @submit="addReview">
+    <form v-if="!checkIfOwner" @submit="addReview">
       <label
         ><span class="bold">Rate: </span
         ><input type="number" v-model.number="review.rate"
@@ -37,22 +37,9 @@ export default {
   },
   data() {
     return {
-      // TODO: move to by to the backend
-      // For frontend test only!!!!!
       review: {
         txt: null,
         rate: null,
-        by: {
-          userId: this.$store.getters.getLoggedInUser
-            ? this.$store.getters.getLoggedInUser._id
-            : null,
-          fullName: this.$store.getters.getLoggedInUser
-            ? this.$store.getters.getLoggedInUser.fullName
-            : "Guest",
-          imgUrl: this.$store.getters.getLoggedInUser
-            ? this.$store.getters.getLoggedInUser.imgUrl
-            : null,
-        },
       },
     };
   },
@@ -60,18 +47,18 @@ export default {
     checkIfOwner() {
       var loggedInUser = this.$store.getters.getLoggedInUser;
       if (loggedInUser) {
-        if (loggedInUser._id === this.owner._id) return false;
-      } else return true;
+        if (loggedInUser._id === this.owner._id) return true;
+      } else return false;
     },
   },
   methods: {
     async addReview() {
       await this.$store.dispatch({
         type: "addReview",
-        ownerId: this.$route.params.id,
         review: JSON.parse(JSON.stringify(this.review)),
+        ownerId: this.owner._id
       });
-      eventBus.$emit('reviewAdded')
+      // eventBus.$emit('reviewAdded')
     },
   },
 };

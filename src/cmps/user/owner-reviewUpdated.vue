@@ -55,14 +55,14 @@ export default {
   },
   methods: {
     addReview() {
-      this.reviewToAdd.by.fullName = !this.loggedInUser
-        ? "Guest"
-        : this.loggedInUser.fullName;
+      debugger
+      // this.reviewToAdd.by.fullName = !this.loggedInUser
+      //   ? "Guest"
+      //   : this.loggedInUser.fullName;
       this.$emit("addReview", JSON.parse(JSON.stringify(this.reviewToAdd)));
       this.reviewToAdd.txt = "";
     },
   }
- 
 };
 </script>
 

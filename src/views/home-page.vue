@@ -20,7 +20,7 @@
       <pet-list
         v-if="petsForPreview"
         :pets="mostLiked"
-        @updateLikes="updateLikes"
+        @updateLikes="addTreat"
       ></pet-list>
       <h2 class="text-center pets-of-the-week">Recently Adopted Pets</h2>
       <pet-list
@@ -159,6 +159,12 @@ export default {
       this.$store.dispatch({
         type: "savePet",
         pet,
+      });
+    },
+    async addTreat(pet) {
+      await this.$store.dispatch({
+        type: "addTreat",
+        petId: pet._id,
       });
     },
   },

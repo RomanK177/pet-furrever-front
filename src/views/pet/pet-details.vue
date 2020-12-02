@@ -3,7 +3,7 @@
     <div class="details-container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex">
-        <details-about :pet="pet" @updateLikes="updatePet"></details-about>
+        <details-about :pet="pet" @updateLikes="addTreat"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column justify-center align-center">
@@ -124,10 +124,16 @@ export default {
         this.sendRequest();
       }
     },
-    updatePet(pet) {
+    // updatePet(pet) {
+    //   this.$store.dispatch({
+    //     type: "savePet",
+    //     pet,
+    //   });
+    // },
+    addTreat(pet) {
       this.$store.dispatch({
-        type: "savePet",
-        pet,
+        type: "addTreat",
+        petId: pet._id,
       });
     },
     // async getOwnerById() {
@@ -179,10 +185,10 @@ export default {
     },
     updateFavorites(user) {
       sessionStorage.user = JSON.stringify(user);
-      this.$store.dispatch({
-        type: "updateUser",
-        savedUser: user,
-      });
+      // this.$store.dispatch({
+      //   type: "updateUser",
+      //   savedUser: user,
+      // });
     },
     // updateComments(comment) {
     //   debugger
@@ -193,15 +199,14 @@ export default {
     //   });
     // },
 
-    addComment(comment){
+    addComment(comment) {
       this.$store.dispatch({
-        type: 'addComment',
+        type: "addComment",
         petId: this.pet._id,
-        comment
-      })
-      console.log(comment)
-    }
-    
+        comment,
+      });
+      console.log(comment);
+    },
   },
   computed: {
     getLoggedInUser() {

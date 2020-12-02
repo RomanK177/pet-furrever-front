@@ -6,7 +6,7 @@
       :user="loggedUser"
       :pets="petsForPreview"
       @deletePet="deletePet"
-      @updateLikes="updatePet"
+      @updateLikes="addTreat"
     ></pet-list>
   </section>
 </template>
@@ -41,10 +41,10 @@ export default {
         petId,
       });
     },
-    updatePet(pet) {
-      this.$store.dispatch({
-        type: "savePet",
-        pet,
+    async addTreat(pet) {
+      await this.$store.dispatch({
+        type: "addTreat",
+        petId: pet._id,
       });
     },
     goToAddPet() {

@@ -19,9 +19,20 @@
       </span>
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
-      <div v-if="areButtonsShown">
-        <button @click="updateRequest(true)">Approve</button>
-        <button @click="updateRequest(false)">Decline</button>
+
+      <div class="approve">
+        <img
+          @click="updateRequest(true)"
+          src="../../assets/imgs/green-check.png"
+          alt=""
+        />
+      </div>
+      <div class="decline">
+        <img
+          @click="updateRequest(false)"
+          src="../../assets/imgs/red-x.png"
+          alt=""
+        />
       </div>
     </div>
   </section>
@@ -51,18 +62,18 @@ export default {
     hideButtons() {
       this.areButtonsShown = false;
     },
-    updateRequest(action) {
-      if (action == true) {
-        this.request.status = "approved";
-        this.pet.adoptedAt = Date.now();
-        this.$emit("updatePet", this.pet);
-      } else {
-        this.request.status = "declined";
-        this.pet.adoptedAt = null;
-        this.$emit("updatePet", this.pet);
-      }
-      this.$emit("updateAdoption", this.request);
-    },
+    // updateRequest(action) {
+    //   if (action == true) {
+    //     this.request.status = "approved";
+    //     this.pet.adoptedAt = Date.now();
+    //     this.$emit("updatePet", this.pet);
+    //   } else {
+    //     this.request.status = "declined";
+    //     this.pet.adoptedAt = null;
+    //     this.$emit("updatePet", this.pet);
+    //   }
+    //   this.$emit("updateAdoption", this.request);
+    // },
   },
   computed: {
     sentTime() {

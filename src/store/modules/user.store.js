@@ -68,9 +68,9 @@ export const userStore = {
             })
             return user;
         },
-        async addReview({ commit }, { ownerId, review }) {
+        async addReview({ commit }, {ownerId, review }) {
             const savedReview = await userService.addReview(ownerId, review);
-            return savedReview
+            return savedReview;
         },
         async saveUser({ commit }, { user }) {
             const action = (user._id) ? 'updateUser' : 'saveUser';

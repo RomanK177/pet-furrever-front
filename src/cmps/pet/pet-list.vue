@@ -32,6 +32,9 @@ export default {
     emitUpdateLikes(pet) {
       this.$emit("updateLikes", pet);
     },
+    emitAddTreat(pet) {
+      this.$emit("addTreat", pet._id);
+    },
     showDetails(petId) {
       this.$router.push(`/pet/${petId}`);
     },
