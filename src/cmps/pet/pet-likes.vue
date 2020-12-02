@@ -30,10 +30,25 @@
             pet.type === 'Pig' ||
             pet.type === 'Horse' ||
             pet.type === 'Bunny' ||
-            pet.type === 'Goat'
+            pet.type === 'Goat' ||
+            pet.type === 'Cow'
           "
           class="svg-symbol treat"
           src="../../assets/svgs/carrot.svg"
+          alt=""
+        />
+        <img
+          :class="{ treatClicked: treat }"
+          v-if="pet.type === 'Frog' || pet.type === 'Lizard'"
+          class="svg-symbol treat"
+          src="../../assets/svgs/fly.svg"
+          alt=""
+        />
+        <img
+          :class="{ treatClicked: treat }"
+          v-if="pet.type === 'Hamster'"
+          class="svg-symbol treat"
+          src="../../assets/svgs/nut.svg"
           alt=""
         />
         <span class="treats-count">{{ pet.numOfTreats }}</span>
