@@ -1,5 +1,5 @@
 <template>
-  <section class="pet-app">
+  <section class="pet-app container">
     <pet-filter @filter="changeFilter" @sort="setSort" @isFav="toggleFav" />
     <pet-list
       v-if="petsForPreview"

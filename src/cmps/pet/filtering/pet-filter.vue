@@ -1,31 +1,30 @@
 <template>
-  <section class="pet-filter">
+  <section class="pet-filter container">
     <!-- <h1>I am Filter</h1> -->
-    <div class="filters">
-      <div class="search-input">
+    <div class="filters container flex column justify-center">
+      <div class="search-input flex">
         <search-input v-model="filter.txt" @input="debFilter" />
-      </div>
-
       <button class="filters-togglebutton" @click="toggleFilters">
-        Filter
+        {{ buttonTxt ? 'Show More Filters' : 'Show Less Filters' }}
       </button>
-      <div class="filters" v-if="isShowFilters">
-        <pet-type-select @input="emitFilter" v-model="filter.type" />
-        <pet-size-select @input="emitFilter" v-model="filter.size" />
-        <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
-        <div
-          class="flex justify-center align-center"
-          @click.stop="toggleFevorite"
-        >
-          <img
-            class="like-svg fevorite"
-            :class="{ isFevorite: isFav }"
-            src="../../../assets/svgs/heart2.svg"
-            alt=""
-          />
-          <span>Favorite</span>
-        </div>
       </div>
+        <div class="filters flex" v-if="isShowFilters">
+          <pet-type-select @input="emitFilter" v-model="filter.type" />
+          <pet-size-select @input="emitFilter" v-model="filter.size" />
+          <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
+          <div
+            class=" favorite-btn flex justify-center align-center"
+            @click.stop="toggleFevorite"
+          >
+            <img
+              class="like-svg fevorite"
+              :class="{ isFevorite: isFav }"
+              src="../../../assets/svgs/heart2.svg"
+              alt=""
+            />
+            <span>Favorite</span>
+          </div>
+        </div>
     </div>
   </section>
 </template>
@@ -48,6 +47,7 @@ export default {
       debTime: null,
       isShowFilters: false,
       isFav: false,
+      buttonTxt: true,
     };
   },
   methods: {
@@ -61,6 +61,9 @@ export default {
     },
     toggleFilters() {
       this.isShowFilters = !this.isShowFilters;
+      this.buttonTxt = !this.buttonTxt
+
+
     },
     toggleFevorite() {
       this.isFav = !this.isFav;
