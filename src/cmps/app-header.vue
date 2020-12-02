@@ -2,7 +2,7 @@
   <section class="header flex space-between container">
     <router-link to="/" class="logo">Pet <span>Furr</span>Ever</router-link>
     <nav class="navbar flex align-center">
-      <router-link to="/pet" class="nav-link">Our Pets</router-link>
+      <router-link to="/pet" class="nav-link">All Pets</router-link>
       <div @click.stop="toggleUserMenu">
         <avatar v-if="loggedinUser" :name="loggedinUserName" />
         <!-- <span>Hello: {{ loggedinUserName }}</span> -->
