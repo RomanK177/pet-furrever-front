@@ -2,7 +2,8 @@
   <section class="header flex space-between container">
     <router-link to="/" class="logo">Pet <span>Furr</span>ever</router-link>
     <nav class="navbar">
-      <span>Hello: {{ loggedinUserName }}</span>
+      <avatar :name="loggedinUserName" />
+      <!-- <span>Hello: {{ loggedinUserName }}</span> -->
       <!-- <router-link to="/" class="nav-link">Home</router-link> -->
       <router-link to="/pet" class="nav-link">Our Pets</router-link>
       <router-link
@@ -25,6 +26,7 @@
 <script>
 import eventBus from "../services/event-bus-service.js";
 import login from "./login.vue";
+import avatar from "../../src/cmps/user/avatar";
 
 export default {
   props: {
@@ -41,9 +43,10 @@ export default {
         ? this.$store.getters.getLoggedInUser
         : null;
     },
+
     loggedinUserName() {
       if (this.$store.getters.getLoggedInUser) {
-        return this.$store.getters.getLoggedInUser.userName;
+        return this.$store.getters.getLoggedInUser.fullName;
       } else {
         return "Guest";
       }
@@ -66,6 +69,7 @@ export default {
   },
   components: {
     login,
+    avatar,
   },
 };
 </script>
