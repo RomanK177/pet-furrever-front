@@ -44,8 +44,12 @@ export default {
           label: "Horse",
         },
         {
-          value: "Option5",
-          label: "Option5",
+          value: "Bunny",
+          label: "Bunny",
+        },
+        {
+          value: "Goat",
+          label: "Goat",
         },
       ],
       value: "",

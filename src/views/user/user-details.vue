@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import adopterDetails from './../../cmps/user/adopter-details.vue';
+import adopterDetails from "./../../cmps/user/adopter-details.vue";
 import ownerDetails from "./../../cmps/user/owner-details.vue";
 
 export default {
@@ -27,10 +27,16 @@ export default {
       });
       this.user = user;
     },
+    computed: {
+      // ownerPets(){
+      //   if(this.@)
+      //    this.$store.getters.petsForPreview;
+      // }
+    },
   },
-  components:{
+  components: {
     adopterDetails,
-    ownerDetails
-  }
+    ownerDetails,
+  },
 };
 </script>
