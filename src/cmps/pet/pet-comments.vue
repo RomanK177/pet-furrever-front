@@ -1,5 +1,5 @@
 <template>
-  <div class="comments-container">
+  <div class="comments-container container">
     <h1 class="pet-details-comments-title">Comments</h1>
     <hr />
     <form @submit.prevent="addComment">
@@ -9,9 +9,9 @@
         type="text"
         placeholder="Add a Comment"
       />
-      <button>Enter</button>
+      <button class="enter-comment-btn">Enter</button>
     </form>
-    <ul>
+    <ul class="rendered-comments">
       <li
         v-for="(comment, index) in comments"
         :key="index"

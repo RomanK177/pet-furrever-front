@@ -8,7 +8,7 @@
         src="../../assets/svgs/heart2.svg"
         alt=""
       />
-      <span>Favorite</span>
+      <!-- <span>Favorite</span> -->
     </div>
   </section>
 </template>

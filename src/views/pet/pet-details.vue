@@ -1,26 +1,26 @@
 <template>
-  <section class="details" v-if="pet">
-    <div class="details-container">
+  <section class="pet-details" v-if="pet">
+    <div class="details container">
       <details-images :pet="pet"></details-images>
-      <div class="bio-adoption-container flex">
+      <div class="bio-adoption-container flex justify-center">
         <details-about :pet="pet" @updateLikes="addTreat"></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column justify-center align-center">
               <el-button v-if="isActive" type="text" @click="adopt"
-                >Adopt Me!</el-button
+                >Adopt Me</el-button
               >
               <div v-if="!isActive">Adoption Request Sent!</div>
-              <pet-favorite
+              <!-- <pet-favorite
                 :pet="pet"
                 :loggedInUser="loggedInUser"
                 @updateFavorites="updateFavorites"
-              />
+              /> -->
             </div>
             <hr />
             <div class="help-pet flex justify-center">
               <!-- <button class="sponsor">Sponsor</button> -->
-              <a
+              <!-- <a
                 href="https://www.facebook.com/login"
                 target="_blank"
                 class="share"
@@ -31,7 +31,7 @@
                   class="share-svg"
                 />
                 Share</a
-              >
+              > -->
             </div>
           </div>
           <div class="petowner-details-container">
@@ -44,7 +44,7 @@
                   require(`@/assets/imgs/person/${pet.owner.imgUrlProfile}`)
                 "
                 alt=""
-                class="owner-img"
+                class="pet-owner-img"
               />
               <router-link
                 class="pet-details-owner-name"
@@ -142,12 +142,11 @@ export default {
     //   this.owner = owner;
     // },
     async sendRequest() {
+      debugger
       const req = {
-        _id: null,
-        createdAt: Date.now(),
-        user: {
-          _id: this.loggedInUser._id,
-          name: this.loggedInUser.fullName,
+        user: { 
+          _id: "",
+          name: "",
         },
         owner: {
           _id: this.pet.owner._id,
@@ -160,8 +159,8 @@ export default {
         status: "pending",
       };
       await this.$store.dispatch({
-        type: "saveAdoption",
-        adoption: req,
+        type: "addAdoptionRequest",
+        adoptionRequest: req,
       });
       this.allAdoptions();
     },
@@ -205,7 +204,6 @@ export default {
         petId: this.pet._id,
         comment,
       });
-      console.log(comment);
     },
   },
   computed: {
@@ -218,7 +216,6 @@ export default {
     const { id } = this.$route.params;
     const pet = await petService.getPetById(id);
     this.pet = pet;
-    console.log(this.pet);
     // const ownerId = this.pet.owner._id;
     // const owner = await userService.getById(ownerId);
     // this.owner = owner;

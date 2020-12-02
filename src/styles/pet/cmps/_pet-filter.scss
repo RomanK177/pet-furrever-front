@@ -13,8 +13,7 @@
     // top: 0;
     // left: 0;
     background-color: orange;
-    color: rgb(59, 59, 59);
-    border: 1px solid rgb(59, 59, 59);
+    border: 1px solid #c8cbd2;
     border-radius: 5px;
     cursor: pointer;
     font-family: quicksand-medium;
@@ -27,19 +26,21 @@
 
 .el-input{
     font-family: quicksand;
+    width: fit-content;
 }
 
 .el-input__inner {
-    border: 1px solid rgb(63, 63, 63);
+    border: 1px solid #c8cbd2;
     font-family: quicksand;
     width: fit-content;
+    font-size: 1rem;
 
 
 }
 
 .el-input--suffix .el-input__inne {
     // border: 1px solid orange;
-    border: 1px solid rgb(63, 63, 63);
+    border: 1px solid #c8cbd2;
     width: fit-content;
 
 }
@@ -62,7 +63,7 @@
     border: 1px solid rgb(63, 63, 63);
     border-radius: 5px;
     padding: 5px;
-    color:#606266;
+    color:#c8cbd2;
     font-size: inherit;
 }
 

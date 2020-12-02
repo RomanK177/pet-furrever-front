@@ -1,26 +1,36 @@
 .pet-details-container,
 .petowner-details-container,
-.comments-container,
+// .comments-container,
 .likes-adopt-container {
     // border: 1px solid orange;
     margin: 20px;
     border-radius: 5px;
     padding: 20px;
     background-color: white;
+    width: fit-content;
 }
+
+.comments-container{
+    background-color: white;
+}
+
+// .more-container{
+//     width: 100%;
+// }
 
 .pet-details-container {
     max-width: 500px;
     height: 100%;
+    // width: 100%;
 }
 
 .bio-adoption-container{
     // flex-wrap: wrap;
-    max-width: 1000px;
-    margin: 0 auto;
+    // max-width: 1000px;
+    // margin: 0 auto;
     background-color: #f8f8f8;
-    justify-content: space-evenly;
-    padding: 20px;
+    // justify-content: space-evenly;
+    // padding: 20px;
 }
 
 .el-button {
@@ -106,7 +116,7 @@
 
 .pet-details-name {
     font-family: quicksand-medium;
-    font-size: 40px;
+    font-size: 2rem;
     margin-top: 0;
     margin-bottom: 2px;
     .details h1 {
@@ -124,6 +134,8 @@
 
 .pet-about-p {
     padding: 10px;
+    line-height: 1.5;
+    color: rgb(56, 56, 56);
 }
 
 .pet-details-container {
@@ -140,10 +152,41 @@
     text-align: center;
 }
 
-.comment-input {
-    margin-left: 40px;
+// .comment-input {
+//     margin-left: 40px;
+// }
+
+.rendered-comments{
+    padding: 0;
 }
 
+.enter-comment-btn {
+    background-color: orange;
+    border: 1px solid orange;
+    color: white;
+    border-radius: 5px;
+    padding: 2px;
+    margin-left: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: quicksand;
+    font-size: 1rem;
+
+    &:hover{
+        color: orange;
+        background-color: white;
+        border: 1px solid orange;
+
+    }
+}
+
+.comment-input{
+    font-family: quicksand;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid orange
+
+}
 .help-pet {
     button,
     .share {
@@ -172,24 +215,29 @@ hr {
     border: 1px solid beige;
 }
 
-.like-svg,
 .location-svg,
 .email-svg,
-.phone-svg,
-.share-svg {
+.phone-svg{
     height: 20px;
     width: 20px;
     margin-right: 3px;
 }
 
+
+
 .share-svg {
     filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);
-    // &:hover{
-    //     filter: invert(100%) sepia(61%) saturate(2%) hue-rotate(354deg) brightness(110%) contrast(101%);
-    //     // background-color: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);    
+    height: 30px;
+    width: 30px;
+    // &::after{
+
     // }
 }
 
+.like-svg{
+    height: 30px;
+    width: 30px;
+}
 .gender-svg,
 .age-svg,
 .breed-svg {
@@ -207,9 +255,9 @@ hr {
     }
 }
 
-.likes-adopt-container {
-    background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
-}
+// .likes-adopt-container {
+//     // background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
+// }
 
 .pet-details-owner-name {
     font-size: 1.2rem;
@@ -228,3 +276,17 @@ hr {
         color: orange;
     }
 }
+
+.pet-owner-img{
+    height:80px;
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+// .petowner-details-container{
+//     align-items: center;
+//     display: flex;
+//     flex-direction: column;
+//     width: fit-content;
+// }

@@ -99,13 +99,13 @@ async function signUp(userCred) {
     const user = await httpService.post('auth/signup', userCred);
     return _handleLogin(user)
 }
+
 async function logout() {
     await httpService.post('auth/logout');
     sessionStorage.clear();
 }
 
 async function addReview(ownerId, review) {
-    debugger
     return httpService.post(`users/${ownerId}/reviews`, review);
 }
 

@@ -2,13 +2,13 @@
 <template>
   <section class="pet-likes">
     <div class="flex space-between align-center">
-      <button
+      <!-- <button
         v-if="$route.params.id"
         @click.stop="toggleTreat"
         class="btn treat-btn"
       >
         Send Me A Treat!
-      </button>
+      </button> -->
       <div class="flex align-center" @click.stop="toggleTreat">
         <img
           :class="{ treatClicked: treat }"

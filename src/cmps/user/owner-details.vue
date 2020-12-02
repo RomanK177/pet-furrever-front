@@ -1,5 +1,5 @@
 <template>
-  <section class="owner-details">
+  <section class="owner-details container">
     <div class="owner-action" v-if="checkIfOwner">
       <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> ||
       <router-link to="/pet/edit">Add pet</router-link>
@@ -69,9 +69,8 @@ export default {
     //     type: "saveUser",
     //     user: this.owner,
     //   });
-    //Karin changes - you can't update or save user from frontend (only if it's edit mode and)
+
     async addReview(review) {
-      debugger
       await this.$store.dispatch({
         type: "addReview",
         review: JSON.parse(JSON.stringify(review)),
@@ -84,12 +83,12 @@ export default {
         adoption,
       });
     },
-    // updatePet(pet) {
-    //   this.$store.dispatch({
-    //     type: "savePet",
-    //     pet,
-    //   });
-    // },
+    updatePet(pet) {
+      this.$store.dispatch({
+        type: "savePet",
+        pet,
+      });
+    },
   },
   computed: {
     imgUrlProfile() {

@@ -42,9 +42,9 @@ export default {
     togleListShow() {
       this.showList = !this.showList;
     },
-    // emiUpdateAdoption(adoption) {
-    //   this.$emit("updateAdoption", adoption);
-    // },
+    emiUpdateAdoption(adoption) {
+      this.$emit("updateAdoption", adoption);
+    },
     // emiUpdatePet(pet) {
     //   this.$emit("updatePet", pet);
     // },
