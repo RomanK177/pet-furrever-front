@@ -24,7 +24,7 @@ function _getCommonUserFields() {
         email: '',
         tel: '0',
         imgUrlProfile: '',
-        dateOfBirth: '',
+        favorites: []
     }
 }
 
@@ -57,17 +57,15 @@ function _getEmptyOwner() {
                 lat: '',
                 lang: ''
             },
-            reviews: [
-                {
-                    txt: '',
-                    rate: 5,
-                    by: {
-                        userId: '',
-                        fullName: '',
-                        imgUrl: ''
-                    }
+            reviews: [{
+                txt: '',
+                rate: 5,
+                by: {
+                    userId: '',
+                    fullName: '',
+                    imgUrl: ''
                 }
-            ]
+            }]
         }
     }
     return owner;
@@ -115,4 +113,3 @@ function _handleLogin(user) {
     sessionStorage.setItem('user', JSON.stringify(user))
     return user;
 }
-
