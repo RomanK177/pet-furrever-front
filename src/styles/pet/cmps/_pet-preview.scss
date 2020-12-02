@@ -2,6 +2,7 @@ $cardWidth:300px;
 $sexSymbolSize:20px;
 .pet-card {
     position: relative;
+    height: 100%;
     // border: 1px solid black;
     // border: 1px solid sandybrown;
     // -webkit-box-shadow: -1px 5px 12px -4px #000000; 
@@ -85,5 +86,6 @@ $sexSymbolSize:20px;
 
 .treatClicked {
     // filter: invert(70%) sepia(43%) saturate(3723%) hue-rotate(65deg) brightness(113%) contrast(96%);
-    filter: invert(78%) sepia(9%) saturate(2434%) hue-rotate(115deg) brightness(78%) contrast(92%);
+    // filter: invert(78%) sepia(9%) saturate(2434%) hue-rotate(115deg) brightness(78%) contrast(92%);
+    filter: invert(59%) sepia(82%) saturate(962%) hue-rotate(359deg) brightness(101%) contrast(106%);
 }
