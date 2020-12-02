@@ -2,7 +2,7 @@
   <section class="header flex space-between container">
     <router-link to="/" class="logo">Pet <span>Furr</span>ever</router-link>
     <nav class="navbar">
-      <!-- <span>Hello: {{ loggedinUserName }}</span> -->
+      <span>Hello: {{ loggedinUserName }}</span>
       <!-- <router-link to="/" class="nav-link">Home</router-link> -->
       <router-link to="/pet" class="nav-link">Our Pets</router-link>
       <router-link

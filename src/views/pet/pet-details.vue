@@ -5,7 +5,7 @@
       <div class="bio-adoption-container flex justify-center">
         <details-about
           :pet="pet"
-          :loggedInUser="loggedInUser"
+          :loggedInUser="getLoggedInUser"
           @updateLikes="addTreat"
           @updateFavorites="updateFavorites"
         ></details-about>
@@ -188,11 +188,15 @@ export default {
       this.isActive = !isSentRequest;
     },
     updateFavorites(user) {
-      sessionStorage.user = JSON.stringify(user);
-      // this.$store.dispatch({
-      //   type: "updateUser",
-      //   savedUser: user,
-      // });
+      console.log(
+        "🚀 ~ file: pet-details.vue ~ line 191 ~ updateFavorites ~ user",
+        user
+      );
+      // sessionStorage.user = JSON.stringify(user);
+      this.$store.dispatch({
+        type: "updateUser",
+        savedUser: user,
+      });
     },
     // updateComments(comment) {
     //   debugger

@@ -12,7 +12,7 @@
       <pet-favorite
         :pet="pet"
         :loggedInUser="loggedInUser"
-        @updateFavorites="updateFavorites"
+        @updateFavorites="emitUpdateFavorites"
       />
       <a href="https://www.facebook.com/login" target="_blank" class="share">
         <img src="../../assets/svgs/share.svg" alt="" class="share-svg" />
@@ -60,6 +60,9 @@ export default {
     emitUpdateLikes(pet) {
       this.$emit("updateLikes", pet);
       console.log;
+    },
+    emitUpdateFavorites(user) {
+      this.$emit("updateFavorites", user);
     },
     computed: {},
   },

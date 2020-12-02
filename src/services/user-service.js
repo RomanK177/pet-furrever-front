@@ -84,6 +84,7 @@ function remove(userId) {
 }
 
 function update(user) {
+    console.log("🚀 ~ file: user-service.js ~ line 87 ~ update ~ user", user)
     return httpService.put(`users/${user._id}`, user);
 }
 

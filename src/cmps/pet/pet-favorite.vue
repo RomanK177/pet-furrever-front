@@ -35,7 +35,7 @@ export default {
           utilService.storeToStorage("fevoritePets_db", this.localFevorites);
         } else {
           this.loggedInUser.favorites.push(this.pet._id);
-          this, (this.isFevorite = true);
+          this.isFevorite = true;
           this.$emit("updateFavorites", this.loggedInUser);
         }
       } else {
