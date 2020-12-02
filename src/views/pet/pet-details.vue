@@ -12,7 +12,10 @@
         <div class="more-container">
           <div class="likes-adopt-container">
             <div class="adopt-fav flex column justify-center align-center">
-              <el-button v-if="isActive" type="text" @click="adopt"
+              <el-button
+                v-if="isActive && !isAdopted"
+                type="text"
+                @click="adopt"
                 >Adopt Me</el-button
               >
               <div v-if="!isActive">Adoption Request Sent!</div>
@@ -107,6 +110,7 @@ export default {
       pet: null,
       loggedInUser: null,
       isActive: null,
+      isAdopted: null,
     };
   },
   methods: {
@@ -200,6 +204,7 @@ export default {
     const { id } = this.$route.params;
     const pet = await petService.getPetById(id);
     this.pet = pet;
+    this.pet.adoptedAt ? (this.isAdopted = true) : (this.isAdopted = false);
     // const ownerId = this.pet.owner._id;
     // const owner = await userService.getById(ownerId);
     // this.owner = owner;

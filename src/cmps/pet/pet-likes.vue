@@ -26,7 +26,12 @@
         />
         <img
           :class="{ treatClicked: treat }"
-          v-if="pet.type === 'Pig' || pet.type === 'Horse'"
+          v-if="
+            pet.type === 'Pig' ||
+            pet.type === 'Horse' ||
+            pet.type === 'Bunny' ||
+            pet.type === 'Goat'
+          "
           class="svg-symbol treat"
           src="../../assets/svgs/carrot.svg"
           alt=""
