@@ -1,6 +1,6 @@
 .pet-details-container,
 .petowner-details-container,
-.comments-container,
+// .comments-container,
 .likes-adopt-container {
     // border: 1px solid orange;
     margin: 20px;
@@ -10,9 +10,13 @@
     width: fit-content;
 }
 
-.more-container{
-    width: 100%;
+.comments-container{
+    background-color: white;
 }
+
+// .more-container{
+//     width: 100%;
+// }
 
 .pet-details-container {
     max-width: 500px;
@@ -25,7 +29,7 @@
     // max-width: 1000px;
     // margin: 0 auto;
     background-color: #f8f8f8;
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
     // padding: 20px;
 }
 
@@ -112,7 +116,7 @@
 
 .pet-details-name {
     font-family: quicksand-medium;
-    font-size: 40px;
+    font-size: 2rem;
     margin-top: 0;
     margin-bottom: 2px;
     .details h1 {
@@ -148,10 +152,41 @@
     text-align: center;
 }
 
-.comment-input {
-    margin-left: 40px;
+// .comment-input {
+//     margin-left: 40px;
+// }
+
+.rendered-comments{
+    padding: 0;
 }
 
+.enter-comment-btn {
+    background-color: orange;
+    border: 1px solid orange;
+    color: white;
+    border-radius: 5px;
+    padding: 2px;
+    margin-left: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: quicksand;
+    font-size: 1rem;
+
+    &:hover{
+        color: orange;
+        background-color: white;
+        border: 1px solid orange;
+
+    }
+}
+
+.comment-input{
+    font-family: quicksand;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid orange
+
+}
 .help-pet {
     button,
     .share {
