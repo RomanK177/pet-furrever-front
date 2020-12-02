@@ -14,7 +14,7 @@ function query() {
 }
 
 function addAdoptionRequest(adoptionRequest) {
-    debugger
+    // debugger
     return httpService.post(`adoptions`, adoptionRequest)
 }
 
