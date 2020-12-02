@@ -7,6 +7,7 @@
           :pet="pet"
           :loggedInUser="loggedInUser"
           @updateLikes="addTreat"
+          @updateFavorites="updateFavorites"
         ></details-about>
         <div class="more-container">
           <div class="likes-adopt-container">
