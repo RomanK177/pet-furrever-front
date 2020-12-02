@@ -1,25 +1,32 @@
 <template>
   <section class="header flex space-between container">
-    <router-link to="/" class="logo">Pet <span>Furr</span>ever</router-link>
+    <router-link to="/" class="logo">Pet <span>Furr</span>Ever</router-link>
     <nav class="navbar">
-      <avatar :name="loggedinUserName" />
-      <!-- <span>Hello: {{ loggedinUserName }}</span> -->
-      <!-- <router-link to="/" class="nav-link">Home</router-link> -->
       <router-link to="/pet" class="nav-link">Our Pets</router-link>
-      <router-link
-        v-if="loggedinUser"
-        :to="`/user/${loggedinUser._id}`"
-        class="nav-link"
-      >
-        Profile
-      </router-link>
-      <router-link v-else to="/signup" class="nav-link">SignUp</router-link>
-      <a v-if="!loggedinUser" @click="loginOpen = !loginOpen" class="nav-link"
-        >Login</a
-      >
-      <a v-else @click="logout" class="nav-link">Logout</a>
+      <div @click.stop="toggleUserMenu">
+        <avatar :name="loggedinUserName" />
+        <!-- <span>Hello: {{ loggedinUserName }}</span> -->
+        <!-- <router-link to="/" class="nav-link">Home</router-link> -->
+        <div class="user-droped-menu flex column" v-if="showUserMenu">
+          <router-link
+            v-if="loggedinUser"
+            :to="`/user/${loggedinUser._id}`"
+            class="nav-link"
+          >
+            Profile
+          </router-link>
+          <router-link v-else to="/signup" class="nav-link">SignUp</router-link>
+          <a
+            v-if="!loggedinUser"
+            @click="loginOpen = !loginOpen"
+            class="nav-link"
+            >Login</a
+          >
+          <a v-else @click="logout" class="nav-link">Logout</a>
+        </div>
+        <login v-if="loginOpen" class="login" />
+      </div>
     </nav>
-    <login v-if="loginOpen" class="login" />
   </section>
 </template>
 
@@ -35,6 +42,7 @@ export default {
   data() {
     return {
       loginOpen: false,
+      showUserMenu: false,
     };
   },
   computed: {
@@ -58,6 +66,9 @@ export default {
         type: "logout",
       });
     },
+    toggleUserMenu() {
+      this.showUserMenu = !this.showUserMenu;
+    },
   },
   created() {
     eventBus.$on("login", () => {
@@ -67,6 +78,7 @@ export default {
         this.loginOpen = false;
       });
   },
+
   components: {
     login,
     avatar,

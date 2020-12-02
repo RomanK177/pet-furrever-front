@@ -13,12 +13,9 @@ function query() {
     return httpService.get(`adoptions`);
 }
 
-// function addAdoptionRequest(adoptionRequest) {
-//     // debugger
-//     return httpService.post(`adoptions`, adoptionRequest)
 function addAdoptionRequest(petId) {
-    debugger
-    return httpService.post(`adoptions`, {petId});
+    // debugger
+    return httpService.post(`adoptions`, { petId });
 }
 
 function updateAdoptionRequest(adoptionRequest) {
