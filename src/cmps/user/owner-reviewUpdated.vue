@@ -1,6 +1,6 @@
 <template>
   <section class="owner-review details">
-    <h1 class="review-header">Reviews</h1>
+    <h1 class="pet-details-comments-title">Reviews</h1>
     <hr />
        <form @submit="addReview">
       <label
@@ -13,11 +13,11 @@
       /></label>
       <button>Add review</button>
     </form>
-    <ul>
+    <ul class="rendered-comments">
       <li
         v-for="(review, index) in reviews"
         :key="index"
-        class="review"
+        class="pet-details-comments"
       >
         <span class="bold">From: </span>{{ review.by.fullName }}
         <img :src="review.by.imgUrl" />
