@@ -1,22 +1,19 @@
-.header{
+.header {
     padding: 20px 0px;
     z-index: 1;
-
-    .logo{
+    .logo {
         font-size: 2rem;
         font-weight: 400;
         text-decoration: none;
         color: #292929;
-    
-        span{
+        span {
             color: orange;
         }
     }
-
-    .navbar{
+    .navbar {
+        display: flex;
         align-self: center;
-    
-        .nav-link{
+        .nav-link {
             color: orange;
             text-decoration: none;
             padding: 5px;
@@ -24,24 +21,17 @@
             margin-right: 2px;
             border-radius: 5px;
             cursor: pointer;
-        
-            &:hover{
+            &:hover {
                 color: white;
-                background-color: orange;  
+                background-color: orange;
             }
         }
     }
-
 }
 
-.nav{
+.nav {
     background-color: white;
     position: fixed;
     width: 100%;
     z-index: 1;
-    
 }
-
-
-
-
