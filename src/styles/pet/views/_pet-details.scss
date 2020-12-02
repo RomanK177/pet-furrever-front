@@ -194,9 +194,9 @@ hr {
     filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);
     height: 30px;
     width: 30px;
-    &::after{
+    // &::after{
 
-    }
+    // }
 }
 
 .like-svg{
@@ -220,9 +220,9 @@ hr {
     }
 }
 
-.likes-adopt-container {
-    // background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
-}
+// .likes-adopt-container {
+//     // background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
+// }
 
 .pet-details-owner-name {
     font-size: 1.2rem;
