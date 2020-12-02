@@ -6,14 +6,16 @@
       <div v-if="loginFailed">Login Failed</div>
       <form @submit.prevent="login" class="flex column align-center">
         <label
-          >Username: <input type="text" v-model="userCred.userName" /></label>
+          >Username: <input type="text" v-model="userCred.userName"
+        /></label>
         <br />
         <label
-          >Password: <input type="password" v-model="userCred.password" /></label>
+          >Password: <input type="password" v-model="userCred.password"
+        /></label>
         <br />
         <button class="login-btn">Login</button>
       </form>
-      <img src="../assets/imgs/dog-login.png" alt="">
+      <img src="../assets/imgs/dog-login.png" alt="" />
     </div>
   </section>
 </template>
@@ -27,20 +29,20 @@ export default {
         userName: null,
         password: null,
       },
-      loginFailed: false
+      loginFailed: false,
     };
   },
   methods: {
     async login() {
       try {
         await this.$store.dispatch({
-          type: 'login',
-          userCred: this.userCred
+          type: "login",
+          userCred: this.userCred,
         });
 
         eventBus.$emit("closeModal");
-      } catch(err) {
-        this.loginFailed = true
+      } catch (err) {
+        this.loginFailed = true;
       }
       // this.$router.push('/');
       // eventBus.$emit('loginDone');

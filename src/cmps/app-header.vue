@@ -3,7 +3,7 @@
     <router-link to="/" class="logo">Pet <span>Furr</span>Ever</router-link>
     <nav class="navbar">
       <router-link to="/pet" class="nav-link">Our Pets</router-link>
-      <div @click="toggleUserMenu">
+      <div @click.stop="toggleUserMenu">
         <avatar :name="loggedinUserName" />
         <!-- <span>Hello: {{ loggedinUserName }}</span> -->
         <!-- <router-link to="/" class="nav-link">Home</router-link> -->
@@ -23,8 +23,8 @@
             >Login</a
           >
           <a v-else @click="logout" class="nav-link">Logout</a>
-          <login v-if="loginOpen" class="login" />
         </div>
+        <login v-if="loginOpen" class="login" />
       </div>
     </nav>
   </section>
