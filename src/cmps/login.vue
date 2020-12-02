@@ -4,7 +4,7 @@
       <button class="modal-close-btn" @click="closeModal">X</button>
       <h1 class="login-txt">Welcome</h1>
       <div v-if="loginFailed">Login Failed</div>
-      <form @submit="login" class="flex column align-center">
+      <form @submit.prevent="login" class="flex column align-center">
         <label
           >Username: <input type="text" v-model="userCred.userName" /></label>
         <br />
