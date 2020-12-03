@@ -18,9 +18,9 @@
         </a>
       </div>
     </div>
-     <hr />
+     <!-- <hr /> -->
     <div class="pet-about-container">
-      <div class="pet-about-details flex wrap space-between align-center">
+      <div class="pet-about-details flex wrap space-between align-end">
         <h4 class="pet-about">Meet {{ pet.name }}!</h4>
         <div class="pet-bio-container flex wrap space-between">
           <div class="pet-details-age flex column align-center">

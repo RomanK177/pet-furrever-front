@@ -23,7 +23,7 @@
             >
             <div v-if="!isActive">Adoption Request Sent!</div>
           </div>
-          <hr />
+          <!-- <hr /> -->
           <div class="petowner-details-container">
             <div
               class="pet-owner-details flex column space-between align-center"
