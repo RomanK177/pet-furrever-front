@@ -30,10 +30,6 @@
     }
 }
 
-.avatar:hover {
-    cursor: pointer;
-}
-
 .userDropedMenu {
     position: fixed;
     display: flex;
@@ -48,8 +44,11 @@
     z-index: 1;
 }
 
+.avatar table td[data-v-4ffd1741] {
+    width: 10px;
+    height: 10px;
+}
 
-.avatar[data-v-4ffd1741]{
-    height: 30px;
-    width: 30px;
+.avatar:hover {
+    cursor: pointer;
 }
