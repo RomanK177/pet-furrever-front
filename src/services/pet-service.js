@@ -17,7 +17,7 @@ function query(filter = null, sortBy = 'name') {
     var filterStr = '';
     var sortStr = 'name';
     if (filter) {
-        const searchStr = (filter.txt) ? `&q=${filter.txt}` : '';
+        const searchStr = (filter.txt) ? `&txt=${filter.txt}` : '';
         const typeStr = (filter.type === 'All') ? '' : `&type=${filter.type}`;
         const sizeStr = (filter.size === 'All') ? '' : `&size=${filter.size}`;
         // const favStr = (filter.favorites) ? `&inStock=true` : '';

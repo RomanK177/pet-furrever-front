@@ -18,8 +18,7 @@
       </li>
       <li class="flex" v-for="(request, idx) in requests" :key="idx">
         <adoption-request-preview
-          @updateAdoption="emiUpdateAdoption"
-          @updatePet="emiUpdatePet"
+          @updateAdoption="emiUpdateAdoptionRequest"
           :request="request"
           :user="user"
         />
@@ -44,12 +43,9 @@ export default {
     togleListShow() {
       this.showList = !this.showList;
     },
-    emiUpdateAdoption(adoption) {
+    emiUpdateAdoptionRequest(adoption) {
       this.$emit("updateAdoption", adoption);
     },
-    // emiUpdatePet(pet) {
-    //   this.$emit("updatePet", pet);
-    // },
   },
   computed: {
     // requests() {

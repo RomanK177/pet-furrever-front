@@ -39,12 +39,15 @@ export default {
           type: "login",
           userCred: this.userCred,
         });
-
+           if (this.$route.path != '/pet') {
+          this.$router.push("/pet");
+      }
         eventBus.$emit("closeModal");
       } catch (err) {
         this.loginFailed = true;
       }
-      // this.$router.push('/');
+
+
       // eventBus.$emit('loginDone');
     },
     closeModal() {

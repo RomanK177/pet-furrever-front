@@ -5,7 +5,6 @@
       v-if="petsForPreview"
       :user="loggedUser"
       :pets="petsForPreview"
-      @deletePet="deletePet"
       @updateLikes="addTreat"
     ></pet-list>
   </section>
@@ -35,21 +34,21 @@ export default {
     changeFilter(filter) {
       this.$store.dispatch({ type: "filterPets", filter });
     },
-    deletePet(petId) {
-      this.$store.dispatch({
-        type: "deletePet",
-        petId,
-      });
-    },
+    // deletePet(petId) {
+    //   this.$store.dispatch({
+    //     type: "deletePet",
+    //     petId,
+    //   });
+    // },
     async addTreat(pet) {
       await this.$store.dispatch({
         type: "addTreat",
         petId: pet._id,
       });
     },
-    goToAddPet() {
-      this.$router.push("/edit");
-    },
+    // goToAddPet() {
+    //   this.$router.push("/edit");
+    // },
     setSort(sortBy) {
       this.$store.dispatch({ type: "sortPets", sortBy });
     },

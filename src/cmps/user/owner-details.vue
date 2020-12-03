@@ -40,7 +40,6 @@
     </div>
     <adoption-request
       @updateAdoption="updateAdoption"
-      @updatePet="updatePet"
       v-if="checkIfOwner"
       :requests="requests"
     />
@@ -58,7 +57,6 @@
 import eventBus from "./../../services/event-bus-service.js";
 import { uploadImg } from "./../../services/img-upload-service.js";
 import { userService } from "../../services/user-service.js";
-import ownerReview from "./../../cmps/user/owner-review.vue";
 import adoptionRequest from "./adoption-request.vue";
 import ownerReviewUpdated from "../user/owner-reviewUpdated";
 
@@ -67,13 +65,6 @@ export default {
     owner: Object,
   },
   methods: {
-    // updateReviews(review) {
-    //   this.owner.ownerData.reviews.unshift(review);
-    //   this.$store.dispatch({
-    //     type: "saveUser",
-    //     user: this.owner,
-    //   });
-
     async addReview(review) {
       await this.$store.dispatch({
         type: "addReview",
@@ -81,16 +72,10 @@ export default {
         ownerId: this.owner._id,
       });
     },
-    updateAdoption(adoption) {
-      this.$store.dispatch({
-        type: "saveAdoption",
-        adoption,
-      });
-    },
-    updatePet(pet) {
-      this.$store.dispatch({
-        type: "savePet",
-        pet,
+    async updateAdoption(adoptionRequest) {
+      await this.$store.dispatch({
+        type: "updateAdoptionRequest",
+        adoptionRequest,
       });
     },
   },
@@ -146,7 +131,6 @@ export default {
     this.owner.ownerData.imgUrls = newUrls;
   },
   components: {
-    ownerReview,
     ownerReviewUpdated,
     adoptionRequest,
   },

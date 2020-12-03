@@ -19,12 +19,9 @@ export const adoptionStore = {
         addAdoptionRequest(state, { adoptionRequest }) {
             state.adoptionRequests.push(adoptionRequest)
         },
-        saveAdoption(state, { adoption }) {
-            state.adoptionRequests.unshift(adoption)
-        },
-        updateAdoption(state, { adoption }) {
-            const idx = state.adoptionRequests.findIndex(currAdoption => currAdoption._id === adoption._id)
-            state.adoptionRequests.splice(idx, 1, adoption)
+        updateAdoption(state, { adoptionRequest }) {
+            const idx = state.adoptionRequests.findIndex(currAdoption => currAdoption._id === adoptionRequest._id)
+            state.adoptionRequests.splice(idx, 1, adoptionRequest)
         },
     },
     actions: {
@@ -35,8 +32,9 @@ export const adoptionStore = {
         },
         async addAdoptionRequest({ commit }, { petId }) {
             try {
-                const addedAdoptionRequest = await adoptionService.addAdoptionRequest(petId)
-                return addedAdoptionRequest;
+                const adoptionRequest = await adoptionService.addAdoptionRequest(petId);
+                commit({ type: 'addAdoptionRequest', adoptionRequest });
+                return adoptionRequest;
             } catch (err) {
                 console.log('Cannot add request', err);
                 alert('Cannot add request')
@@ -44,9 +42,8 @@ export const adoptionStore = {
         },
         async updateAdoptionRequest({ commit }, { adoptionRequest }) {
             try {
-                const action = (adoptionRequest._id) ? 'updateAdoption' : 'saveAdoption';
-                const savedAdoption = await adoptionService.saveAdoption(adoptionRequest)
-                commit({ type: action, adoptionRequest: savedAdoption });
+                const savedAdoption = await adoptionService.updateAdoptionRequest(adoptionRequest)
+                commit({ type: 'updateAdoption', adoptionRequest: savedAdoption });
                 return savedAdoption;
             } catch (err) {
                 console.error('Cannot save adoption.', err)
