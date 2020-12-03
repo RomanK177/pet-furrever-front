@@ -1,6 +1,6 @@
 <template>
   <div>
-    <avatar class="avatar" :fullname="name" size="size"></avatar>
+    <avatar class="avatar" :fullname="name"></avatar>
   </div>
 </template>
 
@@ -11,9 +11,7 @@ export default {
     name: String,
   },
   data() {
-    return {
-      size: 30,
-    };
+    return {};
   },
   components: { Avatar },
 };

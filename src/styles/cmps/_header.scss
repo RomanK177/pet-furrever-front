@@ -34,8 +34,10 @@
     cursor: pointer;
 }
 
-.user-droped-menu {
+.userDropedMenu {
     position: fixed;
+    display: flex;
+    flex-direction: column;
     transform: translateX(-40px);
 }
 
