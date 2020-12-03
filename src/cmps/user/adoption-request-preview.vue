@@ -20,16 +20,16 @@
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
 
-      <div class="approve">
+      <div v-if="checkIfOwner" class="approve">
         <img
-          @click="updateRequest(true)"
+          @click="emiUpdateAdoptionRequest(true)"
           src="../../assets/imgs/green-check.png"
           alt=""
         />
       </div>
       <div class="decline">
         <img
-          @click="updateRequest(false)"
+          @click="emiUpdateAdoptionRequest(false)"
           src="../../assets/imgs/red-x.png"
           alt=""
         />
@@ -62,10 +62,9 @@ export default {
     hideButtons() {
       this.areButtonsShown = false;
     },
-    updateRequest(action) {
+    emiUpdateAdoptionRequest(action) {
       if (action === true) {
         this.request.status = "approved";
-        // this.pet.adoptedAt = Date.now(); -> Mongo will do
       } else {
         this.request.status = "declined";
       }
@@ -86,6 +85,10 @@ export default {
     getPetById() {
       let pet = this.$store.getters.getPetById(this.request.pet._id);
       return pet;
+    },
+    checkIfOwner() {
+      var loggedInUser = this.$store.getters.getLoggedInUser;
+      return loggedInUser && loggedInUser.userType === 'owner';
     },
   },
   async created() {

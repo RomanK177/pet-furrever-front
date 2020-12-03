@@ -122,23 +122,12 @@ export default {
         this.sendRequest();
       }
     },
-    // updatePet(pet) {
-    //   this.$store.dispatch({
-    //     type: "savePet",
-    //     pet,
-    //   });
-    // },
     addTreat(pet) {
       this.$store.dispatch({
         type: "addTreat",
         petId: pet._id,
       });
     },
-    // async getOwnerById() {
-    //   const ownerId = this.pet.owner._id;
-    //   const owner = await userService.getById(ownerId);
-    //   this.owner = owner;
-    // },
     async sendRequest() {
       debugger;
       const petId = this.pet._id;
@@ -172,10 +161,10 @@ export default {
         user
       );
       // sessionStorage.user = JSON.stringify(user);
-      this.$store.dispatch({
-        type: "updateUser",
-        savedUser: user,
-      });
+      // this.$store.dispatch({
+      //   type: "updateUser",
+      //   savedUser: user,
+      // });
     },
     // updateComments(comment) {
     //   debugger
@@ -201,8 +190,11 @@ export default {
     },
   },
   async created() {
-    const { id } = this.$route.params;
-    const pet = await petService.getPetById(id);
+    const petId = this.$route.params.id;
+    const pet = await this.$store.dispatch({
+      type: "getPetById",
+      petId,
+    });
     this.pet = pet;
     this.pet.adoptedAt ? (this.isAdopted = true) : (this.isAdopted = false);
     // const ownerId = this.pet.owner._id;

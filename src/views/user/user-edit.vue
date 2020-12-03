@@ -1,5 +1,5 @@
 <template>
-  <section class="user-details container">
+  <section class="user-details container" v-if="userToEdit">
     <adopter-edit
       v-if="userToEdit && userToEdit.userType === 'adopter'"
       :userToEdit="userToEdit"
@@ -25,7 +25,10 @@ export default {
   async created() {
     debugger
     const userId = this.$route.params.id;
-    const user = await userService.getById(userId);
+    var user = await this.$store.dispatch({
+      type: 'getUserById',
+      userId
+    })
     this.userToEdit = user;
   },
   methods: {},

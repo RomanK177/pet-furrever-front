@@ -7,7 +7,6 @@
       :key="pet._id"
       :pet="pet"
       :user="user"
-      @deletePet="emitDelete"
       @updateLikes="emitUpdateLikes"
       @click.native="showDetails(pet._id)"
     />
@@ -26,9 +25,9 @@ export default {
     petPreview,
   },
   methods: {
-    emitDelete(petId) {
-      this.$emit("deletePet", petId);
-    },
+    // emitDelete(petId) {
+    //   this.$emit("deletePet", petId);
+    // },
     emitUpdateLikes(pet) {
       this.$emit("updateLikes", pet);
     },

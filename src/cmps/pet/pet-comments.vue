@@ -36,22 +36,12 @@ export default {
   data() {
     return {
       commentToAdd: {
-        by: {
-          userId: "",
-          fullName: "",
-          imgUrl: ""
-        },
         txt: "",
       },
     };
   },
   methods: {
     addComment() {
-      console.log("from add comment", this.loggedInUser);
-      console.log(this.commentToAdd);
-      // this.commentToAdd.by.fullName = !this.loggedInUser
-      //   ? "Guest"
-      //   : this.loggedInUser.fullName;
       this.$emit("addComment", JSON.parse(JSON.stringify(this.commentToAdd)));
       this.commentToAdd.txt = "";
     },

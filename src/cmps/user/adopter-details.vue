@@ -40,24 +40,16 @@ export default {
     user: Object,
   },
   created() {
-    // const userId = this.$route.params.id;
-    // this.getUser(userId);
     this.$store.dispatch({
       type: "loadAdoptionRequests",
     });
   },
   methods: {
-    // async getUser(userId) {
-    //   const user = await this.$store.dispatch({
-    //     type: "getUserById",
-    //     userId,
-    //   });
-    //   this.user = user;
-    // },
-    updateAdoption(adoption) {
-      this.$store.dispatch({
-        type: "saveAdoption",
-        adoption,
+   async updateAdoption(adoptionRequest) {
+      debugger
+     await this.$store.dispatch({
+        type: "updateAdoptionRequest",
+        adoptionRequest,
       });
     },
   },

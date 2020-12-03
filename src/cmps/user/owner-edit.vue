@@ -1,5 +1,5 @@
 <template>
-  <div class="owner-edit">
+  <section class="owner-edit">
     <h1>Edit your profile</h1>
     <form v-if="ownerToEdit" @submit.prevent="saveEdit">
       <template v-if="!isLoadingProfile">
@@ -89,7 +89,7 @@
       <br />
       <button>Save</button>
     </form>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -106,10 +106,11 @@ export default {
     };
   },
   created() {
+    console.log(this.ownerToEdit)
     let urlStart = this.ownerToEdit.imgUrlProfile.slice(0, 4);
     if (urlStart === "http") this.imgUrl = this.this.ownerToEdit.imgUrlProfile;
     else {
-      this.ownerToEdit.imgUrlProfile = require(`../../assets/imgs/person/${this.this.ownerToEdit.imgUrlProfile}`);
+      this.ownerToEdit.imgUrlProfile = require(`../../assets/imgs/person/${this.ownerToEdit.imgUrlProfile}`);
     }
 
     let newUrls = this.ownerToEdit.ownerData.imgUrls.map((imgUrl) => {
