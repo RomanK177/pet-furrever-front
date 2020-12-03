@@ -1,11 +1,10 @@
 
 <template>
-  <section class="pet-card flex column space-between">
+  <section class="pet-card flex column">
     <img class="card-img" v-if="pet.imgUrls" :src="imgUrl" />
     <!-- <div class="card-info flex column space-between"> -->
     <div class="card-info flex column space-between">
-      <div class="flex space-between align-center">
-        <h3>{{ pet.name }}</h3>
+        <h3 class="flex">{{ pet.name }}</h3>
         <img
           class="svg-symbol male"
           v-if="pet.gender === 'male'"
@@ -18,7 +17,6 @@
           src="../../assets/svgs/female-symbol.svg"
           alt=""
         />
-      </div>
       <p class="pet-description">{{ pet.description }}</p>
       <div class="owner-treats flex space-between align-center">
         <router-link

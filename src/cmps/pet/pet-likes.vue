@@ -9,7 +9,7 @@
       >
         Send Me A Treat!
       </button> -->
-      <div class="flex align-center" @click.stop="toggleTreat">
+      <div class="pet-like-btns flex align-center" @click.stop="toggleTreat">
         <img
           :class="{ treatClicked: treat }"
           v-if="pet.type === 'Dog'"

@@ -3,45 +3,27 @@
     <div class="details container">
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex justify-center">
-        <details-about
-          :pet="pet"
-          :loggedInUser="getLoggedInUser"
-          @updateLikes="addTreat"
-          @updateFavorites="updateFavorites"
-        ></details-about>
-        <div class="more-container">
-          <div class="likes-adopt-container">
-            <div class="adopt-fav flex column justify-center align-center">
-              <el-button
-                v-if="isActive && !isAdopted"
-                type="text"
-                @click="adopt"
-                >Adopt Me</el-button
-              >
-              <div v-if="!isActive">Adoption Request Sent!</div>
-              <!-- <pet-favorite
-                :pet="pet"
-                :loggedInUser="loggedInUser"
-                @updateFavorites="updateFavorites"
-              /> -->
-            </div>
-            <hr />
-            <div class="help-pet flex justify-center">
-              <!-- <button class="sponsor">Sponsor</button> -->
-              <!-- <a
-                href="https://www.facebook.com/login"
-                target="_blank"
-                class="share"
-              >
-                <img
-                  src="../../assets/svgs/share.svg"
-                  alt=""
-                  class="share-svg"
-                />
-                Share</a
-              > -->
-            </div>
+        <div class="flex column">
+          <details-about
+            :pet="pet"
+            :loggedInUser="getLoggedInUser"
+            @updateLikes="addTreat"
+            @updateFavorites="updateFavorites"
+          ></details-about>
+          <pet-comments
+            :comments="pet.comments"
+            :loggedInUser="getLoggedInUser"
+            @addComment="addComment"
+          ></pet-comments>
+        </div>
+        <div class="likes-adopt-container flex column align-center">
+          <div class="adopt-fav flex column justify-center align-center">
+            <el-button v-if="isActive && !isAdopted" type="text" @click="requestAdopt"
+              >Adopt Me</el-button
+            >
+            <div v-if="!isActive">Adoption Request Sent!</div>
           </div>
+          <hr />
           <div class="petowner-details-container">
             <div
               class="pet-owner-details flex column space-between align-center"
@@ -86,12 +68,6 @@
         </div>
       </div>
     </div>
-    <!-- <pet-comments :pet="pet"></pet-comments> -->
-    <pet-comments
-      :comments="pet.comments"
-      :loggedInUser="getLoggedInUser"
-      @addComment="addComment"
-    ></pet-comments>
   </section>
 </template>
 <script>
@@ -114,7 +90,7 @@ export default {
     };
   },
   methods: {
-    adopt() {
+    requestAdopt() {
       // const loggedInUser = this.$store.getters.getLoggedInUser;
       if (this.loggedInUser === null) {
         this.open();
@@ -140,7 +116,7 @@ export default {
     //   this.owner = owner;
     // },
     async sendRequest() {
-      debugger;
+      // debugger;
       const petId = this.pet._id;
       await this.$store.dispatch({
         type: "addAdoptionRequest",

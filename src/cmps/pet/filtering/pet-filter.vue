@@ -4,11 +4,17 @@
     <div class="filters container flex column justify-center">
       <div class="search-input flex">
         <search-input v-model="filter.txt" @input="debFilter" />
-      <button class="filters-togglebutton" @click="toggleFilters">
-        {{ buttonTxt ? 'Show More Filters' : 'Show Less Filters' }}
-      </button>
+        <!-- <div class=filter-by-svg>
+          <img  class="animal-svg" src="../../../assets/svgs/dog.svg" alt="">
+           <img class="animal-svg" src="../../../assets/svgs/cat.svg" alt="">
+            <img class="animal-svg" src="../../../assets/svgs/bunny.svg" alt="">
+             <img class="animal-svg" src="../../../assets/svgs/cow.svg" alt="">
+        </div> -->
+      <div class="filters-togglebutton" @click="toggleFilters">
+        {{ filterTxt ? 'Show More Filters' : 'Show Less Filters' }}
       </div>
-        <div class="filters flex" v-if="isShowFilters">
+      </div>
+        <div class="more-filters flex" v-if="isShowFilters">
           <pet-type-select @input="emitFilter" v-model="filter.type" />
           <pet-size-select @input="emitFilter" v-model="filter.size" />
           <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
@@ -47,7 +53,7 @@ export default {
       debTime: null,
       isShowFilters: false,
       isFav: false,
-      buttonTxt: true,
+      filterTxt: true,
     };
   },
   methods: {
@@ -61,7 +67,7 @@ export default {
     },
     toggleFilters() {
       this.isShowFilters = !this.isShowFilters;
-      this.buttonTxt = !this.buttonTxt
+      this.filterTxt = !this.filterTxt
 
 
     },
