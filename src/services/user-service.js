@@ -112,7 +112,6 @@ async function addReview(ownerId, review) {
 }
 
 async function updateFavorites(isFavorite, petId) {
-    debugger
     return httpService.post(`users/${petId}/favorites`, {isFavorite});
 }
 

@@ -131,7 +131,6 @@ export default {
       this.isActive = !isSentRequest;
     },
     updateFavorites(isFavorite, petId) {
-      debugger;
       this.$store.dispatch({
         type: "updateFavorites",
         isFavorite,

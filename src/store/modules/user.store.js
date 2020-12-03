@@ -69,7 +69,6 @@ export const userStore = {
             return user;
         },
         async updateFavorites({ commit }, { isFavorite ,petId }) {
-            debugger
             const user = await userService.updateFavorites(isFavorite, petId);
             commit({ type: 'setUser', user });
             return user;
