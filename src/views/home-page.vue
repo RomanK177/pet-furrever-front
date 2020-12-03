@@ -14,8 +14,8 @@
       <!-- <h1 class="pets-of-the-week">Pets Available For Adoption!</h1> -->
     </div>
     <div class="homepage-pet-list container">
-      <div class="most-liked-pets flex align-center justify-center">
-      <h2 class="text-center most-liked-of-the-week">
+      <div class="most-liked-pets flex align-end space-between">
+      <h2 class="most-liked-of-the-week">
         Most liked Pets Available For Adoption
       </h2>
       <router-link to="/pet" class="all-pets-link"
@@ -26,7 +26,7 @@
         :pets="mostLiked"
         @updateLikes="addTreat"
       ></pet-list>
-      <h2 class="text-center pets-of-the-week">Recently Adopted Pets</h2>
+      <h2 class="pets-of-the-week">Recently Adopted Pets</h2>
       <pet-list
         v-if="petsForPreview"
         :pets="recentlyAdopted"

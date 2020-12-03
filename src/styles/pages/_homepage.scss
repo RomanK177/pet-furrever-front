@@ -36,20 +36,21 @@
 .most-liked-of-the-week{
     text-align: center;
     color: orange;
-    padding-top: 20px;
+    margin: unset;
+    font-size: 1.6rem;
 }
 
 .pets-of-the-week {
-    text-align: center;
+    // text-align: center;
     color: orange;
-    // margin-right: 10px;
+    margin: unset;
+    font-size: 1.6rem;
 }
 
 .all-pets-link{
 color: orange;
 margin-left: 10px;
 font-size: 0.9rem;
-padding-top: 20px;
 }
 
 .our-pets-btn {
@@ -86,6 +87,18 @@ padding-top: 20px;
         gap: 15px;
     }
 }
+
+.svg-symbol{
+height: unset;
+width: 20px;
+
+}
+
+.most-liked-pets{
+    margin-top: 20px;
+
+}
+
 
 
 
