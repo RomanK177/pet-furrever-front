@@ -2,7 +2,7 @@
 <template>
   <section class="adoption-request">
     <span class="request-togle" @click="toggleListShow"
-      >Adoption requests: ({{ requests.length }})</span
+      >Adoption requests: ({{ amountOfRequests }})</span
     >
     <ul class="adoption-request-list" v-if="requests && showList">
       <li>
@@ -22,12 +22,13 @@
       <li class="flex" v-for="(request, idx) in requests" :key="idx">
         <adoption-request-preview
           @updateAdoption="emiUpdateAdoptionRequest"
+          @removeAdoption="emitRemoveAdoptionRequest"
           :request="request"
           :user="user"
         />
       </li>
     </ul>
-    <button @click="doit"> Do it</button>
+    <button @click="amountOfRequests"> Do it</button>
   </section>
 </template>
 
@@ -51,9 +52,13 @@ export default {
     emiUpdateAdoptionRequest(adoption) {
       this.$emit("updateAdoption", adoption);
     },
+    emitRemoveAdoptionRequest(adoption){
+      this.$emit("removeAdoption", adoption);
+      console.log('deleted in request', adoption)
+    },
     doit() {
       console.log(this.user)
-    },
+    }
   },
   computed: {
     allCancelled() {
@@ -67,6 +72,16 @@ export default {
       else return true
       // console.log("areAllCancelled", areAllCancelled);
       // this.hideCancel = areAllCancelled
+    },
+      amountOfRequests(){
+      let counter = 0
+      this.requests.forEach((request)=>{
+        if (request.status !== 'pending') counter++
+        return counter
+      })
+      const activeRequests = this.requests.length - counter
+      console.log(activeRequests)
+      return activeRequests
     },
     isOwner() {
       if (this.user.userType === 'owner') return true;

@@ -40,6 +40,7 @@
     </div>
     <adoption-request
       @updateAdoption="updateAdoption"
+      @removeAdoption="removeAdoption"
       v-if="checkIfOwner"
       :requests="requests" :user="owner"
     />
@@ -79,6 +80,13 @@ export default {
         adoptionRequest,
       });
     },
+     async removeAdoption(adoptionRequest){
+      await this.$store.dispatch({
+        type: "removeAdoptionRequest",
+        adoptionRequest,
+      });
+      console.log('deleted in details')
+    }
   },
   computed: {
     imgUrlProfile() {

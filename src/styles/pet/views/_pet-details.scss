@@ -18,8 +18,11 @@
 // .pet-like-btns{
 //     margin: 10px;
 // }
-.el-button,
-.addPet {
+.el-button {
+border: 1px solid orange;
+background-color: orange;
+ color: white;
+    &.add-pet {
     padding: 10px;
     font-size: 2rem;
     color: white;
@@ -31,12 +34,36 @@
     .el-message-box__close:hover {
         color: orange;
     }
+    
+    }
+    &.delete-adoption-request{
+        font-size: 13px;
+        padding: 4.5px 6px;
+        color: orange;
+        background-color: white;
+        border-radius: unset;
+        font-family: quicksand;
+        display: flex;
+        text-indent: 0px;
+        margin: 0em;
+        border-inline: 1px solid orange;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+
+    }
 }
 
 .el-button--primary:focus,
-.el-button--primary:hover {
+.el-button--primary:hover,
+.delete-adoption-request:hover {
     background-color: orange;
     border: 1px solid orange;
+    color: white;
+    // &.delete-adoption-request:hover{
+    //     background-color: orange;
+    //     border: 1px solid orange;
+    // }
 }
 
 .el-button--primary.is-active,
@@ -51,6 +78,12 @@
     background-color: white;
     border: 1px solid orange;
     color: orange;
+
+    &.delete-adoption-request:hover{
+        background-color: white;
+        border: 1px solid orange;
+        color: orange;
+    }
 }
 
 .el-message-box__headerbtn:hover .el-message-box__close:hover {

@@ -23,6 +23,11 @@ export const adoptionStore = {
             const idx = state.adoptionRequests.findIndex(currAdoption => currAdoption._id === adoptionRequest._id)
             state.adoptionRequests.splice(idx, 1, adoptionRequest)
         },
+        removeAdoption(state, {adoptionRequest}){
+            const idx = state.adoptionRequests.findIndex(currAdoption => currAdoption._id === adoptionRequest._id)
+            state.adoptionRequests.splice(idx, 1)
+
+        }
     },
     actions: {
         async loadAdoptionRequests({ commit }) {
@@ -42,11 +47,22 @@ export const adoptionStore = {
         },
         async updateAdoptionRequest({ commit }, { adoptionRequest }) {
             try {
+                console.log('adoptionrequest updated in store')
                 const savedAdoption = await adoptionService.updateAdoptionRequest(adoptionRequest)
                 commit({ type: 'updateAdoption', adoptionRequest: savedAdoption });
                 return savedAdoption;
             } catch (err) {
                 console.error('Cannot save adoption.', err)
+            }
+        },
+        async removeAdoptionRequest({ commit }, { adoptionRequest }) {
+            try {
+                console.log('remove from store', adoptionRequest)
+                const removedAdoption = await adoptionService.removeAdoptionRequest(adoptionRequest._id)
+                commit({ type: 'removeAdoption', adoptionRequest });
+                return removedAdoption;
+            } catch (err) {
+                console.error('Cannot remove adoption.', err)
             }
         },
 
