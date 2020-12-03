@@ -1,7 +1,7 @@
 
 <template>
   <section class="adoption-request">
-    <span class="request-togle" @click="togleListShow"
+    <span class="request-togle" @click="toggleListShow"
       >Adoption requests: ({{ requests.length }})</span
     >
     <ul class="adoption-request-list" v-if="requests && showList">
@@ -13,7 +13,10 @@
           <span class="requsted-at">Date</span>
           <span class="requsted-status">Status</span>
           <span v-if="isOwner" class="approve">Approve</span>
-          <span class="decline">Decline</span>
+          <span v-if="isOwner" class="decline">Decline</span>
+          <span v-if="isOwner" class="delete">Delete</span>
+          <span v-if="isAdopter" class="decline">Cancel</span>
+
         </div>
       </li>
       <li class="flex" v-for="(request, idx) in requests" :key="idx">
@@ -24,6 +27,7 @@
         />
       </li>
     </ul>
+    <button @click="doit"> Do it</button>
   </section>
 </template>
 
@@ -37,27 +41,41 @@ export default {
   data() {
     return {
       showList: false,
+      hideCancel: false,
     };
   },
   methods: {
-    togleListShow() {
+    toggleListShow() {
       this.showList = !this.showList;
     },
     emiUpdateAdoptionRequest(adoption) {
       this.$emit("updateAdoption", adoption);
     },
+    doit() {
+      console.log(this.user)
+    },
   },
   computed: {
-    // requests() {
-    //   let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
-    //     (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
-    //   );
-    //   return filteredReqs;
-    // },
+    allCancelled() {
+      const areAllCancelled = this.requests.every(
+        (request) => request.status === "cancelled"
+      );
+
+      (this.user.userType === 'adopter')
+  
+      if (areAllCancelled && (this.user.userType === 'adopter')) return false;
+      else return true
+      // console.log("areAllCancelled", areAllCancelled);
+      // this.hideCancel = areAllCancelled
+    },
     isOwner() {
-      if (this.user.userType === "owner") return true;
+      if (this.user.userType === 'owner') return true;
       else return false;
     },
+    isAdopter(){
+       if (this.user.userType === 'adopter') return true;
+      else return false;
+    }
   },
   created() {
     // this.getAdoptionRequest

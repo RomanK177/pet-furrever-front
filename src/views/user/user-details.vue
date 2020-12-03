@@ -22,6 +22,8 @@ export default {
         userId,
       });
       this.user = user;
+      console.log('user', this.user)
+
     },
    
   },

@@ -47,8 +47,7 @@
     <adoption-request
       @updateAdoption="updateAdoption"
       v-if="checkIfOwner"
-      :requests="requests"
-      :user="owner"
+      :requests="requests" :user="owner"
     />
     <!-- <owner-review :owner="owner" /> -->
     <!-- <owner-review :owner="owner" :loggedInUser="loggedInUser" @addReview="updateReviews"/> -->
@@ -70,6 +69,7 @@ import ownerReviewUpdated from "../user/owner-reviewUpdated";
 export default {
   props: {
     owner: Object,
+    // user: Object
   },
   methods: {
     async addReview(review) {
