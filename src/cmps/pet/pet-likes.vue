@@ -2,40 +2,14 @@
 <template>
   <section class="pet-likes">
     <div class="flex space-between align-center">
-      <!-- <button
-        v-if="$route.params.id"
-        @click.stop="toggleTreat"
-        class="btn treat-btn"
-      >
-        Send Me A Treat!
-      </button> -->
-      <div class="flex align-center" @click.stop="toggleTreat">
+      <div class="pet-like-btns flex align-center" @click.stop="addTreat">
         <img
           :class="{ treatClicked: treat }"
-          v-if="pet.type === 'Dog'"
           class="svg-symbol treat"
-          src="../../assets/svgs/dog-bone.svg"
-          alt=""
+          :src="require(`../../assets/svgs/${treatSrc}`)"
+          alt="treat image"
         />
-        <img
-          :class="{ treatClicked: treat }"
-          v-if="pet.type === 'Cat'"
-          class="svg-symbol treat"
-          src="../../assets/svgs/fish.svg"
-          alt=""
-        />
-        <img
-          :class="{ treatClicked: treat }"
-          v-if="
-            pet.type === 'Pig' ||
-            pet.type === 'Horse' ||
-            pet.type === 'Bunny' ||
-            pet.type === 'Goat'
-          "
-          class="svg-symbol treat"
-          src="../../assets/svgs/carrot.svg"
-          alt=""
-        />
+
         <span class="treats-count">{{ pet.numOfTreats }}</span>
       </div>
     </div>
@@ -56,53 +30,31 @@ export default {
     };
   },
   methods: {
-    // toggleTreat() {
-    //   if (this.treat === false) {
-    //     this.storedLikes.push(this.pet._id);
-    //     utilService.storeToStorage("likes_db", this.storedLikes);
-    //     this.pet.numOfTreats++;
-    //     this.$emit("updateLikes", this.pet);
-    //   } else {
-    //     let idx = this.storedLikes.indexOf(this.pet._id);
-    //     this.storedLikes.splice(idx, 1);
-    //     utilService.storeToStorage("likes_db", this.storedLikes);
-    //     this.pet.numOfTreats--;
-    //     this.$emit("updateLikes", this.pet);
-    //   }
-    //   this.treat = !this.treat;
-    // },
-    toggleTreat() {
-      this.pet.numOfTreats++;
-      this.$emit("updateLikes", this.pet);
-      this.treat = true;
-      this.storedLikes.push(this.pet._id);
-      utilService.storeToStorage("likes_db", this.storedLikes);
-      // if (this.treat === false) {
-      // } else {
-      //   let idx = this.storedLikes.indexOf(this.pet._id);
-      //   this.storedLikes.splice(idx, 1);
-      //   utilService.storeToStorage("likes_db", this.storedLikes);
-      //   this.$emit("updateLikes", this.pet);
-      // }
-    },
     addTreat() {
       this.$emit("addTreat", this.pet._id);
       this.treat = true;
       this.storedLikes.push(this.pet._id);
       utilService.storeToStorage("likes_db", this.storedLikes);
-      // if (this.treat === false) {
-      // } else {
-      //   let idx = this.storedLikes.indexOf(this.pet._id);
-      //   this.storedLikes.splice(idx, 1);
-      //   utilService.storeToStorage("likes_db", this.storedLikes);
-      //   this.$emit("updateLikes", this.pet);
-      // }
-    },
-    showButton() {
-      console.log(this.$route);
     },
   },
-  computed: {},
+  computed: {
+    treatSrc() {
+      if (this.pet.type === "Dog") return "dog-bone.svg";
+      if (this.pet.type === "Cat") return "fish.svg";
+      if (this.pet.type === "Hamster") return "nut.svg";
+      if (
+        this.pet.type === "Pig" ||
+        this.pet.type === "Horse" ||
+        this.pet.type === "Bunny" ||
+        this.pet.type === "Goat" ||
+        this.pet.type === "Cow" ||
+        this.pet.type === "Chicken"
+      )
+        return "carrot.svg";
+      if (this.pet.type === "Frog" || this.pet.type === "Lizard")
+        return "fly.svg";
+    },
+  },
   created() {
     this.storedLikes = utilService.loadFromStorage("likes_db");
     if (this.storedLikes === undefined || this.storedLikes === null)

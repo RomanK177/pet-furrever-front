@@ -3,27 +3,20 @@ $sexSymbolSize:20px;
 .pet-card {
     position: relative;
     height: 100%;
-    // border: 1px solid black;
-    // border: 1px solid sandybrown;
-    // -webkit-box-shadow: -1px 5px 12px -4px #000000; 
-    // box-shadow: -1px 5px 12px -4px #000000;
-    -webkit-box-shadow: 1px 4px 13px -2px #949494;
-    box-shadow: 1px 4px 13px -2px #949494;
+    -webkit-box-shadow: 1px 4px 5px -2px #949494;
+    box-shadow: 1px 4px 5px -2px #949494;
     background-color: white;
-    border-radius: 20px;
+    border-radius: 8px;
     overflow: hidden;
-    // margin: 10px;
-    // width: $cardWidth;
     & .card-info {
-        // padding: 0 10px;
         padding: 10px;
-        // height: 35%;
         & h3 {
-            // margin: 5px;
-            margin: 0;
+            height: 10px;
         }
         & .pet-description {
             // margin: 5px 10px;
+            height: 45px;
+            flex-grow: 1;
             line-height: 1.5;
             color: rgb(83, 83, 83);
         }
@@ -60,8 +53,14 @@ $sexSymbolSize:20px;
     }
 }
 
+.owner-treats{
+    font-size: .8rem;
+}
+
+
 .card-img {
-    height: 260px;
+    // height: 260px;
+    height: 230px;
     // height: 100%;
     object-fit: cover;
 }

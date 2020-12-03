@@ -9,17 +9,17 @@
 }
 
 .filters-togglebutton {
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    background-color: orange;
-    border: 1px solid #c8cbd2;
-    border-radius: 5px;
     cursor: pointer;
     font-family: quicksand-medium;
     font-size: 1rem;
-    width: 250px;
-    color: white;
+    color: gray;
+    align-items: center;
+    margin-inline-start: 10px;
+    text-decoration: underline;
+}
+
+.favorite-btn .like-svg .fevorite{
+    margin: 0;
 }
 
 
@@ -54,15 +54,18 @@
     border: 1px solid orange;
 }
 
-
+.more-filters{
+    margin-block-start: 10px;
+}
 .filters{
     width: 400px
 }
 
 .favorite-btn{
-    border: 1px solid rgb(63, 63, 63);
-    border-radius: 5px;
-    padding: 5px;
+    border: 1px solid #c8cbd2;    
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
     color:#c8cbd2;
     font-size: inherit;
 }

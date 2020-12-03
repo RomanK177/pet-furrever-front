@@ -51,6 +51,22 @@ export default {
           value: "Goat",
           label: "Goat",
         },
+        {
+          value: "Cow",
+          label: "Cow",
+        },
+        {
+          value: "Frog",
+          label: "Frog",
+        },
+        {
+          value: "Hamster",
+          label: "Hamster",
+        },
+        {
+          value: "Chicken",
+          label: "Chicken",
+        },
       ],
       value: "",
     };

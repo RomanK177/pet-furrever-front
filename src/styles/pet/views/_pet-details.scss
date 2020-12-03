@@ -1,48 +1,37 @@
-.pet-details-container,
-.petowner-details-container,
-// .comments-container,
-.likes-adopt-container {
-    // border: 1px solid orange;
-    margin: 20px;
-    border-radius: 5px;
-    padding: 20px;
-    background-color: white;
-    width: fit-content;
+.pet-details-age{
+    margin-right: 20px
+}
+
+.pet-details-gender{
+    margin-right: 20px;
+}
+.pet-details-p{
+    margin: unset;
+    margin-top: 10px;
 }
 
 .comments-container{
     background-color: white;
 }
 
-// .more-container{
-//     width: 100%;
+// .pet-like-btns{
+//     margin: 10px;
 // }
 
-.pet-details-container {
-    max-width: 500px;
-    height: 100%;
-    // width: 100%;
-}
 
-.bio-adoption-container{
-    // flex-wrap: wrap;
-    // max-width: 1000px;
-    // margin: 0 auto;
-    background-color: #f8f8f8;
-    // justify-content: space-evenly;
-    // padding: 20px;
-}
+
 
 .el-button {
     padding: 10px;
     font-size: 2rem;
-    color: orange;
+    color: white;
     border: 1px solid orange;
-    background-color: white;
+    background-color: orange;
     font-family: quicksand-bold;
     text-align: center;
     display: flex;
-    margin: 0 auto;
+
+    
     .el-message-box__close:hover {
         color: orange;
     }
@@ -50,8 +39,7 @@
 
 .el-button--primary:focus,
 .el-button--primary:hover {
-    color: orange;
-    background-color: white;
+    background-color: orange;
     border: 1px solid orange;
 }
 
@@ -61,16 +49,11 @@
 
 .el-button--text:focus,
 .el-button--text:hover {
-    background-color: orange;
-    color: white;
-    border: 1px solid white;
-}
-
-.el-button--primary:hover {
     background-color: white;
     border: 1px solid orange;
     color: orange;
 }
+
 
 .el-message-box__headerbtn:hover .el-message-box__close:hover {
     color: orange;
@@ -80,17 +63,14 @@
     color: orange;
 }
 
-.el-button--primary.is-active,
-.el-button--primary:active,
-.el-button--primary:focus,
-.el-button--primary {
-    color: white;
-    background-color: orange;
-    border-color: orange;
-}
 
 .el-message-box__message {
     font-family: quicksand-bold;
+}
+
+.treats-count{
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .treat-btn {
@@ -126,20 +106,34 @@
 
 .pet-about {
     font-size: 25px;
+    align-items: flex-end;
+    margin: unset;
     // color: orange;
     // text-decoration: underline;
-    margin-bottom: 0;
-    padding-left: 10px;
+    // margin-bottom: 0;
+    // padding-left: 10px;
+}
+
+.svg-symbol .details-treat-likes{
+    width: 30px;
+    height: 30px;
+}
+.pet-about-details{
+    margin-top: 20px;
+    align-items: flex-end;
+    margin-bottom: 20px;
 }
 
 .pet-about-p {
-    padding: 10px;
+    // padding: 10px;
     line-height: 1.5;
     color: rgb(56, 56, 56);
 }
 
 .pet-details-container {
-    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    margin-inline-end: 20px;
     .details h1 {
         background-color: white;
     }
@@ -149,7 +143,8 @@
 }
 
 .petowner-details-container {
-    text-align: center;
+    // text-align: center;
+    padding: 5px;
 }
 
 // .comment-input {
@@ -220,7 +215,7 @@ hr {
 .phone-svg{
     height: 20px;
     width: 20px;
-    margin-right: 3px;
+    margin-right: 5px;
 }
 
 
@@ -229,6 +224,7 @@ hr {
     filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);
     height: 30px;
     width: 30px;
+    margin: 10px;
     // &::after{
 
     // }
@@ -255,26 +251,27 @@ hr {
     }
 }
 
-// .likes-adopt-container {
-//     // background-image: linear-gradient(to top, #ffb188, #ffb391, #ffb69b, #ffb9a4, #ffbcac, #ffb9a6, #ffb79f, #ffb499, #ffad7f, #ffa862, #ffa540, #ffa500);
-// }
+.like-svg .fevorite{
+    margin: 10px;
+
+}
+
+.likes-adopt-container {
+    height: 100%;
+    width: 40%;
+    margin-inline-start: 30px;
+}
+
 
 .pet-details-owner-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
     text-decoration: none;
-    background-color: orange;
-    border: 1px solid orange;
-    padding: 10px;
-    margin-top: 10px;
-    border-radius: 5px;
-    color: white;
-    font-family: quicksand-bold;
+    background-color: white;
+    padding-top: 10px;
+    color: orange;
+    font-family: quicksand-medium;
     cursor: pointer;
-    &:hover {
-        background-color: white;
-        border: 1px solid orange;
-        color: orange;
-    }
+
 }
 
 .pet-owner-img{

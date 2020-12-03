@@ -1,6 +1,6 @@
 <template>
   <div>
-    <avatar :fullname="name" size="30"></avatar>
+    <avatar class="avatar" :fullname="name"></avatar>
   </div>
 </template>
 
@@ -9,6 +9,9 @@ import Avatar from "vue-avatar-component";
 export default {
   props: {
     name: String,
+  },
+  data() {
+    return {};
   },
   components: { Avatar },
 };

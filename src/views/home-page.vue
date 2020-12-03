@@ -14,15 +14,19 @@
       <!-- <h1 class="pets-of-the-week">Pets Available For Adoption!</h1> -->
     </div>
     <div class="homepage-pet-list container">
-      <h2 class="text-center pets-of-the-week">
+      <div class="most-liked-pets flex align-end space-between">
+      <h2 class="most-liked-of-the-week">
         Most liked Pets Available For Adoption
       </h2>
+      <router-link to="/pet" class="all-pets-link"
+            >View All Pets</router-link>
+      </div>
       <pet-list
         v-if="petsForPreview"
         :pets="mostLiked"
         @updateLikes="addTreat"
       ></pet-list>
-      <h2 class="text-center pets-of-the-week">Recently Adopted Pets</h2>
+      <h2 class="pets-of-the-week">Recently Adopted Pets</h2>
       <pet-list
         v-if="petsForPreview"
         :pets="recentlyAdopted"
@@ -43,24 +47,8 @@
           <li>They help combat lonliness</li>
           <li>Pets are good for your health</li>
         </ul>
-        <p>
-          <!-- There are so many reasons why you should adopt a pet, but the most
-        important reason is that you will be saving a life, and your pet will
-        love you forever for that! -->
-        </p>
-        <!-- <p>
-          Research shows that having a pet improves your quality of of life by
-          making you a happier person! Taking care of an animal releases
-          endorphins in your brain, which causes you to be happier! It's been
-          shown that taking care of a pet is psychologically, emotionally and
-          physically beneficial to their companions. Let's not forget the
-          uncoditional love from your pet! What are you waiting for?! Improve
-          your life now - find your new furry best friend!
-        </p> -->
-        <!-- <button>View All Animals!</button> -->
       </section>
       <section class="testimonies">
-        <!-- <review></review> -->
         <div class="testimony">
           <div class="testimony-img">
             <img src="../assets/imgs/homepage/testimony1.jpg" alt="" />
@@ -74,17 +62,6 @@
               morning. His uncoditional love truly changed me. Please adopt and
               save a life while improving your own!
             </p>
-            <!-- <p>
-              Hello! My name is Sarah, and I adopted my incredible dog named
-              Martin from "Dog Luvers". He saved me in so many ways. I used to
-              be really depressed before I adopted Martin, and would have the
-              hardest time getting out of bed. Walking him every morning really
-              gave me a purpose to get out of bed each morning, and slowly I
-              started coming out of my depression. His uncoditional love truly
-              changed me, and I feel like the luckiest person in the world to
-              get to be Martin's Dog mom! Please adopt and save a life while
-              improving your own!
-            </p> -->
           </div>
         </div>
         <div class="testimony">
@@ -101,15 +78,6 @@
               easy and delightful. Thank you so much Pet Furrever and
               Adop-A-Pup.
             </p>
-            <!-- <p>
-              Hi, I'm Dom and I adopted this stallion of a dog named Kita from
-              "Adopt-A-Pup Rescue". I couldn't imagine my life without this
-              little dude. He is my best bud, we do everything together, I
-              woudln't give him up for the world. Adopting Kita is the best
-              decision I've ever made, and Pet Furrever made this proccess so
-              easy and delightful. Thank you so much Pet Furrever and
-              Adop-A-Pup, I will forever be thankful to you guys.
-            </p> -->
           </div>
         </div>
       </section>

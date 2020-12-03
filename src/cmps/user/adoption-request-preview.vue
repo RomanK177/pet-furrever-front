@@ -20,7 +20,7 @@
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
 
-      <div v-if="checkIfOwner" class="approve">
+      <div class="approve" v-if="isOwner">
         <img
           @click="emiUpdateAdoptionRequest(true)"
           src="../../assets/imgs/green-check.png"
@@ -44,6 +44,7 @@ export default {
   name: "adoptionrequestPreview",
   props: {
     request: Object,
+    user: Object,
   },
   data() {
     return {
@@ -86,9 +87,9 @@ export default {
       let pet = this.$store.getters.getPetById(this.request.pet._id);
       return pet;
     },
-    checkIfOwner() {
-      var loggedInUser = this.$store.getters.getLoggedInUser;
-      return loggedInUser && loggedInUser.userType === 'owner';
+    isOwner() {
+      if (this.user.userType === "owner") return true;
+      else return false;
     },
   },
   async created() {

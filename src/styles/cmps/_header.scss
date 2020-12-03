@@ -30,8 +30,14 @@
     }
 }
 
-.user-droped-menu {
+.avatar:hover {
+    cursor: pointer;
+}
+
+.userDropedMenu {
     position: fixed;
+    display: flex;
+    flex-direction: column;
     transform: translateX(-40px);
 }
 
@@ -40,4 +46,10 @@
     position: fixed;
     width: 100%;
     z-index: 1;
+}
+
+
+.avatar[data-v-4ffd1741]{
+    height: 30px;
+    width: 30px;
 }

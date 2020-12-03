@@ -1,7 +1,7 @@
 <template>
-  <div class="comments-container container">
+  <div class="comments-container">
     <h1 class="pet-details-comments-title">Comments</h1>
-    <hr />
+    <!-- <hr /> -->
     <form @submit.prevent="addComment">
       <input
         v-model="commentToAdd.txt"
