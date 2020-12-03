@@ -30,6 +30,10 @@
     }
 }
 
+.avatar:hover {
+    cursor: pointer;
+}
+
 .user-droped-menu {
     position: fixed;
     transform: translateX(-40px);

@@ -27,6 +27,7 @@
     <!-- Add tags from elemnts -->
     <adoption-request
       :requests="requests"
+      :user="user"
       @updateAdoption="updateAdoption"
       v-if="checkIfOwner"
     />
