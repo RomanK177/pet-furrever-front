@@ -47,7 +47,6 @@ export default {
   },
   methods: {
    async updateAdoption(adoptionRequest) {
-      debugger
      await this.$store.dispatch({
         type: "updateAdoptionRequest",
         adoptionRequest,

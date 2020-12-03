@@ -36,7 +36,7 @@ export default {
         } else {
           this.loggedInUser.favorites.push(this.pet._id);
           this.isFevorite = true;
-          this.$emit("updateFavorites", this.loggedInUser);
+          this.$emit("updateFavorites", this.isFevorite);
         }
       } else {
         if (this.loggedInUser === null) {
@@ -48,7 +48,7 @@ export default {
           let idx = this.loggedInUser.favorites.indexOf(this.pet._id);
           this.loggedInUser.favorites.splice(idx, 1);
           this.isFevorite = false;
-          this.$emit("updateFavorites", this.loggedInUser);
+          this.$emit("updateFavorites", this.isFevorite);
         }
       }
     },

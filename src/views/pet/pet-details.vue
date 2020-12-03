@@ -105,7 +105,6 @@ export default {
       });
     },
     async sendRequest() {
-      // debugger;
       const petId = this.pet._id;
       await this.$store.dispatch({
         type: "addAdoptionRequest",
@@ -132,31 +131,25 @@ export default {
       this.isActive = !isSentRequest;
     },
     updateFavorites(user) {
-      console.log(
-        "🚀 ~ file: pet-details.vue ~ line 191 ~ updateFavorites ~ user",
-        user
-      );
+      console.log('1')
       // sessionStorage.user = JSON.stringify(user);
       // this.$store.dispatch({
       //   type: "updateUser",
       //   savedUser: user,
       // });
     },
-    // updateComments(comment) {
-    //   debugger
-    //   this.pet.comments.unshift(comment);
-    //   this.$store.dispatch({
-    //     type: "savePet",
-    //     pet: this.pet,
-    //   });
-    // },
-
-    addComment(comment) {
-      this.$store.dispatch({
+    async addComment(comment) {
+      await this.$store.dispatch({
         type: "addComment",
         petId: this.pet._id,
         comment,
       });
+      // TRY - DIDNT WORK
+      // let pet = await this.$store.dispatch({
+      //   type: 'getPetById',
+      //   PetId: this.pet._id
+      // })
+      // this.pet = pet;
     },
   },
   computed: {
