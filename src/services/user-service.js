@@ -10,7 +10,7 @@ export const userService = {
     remove,
     update,
     addReview,
-    addToFavorite
+    updateFavorites
 }
 
 function getEmptyUser(type) {
@@ -25,7 +25,7 @@ function _getCommonUserFields() {
         email: '',
         tel: '0',
         imgUrlProfile: '',
-        favorites: []
+        favoritePets:[]
     }
 }
 
@@ -111,8 +111,9 @@ async function addReview(ownerId, review) {
     return httpService.post(`users/${ownerId}/reviews`, review);
 }
 
-async function addToFavorite(petId) {
-    return httpService.post(`users/${petId}/favorites`);
+async function updateFavorites(isFavorite, petId) {
+    debugger
+    return httpService.post(`users/${petId}/favorites`, {isFavorite});
 }
 
 function _handleLogin(user) {

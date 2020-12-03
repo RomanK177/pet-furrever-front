@@ -18,7 +18,10 @@
         </div>
         <div class="likes-adopt-container flex column align-center">
           <div class="adopt-fav flex column justify-center align-center">
-            <el-button v-if="isActive && !isAdopted" type="text" @click="requestAdopt"
+            <el-button
+              v-if="isActive && !isAdopted"
+              type="text"
+              @click="requestAdopt"
               >Adopt Me</el-button
             >
             <div v-if="!isActive">Adoption Request Sent!</div>
@@ -130,13 +133,14 @@ export default {
       );
       this.isActive = !isSentRequest;
     },
-    updateFavorites(user) {
-      console.log('1')
-      // sessionStorage.user = JSON.stringify(user);
-      // this.$store.dispatch({
-      //   type: "updateUser",
-      //   savedUser: user,
-      // });
+    updateFavorites(isFavorite, petId) {
+      debugger;
+      this.$store.dispatch({
+        type: "updateFavorites",
+        isFavorite,
+        petId,
+      });
+      this.loggedInUser = is.$store.getters.getLoggedInUser;
     },
     async addComment(comment) {
       await this.$store.dispatch({

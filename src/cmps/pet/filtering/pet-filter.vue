@@ -20,11 +20,11 @@
           <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
           <div
             class=" favorite-btn flex justify-center align-center"
-            @click.stop="toggleFevorite"
+            @click.stop="toggleFavorite"
           >
             <img
-              class="like-svg fevorite"
-              :class="{ isFevorite: isFav }"
+              class="like-svg Favorite"
+              :class="{ isFavorite: isFav }"
               src="../../../assets/svgs/heart2.svg"
               alt=""
             />
@@ -71,7 +71,7 @@ export default {
 
 
     },
-    toggleFevorite() {
+    toggleFavorite() {
       this.isFav = !this.isFav;
       this.$emit("isFav", this.isFav);
     },
