@@ -29,7 +29,7 @@
         Date of birth:
         <input type="date" v-model="userToEdit.adopterData.dateOfBirth" />
       </p>
-      <p v-if="userToEdit.adopterData.ownPet">Own a pet</p>
+      <p v-if="userToEdit.adopterData.ownPet">Owns a pet</p>
       <p v-if="userToEdit.adopterData.ownedPet">Owned a pet</p>
       <p>
         Family status:

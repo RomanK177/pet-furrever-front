@@ -15,12 +15,12 @@
       {{ user.adopterData.dateOfBirth }}
     </p>
     <p class="bold">
-      <span v-if="user.ownPet">Own a pet at the moment</span
+      <span v-if="user.ownPet">Currrently owns a pet</span
       ><span v-else>Doesnt own a pet at the moment</span>
     </p>
     <p class="bold">
-      <span v-if="user.ownedPet">Owned a pet before</span
-      ><span v-else>Doesnt owned a pet before</span>
+      <span v-if="user.ownedPet">Has owned a pet before</span
+      ><span v-else>Has never owned a pet before</span>
     </p>
     <p>{{ user.familyStatus }}</p>
     <p>{{ user.houseStatus }}</p>
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
    async updateAdoption(adoptionRequest) {
-      debugger
+      // debugger
      await this.$store.dispatch({
         type: "updateAdoptionRequest",
         adoptionRequest,

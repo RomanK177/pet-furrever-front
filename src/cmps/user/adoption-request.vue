@@ -13,7 +13,7 @@
           <span class="requsted-at">Date</span>
           <span class="requsted-status">Status</span>
           <span v-if="isOwner" class="approve">Approve</span>
-          <span class="decline">Decline</span>
+          <span class="decline">Cancel</span>
         </div>
       </li>
       <li class="flex" v-for="(request, idx) in requests" :key="idx">
