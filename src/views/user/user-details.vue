@@ -15,10 +15,6 @@ export default {
       user: null,
     };
   },
-  created() {
-    const userId = this.$route.params.id;
-    this.getUser(userId);
-  },
   methods: {
     async getUser(userId) {
       const user = await this.$store.dispatch({
@@ -27,12 +23,11 @@ export default {
       });
       this.user = user;
     },
-    computed: {
-      // ownerPets(){
-      //   if(this.@)
-      //    this.$store.getters.petsForPreview;
-      // }
-    },
+   
+  },
+   created() {
+    const userId = this.$route.params.id;
+    this.getUser(userId);
   },
   components: {
     adopterDetails,
