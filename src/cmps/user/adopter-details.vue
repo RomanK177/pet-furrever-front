@@ -2,9 +2,9 @@
 <template>
   <section v-if="user" class="adopter-details">
     <h1>Welcome {{ user.fullName }}!</h1>
-    <router-link v-if="checkIfOwner" :to="'/user/edit/' + user._id"
+    <!-- <router-link v-if="checkIfOwner" :to="'/user/edit/' + user._id"
       >Edit your profile</router-link
-    >
+    > -->
     <br />
     <img class="user-profile-picture" :src="imgUrlProfile" alt="profile logo" />
     <p><span class="bold">Full name:</span> {{ user.fullName }}</p>
@@ -15,12 +15,12 @@
       {{ user.adopterData.dateOfBirth }}
     </p>
     <p class="bold">
-      <span v-if="user.ownPet">Own a pet at the moment</span
+      <span v-if="user.ownPet">Currrently owns a pet</span
       ><span v-else>Doesnt own a pet at the moment</span>
     </p>
     <p class="bold">
-      <span v-if="user.ownedPet">Owned a pet before</span
-      ><span v-else>Doesnt owned a pet before</span>
+      <span v-if="user.ownedPet">Has owned a pet before</span
+      ><span v-else>Has never owned a pet before</span>
     </p>
     <p>{{ user.familyStatus }}</p>
     <p>{{ user.houseStatus }}</p>
@@ -47,11 +47,13 @@ export default {
   },
   methods: {
    async updateAdoption(adoptionRequest) {
+      // debugger
      await this.$store.dispatch({
         type: "updateAdoptionRequest",
         adoptionRequest,
       });
     },
+     
   },
   computed: {
     imgUrlProfile() {

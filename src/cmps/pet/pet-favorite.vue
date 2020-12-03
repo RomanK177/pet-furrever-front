@@ -3,7 +3,7 @@
   <section class="favorite-pet">
     <div class="flex justify-center align-center" @click.stop="toggleFavorite">
       <img
-        class="like-svg Favorite"
+        class="like-svg favorite"
         :class="{ isFavorite: isFavorite }"
         src="../../assets/svgs/heart2.svg"
         alt=""

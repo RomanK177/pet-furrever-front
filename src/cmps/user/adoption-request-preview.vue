@@ -4,12 +4,16 @@
     @mouseover="showButtons"
     @mouseleave="hideButtons"
     class="adoption-request-preview"
+
   >
-    <div class="prev-content flex">
+    <div class="prev-content flex" v-if="isCancelled">
       <span class="requsted-id">{{ request._id }}</span>
       <span class="requsted-by">
-        <router-link :to="`/user/${request.user._id}`">{{
+        <router-link :to="`/user/${request.user._id}`" v-if="isOwner">{{
           request.user.name
+        }}</router-link>
+         <router-link :to="`/user/${request.owner._id}`" v-if="isAdopter">{{
+          request.owner.name
         }}</router-link>
       </span>
       <span class="requsted-pet">
@@ -33,6 +37,9 @@
           src="../../assets/imgs/red-x.png"
           alt=""
         />
+      </div>
+      <div class="delete">
+        <button @click="emitDeleteRequest">Delete</button>
       </div>
     </div>
   </section>
@@ -66,11 +73,22 @@ export default {
     emiUpdateAdoptionRequest(action) {
       if (action === true) {
         this.request.status = "approved";
+      } 
+      else if (action === false && this.user.userType === 'adopter') {
+        this.request.status = "cancelled";
+
       } else {
         this.request.status = "declined";
       }
       this.$emit("updateAdoption", this.request);
     },
+    emitDeleteRequest(){
+      const isOwner = this.isOwner()
+      if (isOwner === true) {
+         this.$emit("deleteAdoption", this.request);
+
+      }
+    }
   },
   computed: {
     sentTime() {
@@ -91,10 +109,19 @@ export default {
       if (this.user.userType === "owner") return true;
       else return false;
     },
+    isCancelled(){
+      if(this.request.status === 'cancelled' && (this.user.userType === 'adopter')) return false;
+      else return true
+    },
+    isAdopter(){
+      if (this.user.userType === 'adopter') return true;
+      else return false;
+    }
   },
   async created() {
     const pet = await petService.getPetById(this.request.pet._id);
     this.pet = pet;
+    console.log(this.request.owner)
   },
 };
 </script>

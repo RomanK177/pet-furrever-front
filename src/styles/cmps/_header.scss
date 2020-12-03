@@ -30,10 +30,6 @@
     }
 }
 
-.avatar:hover {
-    cursor: pointer;
-}
-
 .userDropedMenu {
     position: fixed;
     display: flex;
@@ -48,16 +44,26 @@
     z-index: 1;
 }
 
+.avatar table td[data-v-4ffd1741] {
+    width: 10px;
+    height: 10px;
+}
 
-.avatar[data-v-4ffd1741]{
+.avatar[data-v-4ffd1741] {
     height: 30px;
     width: 30px;
 }
 
-
-
-.user-avatar .avatar[data-v-4ffd1741]{
+.user-avatar .avatar[data-v-4ffd1741] {
     width: 30px;
     height: 30px;
     font-size: unset;
+}
+
+.user-avatar .avatar:hover[data-v-4ffd1741] {
+    cursor: pointer;
+}
+
+.avatar:hover[data-v-4ffd1741] {
+    cursor: pointer;
 }

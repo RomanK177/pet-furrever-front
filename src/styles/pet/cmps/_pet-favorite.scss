@@ -1,24 +1,24 @@
  $foriteIconWidth: 25px;
  .favorite-pet {
      margin: 10px;
-    //  width: 147px;
+     //  width: 147px;
      //  font-size: 1rem;
-    //  margin-top: 5px;
-    //  padding: 10px 0px;
-    //  font-size: 1.3rem;
-    //  color: orange;
-    // background-color: darkorange;
-    // border: 1px solid beige;
-    // color:white;
-    // //  border: 1px solid orange;
-    //  border-radius: 4px;
-    //  background-color: white;
-    //  font-family: quicksand;
+     //  margin-top: 5px;
+     //  padding: 10px 0px;
+     //  font-size: 1.3rem;
+     //  color: orange;
+     // background-color: darkorange;
+     // border: 1px solid beige;
+     // color:white;
+     // //  border: 1px solid orange;
+     //  border-radius: 4px;
+     //  background-color: white;
+     //  font-family: quicksand;
      cursor: pointer;
      user-select: none;
  }
  
- .Favorite {
+ .favorite {
      width: $foriteIconWidth;
      filter: invert(99%) sepia(1%) saturate(0%) hue-rotate(191deg) brightness(89%) contrast(73%);
  }
