@@ -2,7 +2,7 @@
   <section class="owner-review details">
     <h1 class="pet-details-comments-title">Reviews</h1>
     <hr />
-       <form @submit="addReview">
+       <form @submit.prevent="addReview">
       <label
         ><span class="bold">Rate: </span
         ><input type="number" v-model.number="reviewToAdd.rate"
@@ -44,20 +44,11 @@ export default {
       reviewToAdd: {
         txt: "",
         rate: null,
-        by: {
-            userId: '',
-          fullName: '',
-          imgUrl: '',
-        }
-        
       },
     };
   },
   methods: {
     addReview() {
-      // this.reviewToAdd.by.fullName = !this.loggedInUser
-      //   ? "Guest"
-      //   : this.loggedInUser.fullName;
       this.$emit("addReview", JSON.parse(JSON.stringify(this.reviewToAdd)));
       this.reviewToAdd.txt = "";
     },

@@ -67,8 +67,8 @@ export const petStore = {
         async getFullPetList() {
             return await petService.query(null, null)
         },
-        async getById(context, { id }) {
-            const pet = await petService.getPetById(id)
+        async getPetById(context, { petId }) {
+            const pet = await petService.getPetById(petId)
             return pet
         },
         //Karin changes:

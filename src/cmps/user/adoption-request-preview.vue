@@ -22,14 +22,14 @@
 
       <div class="approve" v-if="isOwner">
         <img
-          @click="updateRequest(true)"
+          @click="emiUpdateAdoptionRequest(true)"
           src="../../assets/imgs/green-check.png"
           alt=""
         />
       </div>
       <div class="decline">
         <img
-          @click="updateRequest(false)"
+          @click="emiUpdateAdoptionRequest(false)"
           src="../../assets/imgs/red-x.png"
           alt=""
         />
@@ -63,18 +63,14 @@ export default {
     hideButtons() {
       this.areButtonsShown = false;
     },
-    // updateRequest(action) {
-    //   if (action == true) {
-    //     this.request.status = "approved";
-    //     this.pet.adoptedAt = Date.now();
-    //     this.$emit("updatePet", this.pet);
-    //   } else {
-    //     this.request.status = "declined";
-    //     this.pet.adoptedAt = null;
-    //     this.$emit("updatePet", this.pet);
-    //   }
-    //   this.$emit("updateAdoption", this.request);
-    // },
+    emiUpdateAdoptionRequest(action) {
+      if (action === true) {
+        this.request.status = "approved";
+      } else {
+        this.request.status = "declined";
+      }
+      this.$emit("updateAdoption", this.request);
+    },
   },
   computed: {
     sentTime() {

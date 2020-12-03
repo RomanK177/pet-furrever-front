@@ -27,10 +27,10 @@
         <pet-likes :pet="pet" @updateLikes="emitUpdateLikes" />
       </div>
     </div>
-    <div class="card-btns flex">
-      <button v-show="user && user.isAdmin" @click.stop="emitDelete">x</button>
+    <!-- <div class="card-btns flex">
+      <button v-show="user && user.us" @click.stop="emitDelete">x</button>
       <button v-show="user && user.isAdmin" @click.stop="editPet">Edit</button>
-    </div>
+    </div> -->
     <span class="adopted" v-if="pet.adoptedAt">ADOPTED</span>
   </section>
 </template>
@@ -49,15 +49,15 @@ export default {
     };
   },
   methods: {
-    emitDelete() {
-      this.$emit("deletePet", this.pet._id);
-    },
+    // emitDelete() {
+    //   this.$emit("deletePet", this.pet._id);
+    // },
     emitUpdateLikes(pet) {
       this.$emit("updateLikes", pet);
     },
-    editPet() {
-      this.$router.push(`/edit/${this.pet._id}`);
-    },
+    // editPet() {
+    //   this.$router.push(`/edit/${this.pet._id}`);
+    // },
   },
   computed: {},
   created() {

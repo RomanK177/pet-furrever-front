@@ -9,7 +9,8 @@ export const userService = {
     getById,
     remove,
     update,
-    addReview
+    addReview,
+    addToFavorite
 }
 
 function getEmptyUser(type) {
@@ -108,6 +109,10 @@ async function logout() {
 
 async function addReview(ownerId, review) {
     return httpService.post(`users/${ownerId}/reviews`, review);
+}
+
+async function addToFavorite(petId) {
+    return httpService.post(`users/${petId}/favorites`);
 }
 
 function _handleLogin(user) {

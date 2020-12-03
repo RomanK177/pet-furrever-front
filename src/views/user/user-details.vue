@@ -27,12 +27,6 @@ export default {
       });
       this.user = user;
     },
-    computed: {
-      // ownerPets(){
-      //   if(this.@)
-      //    this.$store.getters.petsForPreview;
-      // }
-    },
   },
   components: {
     adopterDetails,
