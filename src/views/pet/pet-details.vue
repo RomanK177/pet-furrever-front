@@ -137,7 +137,7 @@ export default {
         isFavorite,
         petId,
       });
-      this.loggedInUser = is.$store.getters.getLoggedInUser;
+      this.loggedInUser = this.$store.getters.getLoggedInUser;
     },
     async addComment(comment) {
       await this.$store.dispatch({
