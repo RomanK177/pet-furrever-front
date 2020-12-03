@@ -2,14 +2,7 @@
 <template>
   <section class="pet-likes">
     <div class="flex space-between align-center">
-      <!-- <button
-        v-if="$route.params.id"
-        @click.stop="toggleTreat"
-        class="btn treat-btn"
-      >
-        Send Me A Treat!
-      </button> -->
-      <div class="pet-like-btns flex align-center" @click.stop="toggleTreat">
+      <div class="pet-like-btns flex align-center" @click.stop="addTreat">
         <img
           :class="{ treatClicked: treat }"
           class="svg-symbol treat"
@@ -37,50 +30,11 @@ export default {
     };
   },
   methods: {
-    // toggleTreat() {
-    //   if (this.treat === false) {
-    //     this.storedLikes.push(this.pet._id);
-    //     utilService.storeToStorage("likes_db", this.storedLikes);
-    //     this.pet.numOfTreats++;
-    //     this.$emit("updateLikes", this.pet);
-    //   } else {
-    //     let idx = this.storedLikes.indexOf(this.pet._id);
-    //     this.storedLikes.splice(idx, 1);
-    //     utilService.storeToStorage("likes_db", this.storedLikes);
-    //     this.pet.numOfTreats--;
-    //     this.$emit("updateLikes", this.pet);
-    //   }
-    //   this.treat = !this.treat;
-    // },
-    toggleTreat() {
-      this.pet.numOfTreats++;
-      this.$emit("updateLikes", this.pet);
-      this.treat = true;
-      this.storedLikes.push(this.pet._id);
-      utilService.storeToStorage("likes_db", this.storedLikes);
-      // if (this.treat === false) {
-      // } else {
-      //   let idx = this.storedLikes.indexOf(this.pet._id);
-      //   this.storedLikes.splice(idx, 1);
-      //   utilService.storeToStorage("likes_db", this.storedLikes);
-      //   this.$emit("updateLikes", this.pet);
-      // }
-    },
     addTreat() {
       this.$emit("addTreat", this.pet._id);
       this.treat = true;
       this.storedLikes.push(this.pet._id);
       utilService.storeToStorage("likes_db", this.storedLikes);
-      // if (this.treat === false) {
-      // } else {
-      //   let idx = this.storedLikes.indexOf(this.pet._id);
-      //   this.storedLikes.splice(idx, 1);
-      //   utilService.storeToStorage("likes_db", this.storedLikes);
-      //   this.$emit("updateLikes", this.pet);
-      // }
-    },
-    showButton() {
-      console.log(this.$route);
     },
   },
   computed: {
