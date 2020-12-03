@@ -1,10 +1,9 @@
 <template>
   <section class="owner-details container">
-    <div class="owner-action" v-if="checkIfOwner">
-      <!-- <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> || -->
-    </div>
-    <h1 v-if="checkIfOwner" class="welcome">Welcome {{ owner.fullName }}</h1>
-    <h1 v-else>{{ owner.fullName }}</h1>
+    <!-- <div class="owner-action" v-if="checkIfOwner">
+      <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> ||
+    </div> -->
+
     <br />
     <div class="details-images">
       <img
@@ -21,6 +20,11 @@
         }"
       />
     </div>
+    <div>
+      <h1 v-if="checkIfOwner" class="welcome">Welcome {{ owner.fullName }}</h1>
+      <h1 v-else>{{ owner.fullName }}</h1>
+      <span>{{ ratingAvg }}</span>
+    </div>
     <div class="owner-profile flex align-center">
       <img class="user-profile-picture" :src="imgUrlProfile" />
       <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
@@ -36,8 +40,10 @@
         <p><span class="bold">Description:</span> {{ owner.ownerData.desc }}</p>
         <!-- Add tags from elemnts -->
       </div>
-      <router-link class="addPet" to="/pet/edit">Add Pet</router-link>
     </div>
+    <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
+      >Add Pet</router-link
+    >
     <adoption-request
       @updateAdoption="updateAdoption"
       v-if="checkIfOwner"
@@ -97,6 +103,12 @@ export default {
         (req) => req.owner._id === this.$store.getters.getLoggedInUser._id
       );
       return filteredReqs;
+    },
+    ratingAvg() {
+      let sum = this.user.ownerData.reviews.reduce((acc) => {
+        return acc;
+      });
+      return sum;
     },
     // getAdoptionRequests() {
     //   let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
