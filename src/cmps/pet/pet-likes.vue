@@ -12,45 +12,11 @@
       <div class="flex align-center" @click.stop="toggleTreat">
         <img
           :class="{ treatClicked: treat }"
-          v-if="pet.type === 'Dog'"
           class="svg-symbol treat"
-          src="../../assets/svgs/dog-bone.svg"
-          alt=""
+          :src="require(`../../assets/svgs/${treatSrc}`)"
+          alt="treat image"
         />
-        <img
-          :class="{ treatClicked: treat }"
-          v-if="pet.type === 'Cat'"
-          class="svg-symbol treat"
-          src="../../assets/svgs/fish.svg"
-          alt=""
-        />
-        <img
-          :class="{ treatClicked: treat }"
-          v-if="
-            pet.type === 'Pig' ||
-            pet.type === 'Horse' ||
-            pet.type === 'Bunny' ||
-            pet.type === 'Goat' ||
-            pet.type === 'Cow'
-          "
-          class="svg-symbol treat"
-          src="../../assets/svgs/carrot.svg"
-          alt=""
-        />
-        <img
-          :class="{ treatClicked: treat }"
-          v-if="pet.type === 'Frog' || pet.type === 'Lizard'"
-          class="svg-symbol treat"
-          src="../../assets/svgs/fly.svg"
-          alt=""
-        />
-        <img
-          :class="{ treatClicked: treat }"
-          v-if="pet.type === 'Hamster'"
-          class="svg-symbol treat"
-          src="../../assets/svgs/nut.svg"
-          alt=""
-        />
+
         <span class="treats-count">{{ pet.numOfTreats }}</span>
       </div>
     </div>
@@ -117,7 +83,24 @@ export default {
       console.log(this.$route);
     },
   },
-  computed: {},
+  computed: {
+    treatSrc() {
+      if (this.pet.type === "Dog") return "dog-bone.svg";
+      if (this.pet.type === "Cat") return "fish.svg";
+      if (this.pet.type === "Hamster") return "nut.svg";
+      if (
+        this.pet.type === "Pig" ||
+        this.pet.type === "Horse" ||
+        this.pet.type === "Bunny" ||
+        this.pet.type === "Goat" ||
+        this.pet.type === "Cow" ||
+        this.pet.type === "Chicken"
+      )
+        return "carrot.svg";
+      if (this.pet.type === "Frog" || this.pet.type === "Lizard")
+        return "fly.svg";
+    },
+  },
   created() {
     this.storedLikes = utilService.loadFromStorage("likes_db");
     if (this.storedLikes === undefined || this.storedLikes === null)

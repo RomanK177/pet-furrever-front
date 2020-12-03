@@ -12,7 +12,7 @@
           <span class="requsted-pet">Pet to adopt</span>
           <span class="requsted-at">Date</span>
           <span class="requsted-status">Status</span>
-          <span class="approve">Approve</span>
+          <span v-if="isOwner" class="approve">Approve</span>
           <span class="decline">Decline</span>
         </div>
       </li>
@@ -21,6 +21,7 @@
           @updateAdoption="emiUpdateAdoption"
           @updatePet="emiUpdatePet"
           :request="request"
+          :user="user"
         />
       </li>
     </ul>
@@ -32,6 +33,7 @@ import adoptionRequestPreview from "./adoption-request-preview.vue";
 export default {
   props: {
     requests: Array,
+    user: Object,
   },
   data() {
     return {
@@ -56,6 +58,10 @@ export default {
     //   );
     //   return filteredReqs;
     // },
+    isOwner() {
+      if (this.user.userType === "owner") return true;
+      else return false;
+    },
   },
   created() {
     // this.getAdoptionRequest
