@@ -20,17 +20,14 @@
 @import "pet/views/pet-edit";
 // Pet - cmps //
 @import "pet/cmps/pet-filter";
-@import "pet/cmps/pet-fevorite";
+@import "pet/cmps/pet-favorite";
 @import "pet/cmps/pet-list";
 @import "pet/cmps/pet-preview";
 @import "pet/cmps/pet-comments";
-
 // USER & OWNER //
 @import "user/user-details";
-
 // Sign up
 @import "user/signup";
-
 // REVIEW //
 @import "review/review";
 // PAGES //

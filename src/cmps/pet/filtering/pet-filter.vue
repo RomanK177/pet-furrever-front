@@ -10,27 +10,27 @@
             <img class="animal-svg" src="../../../assets/svgs/bunny.svg" alt="">
              <img class="animal-svg" src="../../../assets/svgs/cow.svg" alt="">
         </div> -->
-      <div class="filters-togglebutton" @click="toggleFilters">
-        {{ filterTxt ? 'Show More Filters' : 'Show Less Filters' }}
-      </div>
-      </div>
-        <div class="more-filters flex" v-if="isShowFilters">
-          <pet-type-select @input="emitFilter" v-model="filter.type" />
-          <pet-size-select @input="emitFilter" v-model="filter.size" />
-          <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
-          <div
-            class=" favorite-btn flex justify-center align-center"
-            @click.stop="toggleFevorite"
-          >
-            <img
-              class="like-svg fevorite"
-              :class="{ isFevorite: isFav }"
-              src="../../../assets/svgs/heart2.svg"
-              alt=""
-            />
-            <span>Favorites</span>
-          </div>
+        <div class="filters-togglebutton" @click="toggleFilters">
+          {{ filterTxt ? "Show More Filters" : "Show Less Filters" }}
         </div>
+      </div>
+      <div class="more-filters flex" v-if="isShowFilters">
+        <pet-type-select @input="emitFilter" v-model="filter.type" />
+        <pet-size-select @input="emitFilter" v-model="filter.size" />
+        <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
+        <div
+          class="favorite-btn flex justify-center align-center"
+          @click.stop="toggleFavorite"
+        >
+          <img
+            class="like-svg favorite"
+            :class="{ isFavorite: isFav }"
+            src="../../../assets/svgs/heart2.svg"
+            alt=""
+          />
+          <span>Favorites</span>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -67,11 +67,9 @@ export default {
     },
     toggleFilters() {
       this.isShowFilters = !this.isShowFilters;
-      this.filterTxt = !this.filterTxt
-
-
+      this.filterTxt = !this.filterTxt;
     },
-    toggleFevorite() {
+    toggleFavorite() {
       this.isFav = !this.isFav;
       this.$emit("isFav", this.isFav);
     },

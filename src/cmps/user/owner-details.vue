@@ -1,8 +1,7 @@
 <template>
   <section class="owner-details container">
     <div class="owner-action" v-if="checkIfOwner">
-      <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> ||
-      <router-link to="/pet/edit">Add pet</router-link>
+      <!-- <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> || -->
     </div>
     <h1 v-if="checkIfOwner" class="welcome">Welcome {{ owner.fullName }}</h1>
     <h1 v-else>{{ owner.fullName }}</h1>
@@ -37,6 +36,7 @@
         <p><span class="bold">Description:</span> {{ owner.ownerData.desc }}</p>
         <!-- Add tags from elemnts -->
       </div>
+      <router-link class="addPet" to="/pet/edit">Add Pet</router-link>
     </div>
     <adoption-request
       @updateAdoption="updateAdoption"

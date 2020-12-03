@@ -1,10 +1,10 @@
 
 <template>
   <section class="favorite-pet">
-    <div class="flex justify-center align-center" @click.stop="toggleFevorite">
+    <div class="flex justify-center align-center" @click.stop="toggleFavorite">
       <img
-        class="like-svg fevorite"
-        :class="{ isFevorite: isFevorite }"
+        class="like-svg favorite"
+        :class="{ isFavorite: isFavorite }"
         src="../../assets/svgs/heart2.svg"
         alt=""
       />
@@ -22,32 +22,32 @@ export default {
   },
   data() {
     return {
-      isFevorite: false,
-      localFevorites: null,
+      isFavorite: false,
+      localFavorites: null,
     };
   },
   methods: {
-    toggleFevorite() {
-      if (this.isFevorite === false) {
+    toggleFavorite() {
+      if (this.isFavorite === false) {
         if (this.loggedInUser === null) {
-          this.localFevorites.push(this.pet._id);
-          this.isFevorite = true;
-          utilService.storeToStorage("fevoritePets_db", this.localFevorites);
+          this.localFavorites.push(this.pet._id);
+          this.isFavorite = true;
+          utilService.storeToStorage("favoritePets_db", this.localFavorites);
         } else {
           this.loggedInUser.favorites.push(this.pet._id);
-          this.isFevorite = true;
+          this.isFavorite = true;
           this.$emit("updateFavorites", this.loggedInUser);
         }
       } else {
         if (this.loggedInUser === null) {
-          let idx = this.localFevorites.indexOf(this.pet._id);
-          this.localFevorites.splice(idx, 1);
-          this.isFevorite = false;
-          utilService.storeToStorage("fevoritePets_db", this.localFevorites);
+          let idx = this.localFavorites.indexOf(this.pet._id);
+          this.localFavorites.splice(idx, 1);
+          this.isFavorite = false;
+          utilService.storeToStorage("favoritePets_db", this.localFavorites);
         } else {
           let idx = this.loggedInUser.favorites.indexOf(this.pet._id);
           this.loggedInUser.favorites.splice(idx, 1);
-          this.isFevorite = false;
+          this.isFavorite = false;
           this.$emit("updateFavorites", this.loggedInUser);
         }
       }
@@ -56,14 +56,14 @@ export default {
   computed: {},
   async created() {
     if (!this.loggedInUser) {
-      let localFevorites = utilService.loadFromStorage("fevoritePets_db");
-      if (!localFevorites) {
-        localFevorites = [];
-        utilService.storeToStorage("fevoritePets_db", localFevorites);
+      let localFavorites = utilService.loadFromStorage("favoritePets_db");
+      if (!localFavorites) {
+        localFavorites = [];
+        utilService.storeToStorage("favoritePets_db", localFavorites);
       }
-      if (localFevorites.find((petId) => petId === this.pet._id))
-        this.isFevorite = true;
-      this.localFevorites = localFevorites;
+      if (localFavorites.find((petId) => petId === this.pet._id))
+        this.isFavorite = true;
+      this.localFavorites = localFavorites;
     } else {
       if (
         !this.loggedInUser.favorites ||
@@ -74,7 +74,7 @@ export default {
       } else if (
         this.loggedInUser.favorites.find((petId) => petId === this.pet._id)
       ) {
-        this.isFevorite = true;
+        this.isFavorite = true;
       }
     }
   },

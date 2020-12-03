@@ -1,6 +1,6 @@
 <template>
   <div>
-    <avatar class="user-avatar" :fullname="name"></avatar>
+    <avatar class="user-avatar" :fullname="name" size="30"></avatar>
   </div>
 </template>
 

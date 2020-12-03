@@ -11,6 +11,12 @@
           v-if="showUserMenu || !loggedinUser"
         >
           <router-link
+            class="nav-link"
+            v-if="loggedinUser"
+            :to="'/user/edit/' + loggedinUser._id"
+            >Edit</router-link
+          >
+          <router-link
             v-if="loggedinUser"
             :to="`/user/${loggedinUser._id}`"
             class="nav-link"
