@@ -18,10 +18,7 @@
         </div>
         <div class="likes-adopt-container flex column align-center">
           <div class="adopt-fav flex column justify-center align-center">
-            <el-button
-              v-if="isActive && !isAdopted"
-              type="text"
-              @click="requestAdopt"
+            <el-button class="add-pet" v-if="isActive && !isAdopted" type="text" @click="requestAdopt"
               >Adopt Me</el-button
             >
             <div v-if="!isActive">Adoption Request Sent!</div>
