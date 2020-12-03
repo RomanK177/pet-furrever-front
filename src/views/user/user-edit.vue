@@ -23,7 +23,6 @@ export default {
     };
   },
   async created() {
-    debugger
     const userId = this.$route.params.id;
     var user = await this.$store.dispatch({
       type: 'getUserById',

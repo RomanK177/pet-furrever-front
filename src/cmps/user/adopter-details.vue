@@ -2,9 +2,9 @@
 <template>
   <section v-if="user" class="adopter-details">
     <h1>Welcome {{ user.fullName }}!</h1>
-    <router-link v-if="checkIfOwner" :to="'/user/edit/' + user._id"
+    <!-- <router-link v-if="checkIfOwner" :to="'/user/edit/' + user._id"
       >Edit your profile</router-link
-    >
+    > -->
     <br />
     <img class="user-profile-picture" :src="imgUrlProfile" alt="profile logo" />
     <p><span class="bold">Full name:</span> {{ user.fullName }}</p>

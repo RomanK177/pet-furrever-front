@@ -1,27 +1,25 @@
-.pet-details-age{
+.pet-details-age {
     margin-right: 20px
 }
 
-.pet-details-gender{
+.pet-details-gender {
     margin-right: 20px;
 }
-.pet-details-p{
+
+.pet-details-p {
     margin: unset;
     margin-top: 10px;
 }
 
-.comments-container{
+.comments-container {
     background-color: white;
 }
 
 // .pet-like-btns{
 //     margin: 10px;
 // }
-
-
-
-
-.el-button {
+.el-button,
+.addPet {
     padding: 10px;
     font-size: 2rem;
     color: white;
@@ -30,8 +28,6 @@
     font-family: quicksand-bold;
     text-align: center;
     display: flex;
-
-    
     .el-message-box__close:hover {
         color: orange;
     }
@@ -43,7 +39,10 @@
     border: 1px solid orange;
 }
 
-.el-button--primary.is-active, .el-button--primary:active, .el-button--primary:focus, .el-button--primary {
+.el-button--primary.is-active,
+.el-button--primary:active,
+.el-button--primary:focus,
+.el-button--primary {
     font-size: 1rem;
 }
 
@@ -54,7 +53,6 @@
     color: orange;
 }
 
-
 .el-message-box__headerbtn:hover .el-message-box__close:hover {
     color: orange;
 }
@@ -63,12 +61,11 @@
     color: orange;
 }
 
-
 .el-message-box__message {
     font-family: quicksand-bold;
 }
 
-.treats-count{
+.treats-count {
     margin-left: 5px;
     margin-right: 10px;
 }
@@ -82,15 +79,12 @@
     font-family: quicksand;
     font-size: 1.2rem;
     outline: none;
-   
     &:hover {
         background-color: white;
         color: orange;
     }
-
-    :focus{
+     :focus {
         border: 1px solid orange;
-
     }
 }
 
@@ -114,11 +108,12 @@
     // padding-left: 10px;
 }
 
-.svg-symbol .details-treat-likes{
+.svg-symbol .details-treat-likes {
     width: 30px;
     height: 30px;
 }
-.pet-about-details{
+
+.pet-about-details {
     margin-top: 20px;
     align-items: flex-end;
     margin-bottom: 20px;
@@ -150,8 +145,7 @@
 // .comment-input {
 //     margin-left: 40px;
 // }
-
-.rendered-comments{
+.rendered-comments {
     padding: 0;
 }
 
@@ -166,22 +160,20 @@
     padding-right: 5px;
     font-family: quicksand;
     font-size: 1rem;
-
-    &:hover{
+    &:hover {
         color: orange;
         background-color: white;
         border: 1px solid orange;
-
     }
 }
 
-.comment-input{
+.comment-input {
     font-family: quicksand;
     font-size: 1rem;
     border-radius: 5px;
     border: 1px solid orange
-
 }
+
 .help-pet {
     button,
     .share {
@@ -212,13 +204,11 @@ hr {
 
 .location-svg,
 .email-svg,
-.phone-svg{
+.phone-svg {
     height: 20px;
     width: 20px;
     margin-right: 5px;
 }
-
-
 
 .share-svg {
     filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);
@@ -226,14 +216,14 @@ hr {
     width: 30px;
     margin: 10px;
     // &::after{
-
     // }
 }
 
-.like-svg{
+.like-svg {
     height: 30px;
     width: 30px;
 }
+
 .gender-svg,
 .age-svg,
 .breed-svg {
@@ -251,9 +241,8 @@ hr {
     }
 }
 
-.like-svg .fevorite{
+.like-svg .favorite {
     margin: 10px;
-
 }
 
 .likes-adopt-container {
@@ -261,7 +250,6 @@ hr {
     width: 40%;
     margin-inline-start: 30px;
 }
-
 
 .pet-details-owner-name {
     font-size: 1rem;
@@ -271,11 +259,10 @@ hr {
     color: orange;
     font-family: quicksand-medium;
     cursor: pointer;
-
 }
 
-.pet-owner-img{
-    height:80px;
+.pet-owner-img {
+    height: 80px;
     width: 80px;
     border-radius: 50%;
     object-fit: cover;

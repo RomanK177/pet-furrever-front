@@ -1,13 +1,12 @@
 <template>
   <section class="owner-details container">
     <div class="owner-action" v-if="checkIfOwner">
-      <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> ||
-      <router-link to="/pet/edit">Add pet</router-link>
+      <!-- <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> || -->
     </div>
     <h1 v-if="checkIfOwner" class="welcome">Welcome {{ owner.fullName }}</h1>
     <h1 v-else>{{ owner.fullName }}</h1>
     <br />
-        <div class="details-images">
+    <div class="details-images">
       <img
         id="imgUploader2"
         v-for="(imgUrl, idx) in owner.ownerData.imgUrls"
@@ -23,20 +22,21 @@
       />
     </div>
     <div class="owner-profile flex align-center">
-    <img class="user-profile-picture" :src="imgUrlProfile" />
-    <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
-    <div class="owner-info">
-    <p><span class="bold">Name:</span> {{ owner.fullName }}</p>
-    <p><span class="bold">Email:</span> {{ owner.email }}</p>
-    <p><span class="bold">Telephone:</span> {{ owner.tel }}</p>
-    <p>
-      <span class="bold">Activity years:</span>
-      {{ owner.ownerData.activityYears }}
-    </p>
-    <p><span class="bold">Title:</span> {{ owner.ownerData.title }}</p>
-    <p><span class="bold">Description:</span> {{ owner.ownerData.desc }}</p>
-    <!-- Add tags from elemnts -->
-    </div>
+      <img class="user-profile-picture" :src="imgUrlProfile" />
+      <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
+      <div class="owner-info">
+        <p><span class="bold">Name:</span> {{ owner.fullName }}</p>
+        <p><span class="bold">Email:</span> {{ owner.email }}</p>
+        <p><span class="bold">Telephone:</span> {{ owner.tel }}</p>
+        <p>
+          <span class="bold">Activity years:</span>
+          {{ owner.ownerData.activityYears }}
+        </p>
+        <p><span class="bold">Title:</span> {{ owner.ownerData.title }}</p>
+        <p><span class="bold">Description:</span> {{ owner.ownerData.desc }}</p>
+        <!-- Add tags from elemnts -->
+      </div>
+      <router-link class="addPet" to="/pet/edit">Add Pet</router-link>
     </div>
     <adoption-request
       @updateAdoption="updateAdoption"

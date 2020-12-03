@@ -15,7 +15,6 @@ function query() {
 }
 
 function addAdoptionRequest(petId) {
-    // debugger
     return httpService.post(`adoptions`, { petId });
 }
 

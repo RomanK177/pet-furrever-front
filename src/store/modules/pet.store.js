@@ -71,16 +71,16 @@ export const petStore = {
             const pet = await petService.getPetById(petId)
             return pet
         },
-        //Karin changes:
-        async addComment(context, { petId, comment }) {
+        async addComment({ commit }, { petId, comment }) {
             const addedComment = await petService.addComment(petId, comment)
-                // context.commit({type: 'addcomment', comment})
+            const pet = await petService.getPetById(petId) 
+            commit({ type: 'updatePet', pet })
             return addedComment;
         },
-        async addTreat(context, { petId }) {
+        async addTreat({ commit }, { petId }) {
             const addedTreat = await petService.addTreat(petId)
-            console.log(addedTreat)
-            // context.commit({type: 'addcomment', comment})
+            const pet = await petService.getPetById(petId)
+            commit({ type: 'updatePet', pet })
             return addedTreat;
         },
     },

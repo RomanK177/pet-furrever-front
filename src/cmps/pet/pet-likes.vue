@@ -56,11 +56,10 @@ export default {
     },
   },
   created() {
-    this.storedLikes = utilService.loadFromStorage("likes_db");
-    if (this.storedLikes === undefined || this.storedLikes === null)
-      this.storedLikes = [];
-    if (this.storedLikes.find((id) => id === this.pet._id)) this.treat = true;
-    else this.treat = false;
+    this.storedLikes = utilService.loadFromStorage("likes_db") || [];
+    this.treat = this.storedLikes.find((id) => id === this.pet._id)
+      ? true
+      : false;
   },
 };
 </script>
