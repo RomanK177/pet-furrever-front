@@ -12,3 +12,41 @@
         background-color: orange;
     }
 }
+
+.boldit{
+    font-family: quicksand-medium;
+}
+
+.approve-btn{
+    background-color: rgba(1, 218, 1, 0.822);
+    color: white;
+    border: 1px solid  rgba(1, 218, 1, 0.822);
+    margin-left: 5px;
+    border-radius: 3px;
+    font-size: 1rem;
+    margin-bottom: 4px;
+
+    
+
+}
+
+.decline-btn{
+    background-color: rgb(240, 66, 66);
+    color: white;
+    border: 1px solid rgb(240, 66, 66);
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-bottom: 4px;
+    font-size: 1rem;
+    
+}
+
+.message-btn{
+    background-color: orange;
+    border: 1px solid orange;
+    color: white;
+    border-radius: 3px;
+    font-size: 1rem;
+    margin-bottom: 4px;
+
+}

@@ -65,6 +65,13 @@ export const adoptionStore = {
                 console.error('Cannot remove adoption.', err)
             }
         },
+        async addMessage({ commit }, { adoptionId, message }) {
+            console.log('you are in the store bitch')
+            const addedMessage = await adoptionService.addMessage(adoptionId, message)
+            const adoption = await adoptionService.getPetById(adoptionId) 
+            commit({ type: 'updateAdoption', adoption })
+            return adoption;
+        },
 
         // async saveAdoptionRequest({ commit }, { adoption }) {
         //     try {

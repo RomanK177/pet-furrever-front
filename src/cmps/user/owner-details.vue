@@ -79,6 +79,7 @@
     >
     <pet-list v-if="petsForPreview" :pets="petsForPreview" />
     <adoption-request
+     @addMessage="addMessage"
       @updateAdoption="updateAdoption"
       @removeAdoption="removeAdoption"
       v-if="checkIfOwner"
@@ -127,7 +128,14 @@ export default {
         adoptionRequest,
       });
       console.log('deleted in details')
-    }
+    },
+      async addMessage(adoptionId, message) {
+     await this.$store.dispatch({
+        type: "addMessage",
+        adoptionId,
+        message
+      });
+    },
   },
   computed: {
     imgUrlProfile() {
