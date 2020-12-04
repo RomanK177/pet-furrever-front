@@ -67,3 +67,11 @@
 .avatar:hover[data-v-4ffd1741] {
     cursor: pointer;
 }
+
+@media only screen and (max-width: 420px) {
+    .header {
+        max-width: 400px;
+        margin: 0 0;
+        padding: 5px 0;
+    }
+}

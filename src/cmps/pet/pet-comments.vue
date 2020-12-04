@@ -1,5 +1,5 @@
 <template>
-  <div class="comments-container">
+  <div class="comments-container container">
     <h1 class="pet-details-comments-title">Comments</h1>
     <!-- <hr /> -->
     <form @submit.prevent="addComment">
@@ -17,7 +17,7 @@
         :key="index"
         class="pet-details-comments"
       >
-        {{ comment.by.fullName }}: {{ comment.txt }}
+        <span class="bold"> {{ comment.by.fullName }}:</span> {{ comment.txt }}
       </li>
     </ul>
   </div>

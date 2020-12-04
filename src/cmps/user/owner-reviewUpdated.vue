@@ -2,7 +2,7 @@
   <section class="owner-review details">
     <h1 class="pet-details-comments-title">Reviews</h1>
     <hr />
-       <form @submit.prevent="addReview">
+    <form @submit.prevent="addReview">
       <label
         ><span class="bold">Rate: </span
         ><input type="number" v-model.number="reviewToAdd.rate"
@@ -13,21 +13,20 @@
       /></label>
       <button>Add review</button>
     </form>
-    <ul class="rendered-comments">
-      <li
-        v-for="(review, index) in reviews"
-        :key="index"
-        class="pet-details-comments"
-      >
-        <span class="bold">From: </span>{{ review.by.fullName }}
-        <img :src="review.by.imgUrl" />
-        <br />
-        <span class="bold">Rate: </span>{{ review.rate }}
-        <br />
+    <ul class="rendered-comments flex">
+      <li class="review-card" v-for="(review, index) in reviews" :key="index">
+        <div class="flex space-between align-center content-center">
+          <span class="bold">{{ review.by.fullName }}: </span>
+          <div class="flex space-between align-center content-center">
+            <span> {{ review.rate }}</span>
+            <img class="star" :src="starUrl" alt="" />
+          </div>
+        </div>
+        <hr />
         {{ review.txt }}
       </li>
     </ul>
-</section>
+  </section>
 </template>
 <script>
 export default {
@@ -52,7 +51,12 @@ export default {
       this.$emit("addReview", JSON.parse(JSON.stringify(this.reviewToAdd)));
       this.reviewToAdd.txt = "";
     },
-  }
+  },
+  computed: {
+    starUrl() {
+      return require("../../assets/svgs/star.svg");
+    },
+  },
 };
 </script>
 

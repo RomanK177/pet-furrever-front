@@ -1,7 +1,9 @@
 <template>
   <div class="pet-details-container">
     <div class="details-header flex space-between align-center">
-      <h1 class="pet-details-name flex align center">Hi, I'm {{ pet.name }}!</h1>
+      <h1 class="pet-details-name flex align center">
+        Hi, I'm {{ pet.name }}!
+      </h1>
       <div class="fav-treat-share flex align-center">
         <pet-likes
           :pet="pet"
@@ -18,22 +20,28 @@
         </a>
       </div>
     </div>
-     <!-- <hr /> -->
+    <!-- <hr /> -->
     <div class="pet-about-container">
       <div class="pet-about-details flex wrap space-between align-end">
         <h4 class="pet-about">Meet {{ pet.name }}!</h4>
         <div class="pet-bio-container flex wrap space-between">
           <div class="pet-details-age flex column align-center">
             <img class="age-svg" src="../../assets/svgs/age.svg" alt="" />
-            <p class="pet-details-p"><span class="bold">Age:</span> {{ pet.age }}</p>
+            <p class="pet-details-p">
+              <span class="bold">Age:</span> {{ pet.age }}
+            </p>
           </div>
           <div class="pet-details-gender flex column align-center">
             <img class="gender-svg" src="../../assets/svgs/gender.svg" alt="" />
-            <p class="pet-details-p"><span class="bold">Gender:</span>  {{ pet.gender }}</p>
+            <p class="pet-details-p">
+              <span class="bold">Gender:</span> {{ pet.gender }}
+            </p>
           </div>
           <div class="pet-details-breed flex column align-center">
             <img src="../../assets/svgs/breed.svg" alt="" class="breed-svg" />
-            <p class="pet-details-p"><span class="bold">Breed:</span>  {{ pet.breed }}</p>
+            <p class="pet-details-p">
+              <span class="bold">Breed:</span> {{ pet.breed }}
+            </p>
           </div>
         </div>
       </div>
@@ -65,8 +73,8 @@ export default {
     emitUpdateLikes(pet) {
       this.$emit("updateLikes", pet);
     },
-    emitUpdateFavorites(isFavorite, petId) {
-      this.$emit("updateFavorites", isFavorite, petId);
+    emitUpdateFavorites(user) {
+      this.$emit("updateFavorites", user);
     },
     // computed: {},
   },

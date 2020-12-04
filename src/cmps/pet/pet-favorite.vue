@@ -34,9 +34,10 @@ export default {
           this.isFavorite = true;
           utilService.storeToStorage("favoritePets_db", this.localFavorites);
         } else {
-          // this.loggedInUser.favorites.push(this.pet._id);
+          this.loggedInUser.favoritePets.push(this.pet._id);
           this.isFavorite = true;
-          this.$emit("updateFavorites", this.isFavorite, this.pet._id);
+          // this.$emit("updateFavorites", this.isFavorite, this.pet._id);
+          this.$emit("updateFavorites", this.loggedInUser);
         }
       } else {
         if (!this.loggedInUser) {
@@ -45,17 +46,18 @@ export default {
           this.isFavorite = false;
           utilService.storeToStorage("favoritePets_db", this.localFavorites);
         } else {
-          // let idx = this.loggedInUser.favorites.indexOf(this.pet._id);
-          // this.loggedInUser.favorites.splice(idx, 1);
+          let idx = this.loggedInUser.favoritePets.indexOf(this.pet._id);
+          this.loggedInUser.favoritePets.splice(idx, 1);
           this.isFavorite = false;
-          this.$emit("updateFavorites", this.isFavorite, this.pet._id);
+          // this.$emit("updateFavorites", this.isFavorite, this.pet._id);
+          this.$emit("updateFavorites", this.loggedInUser);
         }
       }
     },
   },
   computed: {},
   created() {
-    console.log(this.loggedInUser)
+    console.log(this.loggedInUser);
     if (!this.loggedInUser) {
       let localFavorites = utilService.loadFromStorage("favoritePets_db");
       if (!localFavorites) {
@@ -66,11 +68,17 @@ export default {
         this.isFavorite = true;
       this.localFavorites = localFavorites;
     } else {
-      if (
-        !this.loggedInUser.favoritePets.length
-      ) {
+      if (!this.loggedInUser.favoritePets) {
         this.loggedInUser.favoritePets = [];
       } else {
+        console.log(
+          "🚀 ~ file: pet-favorite.vue ~ line 75 ~ created ~ this.loggedInUser.favoritePets",
+          this.loggedInUser.favoritePets
+        );
+        console.log(
+          "🚀 ~ file: pet-favorite.vue ~ line 81 ~ created ~ this.pet._id",
+          this.pet._id
+        );
         if (
           this.loggedInUser.favoritePets.find((petId) => petId === this.pet._id)
         ) {

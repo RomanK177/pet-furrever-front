@@ -10,15 +10,15 @@
             @updateLikes="addTreat"
             @updateFavorites="updateFavorites"
           ></details-about>
-          <pet-comments
-            :comments="pet.comments"
-            :loggedInUser="getLoggedInUser"
-            @addComment="addComment"
-          ></pet-comments>
         </div>
+
         <div class="likes-adopt-container flex column align-center">
           <div class="adopt-fav flex column justify-center align-center">
-            <el-button class="add-pet" v-if="isActive && !isAdopted" type="text" @click="requestAdopt"
+            <el-button
+              class="add-pet"
+              v-if="isActive && !isAdopted"
+              type="text"
+              @click="requestAdopt"
               >Adopt Me</el-button
             >
             <div v-if="!isActive">Adoption Request Sent!</div>
@@ -67,6 +67,11 @@
           </div>
         </div>
       </div>
+      <pet-comments
+        :comments="pet.comments"
+        :loggedInUser="getLoggedInUser"
+        @addComment="addComment"
+      ></pet-comments>
     </div>
   </section>
 </template>
@@ -130,11 +135,10 @@ export default {
       );
       this.isActive = !isSentRequest;
     },
-    updateFavorites(isFavorite, petId) {
+    updateFavorites(user) {
       this.$store.dispatch({
-        type: "updateFavorites",
-        isFavorite,
-        petId,
+        type: "updateUser",
+        savedUser: user,
       });
       this.loggedInUser = this.$store.getters.getLoggedInUser;
     },

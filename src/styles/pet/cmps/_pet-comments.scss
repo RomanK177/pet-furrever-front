@@ -1,11 +1,25 @@
-.pet-details-comments-title{
+.pet-details-comments-title {
     margin: unset;
     margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.rendered-comments{
+.rendered-comments {
     margin: unset;
     margin-top: 15px;
     margin-bottom: 15px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 100%;
+    & .review-card {
+        margin: 25px;
+        & .star {
+            width: 20px;
+        }
+    }
 }

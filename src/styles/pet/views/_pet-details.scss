@@ -19,24 +19,23 @@
 //     margin: 10px;
 // }
 .el-button {
-border: 1px solid orange;
-background-color: orange;
- color: white;
-    &.add-pet {
-    padding: 10px;
-    font-size: 2rem;
-    color: white;
     border: 1px solid orange;
     background-color: orange;
-    font-family: quicksand-bold;
-    text-align: center;
-    display: flex;
-    .el-message-box__close:hover {
-        color: orange;
+    color: white;
+    &.add-pet {
+        padding: 10px;
+        font-size: 2rem;
+        color: white;
+        border: 1px solid orange;
+        background-color: orange;
+        font-family: quicksand-bold;
+        text-align: center;
+        display: flex;
+        .el-message-box__close:hover {
+            color: orange;
+        }
     }
-    
-    }
-    &.delete-adoption-request{
+    &.delete-adoption-request {
         font-size: 13px;
         padding: 4.5px 6px;
         color: orange;
@@ -47,10 +46,9 @@ background-color: orange;
         text-indent: 0px;
         margin: 0em;
         border-inline: 1px solid orange;
-    display: inline-block;
-    text-align: center;
-    align-items: flex-start;
-
+        display: inline-block;
+        text-align: center;
+        align-items: flex-start;
     }
 }
 
@@ -78,8 +76,7 @@ background-color: orange;
     background-color: white;
     border: 1px solid orange;
     color: orange;
-
-    &.delete-adoption-request:hover{
+    &.delete-adoption-request:hover {
         background-color: white;
         border: 1px solid orange;
         color: orange;
@@ -307,3 +304,63 @@ hr {
 //     flex-direction: column;
 //     width: fit-content;
 // }
+@media only screen and (max-width: 420px) {
+    .bio-adoption-container {
+        max-width: 350px;
+        flex-direction: column;
+        margin: 0 auto;
+        & h1 {
+            font-size: 1.2rem;
+        }
+        & h4 {
+            display: none;
+        }
+        & .pet-bio-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            justify-items: center;
+        }
+        & .pet-details-age {
+            margin-right: 5px;
+            font-size: small;
+            & img {
+                width: 15px;
+            }
+        }
+        & .pet-details-gender {
+            margin-right: 5px;
+            font-size: small;
+            & img {
+                width: 15px;
+            }
+        }
+        & .pet-details-p {
+            margin: unset;
+            margin-top: 0px;
+            font-size: small;
+            & img {
+                width: 15px;
+            }
+        }
+        & .pet-details-breed {
+            margin: unset;
+            font-size: small;
+            & img {
+                width: 15px;
+            }
+        }
+        & small {
+            display: none;
+        }
+        & .pet-about-details {
+            margin: 0 auto;
+            justify-content: space-around;
+        }
+    }
+    .likes-adopt-container {
+        margin: 0 auto;
+        // & .petowner-details-container {
+        // }
+    }
+}

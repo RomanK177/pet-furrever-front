@@ -74,10 +74,6 @@
         <!-- Add tags from elemnts -->
       </div>
     </div>
-    <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
-      >Add Pet</router-link
-    >
-    <pet-list v-if="petsForPreview" :pets="petsForPreview" />
     <adoption-request
       @updateAdoption="updateAdoption"
       @removeAdoption="removeAdoption"
@@ -85,6 +81,12 @@
       :requests="requests"
       :user="owner"
     />
+    <div class="flex content-center">
+      <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
+        >Add Pet</router-link
+      >
+    </div>
+    <pet-list :pets="ownerPetsForPreview" />
 
     <owner-review-updated
       :reviews="owner.ownerData.reviews"
@@ -121,13 +123,13 @@ export default {
         adoptionRequest,
       });
     },
-     async removeAdoption(adoptionRequest){
+    async removeAdoption(adoptionRequest) {
       await this.$store.dispatch({
         type: "removeAdoptionRequest",
         adoptionRequest,
       });
-      console.log('deleted in details')
-    }
+      console.log("deleted in details");
+    },
   },
   computed: {
     imgUrlProfile() {
@@ -156,10 +158,10 @@ export default {
       }, 0);
       return sum / this.owner.ownerData.reviews.length;
     },
-    petsForPreview() {
-      return this.$store.getters.petsForPreview.filter((pet) => {
-        pet.owner[0]._id === this.owner._id;
-      });
+    ownerPetsForPreview() {
+      let pets = this.$store.getters.petsForPreview;
+      let filterdPets = pets.filter((pet) => pet.ownerId === this.owner._id);
+      return filterdPets;
     },
     // getAdoptionRequests() {
     //   let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
