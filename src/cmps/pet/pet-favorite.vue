@@ -68,7 +68,10 @@ export default {
         this.isFavorite = true;
       this.localFavorites = localFavorites;
     } else {
-      if (!this.loggedInUser.favoritePets) {
+      if (
+        !this.loggedInUser.favoritePets
+        // !this.loggedInUser.favoritePets.length
+      ) {
         this.loggedInUser.favoritePets = [];
       } else {
         console.log(

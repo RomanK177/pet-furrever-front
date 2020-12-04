@@ -7,7 +7,7 @@
           <details-about
             :pet="pet"
             :loggedInUser="getLoggedInUser"
-            @updateLikes="addTreat"
+            @addTreat="addTreat"
             @updateFavorites="updateFavorites"
           ></details-about>
         </div>
@@ -48,11 +48,12 @@
                 alt=""
                 class="location-svg"
               />
-              Location Address
+               {{ pet.owner.ownerData.location.name }}
+              <!-- Location Address -->
             </p>
-            <p class="pet-details-owner-location">
+            <!-- <p class="pet-details-owner-location">
               {{ pet.owner.ownerData.location.name }}
-            </p>
+            </p> -->
             <hr />
             <p class="pet-details-owner-email flex flex-start">
               <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
@@ -103,10 +104,10 @@ export default {
         this.sendRequest();
       }
     },
-    addTreat(pet) {
+    addTreat(petId) {
       this.$store.dispatch({
         type: "addTreat",
-        petId: pet._id,
+        petId: petId,
       });
     },
     async sendRequest() {

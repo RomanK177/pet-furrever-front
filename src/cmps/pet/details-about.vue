@@ -7,7 +7,7 @@
       <div class="fav-treat-share flex align-center">
         <pet-likes
           :pet="pet"
-          @updateLikes="emitUpdateLikes"
+          @addTreat="emitAddTreat"
           class="details-treat-likes"
         />
         <pet-favorite
@@ -70,8 +70,8 @@ export default {
     },
   },
   methods: {
-    emitUpdateLikes(pet) {
-      this.$emit("updateLikes", pet);
+    emitAddTreat(pet) {
+      this.$emit("addTreat", pet);
     },
     emitUpdateFavorites(user) {
       this.$emit("updateFavorites", user);

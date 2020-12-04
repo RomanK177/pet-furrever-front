@@ -22,9 +22,9 @@
         <router-link
           @click.native="$event.stopImmediatePropagation()"
           :to="`/user/${pet.owner._id}`"
-          >{{ pet.owner[0].fullName }}</router-link
+          >{{ pet.owner.fullName }}</router-link
         >
-        <pet-likes :pet="pet" @updateLikes="emitUpdateLikes" />
+        <pet-likes :pet="pet" @addTreat="emitAddTreat" />
       </div>
     </div>
     <span class="adopted" v-if="pet.adoptedAt">ADOPTED</span>
@@ -45,8 +45,8 @@ export default {
     };
   },
   methods: {
-    emitUpdateLikes(pet) {
-      this.$emit("updateLikes", pet);
+    emitAddTreat(petId) {
+      this.$emit("addTreat", petId);
     },
   },
   computed: {},

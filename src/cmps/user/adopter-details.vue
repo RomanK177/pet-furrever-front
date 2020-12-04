@@ -28,6 +28,7 @@
     <adoption-request
       :requests="requests"
       :user="user"
+      @addMessage="addMessage"
       @updateAdoption="updateAdoption"
       v-if="checkIfOwner"
     />
@@ -40,16 +41,29 @@ export default {
   props: {
     user: Object,
   },
+  // data: {
+  //   return: {
+  //     requests
+  //   }
+  // },
   created() {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
     });
+
   },
   methods: {
    async updateAdoption(adoptionRequest) {
      await this.$store.dispatch({
         type: "updateAdoptionRequest",
         adoptionRequest,
+      });
+    },
+     async addMessage(adoptionId, message) {
+     await this.$store.dispatch({
+        type: "addMessage",
+        adoptionId,
+        message
       });
     },
   
@@ -70,6 +84,7 @@ export default {
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
         (req) => req.user._id === this.$store.getters.getLoggedInUser._id
       );
+      filteredReqs = this.requests
       return filteredReqs;
     },
   },
