@@ -25,22 +25,18 @@ export default {
     return {
       messageToAdd: {
         txt: "",
-        from: "",
       },
     };
   },
   methods: {
     addMessage() {
-      // this.messageToAdd.from = this.user.fullName;
-      // this.request.messages.push(this.messageToAdd)
-      // console.log(this.messageToAdd);
-      // console.log('messages')
+      // debugger
       this.$emit(
         "addMessage",
         this.request._id,
-        JSON.parse(JSON.stringify(this.messageToAdd))
+        JSON.parse(JSON.stringify(this.messageToAdd.txt))
       );
-      console.log("hi nooo", this.request.messages);
+      // console.log("hi nooo", this.request.messages);
       this.messageToAdd.txt = "";
     },
   },

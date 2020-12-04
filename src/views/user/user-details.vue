@@ -1,6 +1,6 @@
 <template>
   <section class="user-details container">
-    <adopter-details v-if="user && user.userType === 'adopter'" :user="user" />
+    <adopter-details v-if="user && user.userType === 'adopter'" :adopter="user" />
     <owner-details v-if="user && user.userType === 'owner'" :owner="user" />
   </section>
 </template>
@@ -22,7 +22,6 @@ export default {
         userId,
       });
       this.user = user;
-      console.log('user', this.user)
 
     },
    

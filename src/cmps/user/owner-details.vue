@@ -132,6 +132,7 @@ export default {
       console.log("deleted in details");
     },
     async addMessage(adoptionId, message) {
+      debugger
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId,

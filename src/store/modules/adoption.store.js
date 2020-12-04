@@ -66,11 +66,15 @@ export const adoptionStore = {
             }
         },
         async addMessage({ commit }, { adoptionId, message }) {
-            console.log('you are in the store bitch')
-            const addedMessage = await adoptionService.addMessage(adoptionId, message)
-            const adoption = await adoptionService.getPetById(adoptionId) 
-            commit({ type: 'updateAdoption', adoption })
-            return adoption;
+            debugger
+            try {
+                const addedMessage = await adoptionService.addMessage(adoptionId, message);
+                const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionId);
+                commit({ type: 'updateAdoption', adoptionRequest })
+                return addedMessage;
+            } catch(err){
+                console.error('Cannot send message.', err)
+            }
         },       
 
     },
