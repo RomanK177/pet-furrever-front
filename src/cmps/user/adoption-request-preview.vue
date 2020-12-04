@@ -1,10 +1,6 @@
  
 <template>
-  <section
-    @mouseover="showButtons"
-    @mouseleave="hideButtons"
-    class="adoption-request-preview"
-  >
+  <section>
     <div
       class="prev-content flex"
       :class="{ bold: isPending }"
@@ -26,35 +22,40 @@
       </span>
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
-      <div class="request-btns">
-        <button class="message-btn" @click="toggleShowMessages">Message</button>
-        <messages
-          v-if="isShown"
-          :request="request"
-          :user="user"
-          @addMessage="emitAddMessage"
-          >Message</messages
-        >
-      </div>
-      <div v-if="canApprove" class="request-btns">
-        <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
-          Approve
-        </button>
-      </div>
-      <div class="request-btns" v-if="canDecline">
-        <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
-          Decline
-        </button>
-      </div>
-      <div v-if="canDelete" class="request-btns">
-        <button class="decline-btn" @click="emitRemoveAdoptionRequest">
-          Delete
-        </button>
-        <!-- <el-button
+
+      <div class="request-btns-grp flex">
+        <div class="request-btns">
+          <button class="message-btn" @click="toggleShowMessages">
+            Message
+          </button>
+          <messages
+            v-if="isShown"
+            :request="request"
+            :user="user"
+            @addMessage="emitAddMessage"
+            >Message</messages
+          >
+        </div>
+        <div v-if="canApprove" class="request-btns">
+          <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
+            Approve
+          </button>
+        </div>
+        <div class="request-btns" v-if="canDecline">
+          <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
+            Decline
+          </button>
+        </div>
+        <div v-if="canDelete" class="request-btns">
+          <button class="decline-btn" @click="emitRemoveAdoptionRequest">
+            Delete
+          </button>
+          <!-- <el-button
           class="delete-adoption-request"
           @click="emitRemoveAdoptionRequest"
           >Delete</el-button
         > -->
+        </div>
       </div>
     </div>
 

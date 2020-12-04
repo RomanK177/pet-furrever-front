@@ -102,8 +102,6 @@
     width: 100px;
 }
 
-.request-buttons {}
-
 .approve,
 .decline {
     width: 70px;
@@ -184,5 +182,44 @@
         & .addPet {
             font-size: 1rem;
         }
+    }
+    .adoption-request {
+        margin: 0 auto;
+    }
+    .adoption-request-list {
+        display: flex;
+        flex-flow: wrap;
+    }
+    .requests-header {
+        font-weight: bold;
+        padding: 10px 0;
+    }
+    .requsted-id {
+        width: 80px;
+        display: none;
+    }
+    .requsted-by {
+        width: 80px;
+    }
+    .requsted-pet {
+        width: 80px;
+    }
+    .requsted-at {
+        width: 60px;
+    }
+    .requsted-status {
+        width: 100px;
+    }
+    .prev-content {
+        flex-flow: wrap;
+    }
+    .request-togle {
+        font-weight: bold;
+        font-size: medium;
+        padding: 3px 0;
+    }
+    .user-profile-picture {
+        width: 100px;
+        height: 100px;
     }
 }
