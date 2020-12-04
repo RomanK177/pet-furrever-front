@@ -66,27 +66,16 @@ export const adoptionStore = {
             }
         },
         async addMessage({ commit }, { adoptionId, message }) {
-            console.log('you are in the store bitch')
-            const addedMessage = await adoptionService.addMessage(adoptionId, message)
-            const adoption = await adoptionService.getPetById(adoptionId) 
-            commit({ type: 'updateAdoption', adoption })
-            return adoption;
-        },
-
-        // async saveAdoptionRequest({ commit }, { adoption }) {
-        //     try {
-        //         console.log('you made it to save adoption in adoption store')
-        //         const action = (adoption._id) ? 'updateAdoption' : 'addAdoptionRequest';
-        //         const savedAdoption = await adoptionService.saveAdoption(adoption)
-        //         commit({ type: action, adoption: savedAdoption })
-        //         return savedAdoption;
-        //     } catch (err) {
-        //         console.log('Cannot add request', err);
-        //         alert('Cannot save adoption')
-        //     }
-        // },
-
-        
+            debugger
+            try {
+                const addedMessage = await adoptionService.addMessage(adoptionId, message);
+                const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionId);
+                commit({ type: 'updateAdoption', adoptionRequest })
+                return addedMessage;
+            } catch(err){
+                console.error('Cannot send message.', err)
+            }
+        },       
 
     },
 }

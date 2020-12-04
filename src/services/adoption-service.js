@@ -7,7 +7,8 @@ export const adoptionService = {
     addAdoptionRequest,
     updateAdoptionRequest,
     removeAdoptionRequest,
-    addMessage
+    addMessage,
+    getAdoptionRequestById
 }
 
 
@@ -17,6 +18,10 @@ function query() {
 
 function addAdoptionRequest(petId) {
     return httpService.post(`adoptions`, { petId });
+}
+
+function getAdoptionRequestById(adoptionRequestId){
+    return httpService.get(`adoptions/${adoptionRequestId}`);
 }
 
 function updateAdoptionRequest(adoptionRequest) {
@@ -29,7 +34,8 @@ function removeAdoptionRequest(adoptionRequestId) {
 }
 
 async function addMessage(adoptionId, message) {
-    return httpService.post(`adoptions/${adoptionId}/messages`, message);
+    debugger
+    return httpService.post(`adoptions/${adoptionId}/messages`, {message});
 }
 
 
