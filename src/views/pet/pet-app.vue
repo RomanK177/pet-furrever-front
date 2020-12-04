@@ -5,7 +5,7 @@
       v-if="petsForPreview"
       :user="loggedUser"
       :pets="petsForPreview"
-      @updateLikes="addTreat"
+      @addTreat="addTreat"
     ></pet-list>
   </section>
 </template>
@@ -44,10 +44,10 @@ export default {
     //     petId,
     //   });
     // },
-    async addTreat(pet) {
+    async addTreat(petId) {
       await this.$store.dispatch({
         type: "addTreat",
-        petId: pet._id,
+        petId: petId,
       });
     },
     // goToAddPet() {
@@ -63,8 +63,8 @@ export default {
     petList,
     appFooter,
   },
-  created() {
-    this.$store.dispatch({ type: "loadPets" });
+  async created() {
+    await this.$store.dispatch({ type: "loadPets" });
     // this.$store.dispatch({ type: "loadAdoptionRequests" });
 
     // this.$store.dispatch({ type: "loadUsers" });

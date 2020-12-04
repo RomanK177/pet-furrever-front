@@ -7,7 +7,7 @@
           <details-about
             :pet="pet"
             :loggedInUser="getLoggedInUser"
-            @updateLikes="addTreat"
+            @addTreat="addTreat"
             @updateFavorites="updateFavorites"
           ></details-about>
           <pet-comments
@@ -99,10 +99,10 @@ export default {
         this.sendRequest();
       }
     },
-    addTreat(pet) {
+    addTreat(petId) {
       this.$store.dispatch({
         type: "addTreat",
-        petId: pet._id,
+        petId: petId,
       });
     },
     async sendRequest() {

@@ -24,13 +24,13 @@
       <pet-list
         v-if="petsForPreview"
         :pets="mostLiked"
-        @updateLikes="addTreat"
+        @addTreat="addTreat"
       ></pet-list>
       <h2 class="pets-of-the-week">Recently Adopted Pets</h2>
       <pet-list
         v-if="petsForPreview"
         :pets="recentlyAdopted"
-        @updateLikes="updateLikes"
+        @addTreat="addTreat"
       ></pet-list>
     </div>
     <div class="adopt-container flex container">
@@ -123,16 +123,16 @@ export default {
     // this.$store.dispatch({ type: "loadUsers" });
   },
   methods: {
-    updateLikes(pet) {
+    addTreat(petId) {
       this.$store.dispatch({
-        type: "savePet",
-        pet,
+        type: "addTreat",
+        petId,
       });
     },
-    async addTreat(pet) {
+    async addTreat(petId) {
       await this.$store.dispatch({
         type: "addTreat",
-        petId: pet._id,
+        petId: petId,
       });
     },
   },
