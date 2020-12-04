@@ -55,6 +55,7 @@ export default {
       });
     },
      async addMessage(adoptionId, message) {
+       debugger
      await this.$store.dispatch({
         type: "addMessage",
         adoptionId,
@@ -77,7 +78,7 @@ export default {
     },
     requests() {
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
-        (req) => req.adopter._id === this.$store.getters.getLoggedInUser._id
+        (req) => req.user._id === this.$store.getters.getLoggedInUser._id
       );
       return filteredReqs;
     },
