@@ -46,7 +46,6 @@ export const petStore = {
         async loadPets({ commit }) {
             const pets = await petService.query()
             commit({ type: 'setPets', pets })
-
         },
         async savePet({ commit }, { pet }) {
             const action = (pet._id) ? 'updatePet' : 'savePet';
@@ -64,9 +63,6 @@ export const petStore = {
             commit({ type: 'setPets', pets })
             commit({ type: 'setFilter', filter })
         },
-        async getFullPetList() {
-            return await petService.query(null, null)
-        },
         async getPetById(context, { petId }) {
             const pet = await petService.getPetById(petId)
             return pet
@@ -78,11 +74,10 @@ export const petStore = {
             return addedComment;
         },
         async addTreat({ commit }, { petId }) {
-            const addedTreat = await petService.addTreat(petId)
-            const pet = await petService.getPetById(petId)
+            const addedTreat = await petService.addTreat(petId);
+            const pet = await petService.getPetById(petId);
             commit({ type: 'updatePet', pet })
             return addedTreat;
         },
     },
-
 }
