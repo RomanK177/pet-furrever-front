@@ -73,6 +73,12 @@ export const userStore = {
             commit({ type: 'setUser', user });
             return user;
         },
+        // async updateFavorites({ commit }, { isFavorite ,petId }) {
+        //     console.log(isFavorite, 'store isfav')
+        //     const user = await userService.updateFavorites(isFavorite, petId);
+        //     commit({ type: 'updateUser', user });
+        //     return user;
+        // },
         async saveUser({ commit }, { user }) {
             const action = (user._id) ? 'updateUser' : 'saveUser';
             const savedUser = await userService.update(user)

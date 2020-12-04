@@ -50,6 +50,7 @@ export default {
           this.isFavorite = false;
           this.$emit("updateFavorites", this.isFavorite, this.pet._id);
         }
+        
       }
     },
   },
@@ -67,7 +68,8 @@ export default {
       this.localFavorites = localFavorites;
     } else {
       if (
-        !this.loggedInUser.favoritePets.length
+        !this.loggedInUser.favoritePets
+        // !this.loggedInUser.favoritePets.length
       ) {
         this.loggedInUser.favoritePets = [];
       } else {
