@@ -64,10 +64,9 @@ export default {
   methods: {
     emitUpdateLikes(pet) {
       this.$emit("updateLikes", pet);
-      console.log;
     },
-    emitUpdateFavorites(favorite) {
-      this.$emit("updateFavorites", user);
+    emitUpdateFavorites(isFavorite, petId) {
+      this.$emit("updateFavorites", isFavorite, petId);
     },
     // computed: {},
   },

@@ -28,33 +28,34 @@ export default {
   },
   methods: {
     toggleFavorite() {
-      if (this.isFavorite === false) {
-        if (this.loggedInUser === null) {
+      if (!this.isFavorite) {
+        if (!this.loggedInUser) {
           this.localFavorites.push(this.pet._id);
           this.isFavorite = true;
           utilService.storeToStorage("favoritePets_db", this.localFavorites);
         } else {
-          this.loggedInUser.favorites.push(this.pet._id);
+          // this.loggedInUser.favorites.push(this.pet._id);
           this.isFavorite = true;
-          this.$emit("updateFavorites", this.loggedInUser);
+          this.$emit("updateFavorites", this.isFavorite, this.pet._id);
         }
       } else {
-        if (this.loggedInUser === null) {
+        if (!this.loggedInUser) {
           let idx = this.localFavorites.indexOf(this.pet._id);
           this.localFavorites.splice(idx, 1);
           this.isFavorite = false;
           utilService.storeToStorage("favoritePets_db", this.localFavorites);
         } else {
-          let idx = this.loggedInUser.favorites.indexOf(this.pet._id);
-          this.loggedInUser.favorites.splice(idx, 1);
+          // let idx = this.loggedInUser.favorites.indexOf(this.pet._id);
+          // this.loggedInUser.favorites.splice(idx, 1);
           this.isFavorite = false;
-          this.$emit("updateFavorites", this.loggedInUser);
+          this.$emit("updateFavorites", this.isFavorite, this.pet._id);
         }
       }
     },
   },
   computed: {},
-  async created() {
+  created() {
+    console.log(this.loggedInUser)
     if (!this.loggedInUser) {
       let localFavorites = utilService.loadFromStorage("favoritePets_db");
       if (!localFavorites) {
@@ -66,15 +67,17 @@ export default {
       this.localFavorites = localFavorites;
     } else {
       if (
-        !this.loggedInUser.favorites ||
-        this.loggedInUser.favorites.length === 0
+        !this.loggedInUser.favoritePets.length
       ) {
-        await this.$emit("updateFavorites", this.loggedInUser);
-        this.loggedInUser.favorites = [];
-      } else if (
-        this.loggedInUser.favorites.find((petId) => petId === this.pet._id)
-      ) {
-        this.isFavorite = true;
+        this.loggedInUser.favoritePets = [];
+      } else {
+        if (
+          this.loggedInUser.favoritePets.find((petId) => petId === this.pet._id)
+        ) {
+          this.isFavorite = true;
+        } else {
+          this.isFavorite = false;
+        }
       }
     }
   },

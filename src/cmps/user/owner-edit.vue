@@ -106,7 +106,6 @@ export default {
     };
   },
   created() {
-    console.log(this.ownerToEdit)
     let urlStart = this.ownerToEdit.imgUrlProfile.slice(0, 4);
     if (urlStart === "http") this.imgUrl = this.this.ownerToEdit.imgUrlProfile;
     else {

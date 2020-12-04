@@ -6,7 +6,7 @@ export const adoptionService = {
     query,
     addAdoptionRequest,
     updateAdoptionRequest,
-    saveAdoption
+    removeAdoptionRequest
 }
 
 
@@ -22,10 +22,17 @@ function updateAdoptionRequest(adoptionRequest) {
     return httpService.put(`adoptions/${adoptionRequest._id}`, adoptionRequest);
 }
 
-function saveAdoption(adoptionRequest) {
-    if (!adoptionRequest._id) {
-        return httpService.post(`adoptions`, adoptionRequest)
-    } else {
-        return httpService.put(`adoptions/${adoptionRequest._id}`, adoptionRequest);
-    }
+function removeAdoptionRequest(adoptionRequestId) {
+    return httpService.delete(`adoptions/${adoptionRequestId}`);
+
 }
+
+
+
+// function saveAdoption(adoptionRequest) {
+//     if (!adoptionRequest._id) {
+//         return httpService.post(`adoptions`, adoptionRequest)
+//     } else {
+//         return httpService.put(`adoptions/${adoptionRequest._id}`, adoptionRequest);
+//     }
+// }

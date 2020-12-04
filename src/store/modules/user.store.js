@@ -68,15 +68,21 @@ export const userStore = {
             })
             return user;
         },
-        async addReview({ commit }, {ownerId, review }) {
-            const savedReview = await userService.addReview(ownerId, review);
-            return savedReview;
+        async updateFavorites({ commit }, { isFavorite ,petId }) {
+            const user = await userService.updateFavorites(isFavorite, petId);
+            commit({ type: 'setUser', user });
+            return user;
         },
         async saveUser({ commit }, { user }) {
             const action = (user._id) ? 'updateUser' : 'saveUser';
             const savedUser = await userService.update(user)
-            commit({ type: action, pet: savedUser });
+            commit({ type: action, user: savedUser });
             return savedUser;
+        },
+        async addReview({ commit }, {ownerId, review }) {
+            const user = await userService.addReview(ownerId, review);
+            // commit({ type: 'updateUser', user });
+            return user;
         },
     },
 }
