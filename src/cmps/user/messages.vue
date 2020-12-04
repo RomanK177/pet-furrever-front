@@ -4,7 +4,7 @@
       <h2>Lets Chat About {{ request.pet.name }}</h2>
       <ul>
         <li v-for="(message, index) in request.messages" :key="index">
-          {{ message.from }}: {{ message.txt }}
+          <span class="bold">{{ message.from }}:</span> {{ message.txt }}
         </li>
       </ul>
       <form @submit.prevent="addMessage">
@@ -25,18 +25,23 @@ export default {
     return {
       messageToAdd: {
         txt: "",
-        from: ""
+        from: "",
       },
     };
   },
   methods: {
     addMessage() {
-      // this.user.fullName = this.messageToAdd.from
+      this.messageToAdd.from = this.user.fullName;
+      console.log("hi", this.user);
       // this.request.messages.push(this.messageToAdd)
-          console.log(this.messageToAdd)
-       this.$emit("addMessage", this.request._id, JSON.parse(JSON.stringify(this.messageToAdd)));
+      console.log(this.messageToAdd);
+      this.$emit(
+        "addMessage",
+        this.request._id,
+        JSON.parse(JSON.stringify(this.messageToAdd))
+      );
       this.messageToAdd.txt = "";
-    }
+    },
   },
 };
 </script>

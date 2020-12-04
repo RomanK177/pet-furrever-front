@@ -41,11 +41,6 @@ export default {
   props: {
     adopter: Object,
   },
-  // data: {
-  //   return: {
-  //     requests
-  //   }
-  // },
   created() {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
@@ -84,7 +79,6 @@ export default {
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
         (req) => req.adopter._id === this.$store.getters.getLoggedInUser._id
       );
-      filteredReqs = this.requests
       return filteredReqs;
     },
   },

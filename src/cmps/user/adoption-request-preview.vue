@@ -27,8 +27,8 @@
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
       <div class="request-btns">
-        <button class="message-btn">Message</button>
-        <messages :request="request" :user="user" @addMessage="emitAddMessage">Message</messages>
+        <button class="message-btn" @click="toggleShowMessages">Message</button>
+        <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages>
       </div>
       <div v-if="canApprove" class="request-btns">
         <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
@@ -68,6 +68,7 @@ export default {
     return {
       areButtonsShown: false,
       pet: undefined,
+      isShown: false
     };
   },
   methods: {
@@ -106,6 +107,9 @@ export default {
       console.log('new request', message)
       this.$emit("addMessage", adoptionId, message);
     },
+    toggleShowMessages(){
+      this.isShown = !this.isShown
+    }
   },
   computed: {
     sentTime() {
