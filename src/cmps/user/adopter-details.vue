@@ -50,23 +50,21 @@ export default {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
     });
-
   },
   methods: {
-   async updateAdoption(adoptionRequest) {
-     await this.$store.dispatch({
+    async updateAdoption(adoptionRequest) {
+      await this.$store.dispatch({
         type: "updateAdoptionRequest",
         adoptionRequest,
       });
     },
-     async addMessage(adoptionId, message) {
-     await this.$store.dispatch({
+    async addMessage(adoptionId, message) {
+      await this.$store.dispatch({
         type: "addMessage",
         adoptionId,
-        message
+        message,
       });
     },
-  
   },
   computed: {
     imgUrlProfile() {
@@ -84,7 +82,7 @@ export default {
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
         (req) => req.user._id === this.$store.getters.getLoggedInUser._id
       );
-      filteredReqs = this.requests
+      // filteredReqs = this.requests
       return filteredReqs;
     },
   },

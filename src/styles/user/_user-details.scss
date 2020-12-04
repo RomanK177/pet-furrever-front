@@ -61,6 +61,10 @@
     padding-top: 100px;
 }
 
+.adoption-request-list {
+    padding: unset;
+}
+
 .adoption-request {
     &-list {
         border-bottom: 1px solid black;
@@ -97,6 +101,8 @@
 .requsted-status {
     width: 100px;
 }
+
+.adoption-request-buttons {}
 
 .approve,
 .decline {
@@ -166,3 +172,17 @@
 //     height: 100%;
 //     margin-top: 20px;
 // }
+@media only screen and (max-width: 375px) {
+    .owner-details {
+        padding-top: 40px;
+        & h1 {
+            font-size: 1.2rem;
+        }
+        & .owner-profile {
+            flex-direction: column;
+        }
+        & .addPet {
+            font-size: 1rem;
+        }
+    }
+}

@@ -69,3 +69,13 @@
 .shown-filters {
     width: fit-content;
 }
+
+@media only screen and (max-width: 375px) {
+    .pet-filter {
+        & div {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    }
+}

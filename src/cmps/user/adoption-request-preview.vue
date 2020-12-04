@@ -26,29 +26,33 @@
       </span>
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
-      <div class="request-btns">
-        <button class="message-btn">Message</button>
-        <messages :request="request" :user="user" @addMessage="emitAddMessage">Message</messages>
-      </div>
-      <div v-if="canApprove" class="request-btns">
-        <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
-          Approve
-        </button>
-      </div>
-      <div class="request-btns" v-if="canDecline">
-        <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
-          Decline
-        </button>
-      </div>
-      <div v-if="canDelete" class="request-btns">
-        <button class="decline-btn" @click="emitRemoveAdoptionRequest">
-          Delete
-        </button>
-        <!-- <el-button
+      <div class="adoption-request-buttons flex">
+        <div class="request-btns">
+          <button class="message-btn">Message</button>
+          <messages :request="request" :user="user" @addMessage="emitAddMessage"
+            >Message</messages
+          >
+        </div>
+        <div v-if="canApprove" class="request-btns">
+          <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
+            Approve
+          </button>
+        </div>
+        <div class="request-btns" v-if="canDecline">
+          <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
+            Decline
+          </button>
+        </div>
+        <div v-if="canDelete" class="request-btns">
+          <button class="decline-btn" @click="emitRemoveAdoptionRequest">
+            Delete
+          </button>
+          <!-- <el-button
           class="delete-adoption-request"
           @click="emitRemoveAdoptionRequest"
           >Delete</el-button
         > -->
+        </div>
       </div>
     </div>
     <button @click="doIt">Do it</button>
@@ -102,8 +106,8 @@ export default {
       }
       console.log("deleted in preview", this.request);
     },
-    emitAddMessage(adoptionId, message ) {
-      console.log('new request', message)
+    emitAddMessage(adoptionId, message) {
+      console.log("new request", message);
       this.$emit("addMessage", adoptionId, message);
     },
   },
