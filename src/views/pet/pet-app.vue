@@ -32,6 +32,10 @@ export default {
   },
   methods: {
     changeFilter(filter) {
+      console.log(
+        "🚀 ~ file: pet-app.vue ~ line 35 ~ changeFilter ~ filter",
+        filter
+      );
       this.$store.dispatch({ type: "filterPets", filter });
     },
     // deletePet(petId) {
