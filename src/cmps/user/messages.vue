@@ -31,15 +31,16 @@ export default {
   },
   methods: {
     addMessage() {
-      this.messageToAdd.from = this.user.fullName;
-      console.log("hi", this.user);
+      // this.messageToAdd.from = this.user.fullName;
       // this.request.messages.push(this.messageToAdd)
-      console.log(this.messageToAdd);
+      // console.log(this.messageToAdd);
+      // console.log('messages')
       this.$emit(
         "addMessage",
         this.request._id,
         JSON.parse(JSON.stringify(this.messageToAdd))
       );
+      console.log("hi nooo", this.request.messages);
       this.messageToAdd.txt = "";
     },
   },

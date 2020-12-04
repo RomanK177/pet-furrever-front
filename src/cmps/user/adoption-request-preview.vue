@@ -28,6 +28,10 @@
       <span class="requsted-status">{{ statusCap }}</span>
       <div class="request-btns">
         <button class="message-btn" @click="toggleShowMessages">Message</button>
+        <!-- <router-link
+            v-if="loggedinUser"
+            :to="`/adoption/${adoption._id}`"
+          > -->
         <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages>
       </div>
       <div v-if="canApprove" class="request-btns">
@@ -51,7 +55,6 @@
         > -->
       </div>
     </div>
-    <button @click="doIt">Do it</button>
   </section>
 </template>
 
@@ -81,9 +84,6 @@ export default {
     },
     hideButtons() {
       this.areButtonsShown = false;
-    },
-    doIt() {
-      console.log(this.request.messages);
     },
     emitUpdateAdoptionRequest(action) {
       if (action === true) {
@@ -187,6 +187,7 @@ export default {
   async created() {
     const pet = await petService.getPetById(this.request.pet._id);
     this.pet = pet;
+    console.log('req', this.request)
     // console.log("pet", this.pet);
     // console.log("user", this.user);
   },
