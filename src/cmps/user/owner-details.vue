@@ -20,37 +20,71 @@
         }"
       />
     </div>
-    <div>
-      <h1 v-if="checkIfOwner" class="welcome">Welcome {{ owner.fullName }}</h1>
-      <h1 v-else>{{ owner.fullName }}</h1>
-      <span>{{ ratingAvg }}</span>
-    </div>
-    <div class="owner-profile flex align-center">
-      <img class="user-profile-picture" :src="imgUrlProfile" />
+    <div class="owner-profile flex">
+      <div class="flex column">
+        <div class="flex space-between align-center content-center">
+          <h1 v-if="checkIfOwner" class="welcome">
+            Welcome {{ owner.fullName }}
+          </h1>
+          <h1 v-else>{{ owner.fullName }}</h1>
+          <div class="flex space-between align-center content-center">
+            <img class="star" :src="starUrl" alt="" /><span class="rating-num"
+              >{{ ratingAvg }}
+            </span>
+            <span class="number-of-ratings"
+              >({{ owner.ownerData.reviews.length }})
+            </span>
+          </div>
+        </div>
+        <p class="ownerDescription">
+          <span class="bold"></span>
+          {{ owner.ownerData.desc }}
+        </p>
+      </div>
       <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
       <div class="owner-info">
-        <p><span class="bold">Name:</span> {{ owner.fullName }}</p>
-        <p><span class="bold">Email:</span> {{ owner.email }}</p>
-        <p><span class="bold">Telephone:</span> {{ owner.tel }}</p>
-        <p>
-          <span class="bold">Activity years:</span>
-          {{ owner.ownerData.activityYears }}
+        <img class="user-profile-picture" :src="imgUrlProfile" />
+        <p class="location-details flex flex-start">
+          <img
+            src="../../assets/svgs/location.svg"
+            alt=""
+            class="location-svg"
+          />
+          {{ owner.ownerData.location.name }}
         </p>
-        <p><span class="bold">Title:</span> {{ owner.ownerData.title }}</p>
-        <p><span class="bold">Description:</span> {{ owner.ownerData.desc }}</p>
+        <hr />
+        <p class="flex">
+          <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
+          {{ owner.email }}
+        </p>
+        <hr />
+        <p class="flex">
+          <img
+            src="../../assets/svgs/phone.svg"
+            alt=""
+            class="phone-svg"
+          />Telephone: {{ owner.tel }}
+        </p>
+        <hr />
+        <p>
+          <span class="bold">Established since:</span>
+          {{ owner.ownerData.established }}
+        </p>
+        <!-- <p><span class="bold">Title:</span> {{ owner.ownerData.title }}</p> -->
         <!-- Add tags from elemnts -->
       </div>
     </div>
     <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
       >Add Pet</router-link
     >
+    <pet-list v-if="petsForPreview" :pets="petsForPreview" />
     <adoption-request
       @updateAdoption="updateAdoption"
       v-if="checkIfOwner"
-      :requests="requests" :user="owner"
+      :requests="requests"
+      :user="owner"
     />
-    <!-- <owner-review :owner="owner" /> -->
-    <!-- <owner-review :owner="owner" :loggedInUser="loggedInUser" @addReview="updateReviews"/> -->
+
     <owner-review-updated
       :reviews="owner.ownerData.reviews"
       :loggedInUser="getLoggedInUser"
@@ -65,6 +99,7 @@ import { uploadImg } from "./../../services/img-upload-service.js";
 import { userService } from "../../services/user-service.js";
 import adoptionRequest from "./adoption-request.vue";
 import ownerReviewUpdated from "../user/owner-reviewUpdated";
+import petList from "../pet/pet-list";
 
 export default {
   props: {
@@ -94,6 +129,9 @@ export default {
         return this.owner.imgUrlProfile;
       }
     },
+    starUrl() {
+      return require("../../assets/svgs/star.svg");
+    },
     checkIfOwner() {
       var loggedInUser = this.$store.getters.getLoggedInUser;
       return loggedInUser && loggedInUser._id === this.owner._id;
@@ -105,10 +143,15 @@ export default {
       return filteredReqs;
     },
     ratingAvg() {
-      let sum = this.user.ownerData.reviews.reduce((acc) => {
-        return acc;
+      let sum = this.owner.ownerData.reviews.reduce((acc, curr) => {
+        return acc + curr.rate;
+      }, 0);
+      return sum / this.owner.ownerData.reviews.length;
+    },
+    petsForPreview() {
+      return this.$store.getters.petsForPreview.filter((pet) => {
+        pet.owner[0]._id === this.owner._id;
       });
-      return sum;
     },
     // getAdoptionRequests() {
     //   let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
@@ -130,7 +173,7 @@ export default {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
     });
-
+    this.$store.dispatch({ type: "loadPets" });
     let urlStart = this.owner.imgUrlProfile.slice(0, 4);
     if (urlStart !== "http") {
       this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
@@ -146,6 +189,7 @@ export default {
   components: {
     ownerReviewUpdated,
     adoptionRequest,
+    petList,
   },
 };
 </script>
