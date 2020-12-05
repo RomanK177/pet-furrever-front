@@ -119,25 +119,14 @@ export default {
   },
   async created() {
     await this.$store.dispatch({ type: "loadUsers" });
-    const pets = await this.$store.dispatch({type: 'loadPets'})
-    this.pets = pets
+    // const pets = await this.$store.dispatch({type: 'loadPets'})
+    // this.pets = pets
     socketService.setup();
     socketService.emit("treats topic", 'home-page');
     socketService.on('treats addTreat', this.addTreat);
+    await this.$store.dispatch({ type: "loadPets" });
   },
   methods: {
-    // addTreat(petId) {
-    //   this.$store.dispatch({
-    //     type: "addTreat",
-    //     petId,
-    //   });
-    // },
-    // async addTreat(petId) {
-    //   await this.$store.dispatch({
-    //     type: "addTreat",
-    //     petId: petId,
-    //   });
-    // },
      async addTreat(pet) {
       console.log('petid', pet)
       const newPet = await this.$store.dispatch({
