@@ -1,6 +1,13 @@
 
 <template>
   <section v-if="adopter" class="adopter-details">
+    <adoption-request
+      :requests="requests"
+      :user="adopter"
+      @addMessage="addMessage"
+      @updateAdoption="updateAdoption"
+      v-if="checkIfOwner"
+    />
     <h1>Welcome {{ adopter.fullName }}!</h1>
     <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
       >Edit your profile</router-link
@@ -25,13 +32,6 @@
     <p>{{ adopter.familyStatus }}</p>
     <p>{{ adopter.houseStatus }}</p>
     <!-- Add tags from elemnts -->
-    <adoption-request
-      :requests="requests"
-      :user="adopter"
-      @addMessage="addMessage"
-      @updateAdoption="updateAdoption"
-      v-if="checkIfOwner"
-    />
   </section>
 </template>
 
@@ -45,23 +45,21 @@ export default {
     this.$store.dispatch({
       type: "loadAdoptionRequests",
     });
-
   },
   methods: {
-   async updateAdoption(adoptionRequest) {
-     await this.$store.dispatch({
+    async updateAdoption(adoptionRequest) {
+      await this.$store.dispatch({
         type: "updateAdoptionRequest",
         adoptionRequest,
       });
     },
-     async addMessage(adoptionId, message) {
-     await this.$store.dispatch({
+    async addMessage(adoptionId, message) {
+      await this.$store.dispatch({
         type: "addMessage",
         adoptionId,
-        message
+        message,
       });
     },
-  
   },
   computed: {
     imgUrlProfile() {
@@ -78,8 +76,10 @@ export default {
     requests() {
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
         (req) => {
-          return req.adopter._id === this.$store.getters.getLoggedInUser._id ||
-                 req.owner._id === this.$store.getters.getLoggedInUser._id;
+          return (
+            req.adopter._id === this.$store.getters.getLoggedInUser._id ||
+            req.owner._id === this.$store.getters.getLoggedInUser._id
+          );
         }
       );
       return filteredReqs;

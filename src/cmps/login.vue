@@ -13,7 +13,7 @@
           >Password: <input type="password" v-model="userCred.password"
         /></label>
         <br />
-        <button class="login-btn">Login</button>
+        <button @click.stop="emitCloseMenu" class="login-btn">Login</button>
       </form>
       <img src="../assets/imgs/dog-login.png" alt="" />
     </div>
@@ -39,19 +39,21 @@ export default {
           type: "login",
           userCred: this.userCred,
         });
-           if (this.$route.path != '/pet') {
+        if (this.$route.path != "/pet") {
           this.$router.push("/pet");
-      }
+        }
         eventBus.$emit("closeModal");
       } catch (err) {
         this.loginFailed = true;
       }
 
-
       // eventBus.$emit('loginDone');
     },
     closeModal() {
       eventBus.$emit("closeModal");
+    },
+    emitCloseMenu() {
+      this.$emit("closeMenu");
     },
   },
 };

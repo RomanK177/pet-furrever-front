@@ -204,14 +204,14 @@
     }
 }
 
-@media only screen and (max-width: 420px) {
+@media only screen and (max-width: 375px) {
     .hero {
         background: url(../assets/imgs/homepage/dogHero1.jpg);
         background-repeat: no-repeat;
         // background-attachment: fixed;
         // background-position: center;
         background-size: 100% 100%;
-        width: 410px;
+        width: 360px;
         margin: 0 auto;
         height: 250px;
         & h1 {
@@ -235,8 +235,9 @@
         }
     }
     .homepage-pet-list .pet-list {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        & .pet-card:last-child {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        padding: 5px;
+        & .pet-card:nth-last-child(-n+2) {
             display: none;
         }
         & .pet-card {
@@ -254,5 +255,14 @@
     }
     .adopt-container {
         flex-direction: column;
+    }
+    .most-liked-pets {
+        margin-top: 5px;
+        font-size: 16px;
+    }
+    .most-liked-of-the-week,
+    .pets-of-the-week {
+        margin-top: 5px;
+        font-size: 13px;
     }
 }

@@ -1,35 +1,41 @@
  
+ 
 <template>
-  <section
-    @mouseover="showButtons"
-    @mouseleave="hideButtons"
-    class="adoption-request-preview"
-  >
+  <section class="adoption-request-preview flex align-center content-center">
     <!-- <div
       class="prev-content flex"
       :class="{ bold: isPending }"
       v-if="isCancelled"
     > -->
-    <ul class="flex space-between">
-      <!-- <li class="requsted-id">{{ request._id }}</li> -->
-      <li class="requsted-by">
+    <div class="request-info">
+      <span class="requsted-by">
         <router-link :to="`/user/${request.adopter._id}`" v-if="isOwner">{{
           request.adopter.name
         }}</router-link>
         <router-link :to="`/user/${request.owner._id}`" v-if="isAdopter">{{
           request.owner.name
         }}</router-link>
-      </li>
-      <li class="requsted-pet">
+      </span>
+      <span class="requsted-pet">
         <router-link :to="`/pet/${request.pet._id}`">{{
           request.pet.name
         }}</router-link>
-      </li>
-      <li class="requsted-at">{{ sentTime }}</li>
-      <li class="requsted-status">{{ statusCap }}</li>
-          <li class="request-btns"><router-link class="message-btn" :request="request" :user="user" :to="`/adoption/${request._id}`">Message</router-link></li>
+      </span>
+      <span class="requsted-at">{{ sentTime }}</span>
+      <span class="requsted-status">{{ statusCap }}</span>
+    </div>
+    <div class="flex align-center content-center">
+      <div class="request-btns">
         <!-- <button class="message-btn" @click="toggleShowMessages">Message</button> -->
-      <li>
+        <router-link
+          class="message-btn"
+          :request="request"
+          :user="user"
+          :to="`/adoption/${request._id}`"
+          >Message</router-link
+        >
+        <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
+      </div>
       <div v-if="canApprove" class="request-btns">
         <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
           Approve
@@ -45,8 +51,7 @@
           Delete
         </button>
       </div>
-
-        <div v-if="canCancel" class="request-btns">
+      <div v-if="canCancel" class="request-btns">
         <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
           Cancel
         </button>
@@ -55,11 +60,8 @@
           @click="emitRemoveAdoptionRequest"
           >Delete</el-button
         > -->
-            </div>
-
-      </li>
-      
-    </ul>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -75,7 +77,7 @@ export default {
     return {
       areButtonsShown: false,
       pet: undefined,
-      isShown: false
+      isShown: false,
     };
   },
   methods: {
@@ -107,18 +109,38 @@ export default {
       }
       console.log("deleted in preview", this.request);
     },
-    emitAddMessage(adoptionId, message ) {
-      console.log('new request', message)
+    emitAddMessage(adoptionId, message) {
+      console.log("new request", message);
       this.$emit("addMessage", adoptionId, message);
     },
-    toggleShowMessages(){
-      this.isShown = !this.isShown
-    }
+    toggleShowMessages() {
+      this.isShown = !this.isShown;
+    },
   },
   computed: {
     sentTime() {
       let d = new Date(this.request.createdAt);
-      return d.toDateString();
+      // return d.toDateString();
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const dateObj = d;
+      const month = dateObj.getMonth();
+      const day = String(dateObj.getDate()).padStart(2, "0");
+      const year = dateObj.getFullYear();
+      const output = day + "." + month + "." + year;
+      return output;
     },
     statusCap() {
       return (
@@ -128,6 +150,10 @@ export default {
     },
     getPetById() {
       let pet = this.$store.getters.getPetById(this.request.pet._id);
+      console.log(
+        "🚀 ~ file: adoption-request-preview.vue ~ line 154 ~ getPetById ~ pet",
+        pet
+      );
       return pet;
     },
     isOwner() {
@@ -170,7 +196,7 @@ export default {
           this.request.status === "approved")
           ? true
           : false;
-      return canCancel
+      return canCancel;
     },
     isCancelled() {
       const isCancelled =
@@ -193,7 +219,7 @@ export default {
     },
     isPending() {
       const isPending = this.request.status === "pending" ? true : false;
-      console.log(isPending);
+      console.log("is pending", isPending);
       return isPending;
     },
   },
@@ -201,7 +227,7 @@ export default {
     console.log(this.request);
     const pet = await petService.getPetById(this.request.pet._id);
     this.pet = pet;
-    console.log('req', this.request)
+    console.log("req", this.request);
     // console.log("pet", this.pet);
     // console.log("user", this.user);
   },

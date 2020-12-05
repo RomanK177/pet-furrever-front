@@ -18,7 +18,7 @@
         <pet-type-select @input="emitFilter" v-model="filter.type" />
         <pet-size-select @input="emitFilter" v-model="filter.size" />
         <pet-sort-select @input="emitFilter" v-model="filter.sortBy" />
-        <div
+        <!-- <div
           class="favorite-btn flex justify-center align-center"
           @click.stop="toggleFavorite"
         >
@@ -29,7 +29,7 @@
             alt=""
           />
           <span>Favorites</span>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

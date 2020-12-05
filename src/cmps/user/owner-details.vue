@@ -1,5 +1,13 @@
 <template>
   <section class="owner-details container">
+    <adoption-request
+      @addMessage="addMessage"
+      @updateAdoption="updateAdoption"
+      @removeAdoption="removeAdoption"
+      v-if="checkIfOwner"
+      :requests="requests"
+      :user="owner"
+    />
     <!-- <div class="owner-action" v-if="checkIfOwner">
       <router-link :to="'/user/edit/' + owner._id">Edit profile</router-link> ||
     </div> -->
@@ -42,7 +50,7 @@
         </p>
       </div>
       <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
-      <div class="owner-info">
+      <div class="owner-info flex column">
         <img class="user-profile-picture" :src="imgUrlProfile" />
         <p class="location-details flex flex-start">
           <img
@@ -52,12 +60,12 @@
           />
           {{ owner.ownerData.location.name }}
         </p>
-        <hr />
+        <!-- <hr /> -->
         <p class="flex">
           <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
           {{ owner.email }}
         </p>
-        <hr />
+        <!-- <hr /> -->
         <p class="flex">
           <img
             src="../../assets/svgs/phone.svg"
@@ -65,7 +73,7 @@
             class="phone-svg"
           />Telephone: {{ owner.tel }}
         </p>
-        <hr />
+        <!-- <hr /> -->
         <p>
           <span class="bold">Established since:</span>
           {{ owner.ownerData.established }}
@@ -74,13 +82,11 @@
         <!-- Add tags from elemnts -->
       </div>
     </div>
-    <adoption-request
-      @addMessage="addMessage"
-      @updateAdoption="updateAdoption"
-      @removeAdoption="removeAdoption"
-      v-if="checkIfOwner"
-      :requests="requests"
-      :user="owner"
+
+    <owner-review-updated
+      :reviews="owner.ownerData.reviews"
+      :loggedInUser="getLoggedInUser"
+      @addReview="addReview"
     />
     <div class="flex content-center">
       <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
@@ -88,12 +94,6 @@
       >
     </div>
     <pet-list :pets="ownerPetsForPreview" />
-
-    <owner-review-updated
-      :reviews="owner.ownerData.reviews"
-      :loggedInUser="getLoggedInUser"
-      @addReview="addReview"
-    />
   </section>
 </template>
 

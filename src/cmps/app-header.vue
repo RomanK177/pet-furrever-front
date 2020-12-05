@@ -33,7 +33,7 @@
           >
           <a v-else @click="logout" class="nav-link">Logout</a>
         </div>
-        <login v-if="loginOpen" class="login" />
+        <login @closeMenu="closeMenu" v-if="loginOpen" class="login" />
       </div>
     </nav>
   </section>
@@ -84,6 +84,9 @@ export default {
     },
     toggleUserMenu() {
       this.showUserMenu = !this.showUserMenu;
+    },
+    closeMenu() {
+      this.showUserMenu = false;
     },
   },
   created() {
