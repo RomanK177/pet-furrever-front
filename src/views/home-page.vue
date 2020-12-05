@@ -118,9 +118,8 @@ export default {
       return mostRecent.slice(0, 4);
     },
   },
-  created() {
-    this.$store.dispatch({ type: "loadPets" });
-    // this.$store.dispatch({ type: "loadUsers" });
+  async created() {
+    await this.$store.dispatch({ type: "loadUsers" });
   },
   methods: {
     addTreat(petId) {

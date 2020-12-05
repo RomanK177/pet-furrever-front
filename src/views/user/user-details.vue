@@ -26,7 +26,9 @@ export default {
     },
    
   },
-   created() {
+   async created() {
+    await this.$store.dispatch({ type: "loadPets" });
+
     const userId = this.$route.params.id;
     this.getUser(userId);
   },
