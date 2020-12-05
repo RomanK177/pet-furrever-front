@@ -1,28 +1,24 @@
 
 <template>
   <section class="adoption-request">
-    <button class="request-togle" @click="toggleListShow">
-      See Adoption requests: ({{ requests.length }})
-    </button>
-    <p>[Pending requests: ({{ amountOfRequests }})]</p>
+    <p class="request-togle" @click="toggleListShow">
+      Adoption requests: All({{ requests.length }}) Pending: ({{
+        amountOfRequests
+      }})
+    </p>
+    <!-- <p>[Pending requests: ({{ amountOfRequests }})]</p> -->
     <ul class="adoption-request-list" v-if="requests && showList">
       <li>
-        <div class="requests-header flex">
-          <span class="requsted-id">Request Num</span>
+        <div class="requests-header">
           <span class="requsted-by">From</span>
           <span class="requsted-pet">Pet to adopt</span>
           <span class="requsted-at">Date</span>
           <span class="requsted-status">Status</span>
-          <!-- <span class="adoption-message">Message</span> -->
-          <!-- <span v-if="isOwner" class="approve">Approve</span>
-          <span v-if="isOwner" class="decline">Decline</span>
-          <span v-if="isOwner" class="delete">Delete</span>
-          <span v-if="isAdopter" class="decline">Cancel</span> -->
         </div>
       </li>
-      <li class="flex" v-for="(request, idx) in requests" :key="idx">
+      <li v-for="(request, idx) in requests" :key="idx">
         <adoption-request-preview
-        @addMessage="emitAddMessage"
+          @addMessage="emitAddMessage"
           @updateAdoption="emitUpdateAdoptionRequest"
           @removeAdoption="emitRemoveAdoptionRequest"
           :request="request"
@@ -63,8 +59,8 @@ export default {
       // this.$emit("updatePet", pet);
     },
     emitAddMessage(adoptionId, message) {
-      console.log('in adoption request',message, adoptionId)
-      this.$emit("addMessage", adoptionId, message,);
+      console.log("in adoption request", message, adoptionId);
+      this.$emit("addMessage", adoptionId, message);
     },
     emitRemoveAdoptionRequest(adoption) {
       this.$emit("removeAdoption", adoption);

@@ -1,5 +1,5 @@
 <template>
-  <section class="owner-review details">
+  <section class="owner-review">
     <h1 class="pet-details-comments-title">Reviews</h1>
     <hr />
     <form @submit.prevent="addReview">

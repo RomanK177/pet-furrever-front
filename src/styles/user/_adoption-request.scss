@@ -1,52 +1,243 @@
-
-
-.adoption-request-action{
-    font-size: 13px;
-        padding: 3px 6px;
+.adoption-request {
+    margin: 10px 0px;
+    .request-togle {
+        background: none;
+        margin: 10px 0;
+        font-weight: bold;
+        font-size: 25px;
+        padding: 10px 5px;
+        border: none;
         color: orange;
-        background-color: white;
-        border: 1px solid orange;
-        font-family: quicksand;
-    &:hover{
-        color: white;
-        background-color: orange;
+    }
+    .request-togle:hover {
+        cursor: pointer;
+        text-shadow: 3px 0px 7px rgba(101, 204, 207, 0.7);
+    }
+    &-list {
+        border-bottom: 1px solid black;
+        // width: 300px;
+    }
+    & a {
+        text-decoration: none;
+        color: #000;
+    }
+    & .adoption-request-list {
+        & .requests-header {
+            font-weight: bold;
+            padding: 10px 0;
+            overflow: auto;
+            white-space: nowrap
+        }
+        & li {
+            margin-bottom: 5px;
+            & .request-info {
+                overflow: auto;
+                white-space: nowrap
+            }
+            & .adoption-request-action {
+                font-size: 13px;
+                padding: 3px 6px;
+                color: orange;
+                background-color: white;
+                border: 1px solid orange;
+                font-family: quicksand;
+                &:hover {
+                    color: white;
+                    background-color: orange;
+                }
+            }
+        }
     }
 }
 
-.boldit{
+// .adoption-request-preview {
+//     flex-wrap: wrap;
+// }
+.requsted-id {
+    width: 120px;
+    display: none;
+}
+
+.requsted-by {
+    width: 150px;
+    display: inline-block;
+}
+
+.requsted-pet {
+    width: 130px;
+    display: inline-block;
+}
+
+.requsted-at {
+    width: 100px;
+    display: inline-block;
+}
+
+.requsted-status {
+    width: 80px;
+    display: inline-block;
+}
+
+.approve,
+.decline {
+    width: 70px;
+    border-radius: 10px;
+    text-align: center;
+    & img {
+        width: 20px;
+        border-radius: 5px;
+        // object-fit: contain;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    & img:hover {
+        cursor: pointer;
+        background-color: rgba(181, 251, 224, 0.678);
+    }
+}
+
+.boldit {
     font-family: quicksand-medium;
 }
 
-.approve-btn{
+.approve-btn {
     background-color: rgba(1, 218, 1, 0.822);
     color: white;
-    border: 1px solid  rgba(1, 218, 1, 0.822);
+    border: 1px solid rgba(1, 218, 1, 0.822);
     margin-left: 5px;
     border-radius: 3px;
     font-size: 1rem;
-    margin-bottom: 4px;
-
-    
-
+    // margin-bottom: 4px;
 }
 
-.decline-btn{
+.decline-btn {
     background-color: rgb(240, 66, 66);
     color: white;
     border: 1px solid rgb(240, 66, 66);
     border-radius: 3px;
     margin-left: 5px;
-    margin-bottom: 4px;
+    // margin-bottom: 4px;
     font-size: 1rem;
-    
 }
 
-.message-btn{
+.message-btn {
     background-color: orange;
     border: 1px solid orange;
     color: white;
     border-radius: 3px;
     font-size: 1rem;
-    margin-bottom: 4px;
+    // margin-bottom: 4px;
+    border-radius: 3px;
+    margin-left: 5px;
+    padding: 1px 6px;
+}
 
+// @media only screen and (max-width: 650px) {
+//     .adoption-request {
+//         margin: 0 auto;
+//     }
+//     .adoption-request-list {
+//         display: flex;
+//         flex-flow: wrap;
+//     }
+//     .requests-header {
+//         font-weight: bold;
+//         padding: 10px 0;
+//     }
+//     .requsted-id {
+//         width: 80px;
+//         display: none;
+//     }
+//     .requsted-by {
+//         width: 80px;
+//     }
+//     .requsted-pet {
+//         width: 150px;
+//     }
+//     .requsted-at {
+//         width: 150px;
+//     }
+//     .requsted-status {
+//         width: 80px;
+//     }
+//     .prev-content {
+//         flex-flow: wrap;
+//     }
+//     .request-togle {
+//         font-weight: bold;
+//         font-size: medium;
+//         padding: 3px 0;
+//     }
+// }
+@media only screen and (max-width: 375px) {
+    .adoption-request-preview {
+        flex-direction: column;
+    }
+    .adoption-request {
+        margin: 0 auto;
+        & .request-togle {
+            font-weight: bold;
+            font-size: 20px;
+            padding: 5px 5px;
+        }
+        & .adoption-request-list {
+            display: flex;
+            flex-flow: wrap;
+            // & li {
+            //     width: 100%;
+            //     & .requests-header {
+            //         font-weight: bold;
+            //         padding: 10px 0;
+            //         overflow: auto;
+            //         white-space: nowrap;
+            //         width: 100%;
+            //     }
+            // }
+            // & li {
+            //     width: 100%;
+            //     margin-bottom: 5px;
+            //     & .request-info {
+            //         overflow: auto;
+            //         white-space: nowrap
+            //     }
+            //     & .adoption-request-action {
+            //         font-size: 13px;
+            //         padding: 3px 6px;
+            //         color: orange;
+            //         background-color: white;
+            //         border: 1px solid orange;
+            //         font-family: quicksand;
+            //         &:hover {
+            //             color: white;
+            //             background-color: orange;
+            //         }
+            //     }
+            // }
+        }
+    }
+    .requsted-id {
+        width: 80px;
+        display: none;
+    }
+    .requsted-by {
+        width: 80px;
+    }
+    .requsted-pet {
+        width: 80px;
+    }
+    .requsted-at {
+        width: 60px;
+    }
+    .requsted-status {
+        width: 100px;
+    }
+    .prev-content {
+        flex-flow: wrap;
+    }
+    .request-togle {
+        font-weight: bold;
+        font-size: medium;
+        padding: 3px 0;
+    }
 }

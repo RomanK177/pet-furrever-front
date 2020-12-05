@@ -42,19 +42,18 @@
     float: right;
 }
 
-.request-togle {
-    font-weight: bold;
-    font-size: large;
-    padding: 10px 0;
-}
-
-.request-togle:hover {
-    cursor: pointer;
-}
-
 .owner-info {
     padding: 0 20px;
     margin-left: 20px;
+    & .user-profile-picture {
+        width: 120px;
+        height: 120px;
+        align-self: center;
+        justify-self: center;
+    }
+    & p {
+        margin: 5px 0;
+    }
 }
 
 .adopter-details {
@@ -63,62 +62,6 @@
 
 .adoption-request-list {
     padding: unset;
-}
-
-.adoption-request {
-    &-list {
-        border-bottom: 1px solid black;
-        // width: 300px;
-    }
-    & a {
-        text-decoration: none;
-        color: #000;
-    }
-}
-
-.requests-header {
-    font-weight: bold;
-    padding: 10px 0;
-}
-
-.requsted-id {
-    width: 120px;
-    display: none;
-}
-
-.requsted-by {
-    width: 150px;
-}
-
-.requsted-pet {
-    width: 130px;
-}
-
-.requsted-at {
-    width: 150px;
-}
-
-.requsted-status {
-    width: 100px;
-}
-
-.approve,
-.decline {
-    width: 70px;
-    border-radius: 10px;
-    text-align: center;
-    & img {
-        width: 20px;
-        border-radius: 5px;
-        // object-fit: contain;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
-    & img:hover {
-        cursor: pointer;
-        background-color: rgba(181, 251, 224, 0.678);
-    }
 }
 
 .addPet {
@@ -182,41 +125,6 @@
         & .addPet {
             font-size: 1rem;
         }
-    }
-    .adoption-request {
-        margin: 0 auto;
-    }
-    .adoption-request-list {
-        display: flex;
-        flex-flow: wrap;
-    }
-    .requests-header {
-        font-weight: bold;
-        padding: 10px 0;
-    }
-    .requsted-id {
-        width: 80px;
-        display: none;
-    }
-    .requsted-by {
-        width: 80px;
-    }
-    .requsted-pet {
-        width: 80px;
-    }
-    .requsted-at {
-        width: 60px;
-    }
-    .requsted-status {
-        width: 100px;
-    }
-    .prev-content {
-        flex-flow: wrap;
-    }
-    .request-togle {
-        font-weight: bold;
-        font-size: medium;
-        padding: 3px 0;
     }
     .user-profile-picture {
         width: 100px;

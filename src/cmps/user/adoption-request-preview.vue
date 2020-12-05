@@ -1,63 +1,66 @@
  
 <template>
-  <section class="adoption-request-preview">
+  <section class="adoption-request-preview flex align-center content-center">
     <!-- <div
       class="prev-content flex"
       :class="{ bold: isPending }"
       v-if="isCancelled"
     > -->
-    <span class="requsted-id">{{ request._id }}</span>
-    <span class="requsted-by">
-      <router-link :to="`/user/${request.user._id}`" v-if="isOwner">{{
-        request.user.name
-      }}</router-link>
-      <router-link :to="`/user/${request.owner._id}`" v-if="isAdopter">{{
-        request.owner.name
-      }}</router-link>
-    </span>
-    <span class="requsted-pet">
-      <router-link :to="`/pet/${request.pet._id}`">{{
-        request.pet.name
-      }}</router-link>
-    </span>
-    <span class="requsted-at">{{ sentTime }}</span>
-    <span class="requsted-status">{{ statusCap }}</span>
-    <div class="request-btns">
-      <!-- <button class="message-btn" @click="toggleShowMessages">Message</button> -->
-      <router-link
-        class="message-btn"
-        :request="request"
-        :user="user"
-        :to="`/adoption/${request._id}`"
-        >Message</router-link
-      >
-      <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
+    <div class="request-info">
+      <span class="requsted-id">{{ request._id }}</span>
+      <span class="requsted-by">
+        <router-link :to="`/user/${request.user._id}`" v-if="isOwner">{{
+          request.user.name
+        }}</router-link>
+        <router-link :to="`/user/${request.owner._id}`" v-if="isAdopter">{{
+          request.owner.name
+        }}</router-link>
+      </span>
+      <span class="requsted-pet">
+        <router-link :to="`/pet/${request.pet._id}`">{{
+          request.pet.name
+        }}</router-link>
+      </span>
+      <span class="requsted-at">{{ sentTime }}</span>
+      <span class="requsted-status">{{ statusCap }}</span>
     </div>
-    <div v-if="canApprove" class="request-btns">
-      <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
-        Approve
-      </button>
-    </div>
-    <div class="request-btns" v-if="canDecline">
-      <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
-        Decline
-      </button>
-    </div>
-    <div v-if="canDelete" class="request-btns">
-      <button class="decline-btn" @click="emitRemoveAdoptionRequest">
-        Delete
-      </button>
-    </div>
-
-    <div v-if="canCancel" class="request-btns">
-      <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
-        Cancel
-      </button>
-      <!-- <el-button
+    <div class="flex align-center content-center">
+      <div class="request-btns">
+        <!-- <button class="message-btn" @click="toggleShowMessages">Message</button> -->
+        <router-link
+          class="message-btn"
+          :request="request"
+          :user="user"
+          :to="`/adoption/${request._id}`"
+          >Message</router-link
+        >
+        <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
+      </div>
+      <div v-if="canApprove" class="request-btns">
+        <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
+          Approve
+        </button>
+      </div>
+      <div class="request-btns" v-if="canDecline">
+        <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
+          Decline
+        </button>
+      </div>
+      <div v-if="canDelete" class="request-btns">
+        <button class="decline-btn" @click="emitRemoveAdoptionRequest">
+          Delete
+        </button>
+      </div>
+      <div v-if="canCancel" class="request-btns">
+        <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
+          Cancel
+        </button>
+        <!-- <el-button
           class="delete-adoption-request"
           @click="emitRemoveAdoptionRequest"
           >Delete</el-button
         > -->
+      </div>
     </div>
   </section>
 </template>
@@ -118,7 +121,27 @@ export default {
   computed: {
     sentTime() {
       let d = new Date(this.request.createdAt);
-      return d.toDateString();
+      // return d.toDateString();
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const dateObj = d;
+      const month = dateObj.getMonth();
+      const day = String(dateObj.getDate()).padStart(2, "0");
+      const year = dateObj.getFullYear();
+      const output = day + "." + month + "." + year;
+      return output;
     },
     statusCap() {
       return (
