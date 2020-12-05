@@ -23,13 +23,11 @@
       <pet-list
         v-if="petsForPreview"
         :pets="mostLiked"
-        @addTreat="addTreat"
       ></pet-list>
       <h2 class="pets-of-the-week">Recently Adopted Pets</h2>
       <pet-list
         v-if="petsForPreview"
         :pets="recentlyAdopted"
-        @addTreat="addTreat"
       ></pet-list>
     </div>
     <div class="adopt-container flex container">
