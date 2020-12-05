@@ -118,6 +118,7 @@ export default {
   },
   async created() {
     await this.$store.dispatch({ type: "loadUsers" });
+    await this.$store.dispatch({ type: "loadPets" });
   },
   methods: {
     addTreat(petId) {
