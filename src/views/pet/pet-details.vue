@@ -48,7 +48,7 @@
                 alt=""
                 class="location-svg"
               />
-               {{ pet.owner.ownerData.location.name }}
+              {{ pet.owner.ownerData.location.name }}
               <!-- Location Address -->
             </p>
             <!-- <p class="pet-details-owner-location">
@@ -141,7 +141,6 @@ export default {
         type: "updateUser",
         savedUser: user,
       });
-      this.loggedInUser = this.$store.getters.getLoggedInUser;
     },
     async addComment(comment) {
       await this.$store.dispatch({
@@ -149,18 +148,21 @@ export default {
         petId: this.pet._id,
         comment,
       });
-      // TRY - DIDNT WORK
-      // let pet = await this.$store.dispatch({
-      //   type: 'getPetById',
-      //   PetId: this.pet._id
-      // })
-      // this.pet = pet;
+      this.getPet();
+    },
+    async getPet() {
+      const pet = await this.$store.dispatch({
+        type: "getPetById",
+        petId: this.pet._id,
+      });
+      this.pet = pet;
     },
   },
   computed: {
     getLoggedInUser() {
-      this.loggedInUser = this.$store.getters.getLoggedInUser;
-      return this.loggedInUser;
+      // this.loggedInUser = this.$store.getters.getLoggedInUser;
+      // return this.loggedInUser;
+      return this.$store.getters.getLoggedInUser;
     },
   },
   async created() {
@@ -171,9 +173,6 @@ export default {
     });
     this.pet = pet;
     this.pet.adoptedAt ? (this.isAdopted = true) : (this.isAdopted = false);
-    // const ownerId = this.pet.owner._id;
-    // const owner = await userService.getById(ownerId);
-    // this.owner = owner;
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     await this.$store.dispatch({ type: "loadAdoptionRequests" });
     if (this.loggedInUser === null) {
