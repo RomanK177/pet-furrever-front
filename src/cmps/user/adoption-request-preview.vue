@@ -9,8 +9,8 @@
     <ul class="flex space-between">
       <!-- <li class="requsted-id">{{ request._id }}</li> -->
       <li class="requsted-by">
-        <router-link :to="`/user/${request.user._id}`" v-if="isOwner">{{
-          request.user.name
+        <router-link :to="`/user/${request.adopter._id}`" v-if="isOwner">{{
+          request.adopter.name
         }}</router-link>
         <router-link :to="`/user/${request.owner._id}`" v-if="isAdopter">{{
           request.owner.name
@@ -223,6 +223,7 @@ export default {
     },
   },
   async created() {
+    console.log(this.request);
     const pet = await petService.getPetById(this.request.pet._id);
     this.pet = pet;
     console.log("req", this.request);
