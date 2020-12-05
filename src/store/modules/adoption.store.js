@@ -66,7 +66,6 @@ export const adoptionStore = {
             }
         },
         async addMessage({ commit }, { adoptionId, message }) {
-            debugger
             try {
                 const addedMessage = await adoptionService.addMessage(adoptionId, message);
                 const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionId);
