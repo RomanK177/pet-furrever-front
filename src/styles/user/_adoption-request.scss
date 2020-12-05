@@ -1,5 +1,6 @@
 .adoption-request {
     margin: 10px 0px;
+    padding-top: 60px;
     .request-togle {
         background: none;
         margin: 10px 0;
@@ -176,6 +177,7 @@
     }
     .adoption-request {
         margin: 0 auto;
+        padding-top: 0px;
         & .request-togle {
             font-weight: bold;
             font-size: 20px;
