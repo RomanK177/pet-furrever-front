@@ -64,7 +64,7 @@ export default {
     },
     emitAddMessage(adoptionId, message) {
       console.log('in adoption request',message, adoptionId)
-      this.$emit("addMessage", adoptionId, message);
+      this.$emit("addMessage", adoptionId, message,);
     },
     emitRemoveAdoptionRequest(adoption) {
       this.$emit("removeAdoption", adoption);
@@ -86,7 +86,6 @@ export default {
       const areAllCancelled = this.requests.every(
         (request) => request.status === "cancelled"
       );
-
       this.user.userType === "adopter";
 
       if (areAllCancelled && this.user.userType === "adopter") return false;

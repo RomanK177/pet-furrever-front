@@ -34,9 +34,12 @@ function removeAdoptionRequest(adoptionRequestId) {
 }
 
 async function addMessage(adoptionId, message) {
-    debugger
+    // debugger
     return httpService.post(`adoptions/${adoptionId}/messages`, {message});
 }
+
+
+
 
 
 

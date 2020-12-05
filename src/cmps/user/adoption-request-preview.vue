@@ -5,11 +5,11 @@
     @mouseleave="hideButtons"
     class="adoption-request-preview"
   >
-    <div
+    <!-- <div
       class="prev-content flex"
       :class="{ bold: isPending }"
       v-if="isCancelled"
-    >
+    > -->
       <span class="requsted-id">{{ request._id }}</span>
       <span class="requsted-by">
         <router-link :to="`/user/${request.user._id}`" v-if="isOwner">{{
@@ -27,12 +27,9 @@
       <span class="requsted-at">{{ sentTime }}</span>
       <span class="requsted-status">{{ statusCap }}</span>
       <div class="request-btns">
-        <button class="message-btn" @click="toggleShowMessages">Message</button>
-        <!-- <router-link
-            v-if="loggedinUser"
-            :to="`/adoption/${adoption._id}`"
-          > -->
-        <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages>
+        <!-- <button class="message-btn" @click="toggleShowMessages">Message</button> -->
+          <router-link class="message-btn" :request="request" :user="user" :to="`/adoption/${request._id}`">Message</router-link>
+        <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
       </div>
       <div v-if="canApprove" class="request-btns">
         <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
@@ -48,13 +45,18 @@
         <button class="decline-btn" @click="emitRemoveAdoptionRequest">
           Delete
         </button>
+      </div>
+
+        <div v-if="canCancel" class="request-btns">
+        <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
+          Cancel
+        </button>
         <!-- <el-button
           class="delete-adoption-request"
           @click="emitRemoveAdoptionRequest"
           >Delete</el-button
         > -->
-      </div>
-    </div>
+            </div>
   </section>
 </template>
 
@@ -158,6 +160,15 @@ export default {
           ? true
           : false;
       return canDelete;
+    },
+    canCancel() {
+      const canCancel =
+        this.user.userType === "adopter" &&
+        (this.request.status === "pending" ||
+          this.request.status === "approved")
+          ? true
+          : false;
+      return canCancel
     },
     isCancelled() {
       const isCancelled =

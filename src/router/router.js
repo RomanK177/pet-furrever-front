@@ -43,7 +43,7 @@ const routes = [{
         component: userDetails
     },
     {
-        path: '/adoption/',
+        path: '/adoption/:id',
         component: adoptionMessages
     }
 
