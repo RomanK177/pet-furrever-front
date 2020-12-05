@@ -1,9 +1,11 @@
 <template>
   <section class="signup container">
     <h1>Thanks to you, another furry friend will find a FURRever home!</h1>
-    <h3>Do you want to signup as adopter or as owner of pet?</h3>
+    <h3>Do you want to signup as an adopter or as an owner of a pet?</h3>
+    <div class="sing-up-as">
     <button @click="adopter">Adopter</button>
     <button @click="petOwner">Pet Owner</button>
+    </div>
 
     <adopter-form :user="user" v-if="userType === 'adopter'" />
     <owner-form :user="user" v-if="userType === 'owner'" />

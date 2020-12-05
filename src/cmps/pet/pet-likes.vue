@@ -18,6 +18,8 @@
 
 <script>
 import { utilService } from "../../services/util-service.js";
+import socketService from "../../services/socket-service.js";
+
 export default {
   props: {
     pet: Object,
@@ -27,6 +29,7 @@ export default {
     return {
       treat: false,
       storedLikes: [],
+
     };
   },
   methods: {
@@ -35,6 +38,9 @@ export default {
       this.treat = true;
       this.storedLikes.push(this.pet._id);
       utilService.storeToStorage("likes_db", this.storedLikes);
+      socketService.emit("treats newtreat");
+      console.log("petId", this.pet._id);
+      console.log("after socket emit", this.pet.numOfTreats);
     },
   },
   computed: {
@@ -60,6 +66,18 @@ export default {
     this.treat = this.storedLikes.find((id) => id === this.pet._id)
       ? true
       : false;
+
+    socketService.setup();
+    console.log(this.pet._id)
+    socketService.emit("treats topic", this.pet._id);
+    socketService.on('treats addTreat', this.addTreat);
   },
+  destroyed() {
+    socketService.off("treats addTreat", this.addTreat);
+    socketService.terminate();
+  },
+  components: {
+    socketService
+  }
 };
 </script>
