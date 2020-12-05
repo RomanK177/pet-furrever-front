@@ -87,6 +87,7 @@
 import appHeader from "../cmps/app-header.vue";
 import carousel from "../cmps/carousel.vue";
 import petList from "../cmps/pet/pet-list.vue";
+import socketService from '../services/socket-service.js';
 
 export default {
   name: "Home",
@@ -118,25 +119,45 @@ export default {
   },
   async created() {
     await this.$store.dispatch({ type: "loadUsers" });
+    const pets = await this.$store.dispatch({type: 'loadPets'})
+    this.pets = pets
+    socketService.setup();
+    socketService.emit("treats topic", 'home-page');
+    socketService.on('treats addTreat', this.addTreat);
   },
   methods: {
-    addTreat(petId) {
-      this.$store.dispatch({
+    // addTreat(petId) {
+    //   this.$store.dispatch({
+    //     type: "addTreat",
+    //     petId,
+    //   });
+    // },
+    // async addTreat(petId) {
+    //   await this.$store.dispatch({
+    //     type: "addTreat",
+    //     petId: petId,
+    //   });
+    // },
+     async addTreat(pet) {
+      console.log('petid', pet)
+      const newPet = await this.$store.dispatch({
         type: "addTreat",
-        petId,
+        petId: pet._id,
       });
-    },
-    async addTreat(petId) {
       await this.$store.dispatch({
-        type: "addTreat",
-        petId: petId,
-      });
+        type: 'savePet',
+        pet: newPet
+      })
     },
   },
   components: {
     appHeader,
     carousel,
     petList,
+  },
+   destroyed() {
+    socketService.off("treats addTreat", this.addTreat);
+    socketService.terminate();
   },
 };
 </script>
