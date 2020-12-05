@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     addMessage() {
-      debugger
       this.$emit(
         "addMessage",
         this.request._id,
