@@ -5,31 +5,29 @@
       See Adoption requests: ({{ requests.length }})
     </button>
     <p>[Pending requests: ({{ amountOfRequests }})]</p>
-    <ul class="adoption-request-list" v-if="requests && showList">
-      <li>
-        <div class="requests-header flex">
-          <span class="requsted-id">Request Num</span>
-          <span class="requsted-by">From</span>
-          <span class="requsted-pet">Pet to adopt</span>
-          <span class="requsted-at">Date</span>
-          <span class="requsted-status">Status</span>
-          <!-- <span class="adoption-message">Message</span> -->
+    <div v-if="requests && showList">
+    <ul class="adoption-request-list requests-header flex space-between">
+          <!-- <li class="requsted-id">Request Id</li> -->
+          <li class="requsted-by">From</li>
+          <li class="requsted-pet">Pet to adopt</li>
+          <li class="requsted-at">Date</li>
+          <li class="requsted-status">Status</li>
+          <li class="adoption-message">Message</li>
+          <li>Actions</li>
           <!-- <span v-if="isOwner" class="approve">Approve</span>
           <span v-if="isOwner" class="decline">Decline</span>
           <span v-if="isOwner" class="delete">Delete</span>
           <span v-if="isAdopter" class="decline">Cancel</span> -->
-        </div>
-      </li>
-      <li class="flex" v-for="(request, idx) in requests" :key="idx">
+    </ul>
         <adoption-request-preview
+        v-for="(request, idx) in requests" :key="idx"
         @addMessage="emitAddMessage"
           @updateAdoption="emitUpdateAdoptionRequest"
           @removeAdoption="emitRemoveAdoptionRequest"
           :request="request"
           :user="user"
         />
-      </li>
-    </ul>
+    </div>
   </section>
 </template>
 

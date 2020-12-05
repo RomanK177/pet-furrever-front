@@ -5,7 +5,7 @@
         justify-content: space-around;
     }
 
-    &.flex-start{
+    &.flex-start {
         justify-content: flex-start;
     }
 
@@ -17,7 +17,7 @@
         align-items: center;
     }
 
-    &.align-end{
+    &.align-end {
         align-items: flex-end;
     }
 
@@ -41,7 +41,7 @@
     }
 }
 
-.text-center{
+.text-center {
     text-align: center;
 }
 
@@ -51,4 +51,8 @@
 
 .grid {
     display: grid;
+}
+
+.read {
+    font-weight: normal;
 }

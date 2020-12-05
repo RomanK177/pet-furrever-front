@@ -10,27 +10,26 @@
       :class="{ bold: isPending }"
       v-if="isCancelled"
     > -->
-      <span class="requsted-id">{{ request._id }}</span>
-      <span class="requsted-by">
+    <ul class="flex space-between">
+      <!-- <li class="requsted-id">{{ request._id }}</li> -->
+      <li class="requsted-by">
         <router-link :to="`/user/${request.user._id}`" v-if="isOwner">{{
           request.user.name
         }}</router-link>
         <router-link :to="`/user/${request.owner._id}`" v-if="isAdopter">{{
           request.owner.name
         }}</router-link>
-      </span>
-      <span class="requsted-pet">
+      </li>
+      <li class="requsted-pet">
         <router-link :to="`/pet/${request.pet._id}`">{{
           request.pet.name
         }}</router-link>
-      </span>
-      <span class="requsted-at">{{ sentTime }}</span>
-      <span class="requsted-status">{{ statusCap }}</span>
-      <div class="request-btns">
+      </li>
+      <li class="requsted-at">{{ sentTime }}</li>
+      <li class="requsted-status">{{ statusCap }}</li>
+          <li class="request-btns"><router-link class="message-btn" :request="request" :user="user" :to="`/adoption/${request._id}`">Message</router-link></li>
         <!-- <button class="message-btn" @click="toggleShowMessages">Message</button> -->
-          <router-link class="message-btn" :request="request" :user="user" :to="`/adoption/${request._id}`">Message</router-link>
-        <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
-      </div>
+      <li>
       <div v-if="canApprove" class="request-btns">
         <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
           Approve
@@ -57,12 +56,15 @@
           >Delete</el-button
         > -->
             </div>
+
+      </li>
+      
+    </ul>
   </section>
 </template>
 
 <script>
 import { petService } from "../../services/pet-service.js";
-import messages from "../../cmps/user/messages.vue";
 export default {
   name: "adoptionrequestPreview",
   props: {
@@ -201,9 +203,6 @@ export default {
     console.log('req', this.request)
     // console.log("pet", this.pet);
     // console.log("user", this.user);
-  },
-  components: {
-    messages,
   },
 };
 </script>

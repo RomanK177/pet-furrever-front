@@ -11,23 +11,23 @@
 </template>
 
 <script>
-import appHeader from "./cmps/app-header.vue"
-import appFooter from "./cmps/app-footer.vue"
+import appHeader from "./cmps/app-header.vue";
+import appFooter from "./cmps/app-footer.vue";
 export default {
-    created() {
-      if (sessionStorage.user) {
-        var localLoggedinUser = JSON.parse(sessionStorage.user);
-        this.$store.dispatch({
-          type: 'setUser',
-          user: localLoggedinUser
-        })
-      }
-    },
-    components: {
-        appHeader,
-        appFooter
-       
-    },
+  async created() {
+    if (sessionStorage.user) {
+      var localLoggedinUser = JSON.parse(sessionStorage.user);
+      this.$store.dispatch({
+        type: "setUser",
+        user: localLoggedinUser,
+      });
+    }
+    await this.$store.dispatch({ type: "loadAdoptionRequests" });
+  },
+  components: {
+    appHeader,
+    appFooter,
+  },
 };
 </script>
 
