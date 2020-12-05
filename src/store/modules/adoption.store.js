@@ -66,7 +66,7 @@ export const adoptionStore = {
             }
         },
         async addMessage({ commit }, { adoptionId, message }) {
-            debugger
+            // debugger
             try {
                 const addedMessage = await adoptionService.addMessage(adoptionId, message);
                 const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionId);
@@ -76,6 +76,10 @@ export const adoptionStore = {
                 console.error('Cannot send message.', err)
             }
         },       
+        async getAdoptionById(context, { adoptionId }) {
+            const adoption = await adoptionService.getAdoptionRequestById(adoptionId)
+            return adoption
+        },
 
     },
 }

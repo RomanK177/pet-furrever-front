@@ -7,6 +7,7 @@ import petDetails from '../views/pet/pet-details.vue';
 import petEdit from '../views/pet/pet-edit.vue';
 import userDetails from '../views/user/user-details.vue';
 import userEdit from '../views/user/user-edit.vue';
+import adoptionMessages from '../views/user/adoption-messages.vue'
 
 
 
@@ -41,6 +42,10 @@ const routes = [{
         path: '/user/:id',
         component: userDetails
     },
+    {
+        path: '/adoption/:id',
+        component: adoptionMessages
+    }
 
 
 
