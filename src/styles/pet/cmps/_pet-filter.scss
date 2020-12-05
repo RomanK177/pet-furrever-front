@@ -77,5 +77,13 @@
             justify-content: center;
             flex-wrap: wrap;
         }
+        & .search-input {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        & .filters {
+            width: unset;
+        }
     }
 }

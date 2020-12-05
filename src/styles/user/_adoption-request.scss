@@ -184,53 +184,28 @@
         & .adoption-request-list {
             display: flex;
             flex-flow: wrap;
-            // & li {
-            //     width: 100%;
-            //     & .requests-header {
-            //         font-weight: bold;
-            //         padding: 10px 0;
-            //         overflow: auto;
-            //         white-space: nowrap;
-            //         width: 100%;
-            //     }
-            // }
-            // & li {
-            //     width: 100%;
-            //     margin-bottom: 5px;
-            //     & .request-info {
-            //         overflow: auto;
-            //         white-space: nowrap
-            //     }
-            //     & .adoption-request-action {
-            //         font-size: 13px;
-            //         padding: 3px 6px;
-            //         color: orange;
-            //         background-color: white;
-            //         border: 1px solid orange;
-            //         font-family: quicksand;
-            //         &:hover {
-            //             color: white;
-            //             background-color: orange;
-            //         }
-            //     }
-            // }
+            & .requests-header {
+                font-weight: bold;
+                padding: 10px 0;
+                overflow: visible;
+                white-space: unset;
+            }
+            & .adoption-request-preview {
+                align-items: flex-start;
+            }
         }
     }
-    .requsted-id {
-        width: 80px;
-        display: none;
-    }
     .requsted-by {
-        width: 80px;
+        width: 100px;
     }
     .requsted-pet {
-        width: 80px;
+        width: 70px;
     }
     .requsted-at {
-        width: 60px;
+        width: 80px;
     }
     .requsted-status {
-        width: 100px;
+        width: 80px;
     }
     .prev-content {
         flex-flow: wrap;

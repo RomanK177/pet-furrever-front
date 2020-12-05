@@ -235,9 +235,9 @@
         }
     }
     .homepage-pet-list .pet-list {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         padding: 5px;
-        & .pet-card:last-child {
+        & .pet-card:nth-last-child(-n+2) {
             display: none;
         }
         & .pet-card {
@@ -263,6 +263,6 @@
     .most-liked-of-the-week,
     .pets-of-the-week {
         margin-top: 5px;
-        font-size: 16px;
+        font-size: 13px;
     }
 }

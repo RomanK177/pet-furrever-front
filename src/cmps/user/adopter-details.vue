@@ -1,6 +1,13 @@
 
 <template>
   <section v-if="adopter" class="adopter-details">
+    <adoption-request
+      :requests="requests"
+      :user="adopter"
+      @addMessage="addMessage"
+      @updateAdoption="updateAdoption"
+      v-if="checkIfOwner"
+    />
     <h1>Welcome {{ adopter.fullName }}!</h1>
     <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
       >Edit your profile</router-link
@@ -25,13 +32,6 @@
     <p>{{ adopter.familyStatus }}</p>
     <p>{{ adopter.houseStatus }}</p>
     <!-- Add tags from elemnts -->
-    <adoption-request
-      :requests="requests"
-      :user="adopter"
-      @addMessage="addMessage"
-      @updateAdoption="updateAdoption"
-      v-if="checkIfOwner"
-    />
   </section>
 </template>
 
@@ -74,10 +74,13 @@ export default {
       return loggedInUser && loggedInUser._id === this.adopter._id;
     },
     requests() {
-      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
-        (req) => req.user._id === this.$store.getters.getLoggedInUser._id
-      );
-      return filteredReqs;
+      let loggedUserId = this.$store.getters.getLoggedInUser._id;
+      let allRequestsFromStore = this.$store.getters.getAdoptionRequests;
+      let filtered = allRequestsFromStore.filter((req) => {
+        req.adopter._id === loggedUserId;
+      });
+
+      return filtered;
     },
   },
   components: {

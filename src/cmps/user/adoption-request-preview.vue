@@ -151,6 +151,10 @@ export default {
     },
     getPetById() {
       let pet = this.$store.getters.getPetById(this.request.pet._id);
+      console.log(
+        "🚀 ~ file: adoption-request-preview.vue ~ line 154 ~ getPetById ~ pet",
+        pet
+      );
       return pet;
     },
     isOwner() {
@@ -216,7 +220,7 @@ export default {
     },
     isPending() {
       const isPending = this.request.status === "pending" ? true : false;
-      console.log(isPending);
+      console.log("is pending", isPending);
       return isPending;
     },
   },
