@@ -79,7 +79,7 @@ export default {
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
         (req) => {
           return req.adopter._id === this.$store.getters.getLoggedInUser._id ||
-                 req.adopter._id === this.$store.getters.getLoggedInUser._id;
+                 req.owner._id === this.$store.getters.getLoggedInUser._id;
         }
       );
       return filteredReqs;
