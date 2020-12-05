@@ -74,13 +74,15 @@ export default {
       return loggedInUser && loggedInUser._id === this.adopter._id;
     },
     requests() {
-      let loggedUserId = this.$store.getters.getLoggedInUser._id;
-      let allRequestsFromStore = this.$store.getters.getAdoptionRequests;
-      let filtered = allRequestsFromStore.filter((req) => {
-        req.adopter._id === loggedUserId;
-      });
-
-      return filtered;
+      let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
+        (req) => {
+          return (
+            req.adopter._id === this.$store.getters.getLoggedInUser._id ||
+            req.adopter._id === this.$store.getters.getLoggedInUser._id
+          );
+        }
+      );
+      return filteredReqs;
     },
   },
   components: {

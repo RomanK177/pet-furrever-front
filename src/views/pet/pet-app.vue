@@ -5,7 +5,6 @@
       v-if="petsForPreview"
       :user="loggedUser"
       :pets="petsForPreview"
-      @addTreat="addTreat"
     ></pet-list>
   </section>
 </template>
@@ -14,6 +13,7 @@
 import petFilter from "../../cmps/pet/filtering/pet-filter.vue";
 import petList from "../../cmps/pet/pet-list.vue";
 import appFooter from "../../cmps/app-footer.vue";
+import socketService from '../../services/socket-service.js';
 export default {
   name: "pet-app.vue",
   props: {},
@@ -44,11 +44,16 @@ export default {
     //     petId,
     //   });
     // },
-    async addTreat(petId) {
-      await this.$store.dispatch({
+    async addTreat(pet) {
+      console.log('petid', pet)
+      const newPet = await this.$store.dispatch({
         type: "addTreat",
-        petId: petId,
+        petId: pet._id,
       });
+      await this.$store.dispatch({
+        type: 'savePet',
+        pet: newPet
+      })
     },
     // goToAddPet() {
     //   this.$router.push("/edit");
@@ -65,9 +70,16 @@ export default {
   },
   async created() {
     await this.$store.dispatch({ type: "loadPets" });
+    socketService.setup();
+    socketService.emit("treats topic", 'pet-app');
+    socketService.on('treats addTreat', this.addTreat);
     // this.$store.dispatch({ type: "loadAdoptionRequests" });
 
     await this.$store.dispatch({ type: "loadUsers" });
+  },
+  destroyed() {
+    socketService.off("treats addTreat", this.addTreat);
+    socketService.terminate();
   },
 };
 </script>

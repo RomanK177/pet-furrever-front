@@ -23,7 +23,7 @@ export const adoptionStore = {
             const idx = state.adoptionRequests.findIndex(currAdoption => currAdoption._id === adoptionRequest._id)
             state.adoptionRequests.splice(idx, 1, adoptionRequest)
         },
-        removeAdoption(state, {adoptionRequest}){
+        removeAdoption(state, { adoptionRequest }) {
             const idx = state.adoptionRequests.findIndex(currAdoption => currAdoption._id === adoptionRequest._id)
             state.adoptionRequests.splice(idx, 1)
 
@@ -71,10 +71,17 @@ export const adoptionStore = {
                 const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionId);
                 commit({ type: 'updateAdoption', adoptionRequest })
                 return addedMessage;
-            } catch(err){
+            } catch (err) {
                 console.error('Cannot send message.', err)
             }
-        },       
+        },
+        // async markMessageAsUnread(isRead) {
+        //     try {
+        //         const x = await adoptionService.markAsUnread(isRead)
+        //     } catch (err) {
+
+        //     }
+        // },
         async getAdoptionById(context, { adoptionId }) {
             const adoption = await adoptionService.getAdoptionRequestById(adoptionId)
             return adoption

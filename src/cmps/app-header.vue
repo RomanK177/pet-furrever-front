@@ -4,6 +4,7 @@
     <nav class="navbar flex align-center">
       <router-link to="/pet" class="nav-link">All Pets</router-link>
       <div @click.stop="toggleUserMenu">
+        <messages-status :requests="requests" />
         <avatar v-if="loggedinUser" :name="loggedinUserName" />
 
         <div
@@ -42,6 +43,7 @@
 import eventBus from "../services/event-bus-service.js";
 import login from "./login.vue";
 import avatar from "../../src/cmps/user/avatar";
+import messagesStatus from "./../cmps/user/messages-status.vue";
 
 export default {
   props: {
@@ -67,12 +69,18 @@ export default {
         return "Guest";
       }
     },
+    requests() {
+      return this.$store.getters.getAdoptionRequests;
+    },
   },
   methods: {
     logout() {
       this.$store.dispatch({
         type: "logout",
       });
+      if (this.$route.path != "/pet") {
+        this.$router.push("/pet");
+      }
     },
     toggleUserMenu() {
       this.showUserMenu = !this.showUserMenu;
@@ -93,6 +101,7 @@ export default {
   components: {
     login,
     avatar,
+    messagesStatus,
   },
 };
 </script>

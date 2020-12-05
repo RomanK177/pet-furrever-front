@@ -7,7 +7,6 @@
       :key="pet._id"
       :pet="pet"
       :user="user"
-      @addTreat="emitAddTreat"
       @click.native="showDetails(pet._id)"
     />
   </section>
@@ -28,9 +27,6 @@ export default {
     // emitDelete(petId) {
     //   this.$emit("deletePet", petId);
     // },
-    emitAddTreat(petId) {
-      this.$emit("addTreat", petId);
-    },
     showDetails(petId) {
       this.$router.push(`/pet/${petId}`);
     },

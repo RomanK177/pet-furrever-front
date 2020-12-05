@@ -15,11 +15,10 @@
     </div>
     <div class="homepage-pet-list container">
       <div class="most-liked-pets flex align-end space-between">
-      <h2 class="most-liked-of-the-week">
-        Most liked Pets Available For Adoption
-      </h2>
-      <router-link to="/pet" class="all-pets-link"
-            >View All Pets</router-link>
+        <h2 class="most-liked-of-the-week">
+          Most liked Pets Available For Adoption
+        </h2>
+        <router-link to="/pet" class="all-pets-link">View All Pets</router-link>
       </div>
       <pet-list
         v-if="petsForPreview"
@@ -57,10 +56,10 @@
           <div class="testimony-p">
             <p>
               Hello! My name is Sarah, and I adopted my incredible dog named
-              Martin from <span>"Dog Luvers"</span>. He saved me in so many ways. Walking him
-              every morning really gave me a purpose to get out of bed each
-              morning. His uncoditional love truly changed me. Please adopt and
-              save a life while improving your own!
+              Martin from <span>"Dog Luvers"</span>. He saved me in so many
+              ways. Walking him every morning really gave me a purpose to get
+              out of bed each morning. His uncoditional love truly changed me.
+              Please adopt and save a life while improving your own!
             </p>
           </div>
         </div>
@@ -72,11 +71,10 @@
           <div class="testimony-p">
             <p>
               Hi, I'm Dom and I adopted this stallion of a dog named Kita from
-              <span>"Adopt-A-Pup Rescue"</span>. I couldn't imagine my life without this
-              little dude. Adopting is the best
-              decision I've ever made, and Pet Furrever made this proccess so
-              easy and delightful. Thank you so much Pet Furrever and
-              Adop-A-Pup.
+              <span>"Adopt-A-Pup Rescue"</span>. I couldn't imagine my life
+              without this little dude. Adopting is the best decision I've ever
+              made, and Pet Furrever made this proccess so easy and delightful.
+              Thank you so much Pet Furrever and Adop-A-Pup.
             </p>
           </div>
         </div>

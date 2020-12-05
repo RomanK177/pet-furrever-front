@@ -56,8 +56,24 @@
     }
 }
 
-.adopter-details {
-    padding-top: 100px;
+.requests-header {
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+// .requsted-id {
+//     width: 50px;
+// }
+.requsted-by {
+    width: 100px;
+}
+
+.requsted-pet {
+    width: 100px;
+}
+
+.requsted-at {
+    width: 150px;
 }
 
 .adoption-request-list {
