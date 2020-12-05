@@ -197,6 +197,9 @@
     }
     .requsted-by {
         width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
     .requsted-pet {
         width: 70px;
