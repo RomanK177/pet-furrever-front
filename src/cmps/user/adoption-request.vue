@@ -9,7 +9,7 @@
 
     <ul class="adoption-request-list" v-if="requests && showList">
       <li>
-        <div class="requests-header">
+        <div class="requests-header flex">
           <span class="requsted-by">From</span>
           <span class="requsted-pet">Pet to adopt</span>
           <span class="requsted-at">Date</span>
