@@ -48,11 +48,11 @@ export const petStore = {
             commit({ type: 'setPets', pets })
         },
         async savePet({ commit }, { pet }) {
-            console.log('updated pet in store')
+            console.log('updated pet in store', pet)
             const action = (pet._id) ? 'updatePet' : 'savePet';
             const savedPet = await petService.savePet(pet)
             commit({ type: action, pet: savedPet });
-            return savedPet;
+            // return savedPet;
         },
         async deletePet({ commit }, payload) {
             const removedPet = petService.removePet(payload.petId)
@@ -75,10 +75,11 @@ export const petStore = {
             return addedComment;
         },
         async addTreat({ commit }, { petId }) {
-            const addedTreat = await petService.addTreat(petId);
+            // const addedTreat = await petService.addTreat(petId);
             const pet = await petService.getPetById(petId);
+            pet.numOfTreats++
             commit({ type: 'updatePet', pet })
-            return addedTreat;
+            return pet;
         },
     },
 }

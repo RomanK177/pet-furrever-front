@@ -34,14 +34,18 @@ export default {
   },
   methods: {
     addTreat() {
-      this.$emit("addTreat", this.pet._id);
+      // this.$emit("addTreat", this.pet._id);
       this.treat = true;
       this.storedLikes.push(this.pet._id);
       utilService.storeToStorage("likes_db", this.storedLikes);
-      socketService.emit("treats newtreat");
-      console.log("petId", this.pet._id);
-      console.log("after socket emit", this.pet.numOfTreats);
+      socketService.emit("treats newTreat", this.pet);
+      // console.log("petId", this.pet._id);
+      // console.log("after socket emit", this.pet.numOfTreats);
     },
+    // addTreatToSocket(){
+    //   socketService.emit("treats newtreat");
+
+    // }
   },
   computed: {
     treatSrc() {
@@ -67,14 +71,6 @@ export default {
       ? true
       : false;
 
-    socketService.setup();
-    console.log(this.pet._id)
-    socketService.emit("treats topic", this.pet._id);
-    socketService.on('treats addTreat', this.addTreat);
-  },
-  destroyed() {
-    socketService.off("treats addTreat", this.addTreat);
-    socketService.terminate();
   },
   components: {
     socketService

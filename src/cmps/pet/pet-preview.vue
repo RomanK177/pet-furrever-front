@@ -24,7 +24,7 @@
           :to="`/user/${pet.owner._id}`"
           >{{ pet.owner.fullName }}</router-link
         >
-        <pet-likes :pet="pet" @addTreat="emitAddTreat" />
+        <pet-likes :pet="pet" />
       </div>
     </div>
     <span class="adopted" v-if="pet.adoptedAt">ADOPTED</span>
@@ -43,11 +43,6 @@ export default {
     return {
       imgUrl: null,
     };
-  },
-  methods: {
-    emitAddTreat(petId) {
-      this.$emit("addTreat", petId);
-    },
   },
   computed: {},
   created() {
