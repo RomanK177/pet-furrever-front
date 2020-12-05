@@ -77,7 +77,10 @@ export default {
     },
     requests() {
       let filteredReqs = this.$store.getters.getAdoptionRequests.filter(
-        (req) => req.user._id === this.$store.getters.getLoggedInUser._id
+        (req) => {
+          return req.adopter._id === this.$store.getters.getLoggedInUser._id ||
+                 req.adopter._id === this.$store.getters.getLoggedInUser._id;
+        }
       );
       return filteredReqs;
     },
