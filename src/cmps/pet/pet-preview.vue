@@ -4,22 +4,23 @@
     <img class="card-img" v-if="pet.imgUrls" :src="imgUrl" />
     <!-- <div class="card-info flex column space-between"> -->
     <div class="card-info flex column space-between">
-        <h3 class="flex">{{ pet.name }}</h3>
-        <img
-          class="svg-symbol male"
-          v-if="pet.gender === 'male'"
-          src="../../assets/svgs/male-symbol.svg"
-          alt=""
-        />
-        <img
-          class="svg-symbol female"
-          v-if="pet.gender === 'female'"
-          src="../../assets/svgs/female-symbol.svg"
-          alt=""
-        />
+      <h3 class="flex">{{ pet.name }}</h3>
+      <img
+        class="svg-symbol male"
+        v-if="pet.gender === 'male'"
+        src="../../assets/svgs/male-symbol.svg"
+        alt=""
+      />
+      <img
+        class="svg-symbol female"
+        v-if="pet.gender === 'female'"
+        src="../../assets/svgs/female-symbol.svg"
+        alt=""
+      />
       <p class="pet-description">{{ pet.description }}</p>
       <div class="owner-treats flex space-between align-center">
         <router-link
+          class="pet-card-owner-link"
           @click.native="$event.stopImmediatePropagation()"
           :to="`/user/${pet.owner._id}`"
           >{{ pet.owner.fullName }}</router-link

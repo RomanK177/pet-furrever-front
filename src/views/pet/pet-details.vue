@@ -132,7 +132,7 @@ export default {
         (adoption) => adoption.pet._id === this.pet._id
       );
       const isSentRequest = filteredAdoptions.some(
-        (adoption) => adoption.user._id === this.loggedInUser._id
+        (adoption) => adoption.adopter._id === this.loggedInUser._id
       );
       this.isActive = !isSentRequest;
     },

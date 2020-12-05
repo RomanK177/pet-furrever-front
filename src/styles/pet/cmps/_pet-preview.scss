@@ -39,6 +39,11 @@ $sexSymbolSize:20px;
             font-weight: bold;
             // padding-left: 10px;
         }
+        & .pet-card-owner-link {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
     }
     & .adopted {
         position: absolute;
@@ -53,10 +58,9 @@ $sexSymbolSize:20px;
     }
 }
 
-.owner-treats{
+.owner-treats {
     font-size: .8rem;
 }
-
 
 .card-img {
     // height: 260px;
