@@ -17,6 +17,9 @@ export const userStore = {
         setUser(state, { user }) {
             state.loggedInUser = user;
         },
+        setUsers(state, { users }) {
+            state.users = users;
+        },
         saveUser(state, { user }) {
             state.users.unshift(user)
         },
@@ -33,45 +36,78 @@ export const userStore = {
                 user
             })
         },
+        async loadUsers(context) {
+            try {
+                const users = await userService.getUsers();
+                context.commit({ type: 'setUsers', users });
+                return users;
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
+        },
         async signUp({ commit }, { userCred }) {
-            const user = await userService.signUp(userCred);
-            commit({
-                type: 'setUser',
-                user
-            });
-            return user;
+            try {
+                const user = await userService.signUp(userCred);
+                commit({
+                    type: 'setUser',
+                    user
+                });
+                return user;
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
         },
         async login({ commit }, { userCred }) {
-            const user = await userService.login(userCred);
-            commit({
-                type: 'setUser',
-                user
-            });
-            return user;
+            try {
+                const user = await userService.login(userCred);
+                commit({
+                    type: 'setUser',
+                    user
+                });
+                return user;
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
         },
         async logout({ commit }) {
-            await userService.logout();
-            commit({
-                type: 'setUser',
-                user: null
-            })
+            try {
+                await userService.logout();
+                commit({
+                    type: 'setUser',
+                    user: null
+                })
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
         },
         async getUserById({ commit }, { userId }) {
-            const user = await userService.getById(userId);
-            return user;
+            try {
+                const user = await userService.getById(userId);
+                return user;
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
         },
         async updateUser({ commit }, { savedUser }) {
-            const user = await userService.update(savedUser);
-            commit({
-                type: 'setUser',
-                user: savedUser
-            })
-            return user;
+            try {
+                const user = await userService.update(savedUser);
+                commit({
+                    type: 'updateUser',
+                    user: savedUser
+                })
+                return user;
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
         },
         async updateFavorites({ commit }, { isFavorite, petId }) {
-            const user = await userService.updateFavorites(isFavorite, petId);
-            commit({ type: 'setUser', user });
-            return user;
+            try {
+                const user = await userService.updateFavorites(isFavorite, petId);
+                commit({ type: 'updateUser', user });
+                return user;
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
         },
         // async updateFavorites({ commit }, { isFavorite ,petId }) {
         //     console.log(isFavorite, 'store isfav')
@@ -80,15 +116,24 @@ export const userStore = {
         //     return user;
         // },
         async saveUser({ commit }, { user }) {
-            const action = (user._id) ? 'updateUser' : 'saveUser';
-            const savedUser = await userService.update(user)
-            commit({ type: action, user: savedUser });
-            return savedUser;
+            try {
+                const action = (user._id) ? 'updateUser' : 'saveUser';
+                const savedUser = await userService.update(user)
+                commit({ type: action, user: savedUser });
+                return savedUser;
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
         },
         async addReview({ commit }, { ownerId, review }) {
-            const user = await userService.addReview(ownerId, review);
-            // commit({ type: 'updateUser', user });
-            return user;
+            try {
+                const reviews = await userService.addReview(ownerId, review);
+                const owner = await userService.getById(ownerId);
+                commit({ type: 'updateUser', user: owner });
+                return reviews;
+            } catch (err) {
+                console.error('Cannot send message.', err)
+            }
         },
     },
 }

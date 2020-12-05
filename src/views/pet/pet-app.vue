@@ -67,7 +67,7 @@ export default {
     await this.$store.dispatch({ type: "loadPets" });
     // this.$store.dispatch({ type: "loadAdoptionRequests" });
 
-    // this.$store.dispatch({ type: "loadUsers" });
+    await this.$store.dispatch({ type: "loadUsers" });
   },
 };
 </script>
