@@ -17,6 +17,9 @@ export const userStore = {
         setUser(state, { user }) {
             state.loggedInUser = user;
         },
+        setUsers(state, { users }) {
+            state.users = users;
+        },
         saveUser(state, { user }) {
             state.users.unshift(user)
         },
