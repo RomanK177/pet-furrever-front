@@ -1,6 +1,6 @@
 <template>
   <section class="messages-status">
-    {{ unreadCount }}
+    <!-- {{ unreadCount }} -->
   </section>
 </template>
 
@@ -16,21 +16,21 @@ export default {
     };
   },
   computed: {
-    unreadCount() {
-      let user = this.$store.getters.getLoggedInUser;
-      let userRequests = this.requests.map(request => {
-        if (user.userType === "owner") {
-          return request.owner._id === user._id;
-        } else {
-          return request.adopter._id === user._id;
-        }
-        this.unreadMessages = userRequests.filter(request =>{
-            return request.isRead === false;
-        })
-      });
-        if (this.unreadMessages.length == 0) return "";
-        return this.unreadMessages.length;
-    },
+    // unreadCount() {
+    //   let user = this.$store.getters.getLoggedInUser;
+    //   let userRequests = this.requests.map(request => {
+    //     if (user.userType === "owner") {
+    //       return request.owner._id === user._id;
+    //     } else {
+    //       return request.adopter._id === user._id;
+    //     }
+    //     this.unreadMessages = userRequests.filter(request =>{
+    //         return request.isRead === false;
+    //     })
+    //   });
+    //     if (this.unreadMessages.length == 0) return "";
+    //     return this.unreadMessages.length;
+    // },
   },
   created() {
     // eventBus.$on("mail-readed", () => {
