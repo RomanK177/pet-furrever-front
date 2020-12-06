@@ -112,6 +112,11 @@ export default {
     },
     async sendRequest() {
       const petId = this.pet._id;
+      // console.log(
+      //   "🚀 ~ file: pet-details.vue ~ line 115 ~ sendRequest ~ petId",
+      //   petId
+      // );
+
       await this.$store.dispatch({
         type: "addAdoptionRequest",
         petId,
