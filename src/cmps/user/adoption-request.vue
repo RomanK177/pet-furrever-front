@@ -55,20 +55,16 @@ export default {
       return pendingRequests;
     },
     emitUpdateAdoptionRequest(adoption) {
-      console.log("made it to adoption-request", adoption);
       this.$emit("updateAdoption", adoption);
       // this.$emit("updatePet", pet);
     },
     emitAddMessage(adoptionId, message) {
-      console.log("in adoption request", message, adoptionId);
       this.$emit("addMessage", adoptionId, message);
     },
     emitRemoveAdoptionRequest(adoption) {
       this.$emit("removeAdoption", adoption);
-      console.log("deleted in request", adoption);
     },
     emitUpdatePet(pet) {
-      console.log("pet", pet);
       this.$emit("updatePet", pet);
     },
     filteredRequests() {
@@ -97,7 +93,6 @@ export default {
         return counter;
       });
       const activeRequests = this.requests.length - counter;
-      console.log(activeRequests);
       return activeRequests;
     },
     isOwner() {
