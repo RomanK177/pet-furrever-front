@@ -4,7 +4,7 @@
     <nav class="navbar flex align-center">
       <router-link to="/pet" class="nav-link">All Pets</router-link>
       <div @click.stop="toggleUserMenu">
-        <messages-status :requests="requests" />
+        <!-- <messages-status :requests="requests" /> -->
         <avatar v-if="loggedinUser" :name="loggedinUserName" />
 
         <div
