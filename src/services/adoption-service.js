@@ -8,7 +8,8 @@ export const adoptionService = {
     updateAdoptionRequest,
     removeAdoptionRequest,
     addMessage,
-    getAdoptionRequestById
+    getAdoptionRequestById,
+    markMessageAsUnread
 }
 
 
@@ -30,13 +31,16 @@ function updateAdoptionRequest(adoptionRequest) {
 
 function removeAdoptionRequest(adoptionRequestId) {
     return httpService.delete(`adoptions/${adoptionRequestId}`);
-
 }
 
 async function addMessage(adoptionId, message) {
     return httpService.post(`adoptions/${adoptionId}/messages`, { message });
 }
 
+async function markMessageAsUnread(message, adoptionId) {
+    debugger
+    return httpService.post(`adoptions/${adoptionId}/messages/read`, message)
+}
 
 
 

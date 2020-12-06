@@ -1,9 +1,10 @@
 <template>
   <section class="message-preview">
     <!-- <ul class="flex space-between" :class="readUnread"> -->
-      <div class="messages flex column">
+    <div class="messages flex column">
       <div class="message-from-date">
-       <span class="bold"> {{ message.from }}</span> <span class="message-date">{{ message.date }}</span>
+        <span class="bold"> {{ message.from }}</span>
+        <span class="message-date">{{ date }}</span>
       </div>
       <div>
         {{ message.txt }}
@@ -22,16 +23,13 @@ export default {
   props: {
     message: Object,
   },
-  //   methods: {
-  //       markAsUnread(){
-
-  //       }
-  //   },
+  methods: {
+    // markMessageAsUnread() {
+    //   this.$emit("markMessageAsUnread", this.message);
+    // },
+  },
   created() {
-    console.log(this.message)
-    // setTimeout(() => {
-    //   this.message.isRead = true;
-    // }, 2000);
+    // this.markMessageAsUnread();
   },
   computed: {
     // readUnread() {
@@ -39,10 +37,10 @@ export default {
     //   if (this.message.from !== loggedInUser.fullName)
     //     return { bold: !this.message.isRead };
     // },
-    // date() {
-    //   let date = new Date(this.this.message.date);
-    //   return d.toDateString();
-    // },
+    date() {
+      let date = new Date(this.message.date);
+      return date.toDateString();
+    },
   },
 };
 </script>
