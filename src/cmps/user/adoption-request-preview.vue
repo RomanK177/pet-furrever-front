@@ -25,7 +25,7 @@
       <span class="requsted-status">{{ statusCap }}</span>
     </div>
     <div class="flex align-center content-center">
-      <div class="request-btns">
+      <div class="request-btns relative">
         <!-- <button class="message-btn" @click="toggleShowMessages">Message</button> -->
         <router-link
           class="message-btn"
@@ -34,6 +34,7 @@
           :to="`/adoption/${request._id}`"
           >Message</router-link
         >
+        <messages-status :messages="request.messages" />
         <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
       </div>
       <div v-if="canApprove" class="request-btns">
@@ -67,6 +68,8 @@
 
 <script>
 import { petService } from "../../services/pet-service.js";
+import messagesStatus from '../../cmps/user/messages-status.vue';
+
 export default {
   name: "adoptionrequestPreview",
   props: {
@@ -224,12 +227,11 @@ export default {
     },
   },
   async created() {
-    console.log(this.request);
     const pet = await petService.getPetById(this.request.pet._id);
     this.pet = pet;
-    console.log("req", this.request);
-    // console.log("pet", this.pet);
-    // console.log("user", this.user);
   },
+  components:{
+    messagesStatus
+  }
 };
 </script>
