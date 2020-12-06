@@ -94,6 +94,7 @@
     justify-content: center;
     gap: 10px;
     padding-top: 10px;
+    margin-bottom: 20px;
 }
 
 .adopt-reasons {
@@ -265,4 +266,26 @@
         margin-top: 5px;
         font-size: 13px;
     }
+
+    .heart{
+        text-align: center;
+    }
+
+    .testimony{
+        flex-direction: column;
+        
+        h1{
+            margin-bottom: 0;
+        }
+
+        p{
+            margin-top: 0;
+        }
+    }
+    .testimony img{
+        height: 100px;
+        width: 100px;
+        margin: 0 auto 
+    }
+
 }
