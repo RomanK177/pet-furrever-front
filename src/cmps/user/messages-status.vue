@@ -1,6 +1,6 @@
 <template>
-  <section class="messages-status">
-    <!-- {{ unreadCount }} -->
+  <section v-if="unreadCount" class="messages-status badge">
+    {{ unreadCount }}
   </section>
 </template>
 
@@ -8,7 +8,7 @@
 import { eventBus } from "../../services/event-bus-service.js";
 export default {
   props: {
-    requests: Array,
+    messages: Array,
   },
   data() {
     return {
@@ -16,21 +16,17 @@ export default {
     };
   },
   computed: {
-    // unreadCount() {
-    //   let user = this.$store.getters.getLoggedInUser;
-    //   let userRequests = this.requests.map(request => {
-    //     if (user.userType === "owner") {
-    //       return request.owner._id === user._id;
-    //     } else {
-    //       return request.adopter._id === user._id;
-    //     }
-    //     this.unreadMessages = userRequests.filter(request =>{
-    //         return request.isRead === false;
-    //     })
-    //   });
-    //     if (this.unreadMessages.length == 0) return "";
-    //     return this.unreadMessages.length;
-    // },
+    unreadCount() {
+      var loggedInUser = this.$store.getters.getLoggedInUser;
+      if (!this.messages || !this.messages.length) {
+        return;
+      } else {
+        let unreadMessages = this.messages.filter((message) => {
+          return message.isReadReceiver === false && loggedInUser.fullName !== message.from;
+        });
+        return unreadMessages.length;
+      }
+    },
   },
   created() {
     // eventBus.$on("mail-readed", () => {
