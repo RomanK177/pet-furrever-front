@@ -27,13 +27,13 @@
             font-weight: bold;
             padding: 10px 0;
             overflow: auto;
-            white-space: nowrap
+            white-space: nowrap;
         }
         & li {
             margin-bottom: 16px;
             & .request-info {
                 overflow: auto;
-                white-space: nowrap
+                white-space: nowrap;
             }
             & .adoption-request-action {
                 font-size: 13px;
@@ -54,30 +54,27 @@
 // .adoption-request-preview {
 //     flex-wrap: wrap;
 // }
-.requsted-id {
-    width: 120px;
-    display: none;
-}
+// .requsted-id {
+//     width: 120px;
+//     display: none;
+// }
 
-.requsted-by {
-    width: 200px;
-    display: inline-block;
-}
+// .requsted-by {
+//     display: inline-block;
+// }
 
-.requsted-pet {
-    width: 130px;
-    display: inline-block;
-}
+// .requsted-pet {
+//     display: inline-block;
+// }
 
-.requsted-at {
-    width: 100px;
-    display: inline-block;
-}
+// .requsted-at {
+//     display: inline-block;
+// }
 
-.requsted-status {
-    width: 80px;
-    display: inline-block;
-}
+// .requsted-status {
+//     width: 80px;
+//     display: inline-block;
+// }
 
 .approve,
 .decline {
@@ -122,16 +119,26 @@
     font-size: 1rem;
 }
 
+.delete-btn{
+    & img{
+        width: unset;
+    }
+}
+
 .message-btn {
-    background-color: orange;
-    border: 1px solid orange;
-    color: white;
+    // background-color: orange;
+    // border: 1px solid orange;
+    // color: white;
     border-radius: 3px;
-    font-size: 1rem;
+    // font-size: 1rem;
     // margin-bottom: 4px;
     border-radius: 3px;
     margin-left: 5px;
     padding: 1px 6px;
+
+    & img{
+        width: unset;
+    }
 }
 
 // @media only screen and (max-width: 650px) {
@@ -221,3 +228,32 @@
         padding: 3px 0;
     }
 }
+
+// .button-badge {
+//     background-color: #1779ba;
+//     text-decoration: none;
+//     padding: 1rem 1.5rem;
+//     position: relative;
+//     display: inline-block;
+//     border-radius: .2rem;
+//     transition: all ease 0.4s;
+//   }
+
+.button-badge:hover {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .badge {
+    position: absolute;
+    top: -14px;
+    right: -4px;
+    font-size: .8em;
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    background: red;
+    color: white;
+    font-weight: bold;
+  }
