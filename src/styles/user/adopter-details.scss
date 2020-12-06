@@ -1,0 +1,13 @@
+.adopter-details {
+    margin: 0 auto;
+    & .adopter-content {
+        width: 300px;
+        padding: 0 10px;
+        margin: 10px auto;
+        border-radius: 5px;
+        border: 1px solid rgba(124, 121, 121, 0.657);
+        & h1 {
+            font-size: 25px;
+        }
+    }
+}

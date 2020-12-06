@@ -8,30 +8,47 @@
       @updateAdoption="updateAdoption"
       v-if="checkIfOwner"
     />
-    <h1>Welcome {{ adopter.fullName }}!</h1>
-    <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
+    <div class="adopter-content">
+      <h1>Hi, I'm {{ adopter.fullName }}!</h1>
+      <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
       >Edit your profile</router-link
     > -->
-    <br />
-    <img class="user-profile-picture" :src="imgUrlProfile" alt="profile logo" />
-    <p><span class="bold">Full name:</span> {{ adopter.fullName }}</p>
-    <p><span class="bold">Email:</span> {{ adopter.email }}</p>
-    <p><span class="bold">Telephone:</span> {{ adopter.tel }}</p>
-    <p>
-      <span class="bold">Date of birth:</span>
-      {{ adopter.adopterData.dateOfBirth }}
-    </p>
-    <p class="bold">
-      <span v-if="adopter.ownPet">Currrently owns a pet</span
-      ><span v-else>Doesnt own a pet at the moment</span>
-    </p>
-    <p class="bold">
-      <span v-if="adopter.ownedPet">Has owned a pet before</span
-      ><span v-else>Has never owned a pet before</span>
-    </p>
-    <p>{{ adopter.familyStatus }}</p>
-    <p>{{ adopter.houseStatus }}</p>
-    <!-- Add tags from elemnts -->
+      <br />
+      <img
+        class="user-profile-picture"
+        :src="imgUrlProfile"
+        alt="profile logo"
+      />
+      <!-- <p><span class="bold">Full name:</span> {{ adopter.fullName }}</p>
+      <p> -->
+        <br>
+        <span class="bold"
+          ><img src="../../assets/svgs/email.svg" alt="" class="email-svg"
+        /></span>
+        {{ adopter.email }}
+      </p>
+      <p>
+        <span class="bold">
+          <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg"
+        /></span>
+        {{ adopter.tel }}
+      </p>
+      <p>
+        <span class="bold">Date of birth:</span>
+        {{ adopter.adopterData.dateOfBirth }}
+      </p>
+      <p class="bold">
+        <span v-if="adopter.ownPet">Currrently owns a pet</span
+        ><span v-else>Doesnt own a pet at the moment</span>
+      </p>
+      <p class="bold">
+        <span v-if="adopter.ownedPet">Has owned a pet before</span
+        ><span v-else>Has never owned a pet before</span>
+      </p>
+      <p>{{ adopter.familyStatus }}</p>
+      <p>{{ adopter.houseStatus }}</p>
+      <!-- Add tags from elemnts -->
+    </div>
   </section>
 </template>
 
@@ -64,7 +81,7 @@ export default {
   computed: {
     imgUrlProfile() {
       if (!this.adopter.imgUrlProfile) {
-        return (this.adopter.imgUrlProfile = require("../../assets/imgs/profile-logo.png"));
+        return (this.adopter.imgUrlProfile = require("../../assets/imgs/person/alex.jpg"));
       } else {
         return this.adopter.imgUrlProfile;
       }

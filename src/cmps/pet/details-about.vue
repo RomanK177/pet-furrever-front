@@ -10,11 +10,11 @@
           @addTreat="emitAddTreat"
           class="details-treat-likes"
         />
-        <pet-favorite
+        <!-- <pet-favorite
           :pet="pet"
           :loggedInUser="loggedInUser"
           @updateFavorites="emitUpdateFavorites"
-        />
+        /> -->
         <a href="https://www.facebook.com/login" target="_blank" class="share">
           <img src="../../assets/svgs/share.svg" alt="" class="share-svg" />
         </a>
