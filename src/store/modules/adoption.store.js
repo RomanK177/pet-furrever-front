@@ -39,6 +39,7 @@ export const adoptionStore = {
             try {
                 const adoptionRequest = await adoptionService.addAdoptionRequest(petId);
                 commit({ type: 'addAdoptionRequest', adoptionRequest });
+                console.log('commited adoption request')
                 return adoptionRequest;
             } catch (err) {
                 console.log('Cannot add request', err);

@@ -7,3 +7,30 @@
 .rendered-messages-header {
     border-bottom: 1px solid gray;;
 }
+
+.message-date{
+    font-size: 0.6rem;
+}
+
+.messages{
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+}
+
+.all-messages{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.orange {
+    color: orange;
+}
+
+.message-send{
+    margin-top: .83em;
+    margin-bottom: 600px;
+}

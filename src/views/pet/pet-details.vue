@@ -126,6 +126,7 @@ export default {
         type: "addAdoptionRequest",
         petId,
       });
+
       this.allAdoptions();
     },
     open() {
@@ -183,7 +184,7 @@ export default {
     });
     this.pet = pet;
      socketService.setup();
-    socketService.emit("treats topic", pet._id);
+    socketService.emit("treats topic", 'pet-details');
     socketService.on("treats addTreat", this.addTreat);
     this.pet.adoptedAt ? (this.isAdopted = true) : (this.isAdopted = false);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
