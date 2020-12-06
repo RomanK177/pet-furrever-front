@@ -7,7 +7,6 @@
       <div class="fav-treat-share flex align-center">
         <pet-likes
           :pet="pet"
-          @addTreat="emitAddTreat"
           class="details-treat-likes"
         />
         <!-- <pet-favorite
@@ -59,6 +58,7 @@
 <script>
 import petLikes from "../pet/pet-likes.vue";
 import petFavorite from "../pet/pet-favorite.vue";
+import socketService from '../../services/socket-service.js';
 export default {
   name: "detailAbout",
   props: {
@@ -70,9 +70,11 @@ export default {
     },
   },
   methods: {
-    emitAddTreat(pet) {
-      this.$emit("addTreat", pet);
-    },
+    // emitAddTreat(pet) {
+    //   // this.$emit("addTreat", pet);
+    //   // socketService.emit("treats newTreat", this.pet);
+
+    // },
     emitUpdateFavorites(user) {
       this.$emit("updateFavorites", user);
     },

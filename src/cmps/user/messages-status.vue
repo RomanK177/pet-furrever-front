@@ -12,7 +12,7 @@ export default {
   },
   data() {
     return {
-      unreadMessages: 0,
+      unreadMessages: [],
     };
   },
   computed: {
@@ -24,6 +24,7 @@ export default {
         let unreadMessages = this.messages.filter((message) => {
           return message.isReadReceiver === false && loggedInUser.fullName !== message.from;
         });
+        // this.unreadMessages.push(unreadMessages.length)
         return unreadMessages.length;
       }
     },

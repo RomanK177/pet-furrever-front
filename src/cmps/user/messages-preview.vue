@@ -1,11 +1,19 @@
 <template>
-  <section>
+  <section class="message-preview">
     <!-- <ul class="flex space-between" :class="readUnread"> -->
-    <ul class="flex space-between">
+      <div class="messages flex column">
+      <div class="message-from-date">
+       <span class="bold"> {{ message.from }}</span> <span class="message-date">{{ message.date }}</span>
+      </div>
+      <div>
+        {{ message.txt }}
+      </div>
+    </div>
+    <!-- <ul class="flex space-between">
       <li>{{ message.from }}</li>
       <li>{{ message.txt }}</li>
       <li>{{ message.date }}</li>
-    </ul>
+    </ul> -->
   </section>
 </template>
 
@@ -20,6 +28,7 @@ export default {
   //       }
   //   },
   created() {
+    console.log(this.message)
     // setTimeout(() => {
     //   this.message.isRead = true;
     // }, 2000);

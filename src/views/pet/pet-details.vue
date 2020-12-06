@@ -7,7 +7,6 @@
           <details-about
             :pet="pet"
             :loggedInUser="getLoggedInUser"
-            @addTreat="addTreat"
             @updateFavorites="updateFavorites"
           ></details-about>
         </div>
@@ -85,6 +84,7 @@ import petComments from "../../cmps/pet/pet-comments.vue";
 import petFavorite from "../../cmps/pet/pet-favorite";
 import { utilService } from "../../services/util-service.js";
 import { userService } from "../../services/user-service.js";
+import socketService from '../../services/socket-service.js'
 export default {
   name: "petDetails",
   data() {
@@ -104,12 +104,22 @@ export default {
         this.sendRequest();
       }
     },
-    addTreat(petId) {
-      this.$store.dispatch({
+    async addTreat(pet) {
+      console.log("pet", pet);
+      const newPet = await this.$store.dispatch({
         type: "addTreat",
-        petId: petId,
+        petId: pet._id,
       });
-    },
+      await this.$store.dispatch({
+        type: "savePet",
+        pet: newPet,
+      });    },
+    // addTreat(petId) {
+    //   this.$store.dispatch({
+    //     type: "addTreat",
+    //     petId: petId,
+    //   });
+    // },
     async sendRequest() {
       const petId = this.pet._id;
       // console.log(
@@ -121,6 +131,7 @@ export default {
         type: "addAdoptionRequest",
         petId,
       });
+
       this.allAdoptions();
     },
     open() {
@@ -177,6 +188,9 @@ export default {
       petId,
     });
     this.pet = pet;
+     socketService.setup();
+    socketService.emit("treats topic", 'pet-details');
+    socketService.on("treats addTreat", this.addTreat);
     this.pet.adoptedAt ? (this.isAdopted = true) : (this.isAdopted = false);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
     await this.$store.dispatch({ type: "loadAdoptionRequests" });
@@ -186,6 +200,10 @@ export default {
     } else {
       this.allAdoptions();
     }
+  },
+  destroyed() {
+    socketService.off("treats addTreat", this.addTreat);
+    socketService.terminate();
   },
   components: {
     notLoggedIn,
