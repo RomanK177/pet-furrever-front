@@ -7,7 +7,7 @@
       }})
     </p>
 
-    <ul class="adoption-request-list" v-if="requests && showList">
+    <ul class="adoption-request-list" v-if="requests">
       <li>
         <div class="requests-header flex">
           <span class="requsted-by">From</span>

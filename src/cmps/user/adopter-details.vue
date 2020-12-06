@@ -1,13 +1,6 @@
 
 <template>
-  <section v-if="adopter" class="adopter-details">
-    <adoption-request
-      :requests="requests"
-      :user="adopter"
-      @addMessage="addMessage"
-      @updateAdoption="updateAdoption"
-      v-if="checkIfOwner"
-    />
+  <section v-if="adopter" class="adopter-details flex">
     <div class="adopter-content">
       <h1>Hi, I'm {{ adopter.fullName }}!</h1>
       <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
@@ -49,6 +42,13 @@
       <p>{{ adopter.houseStatus }}</p>
       <!-- Add tags from elemnts -->
     </div>
+    <adoption-request
+      :requests="requests"
+      :user="adopter"
+      @addMessage="addMessage"
+      @updateAdoption="updateAdoption"
+      v-if="checkIfOwner"
+    />
   </section>
 </template>
 

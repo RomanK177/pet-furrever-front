@@ -104,17 +104,17 @@ import { userService } from "../../services/user-service.js";
 import adoptionRequest from "./adoption-request.vue";
 import ownerReviewUpdated from "../user/owner-reviewUpdated";
 import petList from "../pet/pet-list";
-import socketService from '../../services/socket-service.js';
+import socketService from "../../services/socket-service.js";
 
 export default {
   props: {
     owner: Object,
     // user: Object
   },
-  data(){
-    return{
-      pets: null
-    }
+  data() {
+    return {
+      pets: null,
+    };
   },
   methods: {
     async addReview(review) {
@@ -220,18 +220,18 @@ export default {
       else return require(`../../assets/imgs/owners/${imgUrl}`);
     });
     this.owner.ownerData.imgUrls = newUrls;
-     socketService.setup();
+    socketService.setup();
     socketService.emit("treats topic", "owner-details");
     socketService.on("treats addTreat", this.addTreat);
     const pets = await this.$store.dispatch({ type: "loadPets" });
-    this.pets = pets
+    this.pets = pets;
   },
   components: {
     ownerReviewUpdated,
     adoptionRequest,
     petList,
   },
-   destroyed() {
+  destroyed() {
     socketService.off("treats addTreat", this.addTreat);
     socketService.terminate();
   },
