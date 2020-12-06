@@ -7,7 +7,7 @@
       :class="{ bold: isPending }"
       v-if="isCancelled"
     > -->
-    <div class="request-info">
+    <div class="request-info flex">
       <span class="requsted-by">
         <router-link :to="`/user/${request.adopter._id}`" v-if="isOwner">{{
           request.adopter.name

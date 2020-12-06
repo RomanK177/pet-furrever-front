@@ -1,5 +1,6 @@
 .adoption-request {
     margin: 10px 0px;
+    padding-top: 60px;
     .request-togle {
         background: none;
         margin: 10px 0;
@@ -59,7 +60,7 @@
 }
 
 .requsted-by {
-    width: 150px;
+    width: 200px;
     display: inline-block;
 }
 
@@ -176,6 +177,7 @@
     }
     .adoption-request {
         margin: 0 auto;
+        padding-top: 0px;
         & .request-togle {
             font-weight: bold;
             font-size: 20px;
@@ -197,9 +199,12 @@
     }
     .requsted-by {
         width: 100px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
     .requsted-pet {
-        width: 70px;
+        width: 100px;
     }
     .requsted-at {
         width: 80px;
