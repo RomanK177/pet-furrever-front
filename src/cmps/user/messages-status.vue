@@ -1,5 +1,5 @@
 <template>
-  <section v-if="messages" class="messages-status badge">
+  <section v-if="unreadCount" class="messages-status badge">
     {{ unreadCount }}
   </section>
 </template>
@@ -17,11 +17,12 @@ export default {
   },
   computed: {
     unreadCount() {
+      var loggedInUser = this.$store.getters.getLoggedInUser;
       if (!this.messages || !this.messages.length) {
         return;
       } else {
         let unreadMessages = this.messages.filter((message) => {
-          return message.isReadReceiver === false;
+          return message.isReadReceiver === false && loggedInUser.fullName !== message.from;
         });
         return unreadMessages.length;
       }
