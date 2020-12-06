@@ -68,10 +68,11 @@ export const adoptionStore = {
         },
         async addMessage({ commit }, { adoptionId, message }) {
             try {
+                console.log('in add message in store')
                 const addedMessage = await adoptionService.addMessage(adoptionId, message);
                 const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionId);
                 commit({ type: 'updateAdoption', adoptionRequest })
-                return addedMessage;
+                // return addedMessage;
             } catch (err) {
                 console.error('Cannot send message.', err)
             }
@@ -88,6 +89,7 @@ export const adoptionStore = {
             }
         },
         async getAdoptionById(context, { adoptionId }) {
+            console.log('in update request in store')
             const adoption = await adoptionService.getAdoptionRequestById(adoptionId)
             return adoption
         },

@@ -189,7 +189,7 @@ export default {
     });
     this.pet = pet;
      socketService.setup();
-    socketService.emit("treats topic", 'pet-details');
+    socketService.emit("treats topic", this.pet._id);
     socketService.on("treats addTreat", this.addTreat);
     this.pet.adoptedAt ? (this.isAdopted = true) : (this.isAdopted = false);
     this.loggedInUser = this.$store.getters.getLoggedInUser;
