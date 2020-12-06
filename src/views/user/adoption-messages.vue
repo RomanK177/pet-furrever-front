@@ -1,24 +1,27 @@
 <template>
   <section class="adoption-messages container" v-if="request">
-      <h2>Lets Chat About <span class="bold orange">{{ request.pet.name }}</span></h2>
-      <!-- <div class="flex">
+    <h2>
+      Lets Chat About <span class="bold orange">{{ request.pet.name }}</span>
+    </h2>
+    <!-- <div class="flex">
       <div>Messages Between <span class="bold">{{request.owner.name}}</span> and <span class="bold">{{request.adopter.name}}</span></div>
       <div> -->
-      <!-- <ul class="bold flex space-between rendered-messages-header">
+    <!-- <ul class="bold flex space-between rendered-messages-header">
         <li>From</li>
         <li>Message</li>
         <li>Date</li>
       </ul> -->
-      <div class="all-messages">
+    <div class="all-messages">
       <div v-for="(message, index) in request.messages" :key="index">
         <messages-preview :message="message" />
+               <!-- <messages-preview :message="message" @markMessageAsUnread="markMessageAsUnread" /> -->
       </div>
-      </div>
+    </div>
 
-      <form @submit.prevent="addMessage" class="message-send">
-        <input type="text" v-model="messageToAdd.txt" placeholder="Message" />
-        <button>Send</button>
-      </form>
+    <form @submit.prevent="addMessage" class="message-send">
+      <input type="text" v-model="messageToAdd.txt" placeholder="Message" />
+      <button>Send</button>
+    </form>
     <!-- </div> -->
     <!-- </div> -->
   </section>
@@ -65,6 +68,14 @@ export default {
       this.request = request;
       console.log(request);
     },
+    // markMessageAsUnread(message) {
+    //   debugger
+    //   this.$store.dispatch({
+    //     type: "markMessageAsUnread",
+    //     message,
+    //     adoptionRequestId: this.request._id,
+    //   });
+    // },
   },
   async created() {
     const requestId = this.$route.params.id;
@@ -73,7 +84,7 @@ export default {
       adoptionId: requestId,
     });
     this.request = request;
-    console.log('req',this.request)
+    console.log("req", this.request);
 
     const user = this.$store.getters.getLoggedInUser;
     // const user = await this.$store.dispatch({
