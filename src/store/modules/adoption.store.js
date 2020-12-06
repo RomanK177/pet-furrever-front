@@ -32,7 +32,7 @@ export const adoptionStore = {
     actions: {
         async loadAdoptionRequests({ commit }) {
             const adoptions = await adoptionService.query()
-            // console.log('adoptions', adoptions)
+                // console.log('adoptions', adoptions)
             commit({ type: 'setAdoptionRequests', adoptions })
         },
         async addAdoptionRequest({ commit }, { petId }) {
@@ -47,8 +47,10 @@ export const adoptionStore = {
             }
         },
         async updateAdoptionRequest({ commit }, { adoptionRequest }) {
+
             try {
-                console.log('adoptionrequest updated in store')
+
+                // console.log('adoptionrequest updated in store', adoptionRequest)
                 const savedAdoption = await adoptionService.updateAdoptionRequest(adoptionRequest)
                 commit({ type: 'updateAdoption', adoptionRequest: savedAdoption });
                 return savedAdoption;
@@ -56,6 +58,7 @@ export const adoptionStore = {
                 console.error('Cannot save adoption.', err)
             }
         },
+
         async removeAdoptionRequest({ commit }, { adoptionRequest }) {
             try {
                 console.log('remove from store', adoptionRequest)
@@ -72,17 +75,17 @@ export const adoptionStore = {
                 const addedMessage = await adoptionService.addMessage(adoptionId, message);
                 const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionId);
                 commit({ type: 'updateAdoption', adoptionRequest })
-                // return addedMessage;
+                    // return addedMessage;
             } catch (err) {
                 console.error('Cannot send message.', err)
             }
         },
-        async markMessageAsUnread({commit} , {message, adoptionRequestId}) {
+        async markMessageAsUnread({ commit }, { message, adoptionRequestId }) {
             debugger
             try {
                 const readedMessage = await adoptionService.markMessageAsUnread(message, adoptionRequestId);
                 var adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionRequestId);
-                commit({type: 'updateAdoption', adoptionRequest});
+                commit({ type: 'updateAdoption', adoptionRequest });
                 return readedMessage;
             } catch (err) {
                 console.error('Messages cannot unread.', err)
