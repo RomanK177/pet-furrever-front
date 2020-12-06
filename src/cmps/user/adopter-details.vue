@@ -21,12 +21,12 @@
       />
       <!-- <p><span class="bold">Full name:</span> {{ adopter.fullName }}</p>
       <p> -->
-        <br>
-        <span class="bold"
-          ><img src="../../assets/svgs/email.svg" alt="" class="email-svg"
-        /></span>
-        {{ adopter.email }}
-      </p>
+      <br />
+      <span class="bold"
+        ><img src="../../assets/svgs/email.svg" alt="" class="email-svg"
+      /></span>
+      {{ adopter.email }}
+      <!-- </p> -->
       <p>
         <span class="bold">
           <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg"
