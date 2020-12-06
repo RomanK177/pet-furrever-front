@@ -20,7 +20,7 @@ function addAdoptionRequest(petId) {
     return httpService.post(`adoptions`, { petId });
 }
 
-function getAdoptionRequestById(adoptionRequestId){
+function getAdoptionRequestById(adoptionRequestId) {
     return httpService.get(`adoptions/${adoptionRequestId}`);
 }
 
@@ -34,7 +34,7 @@ function removeAdoptionRequest(adoptionRequestId) {
 }
 
 async function addMessage(adoptionId, message) {
-    return httpService.post(`adoptions/${adoptionId}/messages`, {message});
+    return httpService.put(`adoptions/${adoptionId}/messages`, { message });
 }
 
 
