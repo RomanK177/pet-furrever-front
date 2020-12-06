@@ -34,7 +34,7 @@ function removeAdoptionRequest(adoptionRequestId) {
 }
 
 async function addMessage(adoptionId, message) {
-    return httpService.put(`adoptions/${adoptionId}/messages`, { message });
+    return httpService.post(`adoptions/${adoptionId}/messages`, { message });
 }
 
 
