@@ -1,32 +1,39 @@
- 
- 
-<template>
-  <section class="adoption-request-preview flex align-center content-center">
-    <!-- <div
-      class="prev-content flex"
-      :class="{ bold: isPending }"
-      v-if="isCancelled"
-    > -->
-    <div class="request-info flex">
-      <span class="requsted-by">
-        <router-link :to="`/user/${request.adopter._id}`" v-if="isOwner">{{
-          request.adopter.name
-        }}</router-link>
-        <router-link :to="`/user/${request.owner._id}`" v-if="isAdopter">{{
-          request.owner.name
-        }}</router-link>
-      </span>
-      <span class="requsted-pet">
-        <router-link :to="`/pet/${request.pet._id}`">{{
-          request.pet.name
-        }}</router-link>
-      </span>
-      <span class="requsted-at">{{ sentTime }}</span>
-      <span class="requsted-status">{{ statusCap }}</span>
-    </div>
-    <div class="flex align-center content-center">
-      <div class="request-btns relative">
-        <!-- <button class="message-btn" @click="toggleShowMessages">Message</button> -->
+ <template>
+  <ul class="adoption-request-preview flex space-between">
+    <li class="requsted-by" v-if="isOwner">
+      <router-link :to="`/user/${request.adopter._id}`">{{
+        request.adopter.name
+      }}</router-link>
+    </li>
+    <li v-if="isAdopter">
+      <router-link :to="`/user/${request.owner._id}`">{{
+        request.owner.name
+      }}</router-link>
+    </li>
+    <li>
+      <router-link :to="`/pet/${request.pet._id}`">{{
+        request.pet.name
+      }}</router-link>
+    </li>
+    <li>{{ sentTime }}</li>
+    <li class="bold" :class="statusColor">{{ statusCap }}</li>
+    <li>
+      <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
+      <button
+        class="approve-btn"
+        v-if="canApprove"
+        @click="emitUpdateAdoptionRequest(true)"
+      >
+        Approve
+      </button>
+      <button
+        class="decline-btn"
+        v-if="canDecline"
+        @click="emitUpdateAdoptionRequest(false)"
+      >
+        Decline
+      </button>
+      <!-- <button class="relative button-none">
         <router-link
           class="message-btn"
           :request="request"
@@ -35,40 +42,42 @@
           >Message</router-link
         >
         <messages-status :messages="request.messages" />
-        <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
-      </div>
-      <div v-if="canApprove" class="request-btns">
-        <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
-          Approve
-        </button>
-      </div>
-      <div class="request-btns" v-if="canDecline">
-        <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
-          Decline
-        </button>
-      </div>
-      <div v-if="canDelete" class="request-btns">
-        <button class="decline-btn" @click="emitRemoveAdoptionRequest">
-          Delete
-        </button>
-      </div>
-      <div v-if="canCancel" class="request-btns">
-        <button class="decline-btn" @click="emitUpdateAdoptionRequest(false)">
-          Cancel
-        </button>
-        <!-- <el-button
+      </button> -->
+      <button
+        class="relative button-none message-btn"
+        :request="request"
+        :user="user"
+        @click="messages"
+      >
+        <img src="../../assets/imgs/message.png" width="20" height="20"/>
+      <messages-status :messages="request.messages" />
+      </button>
+      <button
+        class="delete-btn button-none"
+        v-if="canDelete"
+        @click="emitRemoveAdoptionRequest"
+      >
+       <img src="../../assets/imgs/garbage.png" width="20" height="20"/>
+      </button>
+      <button
+        class="decline-btn"
+        v-if="canCancel"
+        @click="emitUpdateAdoptionRequest(false)"
+      >
+        Cancel
+      </button>
+    </li>
+    <!-- <el-button
           class="delete-adoption-request"
           @click="emitRemoveAdoptionRequest"
           >Delete</el-button
         > -->
-      </div>
-    </div>
-  </section>
+  </ul>
 </template>
 
 <script>
 import { petService } from "../../services/pet-service.js";
-import messagesStatus from '../../cmps/user/messages-status.vue';
+import messagesStatus from "../../cmps/user/messages-status.vue";
 
 export default {
   name: "adoptionrequestPreview",
@@ -119,6 +128,9 @@ export default {
     toggleShowMessages() {
       this.isShown = !this.isShown;
     },
+    messages() {
+      this.$router.push(`/adoption/${this.request._id}`);
+    },
   },
   computed: {
     sentTime() {
@@ -150,6 +162,15 @@ export default {
         this.request.status.charAt(0).toUpperCase() +
         this.request.status.slice(1)
       );
+    },
+    statusColor(){
+      if(this.request.status === 'pending'){
+        return 'orange';
+      } else if (this.request.status === 'approved'){
+        return 'green';
+      } else {
+        return 'red';
+      }
     },
     getPetById() {
       let pet = this.$store.getters.getPetById(this.request.pet._id);
@@ -230,8 +251,8 @@ export default {
     const pet = await petService.getPetById(this.request.pet._id);
     this.pet = pet;
   },
-  components:{
-    messagesStatus
-  }
+  components: {
+    messagesStatus,
+  },
 };
 </script>

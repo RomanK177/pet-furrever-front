@@ -6,27 +6,24 @@
         amountOfRequests
       }})
     </p>
-
-    <ul class="adoption-request-list" v-if="requests">
-      <li>
-        <div class="requests-header flex">
-          <span class="requsted-by">From</span>
-          <span class="requsted-pet">Pet to adopt</span>
-          <span class="requsted-at">Date</span>
-          <span class="requsted-status">Status</span>
-        </div>
-      </li>
-
-      <li v-for="(request, idx) in requests" :key="idx">
-        <adoption-request-preview
-          @addMessage="emitAddMessage"
-          @updateAdoption="emitUpdateAdoptionRequest"
-          @removeAdoption="emitRemoveAdoptionRequest"
-          :request="request"
-          :user="user"
-        />
-      </li>
-    </ul>
+    <section v-if="requests && showList">
+      <ul class="adoption-request-list requests-header flex space-between">
+        <li>From</li>
+        <li>Pet to adopt</li>
+        <li>Date</li>
+        <li>Status</li>
+        <li>Actions</li>
+      </ul>
+      <adoption-request-preview
+        v-for="(request, idx) in requests"
+        :key="idx"
+        @addMessage="emitAddMessage"
+        @updateAdoption="emitUpdateAdoptionRequest"
+        @removeAdoption="emitRemoveAdoptionRequest"
+        :request="request"
+        :user="user"
+      />
+    </section>
   </section>
 </template>
 
