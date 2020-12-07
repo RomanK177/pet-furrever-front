@@ -57,7 +57,6 @@ export default {
   },
   computed: {},
   created() {
-    console.log(this.loggedInUser);
     if (!this.loggedInUser) {
       let localFavorites = utilService.loadFromStorage("favoritePets_db");
       if (!localFavorites) {

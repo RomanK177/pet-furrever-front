@@ -18,7 +18,7 @@
         <!-- <messages-preview :message="message" @markMessageAsUnread="markMessageAsUnread" /> -->
       </div>
     </div>
-    <form @submit.prevent="addNewMessage" class="message-send flex">
+    <form @submit.prevent="addMessage" class="message-send">
       <input type="text" v-model="messageToAdd.txt" placeholder="Message" />
       <img class="plane" src="../../assets/svgs/plane.svg" alt="">
     </form>
@@ -58,21 +58,13 @@ export default {
       });
       this.user = user;
     },
-    addNewMessage() {
-      // this.messageToAdd.date = Date.now();
-      // this.messageToAdd.from = this.user.fullName;
-      // const currRequest = {request: this.request, message: this.messageToAdd}
-      socketService.emit("chat newMsg", this.messageToAdd.txt);
-    },
-    async addMessage(message) {
+    async addMessage() {
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId: this.request._id,
-        message
+        message: this.messageToAdd.txt,
       });
-      this.updateRequest();
       this.messageToAdd.txt = "";
-      // this.messageToAdd.date = "";
     },
     async updateRequest() {
       const requestId = this.$route.params.id;
@@ -91,26 +83,15 @@ export default {
     // },
   },
   async created() {
-    const requestId = this.$route.params.id;
-    const request = await this.$store.dispatch({
-      type: "getAdoptionById",
-      adoptionId: requestId,
-    });
-    this.request = request;
+    await this.updateRequest();
     const user = this.$store.getters.getLoggedInUser;
-    // const pet = await this.$store.dispatch({
-    //   type: "loadPets",
-    // });
-    // pet = this.pet
-
-    // const user = await this.$store.dispatch({
-    //   type: "getUserById",
-    //   userId: userId,
-    // });
     this.user = user;
     socketService.setup();
-    socketService.emit("chat topic", this.request._id);
-    socketService.on("chat addMsg", this.addMessage);
+    socketService.emit("register chat room", this.request._id);
+    socketService.on('new message', () => {
+      console.log('got new message');
+      this.updateRequest();
+    })
   },
   computed: {
     readUnRead() {
@@ -118,7 +99,7 @@ export default {
     },
   },
   destroyed() {
-    socketService.off("chat addMsg", this.addMessage);
+    socketService.emit("leave chat room", this.request._id);
     socketService.terminate();
   },
 };

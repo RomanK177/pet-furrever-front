@@ -29,24 +29,12 @@ export default {
     // },
   },
   created() {
-    console.log(this.user)
-    // this.markMessageAsUnread();
   },
   computed: {
     // readUnread() {
     //   const loggedInUser = this.$store.getters.getLoggedInUser;
     //   if (this.message.from !== loggedInUser.fullName)
     //     return { bold: !this.message.isRead };
-    // },
-    // date() {
-    //   let date = new Date(this.message.date);
-    //   console.log('date', date)
-    //   return date.toDateString();
-    // },
-    // date() {
-    //   let date = new Date(this.message.date);
-    //    const newDate = date.toDateString();
-    //    this.message.date = newDate
     // },
     sentTime() {
       let d = new Date(this.message.date);
