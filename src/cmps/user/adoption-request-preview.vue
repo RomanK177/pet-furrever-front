@@ -1,22 +1,22 @@
  <template>
-  <ul class="adoption-request-preview flex space-between">
+  <ul class="adoption-request-preview flex">
     <li class="requsted-by" v-if="isOwner">
       <router-link :to="`/user/${request.adopter._id}`">{{
         request.adopter.name
       }}</router-link>
     </li>
-    <li v-if="isAdopter">
+    <li class="requsted-by" v-if="isAdopter">
       <router-link :to="`/user/${request.owner._id}`">{{
         request.owner.name
       }}</router-link>
     </li>
-    <li>
+    <li class="requsted-pet">
       <router-link :to="`/pet/${request.pet._id}`">{{
         request.pet.name
       }}</router-link>
     </li>
-    <li>{{ sentTime }}</li>
-    <li class="bold" :class="statusColor">{{ statusCap }}</li>
+    <li class="requsted-at">{{ sentTime }}</li>
+    <li class="bold requsted-status" :class="statusColor">{{ statusCap }}</li>
     <li>
       <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
       <button
@@ -44,27 +44,28 @@
         <messages-status :messages="request.messages" />
       </button> -->
       <button
-        class="relative button-none message-btn"
-        :request="request"
-        :user="user"
-        @click="messages"
-      >
-        <img src="../../assets/imgs/message.png" width="20" height="20"/>
-      <messages-status :messages="request.messages" />
-      </button>
-      <button
-        class="delete-btn button-none"
-        v-if="canDelete"
-        @click="emitRemoveAdoptionRequest"
-      >
-       <img src="../../assets/imgs/garbage.png" width="20" height="20"/>
-      </button>
-      <button
         class="decline-btn"
         v-if="canCancel"
         @click="emitUpdateAdoptionRequest(false)"
       >
         Cancel
+      </button>
+
+      <button
+        class="delete-btn button-none"
+        v-if="canDelete"
+        @click="emitRemoveAdoptionRequest"
+      >
+        <img src="../../assets/imgs/garbage.png" width="20" height="20" />
+      </button>
+      <button
+        class="relative button-none message-btn"
+        :request="request"
+        :user="user"
+        @click="messages"
+      >
+        <img src="../../assets/imgs/message.png" width="20" height="20" />
+        <messages-status :messages="request.messages" />
       </button>
     </li>
     <!-- <el-button
@@ -163,13 +164,13 @@ export default {
         this.request.status.slice(1)
       );
     },
-    statusColor(){
-      if(this.request.status === 'pending'){
-        return 'orange';
-      } else if (this.request.status === 'approved'){
-        return 'green';
+    statusColor() {
+      if (this.request.status === "pending") {
+        return "orange";
+      } else if (this.request.status === "approved") {
+        return "green";
       } else {
-        return 'red';
+        return "red";
       }
     },
     getPetById() {

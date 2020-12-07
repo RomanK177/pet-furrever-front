@@ -7,11 +7,11 @@
       }})
     </p>
     <section v-if="requests && showList">
-      <ul class="adoption-request-list requests-header flex space-between">
-        <li>From</li>
-        <li>Pet to adopt</li>
-        <li>Date</li>
-        <li>Status</li>
+      <ul class="adoption-request-list requests-header flex">
+        <li class="requsted-by">From</li>
+        <li class="requsted-pet">Pet to adopt</li>
+        <li class="requsted-at">Date</li>
+        <li class="requsted-status">Status</li>
         <li>Actions</li>
       </ul>
       <adoption-request-preview
