@@ -1,7 +1,6 @@
 <template>
   <section class="owner-details container">
     <adoption-request
-      @addMessage="addMessage"
       @updateAdoption="updateAdoption"
       @removeAdoption="removeAdoption"
       v-if="checkIfOwner"
@@ -83,7 +82,7 @@
       </div>
     </div>
 
-    <owner-review-updated
+    <owner-review
       :reviews="owner.ownerData.reviews"
       :loggedInUser="getLoggedInUser"
       @addReview="addReview"
@@ -102,7 +101,7 @@ import eventBus from "./../../services/event-bus-service.js";
 import { uploadImg } from "./../../services/img-upload-service.js";
 import { userService } from "../../services/user-service.js";
 import adoptionRequest from "./adoption-request.vue";
-import ownerReviewUpdated from "../user/owner-reviewUpdated";
+import ownerReview from "../user/owner-review";
 import petList from "../pet/pet-list";
 import socketService from "../../services/socket-service.js";
 
@@ -118,11 +117,13 @@ export default {
   },
   methods: {
     async addReview(review) {
+      debugger;
       await this.$store.dispatch({
         type: "addReview",
         review: JSON.parse(JSON.stringify(review)),
         ownerId: this.owner._id,
       });
+      eventBus.$emit("reviewAdded");
     },
     async updateAdoption(adoptionRequest) {
       await this.$store.dispatch({
@@ -134,14 +135,6 @@ export default {
       await this.$store.dispatch({
         type: "removeAdoptionRequest",
         adoptionRequest,
-      });
-    },
-    async addMessage(adoptionId, message) {
-      debugger
-      await this.$store.dispatch({
-        type: "addMessage",
-        adoptionId,
-        message,
       });
     },
     async addTreat(pet) {
@@ -157,6 +150,10 @@ export default {
   },
   computed: {
     imgUrlProfile() {
+      let urlStart = this.owner.imgUrlProfile.slice(0, 4);
+      if (urlStart !== "http") {
+        this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
+      }
       if (!this.owner.imgUrlProfile) {
         return require("../../assets/imgs/profile-logo.png");
       } else {
@@ -208,10 +205,10 @@ export default {
       type: "loadAdoptionRequests",
     });
     // this.$store.dispatch({ type: "loadPets" });
-    let urlStart = this.owner.imgUrlProfile.slice(0, 4);
-    if (urlStart !== "http") {
-      this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
-    }
+    // let urlStart = this.owner.imgUrlProfile.slice(0, 4);
+    // if (urlStart !== "http") {
+    //   this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
+    // }
 
     let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
       let urlStart = imgUrl.slice(0, 4);
@@ -226,7 +223,7 @@ export default {
     this.pets = pets;
   },
   components: {
-    ownerReviewUpdated,
+    ownerReview,
     adoptionRequest,
     petList,
   },
