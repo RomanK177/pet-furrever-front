@@ -14,11 +14,11 @@
     <div class="all-messages">
       <div v-for="(message, index) in request.messages" :key="index">
         <messages-preview :message="message" />
-               <!-- <messages-preview :message="message" @markMessageAsUnread="markMessageAsUnread" /> -->
+        <!-- <messages-preview :message="message" @markMessageAsUnread="markMessageAsUnread" /> -->
       </div>
     </div>
 
-    <form @submit.prevent="addMessage" class="message-send">
+    <form @submit.prevent="addNewMessage" class="message-send">
       <input type="text" v-model="messageToAdd.txt" placeholder="Message" />
       <button>Send</button>
     </form>
@@ -29,6 +29,7 @@
 
 <script>
 import messagesPreview from "../../cmps/user/messages-preview.vue";
+import socketService from "../../services/socket-service.js";
 // import adopterDetails from "./../../cmps/user/adopter-details.vue";
 // import ownerDetails from "./../../cmps/user/owner-details.vue";
 export default {
@@ -37,8 +38,11 @@ export default {
     return {
       request: null,
       user: null,
+      // allMessages: [],
       messageToAdd: {
         txt: "",
+        date: "",
+        from: "",
       },
     };
   },
@@ -50,14 +54,26 @@ export default {
       });
       this.user = user;
     },
+    addNewMessage() {
+      this.messageToAdd.date = Date.now();
+      this.messageToAdd.from = this.user.fullName;
+      // const currRequest = {request: this.request, message: this.messageToAdd}
+      // console.log('updated request', updatedReq)
+      socketService.emit("chat newMsg", this.messageToAdd);
+    },
     async addMessage(adoptionId, message) {
+      console.log("adoptionid", adoptionId);
+      console.log("message", message);
+      console.log('req', this.request._id )
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId: this.request._id,
         message: JSON.parse(JSON.stringify(this.messageToAdd.txt)),
       });
-      this.messageToAdd.txt = "";
       this.updateRequest();
+
+      this.messageToAdd.txt = "";
+      this.messageToAdd.date = "";
     },
     async updateRequest() {
       const requestId = this.$route.params.id;
@@ -66,8 +82,9 @@ export default {
         adoptionId: requestId,
       });
       this.request = request;
-      console.log(request);
+      console.log('request', request);
     },
+
     // markMessageAsUnread(message) {
     //   debugger
     //   this.$store.dispatch({
@@ -92,12 +109,20 @@ export default {
     //   userId: userId,
     // });
     this.user = user;
+
+    socketService.setup();
+    socketService.emit("chat topic", this.request._id);
+    socketService.on("chat addMsg", this.addMessage);
   },
   computed: {
     readUnRead() {
       console.log(this.message);
       if (this.message) return bold;
     },
+  },
+  destroyed() {
+    socketService.off("chat addMsg", this.addMessage);
+    socketService.terminate();
   },
 };
 </script>
