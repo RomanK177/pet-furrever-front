@@ -1,4 +1,4 @@
-$nameColumnWidth:2fr;
+$nameColumnWidth:1fr;
 $petColumnWidth:1fr;
 $dateColumnWidth:1fr;
 $statusColumnWidth:1fr;
@@ -7,7 +7,7 @@ $actionsColumnWidth:1fr;
     margin: 0px 0px;
     // margin-left: 20px;
     width: 100%;
-    padding-bottom: 100px;
+    padding-bottom: 250px;
     font-size: large;
     .request-togle {
         width: 400px;

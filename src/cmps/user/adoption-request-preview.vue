@@ -2,12 +2,12 @@
   <ul class="adoption-request-preview">
     <li class="requsted-by" v-if="isOwner">
       <router-link :to="`/user/${request.adopter._id}`">{{
-        request.adopter.name
+        abriviateAdopterName
       }}</router-link>
     </li>
     <li class="requsted-by" v-if="isAdopter">
       <router-link :to="`/user/${request.owner._id}`">{{
-        request.owner.name
+        abriviateOwnerName
       }}</router-link>
     </li>
     <li class="requsted-pet">
@@ -21,16 +21,12 @@
     <!-- <div class="resp=grp flex flex-end"> -->
     <li class="requsted-actions flex align-center content-center">
       <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
-      <button
-        class="approve-btn"
-        v-if="canApprove"
-        @click="emitUpdateAdoptionRequest(true)"
-      >
+      <button class="approve-btn" @click="emitUpdateAdoptionRequest(true)">
         Approve
       </button>
       <button
-        class="decline-btn"
         v-if="canDecline"
+        class="decline-btn"
         @click="emitUpdateAdoptionRequest(false)"
       >
         Decline
@@ -54,11 +50,7 @@
       </button>
     </li>
     <li class="requsted-lastBtns flex align-center content-center">
-      <button
-        class="delete-btn button-none"
-        v-if="canDelete"
-        @click="emitRemoveAdoptionRequest"
-      >
+      <button class="delete-btn button-none" @click="emitRemoveAdoptionRequest">
         <img src="../../assets/imgs/garbage.png" width="20" height="20" />
       </button>
       <button
@@ -176,12 +168,34 @@ export default {
         return "red";
       }
     },
+    abriviateAdopterName() {
+      if (this.request.adopter.name.length > 10) {
+        let strs = this.request.adopter.name.split(" ");
+        let abrv =
+          strs[0].charAt(0) +
+          "." +
+          strs[1].charAt(0) +
+          "." +
+          strs[2].charAt(0) +
+          ".";
+        return abrv;
+      } else return this.request.adopter.name;
+    },
+    abriviateOwnerName() {
+      if (this.request.owner.name.length > 8) {
+        let strs = this.request.adopter.name.split(" ");
+        let abrv =
+          strs[0].charAt(0) +
+          "." +
+          strs[1].charAt(0) +
+          "." +
+          strs[2].charAt(0) +
+          ".";
+        return abrv;
+      } else return this.request.owner.name;
+    },
     getPetById() {
       let pet = this.$store.getters.getPetById(this.request.pet._id);
-      console.log(
-        "🚀 ~ file: adoption-request-preview.vue ~ line 154 ~ getPetById ~ pet",
-        pet
-      );
       return pet;
     },
     isOwner() {
