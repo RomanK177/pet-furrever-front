@@ -60,17 +60,13 @@ export default {
       socketService.emit("chat newMsg", this.messageToAdd.txt);
     },
     async addMessage(message) {
-      debugger
-      // console.log("messagexxxxxxx", message);
-      // console.log("req", this.request._id);
-      // this.request.messages.push(message);
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId: this.request._id,
         message
       });
       this.updateRequest();
-      // this.messageToAdd.txt = "";
+      this.messageToAdd.txt = "";
       // this.messageToAdd.date = "";
     },
     async updateRequest() {
@@ -83,7 +79,6 @@ export default {
       console.log("request", request);
     },
     // markMessageAsUnread(message) {
-    //   debugger
     //   this.$store.dispatch({
     //     type: "markMessageAsUnread",
     //     message,
