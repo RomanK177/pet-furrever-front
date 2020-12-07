@@ -3,7 +3,6 @@
     <h2>
       Lets Chat About <span class="bold orange">{{ request.pet.name }}</span>
     </h2>
-    <!-- <img :src="pet.imageUrls[0]" alt=""> -->
     <!-- <div class="flex">
       <div>Messages Between <span class="bold">{{request.owner.name}}</span> and <span class="bold">{{request.adopter.name}}</span></div>
       <div> -->
@@ -12,15 +11,15 @@
         <li>Message</li>
         <li>Date</li>
       </ul> -->
-    <div class="all-messages flex column">
+    <div class="all-messages">
       <div v-for="(message, index) in request.messages" :key="index">
-        <messages-preview :message="message" :user="user" />
+        <messages-preview :message="message" />
         <!-- <messages-preview :message="message" @markMessageAsUnread="markMessageAsUnread" /> -->
       </div>
     </div>
     <form @submit.prevent="addMessage" class="message-send">
       <input type="text" v-model="messageToAdd.txt" placeholder="Message" />
-      <img class="plane" src="../../assets/svgs/plane.svg" alt="">
+      <button>Send</button>
     </form>
     <!-- </div> -->
     <!-- </div> -->
@@ -33,21 +32,16 @@ import socketService from "../../services/socket-service.js";
 // import ownerDetails from "./../../cmps/user/owner-details.vue";
 export default {
   components: { messagesPreview },
-  props: {
-    // user: Object,
-    // request: Object
-  },
   data() {
     return {
       request: null,
       user: null,
-      allMessages: [],
+      // allMessages: [],
       messageToAdd: {
         txt: "",
         date: "",
         from: "",
       },
-      pet: null
     };
   },
   methods: {
