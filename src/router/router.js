@@ -14,38 +14,39 @@ import adoptionMessages from '../views/user/adoption-messages.vue'
 Vue.use(VueRouter)
 
 const routes = [{
-        path: '/',
-        name: 'Home',
-        component: homePage
-    },
-    {
-        path: '/signup',
-        component: signup
-    },
-    {
-        path: '/pet',
-        component: petApp
-    },
-    {
-        path: '/pet/edit/:id?',
-        component: petEdit
-    },
-    {
-        path: '/pet/:id',
-        component: petDetails
-    },
-    {
-        path: '/user/edit/:id',
-        component: userEdit
-    },
-    {
-        path: '/user/:id',
-        component: userDetails
-    },
-    {
-        path: '/adoption/:id',
-        component: adoptionMessages
-    }
+    path: '/',
+    name: 'Home',
+    component: homePage
+},
+{
+    path: '/signup',
+    component: signup
+},
+{
+    path: '/pet',
+    component: petApp
+},
+{
+    path: '/pet/edit/:id?',
+    component: petEdit
+},
+{
+    path: '/pet/:id',
+    component: petDetails
+},
+{
+    path: '/user/edit/:id',
+    component: userEdit
+},
+{
+    path: '/user/:id',
+    component: userDetails,
+},
+    
+{
+    path: '/adoption/:id',
+    component: adoptionMessages
+}
 
 
 

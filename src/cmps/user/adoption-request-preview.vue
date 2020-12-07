@@ -1,4 +1,5 @@
  <template>
+ <section>
   <ul class="adoption-request-preview flex space-between">
     <li class="requsted-by" v-if="isOwner">
       <router-link :to="`/user/${request.adopter._id}`">{{
@@ -63,14 +64,17 @@
           @click="emitRemoveAdoptionRequest"
           >Delete</el-button
         > -->
+
   </ul>
+    <router-view></router-view>
+
+  </section>
 </template>
 
 <script>
 import { petService } from "../../services/pet-service.js";
 import messagesStatus from "../../cmps/user/messages-status.vue";
 // import adoptionMessages from '../../views/user/adoption-messages.vue'
-import testing from '../user/testing.vue';
 import messagesPreview from '../user/messages-preview.vue';
 
 export default {
@@ -119,6 +123,7 @@ export default {
     emitAddMessage(adoptionId, message) {
       console.log("new request", message);
       this.$emit("addMessage", adoptionId, message);
+      console.log('message emit')
     },
     toggleShowMessages() {
       this.isShown = !this.isShown;
@@ -246,12 +251,12 @@ export default {
   async created() {
     const pet = await petService.getPetById(this.request.pet._id);
     this.pet = pet;
+    console.log('user',this.user)
   },
   components: {
     messagesStatus,
     // adoptionMessages,
     messagesPreview,
-    testing
   },
 };
 </script>
