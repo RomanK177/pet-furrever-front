@@ -18,7 +18,6 @@
       <adoption-request-preview
         v-for="(request, idx) in requests"
         :key="idx"
-        @addMessage="emitAddMessage"
         @updateAdoption="emitUpdateAdoptionRequest"
         @removeAdoption="emitRemoveAdoptionRequest"
         :request="request"
@@ -56,10 +55,10 @@ export default {
       this.$emit("updateAdoption", adoption);
       // this.$emit("updatePet", pet);
     },
-    emitAddMessage(adoptionId, message) {
-      debugger;
-      this.$emit("addMessage", adoptionId, message);
-    },
+    // emitAddMessage(adoptionId, message) {
+    //   debugger
+    //   this.$emit("addMessage", adoptionId, message);
+    // },
     emitRemoveAdoptionRequest(adoption) {
       this.$emit("removeAdoption", adoption);
     },

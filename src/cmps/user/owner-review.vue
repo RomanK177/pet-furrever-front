@@ -1,65 +1,115 @@
 <template>
-  <section class="owner-review details" v-if="owner.ownerData.reviews">
-    <h1 class="review-header">Reviews</h1>
+  <section class="owner-review">
+    <h1 class="pet-details-comments-title">Reviews</h1>
     <hr />
-    <form v-if="!checkIfOwner" @submit="addReview">
-      <label
-        ><span class="bold">Rate: </span
-        ><input type="number" v-model.number="review.rate"
-      /></label>
-      <label
-        ><span class="bold">Write you review: </span
-        ><input type="text" v-model="review.txt"
-      /></label>
-      <button>Add review</button>
+    <form @submit.prevent="addReview" class="flex column">
+      <span class="bold">Rate: </span>
+      <div class="star-widget align-self-center">
+        <input
+          type="radio"
+          value="5"
+          name="rate"
+          id="rate-5"
+          v-model.number="reviewToAdd.rate"
+        />
+        <label for="rate-5" class="fas fa-star"></label>
+        <input
+          type="radio"
+          value="4"
+          name="rate"
+          id="rate-4"
+          v-model.number="reviewToAdd.rate"
+        />
+        <label for="rate-4" class="fas fa-star"></label>
+        <input
+          type="radio"
+          value="3"
+          name="rate"
+          id="rate-3"
+          v-model.number="reviewToAdd.rate"
+        />
+        <label for="rate-3" class="fas fa-star"></label>
+        <input
+          type="radio"
+          value="2"
+          name="rate"
+          id="rate-2"
+          v-model.number="reviewToAdd.rate"
+        />
+        <label for="rate-2" class="fas fa-star"></label>
+        <input
+          type="radio"
+          value="1"
+          name="rate"
+          id="rate-1"
+          v-model.number="reviewToAdd.rate"
+        />
+        <label for="rate-1" class="fas fa-star"></label>
+      </div>
+      <br />
+      <label width="100%"
+        ><span class="bold">Write you review: </span>
+        <br />
+        <textarea cols="30" rows="10" v-model="reviewToAdd.txt"></textarea>
+      </label>
+      <br />
+      <button class="align-self-center">Add review</button>
     </form>
-    <ul>
-      <li
-        v-for="(review, idx) in owner.ownerData.reviews"
-        :key="idx"
-        class="review"
-      >
-        <span class="bold">From: </span>{{ review.by.fullName }}
-        <img :src="review.by.imgUrl" />
-        <br />
-        <span class="bold">Rate: </span>{{ review.rate }}
-        <br />
+    <ul class="rendered-comments flex">
+      <li class="review-card" v-for="(review, index) in reviews" :key="index">
+        <div class="flex space-between align-center content-center">
+          <img
+            class="user-profile"
+            v-if="!review.by.imgUrl"
+            :src="require('../../assets/imgs/person/guest.png')"
+          />
+          <img
+            class="user-profile"
+            v-else
+            :src="require(`../../assets/imgs/person/${review.by.imgUrl}`)"
+          />
+          <span class="bold">{{ review.by.fullName }}: </span>
+          <div class="flex space-between align-center content-center">
+            <span> {{ review.rate }}</span>
+            <img class="star" :src="starUrl" alt="" />
+          </div>
+        </div>
+        <hr />
         {{ review.txt }}
       </li>
     </ul>
   </section>
 </template>
 <script>
-import eventBus from './../../services/event-bus-service.js';
 export default {
   props: {
-    owner: Object,
+    reviews: {
+      type: Array,
+    },
+    loggedInUser: {
+      type: Object,
+    },
   },
   data() {
     return {
-      review: {
-        txt: null,
+      reviewToAdd: {
+        txt: "",
         rate: null,
       },
     };
   },
-  computed: {
-    checkIfOwner() {
-      var loggedInUser = this.$store.getters.getLoggedInUser;
-      if (loggedInUser) {
-        if (loggedInUser._id === this.owner._id) return true;
-      } else return false;
+  methods: {
+    addReview() {
+      this.$emit("addReview", JSON.parse(JSON.stringify(this.reviewToAdd)));
+      this.reviewToAdd.txt = "";
     },
   },
-  methods: {
-    async addReview() {
-      await this.$store.dispatch({
-        type: "addReview",
-        review: JSON.parse(JSON.stringify(this.review)),
-        ownerId: this.owner._id
-      });
-      // eventBus.$emit('reviewAdded')
+  computed: {
+    starUrl() {
+      return require("../../assets/svgs/star.svg");
     },
   },
 };
 </script>
+
+

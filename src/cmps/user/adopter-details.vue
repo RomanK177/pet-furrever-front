@@ -45,7 +45,6 @@
       <adoption-request
         :requests="requests"
         :user="adopter"
-        @addMessage="addMessage"
         @updateAdoption="updateAdoption"
         v-if="checkIfOwner"
       />
@@ -71,14 +70,14 @@ export default {
         adoptionRequest,
       });
     },
-    async addMessage(adoptionId, message) {
-      debugger;
-      await this.$store.dispatch({
-        type: "addMessage",
-        adoptionId,
-        message,
-      });
-    },
+    // async addMessage(adoptionId, message) {
+    //   debugger
+    //   await this.$store.dispatch({
+    //     type: "addMessage",
+    //     adoptionId,
+    //     message,
+    //   });
+    // },
   },
   computed: {
     imgUrlProfile() {
