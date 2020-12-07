@@ -39,11 +39,11 @@ async function addMessage(adoptionId, message) {
     return httpService.post(`adoptions/${adoptionId}/messages`, { message });
 }
 
+
+
 // async function markMessageAsUnread(message, adoptionId) {
 //     return httpService.post(`adoptions/${adoptionId}/messages/read`, message)
 // }
-
-
 
 
 

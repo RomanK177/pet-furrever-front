@@ -1,4 +1,3 @@
-
 <template>
   <section class="adoption-request">
     <p class="request-togle">
@@ -26,7 +25,6 @@
     </section>
   </section>
 </template>
-
 <script>
 import adoptionRequestPreview from "./adoption-request-preview.vue";
 export default {
@@ -78,7 +76,6 @@ export default {
         (request) => request.status === "cancelled"
       );
       this.user.userType === "adopter";
-
       if (areAllCancelled && this.user.userType === "adopter") return false;
       else return true;
       // this.hideCancel = areAllCancelled

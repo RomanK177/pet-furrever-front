@@ -71,11 +71,9 @@
         > -->
   </ul>
 </template>
-
 <script>
 import { petService } from "../../services/pet-service.js";
 import messagesStatus from "../../cmps/user/messages-status.vue";
-
 export default {
   name: "adoptionrequestPreview",
   props: {

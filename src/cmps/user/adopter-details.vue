@@ -1,4 +1,3 @@
-
 <template>
   <section v-if="adopter" class="adopter-details">
     <button
@@ -20,7 +19,6 @@
       <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
       >Edit your profile</router-link
     > -->
-
       <img
         class="user-profile-picture"
         :src="imgUrlProfile"
@@ -65,7 +63,6 @@
     </div>
   </section>
 </template>
-
 <script>
 import adoptionRequest from "./adoption-request.vue";
 export default {
