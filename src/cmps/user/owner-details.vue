@@ -96,16 +96,16 @@
           <!-- Add tags from elemnts -->
         </div>
       </div>
-
-    <owner-review
-      :reviews="owner.ownerData.reviews"
-      :loggedInUser="getLoggedInUser"
-      @addReview="addReview"
-    />
-    <div class="flex content-center">
-      <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
-        >Add Pet</router-link
-      >
+      <owner-review
+        :reviews="owner.ownerData.reviews"
+        :loggedInUser="getLoggedInUser"
+        @addReview="addReview"
+      />
+      <div class="flex content-center">
+        <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
+          >Add Pet</router-link
+        >
+      </div>
     </div>
   </section>
 </template>

@@ -8,11 +8,11 @@
     <section v-if="requests">
       <ul class="adoption-request-list requests-header">
         <li class="requsted-by">From</li>
-        <li class="requsted-pet">Pet to adopt</li>
+        <li class="requsted-pet requsted-pet-header">Pet to adopt</li>
         <li class="requsted-at">Date</li>
-        <li class="requsted-status">Status</li>
+        <li class="requsted-status requsted-status-header">Status</li>
 
-        <li clas="requsted-actions requsted-actions-header">Actions</li>
+        <li id="requsted-actions-header" clas="requsted-actions ">Actions</li>
         <li clas="requsted-lastBtns"></li>
       </ul>
       <adoption-request-preview

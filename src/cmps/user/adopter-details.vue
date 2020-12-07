@@ -1,7 +1,21 @@
 
 <template>
-  <section v-if="adopter" class="adopter-details flex">
-    <div class="adopter-content flex column">
+  <section v-if="adopter" class="adopter-details">
+    <button
+      class="togle-adopstion-btn btn"
+      v-if="!showAdoptions && checkIfOwner"
+      @click="togleShowAdoptions"
+    >
+      Show adoption requests
+    </button>
+    <button
+      class="btn"
+      v-if="showAdoptions && checkIfOwner"
+      @click="togleShowAdoptions"
+    >
+      Back to profile
+    </button>
+    <div v-if="!showAdoptions" class="adopter-content flex column">
       <h1>Hi, I'm {{ adopter.fullName }}!</h1>
       <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
       >Edit your profile</router-link
@@ -46,7 +60,7 @@
         :requests="requests"
         :user="adopter"
         @updateAdoption="updateAdoption"
-        v-if="checkIfOwner"
+        v-if="checkIfOwner && showAdoptions"
       />
     </div>
   </section>
@@ -57,6 +71,11 @@ import adoptionRequest from "./adoption-request.vue";
 export default {
   props: {
     adopter: Object,
+  },
+  data() {
+    return {
+      showAdoptions: false,
+    };
   },
   created() {
     this.$store.dispatch({
@@ -69,6 +88,9 @@ export default {
         type: "updateAdoptionRequest",
         adoptionRequest,
       });
+    },
+    togleShowAdoptions() {
+      this.showAdoptions = !this.showAdoptions;
     },
     // async addMessage(adoptionId, message) {
     //   debugger
