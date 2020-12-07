@@ -54,7 +54,10 @@
 }
 
 .filters {
-    width: 400px
+    width: 400px;
+    & div {
+        margin-right: 5px;
+    }
 }
 
 .favorite-btn {
@@ -84,6 +87,9 @@
         }
         & .filters {
             width: unset;
+            & div {
+                margin: 2px 0;
+            }
         }
     }
 }

@@ -26,8 +26,10 @@ function getAdoptionRequestById(adoptionRequestId) {
 }
 
 function updateAdoptionRequest(adoptionRequest) {
+
     return httpService.put(`adoptions/${adoptionRequest._id}`, adoptionRequest);
 }
+
 
 function removeAdoptionRequest(adoptionRequestId) {
     return httpService.delete(`adoptions/${adoptionRequestId}`);

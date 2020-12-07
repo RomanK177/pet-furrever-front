@@ -7,27 +7,24 @@
       }})
     </p>
     <section v-if="requests && showList">
-    <ul
-      class="adoption-request-list requests-header flex space-between"  
-    >
-      <li>From</li>
-      <li>Pet to adopt</li>
-      <li>Date</li>
-      <li>Status</li>
-      <li>Actions</li>
-    </ul>
-    <adoption-request-preview
-      v-for="(request, idx) in requests"
-      :key="idx"
-      @addMessage="emitAddMessage"
-      @updateAdoption="emitUpdateAdoptionRequest"
-      @removeAdoption="emitRemoveAdoptionRequest"
-      :request="request"
-      :user="user"
-    />
-  </section>
-
+      <ul class="adoption-request-list requests-header flex space-between">
+        <li>From</li>
+        <li>Pet to adopt</li>
+        <li>Date</li>
+        <li>Status</li>
+        <li>Actions</li>
+      </ul>
+      <adoption-request-preview
+        v-for="(request, idx) in requests"
+        :key="idx"
+        @addMessage="emitAddMessage"
+        @updateAdoption="emitUpdateAdoptionRequest"
+        @removeAdoption="emitRemoveAdoptionRequest"
+        :request="request"
+        :user="user"
+      />
     </section>
+  </section>
 </template>
 
 <script>

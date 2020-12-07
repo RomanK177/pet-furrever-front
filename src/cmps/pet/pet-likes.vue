@@ -29,23 +29,15 @@ export default {
     return {
       treat: false,
       storedLikes: [],
-
     };
   },
   methods: {
     addTreat() {
-      // this.$emit("addTreat", this.pet._id);
       this.treat = true;
       this.storedLikes.push(this.pet._id);
       utilService.storeToStorage("likes_db", this.storedLikes);
       socketService.emit("treats newTreat", this.pet);
-      // console.log("petId", this.pet._id);
-      // console.log("after socket emit", this.pet.numOfTreats);
     },
-    // addTreatToSocket(){
-    //   socketService.emit("treats newtreat");
-
-    // }
   },
   computed: {
     treatSrc() {
@@ -70,10 +62,9 @@ export default {
     this.treat = this.storedLikes.find((id) => id === this.pet._id)
       ? true
       : false;
-
   },
   components: {
-    socketService
-  }
+    socketService,
+  },
 };
 </script>
