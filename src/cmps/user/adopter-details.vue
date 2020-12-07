@@ -81,9 +81,9 @@ export default {
   computed: {
     imgUrlProfile() {
       if (!this.adopter.imgUrlProfile) {
-        return (this.adopter.imgUrlProfile = require("../../assets/imgs/person/alex.jpg"));
+        return (this.adopter.imgUrlProfile = require("../../assets/imgs/profile-logo.png"));
       } else {
-        return this.adopter.imgUrlProfile;
+        return (this.adopter.imgUrlProfile = require("../../assets/imgs/person/alex.jpg"));
       }
     },
     checkIfOwner() {
