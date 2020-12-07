@@ -65,6 +65,5 @@ async function addComment(petId, comment) {
 }
 
 async function addTreat(petId) {
-    console.log(petId)
     return httpService.post(`pets/${petId}/treats`);
 }

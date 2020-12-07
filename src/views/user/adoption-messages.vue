@@ -56,7 +56,6 @@ export default {
       // this.messageToAdd.date = Date.now();
       // this.messageToAdd.from = this.user.fullName;
       // const currRequest = {request: this.request, message: this.messageToAdd}
-      // console.log('updated request', updatedReq)
       socketService.emit("chat newMsg", this.messageToAdd.txt);
     },
     async addMessage(message) {
@@ -76,7 +75,6 @@ export default {
         adoptionId: requestId,
       });
       this.request = request;
-      console.log("request", request);
     },
     // markMessageAsUnread(message) {
     //   this.$store.dispatch({
@@ -93,7 +91,6 @@ export default {
       adoptionId: requestId,
     });
     this.request = request;
-    console.log("req", this.request);
     const user = this.$store.getters.getLoggedInUser;
     // const user = await this.$store.dispatch({
     //   type: "getUserById",
@@ -106,7 +103,6 @@ export default {
   },
   computed: {
     readUnRead() {
-      console.log(this.message);
       if (this.message) return bold;
     },
   },

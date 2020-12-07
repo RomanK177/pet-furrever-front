@@ -32,14 +32,12 @@ export const adoptionStore = {
     actions: {
         async loadAdoptionRequests({ commit }) {
             const adoptions = await adoptionService.query()
-                // console.log('adoptions', adoptions)
             commit({ type: 'setAdoptionRequests', adoptions })
         },
         async addAdoptionRequest({ commit }, { petId }) {
             try {
                 const adoptionRequest = await adoptionService.addAdoptionRequest(petId);
                 commit({ type: 'addAdoptionRequest', adoptionRequest });
-                console.log('commited adoption request')
                 return adoptionRequest;
             } catch (err) {
                 console.log('Cannot add request', err);
@@ -90,7 +88,6 @@ export const adoptionStore = {
         //     }
         // },
         async getAdoptionById(context, { adoptionId }) {
-            console.log('in update request in store')
             const adoption = await adoptionService.getAdoptionRequestById(adoptionId)
             return adoption
         },

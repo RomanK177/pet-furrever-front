@@ -126,7 +126,6 @@ export default {
   },
   methods: {
     async addTreat(pet) {
-      console.log("petid", pet);
       const newPet = await this.$store.dispatch({
         type: "addTreat",
         petId: pet._id,

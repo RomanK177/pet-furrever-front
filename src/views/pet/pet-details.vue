@@ -105,7 +105,6 @@ export default {
       }
     },
     async addTreat(pet) {
-      console.log("pet", pet);
       const newPet = await this.$store.dispatch({
         type: "addTreat",
         petId: pet._id,
@@ -122,10 +121,6 @@ export default {
     // },
     async sendRequest() {
       const petId = this.pet._id;
-      // console.log(
-      //   "🚀 ~ file: pet-details.vue ~ line 115 ~ sendRequest ~ petId",
-      //   petId
-      // );
 
       await this.$store.dispatch({
         type: "addAdoptionRequest",
