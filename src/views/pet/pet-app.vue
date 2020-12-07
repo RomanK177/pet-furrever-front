@@ -32,10 +32,6 @@ export default {
   },
   methods: {
     changeFilter(filter) {
-      console.log(
-        "🚀 ~ file: pet-app.vue ~ line 35 ~ changeFilter ~ filter",
-        filter
-      );
       this.$store.dispatch({ type: "filterPets", filter });
     },
     // deletePet(petId) {
@@ -45,7 +41,6 @@ export default {
     //   });
     // },
     async addTreat(pet) {
-      console.log('petid', pet)
       const newPet = await this.$store.dispatch({
         type: "addTreat",
         petId: pet._id,

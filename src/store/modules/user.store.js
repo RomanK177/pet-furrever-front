@@ -110,7 +110,6 @@ export const userStore = {
             }
         },
         // async updateFavorites({ commit }, { isFavorite ,petId }) {
-        //     console.log(isFavorite, 'store isfav')
         //     const user = await userService.updateFavorites(isFavorite, petId);
         //     commit({ type: 'updateUser', user });
         //     return user;

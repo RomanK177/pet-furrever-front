@@ -94,7 +94,6 @@ export default {
   },
   created() {
     this.pet = petService.getEmptyPet();
-    console.log('ppp', this.pet)
   },
   methods: {
     edit() {

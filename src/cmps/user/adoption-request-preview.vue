@@ -120,10 +120,9 @@ export default {
       if (this.user.userType === "owner") {
         this.$emit("removeAdoption", this.request);
       }
-      console.log("deleted in preview", this.request);
     },
     emitAddMessage(adoptionId, message) {
-      console.log("new request", message);
+      debugger
       this.$emit("addMessage", adoptionId, message);
     },
     toggleShowMessages() {
@@ -244,7 +243,6 @@ export default {
     },
     isPending() {
       const isPending = this.request.status === "pending" ? true : false;
-      console.log("is pending", isPending);
       return isPending;
     },
   },

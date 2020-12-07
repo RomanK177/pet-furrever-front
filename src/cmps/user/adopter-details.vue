@@ -71,6 +71,7 @@ export default {
       });
     },
     async addMessage(adoptionId, message) {
+      debugger
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId,

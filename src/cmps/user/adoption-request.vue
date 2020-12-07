@@ -56,6 +56,7 @@ export default {
       // this.$emit("updatePet", pet);
     },
     emitAddMessage(adoptionId, message) {
+      debugger
       this.$emit("addMessage", adoptionId, message);
     },
     emitRemoveAdoptionRequest(adoption) {
@@ -80,7 +81,6 @@ export default {
 
       if (areAllCancelled && this.user.userType === "adopter") return false;
       else return true;
-      // console.log("areAllCancelled", areAllCancelled);
       // this.hideCancel = areAllCancelled
     },
     amountOfRequests() {

@@ -135,9 +135,9 @@ export default {
         type: "removeAdoptionRequest",
         adoptionRequest,
       });
-      console.log("deleted in details");
     },
     async addMessage(adoptionId, message) {
+      debugger
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId,
@@ -145,7 +145,6 @@ export default {
       });
     },
     async addTreat(pet) {
-      console.log("petid", pet);
       const newPet = await this.$store.dispatch({
         type: "addTreat",
         petId: pet._id,
