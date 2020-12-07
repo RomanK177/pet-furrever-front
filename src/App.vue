@@ -5,7 +5,7 @@
       <router-link to="/about">About</router-link> -->
       <app-header></app-header>
     </div>
-    <router-view />
+    <router-view :key="$route.path" />
     <app-footer></app-footer>
   </div>
 </template>
