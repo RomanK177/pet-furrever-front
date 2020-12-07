@@ -1,4 +1,3 @@
-
 <template>
   <section v-if="adopter" class="adopter-details flex">
     <div class="adopter-content flex column">
@@ -6,20 +5,17 @@
       <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
       >Edit your profile</router-link
     > -->
-
       <img
         class="user-profile-picture"
         :src="imgUrlProfile"
         alt="profile logo"
       />
-
       <p class="flex">
         <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
         <span>
           {{ adopter.email }}
         </span>
       </p>
-
       <p class="flex align-center content-center">
         <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
         <span> {{ adopter.tel }}</span>
@@ -51,18 +47,11 @@
     </div>
   </section>
 </template>
-
 <script>
 import adoptionRequest from "./adoption-request.vue";
-// import socketService from '../../services/socket-service.js'
 export default {
   props: {
     adopter: Object,
-  },
-  data() {
-    return{
-      user: null
-    }
   },
   created() {
     this.$store.dispatch({
@@ -83,16 +72,14 @@ export default {
         adoptionId,
         message,
       });
-      
     },
-    
   },
   computed: {
     imgUrlProfile() {
       if (!this.adopter.imgUrlProfile) {
-        return (this.adopter.imgUrlProfile = require("../../assets/imgs/person/alex.jpg"));
+        return (this.adopter.imgUrlProfile = require("../../assets/imgs/profile-logo.png"));
       } else {
-        return this.adopter.imgUrlProfile;
+        return (this.adopter.imgUrlProfile = require("../../assets/imgs/person/alex.jpg"));
       }
     },
     checkIfOwner() {
@@ -111,26 +98,6 @@ export default {
       return filteredReqs;
     },
   },
-  // async created() {
-  //    this.$store.dispatch({
-  //     type: "loadAdoptionRequests",
-  //   });
-  //   const requestId = this.$route.params.id;
-  //   const request = await this.$store.dispatch({
-  //     type: "getAdoptionById",
-  //     adoptionId: requestId,
-  //   });
-  //   this.request = request;
-  //   const user = this.$store.getters.getLoggedInUser;
-  //   this.user = user;
-  //   socketService.setup();
-  //   socketService.emit("chat topic", this.request._id);
-  //   socketService.on("chat addMsg", this.addMessage);
-  // },
-  // destroyed() {
-  //   socketService.off("chat addMsg", this.addMessage);
-  //   socketService.terminate();
-  // },
   components: {
     adoptionRequest,
   },

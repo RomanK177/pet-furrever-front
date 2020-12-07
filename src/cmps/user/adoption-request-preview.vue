@@ -1,24 +1,23 @@
- <template>
- <section>
-  <ul class="adoption-request-preview flex space-between">
+<template>
+  <ul class="adoption-request-preview flex">
     <li class="requsted-by" v-if="isOwner">
       <router-link :to="`/user/${request.adopter._id}`">{{
         request.adopter.name
       }}</router-link>
     </li>
-    <li v-if="isAdopter">
+    <li class="requsted-by" v-if="isAdopter">
       <router-link :to="`/user/${request.owner._id}`">{{
         request.owner.name
       }}</router-link>
     </li>
-    <li>
+    <li class="requsted-pet">
       <router-link :to="`/pet/${request.pet._id}`">{{
         request.pet.name
       }}</router-link>
     </li>
-    <li>{{ sentTime }}</li>
-    <li class="bold" :class="statusColor">{{ statusCap }}</li>
-    <li>
+    <li class="requsted-at">{{ sentTime }}</li>
+    <li class="bold requsted-status" :class="statusColor">{{ statusCap }}</li>
+    <li class="requsted-actions">
       <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
       <button
         class="approve-btn"
@@ -34,23 +33,16 @@
       >
         Decline
       </button>
-      <button
-        class="relative button-none message-btn"
-        :request="request"
-        :user="user"
-        @click="messages"
-      >
-      <!-- <testing :user="user" v-if="showMessage"></testing> -->
-        <img src="../../assets/imgs/message.png" width="20" height="20"/>
-      <messages-status :messages="request.messages" />
-      </button>
-      <button
-        class="delete-btn button-none"
-        v-if="canDelete"
-        @click="emitRemoveAdoptionRequest"
-      >
-       <img src="../../assets/imgs/garbage.png" width="20" height="20"/>
-      </button>
+      <!-- <button class="relative button-none">
+        <router-link
+          class="message-btn"
+          :request="request"
+          :user="user"
+          :to="`/adoption/${request._id}`"
+          >Message</router-link
+        >
+        <messages-status :messages="request.messages" />
+      </button> -->
       <button
         class="decline-btn"
         v-if="canCancel"
@@ -59,24 +51,34 @@
         Cancel
       </button>
     </li>
+    <li class="requsted-lastBtns">
+      <button
+        class="delete-btn button-none"
+        v-if="canDelete"
+        @click="emitRemoveAdoptionRequest"
+      >
+        <img src="../../assets/imgs/garbage.png" width="20" height="20" />
+      </button>
+      <button
+        class="relative button-none message-btn"
+        :request="request"
+        :user="user"
+        @click="messages"
+      >
+        <img src="../../assets/imgs/message.png" width="20" height="20" />
+        <messages-status :messages="request.messages" />
+      </button>
+    </li>
     <!-- <el-button
           class="delete-adoption-request"
           @click="emitRemoveAdoptionRequest"
           >Delete</el-button
         > -->
-
   </ul>
-    <router-view></router-view>
-
-  </section>
 </template>
-
 <script>
 import { petService } from "../../services/pet-service.js";
 import messagesStatus from "../../cmps/user/messages-status.vue";
-// import adoptionMessages from '../../views/user/adoption-messages.vue'
-import messagesPreview from '../user/messages-preview.vue';
-
 export default {
   name: "adoptionrequestPreview",
   props: {
@@ -88,7 +90,6 @@ export default {
       areButtonsShown: false,
       pet: undefined,
       isShown: false,
-      showMessage: false
     };
   },
   methods: {
@@ -120,16 +121,14 @@ export default {
       }
     },
     emitAddMessage(adoptionId, message) {
-      debugger
+      debugger;
       this.$emit("addMessage", adoptionId, message);
-      console.log('message emit')
     },
     toggleShowMessages() {
       this.isShown = !this.isShown;
     },
     messages() {
       this.$router.push(`/adoption/${this.request._id}`);
-      // this.showMessage = true
     },
   },
   computed: {
@@ -163,19 +162,19 @@ export default {
         this.request.status.slice(1)
       );
     },
-    statusColor(){
-      if(this.request.status === 'pending'){
-        return 'orange';
-      } else if (this.request.status === 'approved'){
-        return 'green';
+    statusColor() {
+      if (this.request.status === "pending") {
+        return "orange";
+      } else if (this.request.status === "approved") {
+        return "green";
       } else {
-        return 'red';
+        return "red";
       }
     },
     getPetById() {
       let pet = this.$store.getters.getPetById(this.request.pet._id);
       console.log(
-        "🚀 ~ file: adoption-request-preview.vue ~ line 154 ~ getPetById ~ pet",
+        ":rocket: ~ file: adoption-request-preview.vue ~ line 154 ~ getPetById ~ pet",
         pet
       );
       return pet;
@@ -249,12 +248,9 @@ export default {
   async created() {
     const pet = await petService.getPetById(this.request.pet._id);
     this.pet = pet;
-    console.log('user',this.user)
   },
   components: {
     messagesStatus,
-    // adoptionMessages,
-    messagesPreview,
   },
 };
 </script>

@@ -1,4 +1,3 @@
-
 <template>
   <section class="adoption-request">
     <p class="request-togle" @click="toggleListShow">
@@ -7,12 +6,13 @@
       }})
     </p>
     <section v-if="requests && showList">
-      <ul class="adoption-request-list requests-header flex space-between">
-        <li>From</li>
-        <li>Pet to adopt</li>
-        <li>Date</li>
-        <li>Status</li>
-        <li>Actions</li>
+      <ul class="adoption-request-list requests-header flex">
+        <li class="requsted-by">From</li>
+        <li class="requsted-pet">Pet to adopt</li>
+        <li class="requsted-at">Date</li>
+        <li class="requsted-status">Status</li>
+        <li clas="requsted-actions">Actions</li>
+        <li clas="requsted-lastBtns"></li>
       </ul>
       <adoption-request-preview
         v-for="(request, idx) in requests"
@@ -26,7 +26,6 @@
     </section>
   </section>
 </template>
-
 <script>
 import adoptionRequestPreview from "./adoption-request-preview.vue";
 export default {
@@ -56,7 +55,7 @@ export default {
       // this.$emit("updatePet", pet);
     },
     emitAddMessage(adoptionId, message) {
-      debugger
+      debugger;
       this.$emit("addMessage", adoptionId, message);
     },
     emitRemoveAdoptionRequest(adoption) {
@@ -78,7 +77,6 @@ export default {
         (request) => request.status === "cancelled"
       );
       this.user.userType === "adopter";
-
       if (areAllCancelled && this.user.userType === "adopter") return false;
       else return true;
       // this.hideCancel = areAllCancelled

@@ -1,6 +1,11 @@
 
 .adoption-messages{
     padding-top: 100px;
+    // margin-bottom: 400px;
+    // background: image(src='../../assets/messages-bg.jpg')
+    background: url(../assets/imgs/messages-bg.jpg) no-repeat center / cover fixed ;
+    height: 100%;
+    padding-bottom: 200px;
 
 }
 
@@ -19,11 +24,37 @@
 }
 
 .all-messages{
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border: 1px solid rgb(204, 204, 204);
-    border-radius: 5px;
+    // margin-bottom: 10px;
+    // margin-top: 10px;
+    // border: 1px solid rgb(204, 204, 204);
+    // border-radius: 5px;
+    // flex: 1;
+    // padding: 10px;
+
+    h1{
+    text-align: center;
+    align-items: center;
+    // background-color: orange;
+    margin: unset;
+    font-family: quicksand-bold;
+    margin-left: 5px;
+    // padding: 10px;
+    }
+}
+
+.opposite-user-title{
+    // background-color: #ffa50073;
     padding: 10px;
+    border-bottom: 1px solid #EEE;
+    background: transparent;
+
+}
+
+.opposite-user-img-title{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .orange {
@@ -31,14 +62,36 @@
 }
 
 .message-send{
-    margin-top: .83em;
-    margin-bottom: 600px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    // background-color: orange;
+    border-top: 1px solid #EEE;
+    background: #ffffff36;
+
+    
 }
 
 
 .message-send input{
     font-family: quicksand;
+    // background: #ffffff36;
     font-size: 1.2rem;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    // border: none
+    color: unset;
+    // border-inline-color: unset;
+    border-color: unset;
+    border-style: unset;
+    border: 1px solid #EEE;
+    color: white;
+
+    background-color: unset;
+
+
 }
 .plane{
     background-color: white;
@@ -48,12 +101,163 @@
     width: 40px;
     margin-left: 4px;
 }
-// .adoption-messages{
 
-//     // position: absolute;
-//     // right: 3px;
-//     // height: 100%; 
-//     // background-color: beige;
-//     // z-index: 10;
-// }
+
+
+.adoption-message-pet-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.adopt-msg-pet-info{
+    // width: 300px;
+    // border: solid 1px #EEE;
+    // // height: fit-content;
+    // border-radius: 5px;
+    // width: 300px;
+    /* border: solid 1px #EEE; */
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ffffff78;
+    // margin-left: 10px;
+}
+
+.adoption-msg-pet-bio{
+    align-items: center;
+    margin: unset;
+    padding: unset;
+    text-align: center;
+    padding: 10px;
+   
+}
+
+.fixed-height-container{
+  float:right;
+  min-width: 600px;
+  background: #ffffff36;
+  border-radius: 5px;
+//   height: 250px;
+//   width:250px; 
+//   padding:3px; 
+}
+.scroll{
+  height:224px;
+   overflow:auto;
+    // background:#fff;
+    padding: 1em;
+    min-height: 400px;
+
+}
+
+.messages-adoption-messages{
+    font-size: 1.5rem;
+}
+
+.opposite-user-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    align-self: center;
+}
+
+.opposite-user-details h3{
+align-self: center;
+}
+
+.opposite-user-details{
+    // padding:10px;
+    // border: solid 1px #EEE;
+    padding: 10px;
+    // margin-right: 10px;
+    /* border: solid 1px #EEE; */
+    background-color: #ffffff78;
+    border-radius: 5px;
+
+}
+
+
+
+
+  .all-messages {
+      height: 100%;
+    // width: 300px;
+    // border: solid 1px #EEE;
+    border-radius: 5px;
+    // display: flex;
+    // flex-direction: column;
+    // padding: 10px;
+    // background: white;
+    // height: 50vh;
+    // padding: 1em;
+    // overflow: auto;
+    // max-width: 350px;
+    // margin: 0 auto 2em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+
+
+  .bluemsg{
+    // background: #407FFF;
+    background-color: orange;
+    color: white;
+    margin-left: 50%;
+    width: 45%;
+    border-radius: 10px;
+    padding: .5em;
+  /*   margin-bottom: .5em; */
+    font-size: .8em;
+  }
+
+  .greymsg{
+    background: #F1F0F0;
+    color: black;
+    width: 45%;
+    border-radius: 10px;
+    padding: .5em;
+  /*   margin-bottom: .5em; */
+    font-size: .8em;
+  }
+
+  .small{
+      color: rgb(51, 51, 51)
+  }
+
+  @media only screen and (max-width: 970px) {
+    .adoption-messages-all{
+        flex-direction: column;
+        padding: 20px
+    }
+
+
+
+    .fixed-height-container{
+        min-width: unset;
+    }
+
+    .adopt-msg-pet-info{
+        width: unset;
+        order: 3;
+        margin-top: 10px
+    }
+
+    .opposite-user-details{
+        margin-top: 10px
+
+    }
+
+    .opposite-owner-contact{
+        align-items: center;
+    }
+
+    .small{
+        text-align: center;
+    }
+
+  }
 

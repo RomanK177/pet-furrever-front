@@ -1,11 +1,12 @@
 <template>
-  <section class="message-preview">
-    <div class="messages flex column">
+  <section v-if="user" class="message-preview">
+    <!-- <ul class="flex space-between" :class="readUnread"> -->
+    <div class="messages flex column" :class="{greymsg: isReciever, bluemsg: isSender}" >
       <div class="message-from-date">
         <span class="bold"> {{ message.from }}</span>
         <span class="message-date">{{ sentTime }}</span>
       </div>
-      <div>
+      <div class="message-text">
         {{ message.txt }}
       </div>
     </div>
@@ -16,7 +17,6 @@
     </ul> -->
   </section>
 </template>
-
 <script>
 export default {
   props: {
@@ -29,8 +29,21 @@ export default {
     // },
   },
   created() {
+    console.log('user in preview', this.user)
+    console.log(this.message)
   },
   computed: {
+    isSender(){
+      const sender = (this.message.from === this.user.fullName) ? true : false
+      return sender
+
+      // if (this.user.userType === )
+
+    },
+    isReciever(){
+     const reciever = (this.message.from !== this.user.fullName) ? true : false
+     return reciever
+    },
     // readUnread() {
     //   const loggedInUser = this.$store.getters.getLoggedInUser;
     //   if (this.message.from !== loggedInUser.fullName)
@@ -59,8 +72,7 @@ export default {
       const year = dateObj.getFullYear();
       const output = day + "." + month + "." + year;
       return output;
-    },
-
+    }
   },
 };
 </script>

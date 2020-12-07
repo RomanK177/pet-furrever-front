@@ -35,19 +35,15 @@ function removeAdoptionRequest(adoptionRequestId) {
     return httpService.delete(`adoptions/${adoptionRequestId}`);
 }
 
-// async function addMessage(adoptionId, message) {
-//     return httpService.post(`adoptions/${adoptionId}/messages`, { message });
-// }
-
-async function addMessage(adoptionId) {
-    return httpService.post(`adoptions/${adoptionId}/messages`);
+async function addMessage(adoptionId, message) {
+    return httpService.post(`adoptions/${adoptionId}/messages`, { message });
 }
+
+
 
 // async function markMessageAsUnread(message, adoptionId) {
 //     return httpService.post(`adoptions/${adoptionId}/messages/read`, message)
 // }
-
-
 
 
 
