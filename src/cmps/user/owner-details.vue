@@ -1,10 +1,24 @@
 <template>
   <section class="owner-details container">
+    <button
+      class="btn"
+      v-if="!showAdoptions && checkIfOwner"
+      @click="togleShowAdoptions"
+    >
+      Show adoption requests
+    </button>
+    <button
+      class="btn"
+      v-if="showAdoptions && checkIfOwner"
+      @click="togleShowAdoptions"
+    >
+      Back to profile
+    </button>
     <adoption-request
       @addMessage="addMessage"
       @updateAdoption="updateAdoption"
       @removeAdoption="removeAdoption"
-      v-if="checkIfOwner"
+      v-if="checkIfOwner && showAdoptions"
       :requests="requests"
       :user="owner"
     />
@@ -13,87 +27,89 @@
     </div> -->
 
     <br />
-    <div class="details-images">
-      <img
-        id="imgUploader2"
-        v-for="(imgUrl, idx) in owner.ownerData.imgUrls"
-        :key="idx"
-        :src="imgUrl"
-        :class="{
-          item0: idx === 0,
-          item1: idx === 1,
-          item2: idx === 2,
-          item3: idx === 3,
-          item4: idx === 4,
-        }"
-      />
-    </div>
-    <div class="owner-profile flex">
-      <div class="flex column">
-        <div class="flex space-between align-center content-center">
-          <h1 v-if="checkIfOwner" class="welcome">
-            Welcome {{ owner.fullName }}
-          </h1>
-          <h1 v-else>{{ owner.fullName }}</h1>
+    <div v-if="!showAdoptions">
+      <div class="details-images">
+        <img
+          id="imgUploader2"
+          v-for="(imgUrl, idx) in owner.ownerData.imgUrls"
+          :key="idx"
+          :src="imgUrl"
+          :class="{
+            item0: idx === 0,
+            item1: idx === 1,
+            item2: idx === 2,
+            item3: idx === 3,
+            item4: idx === 4,
+          }"
+        />
+      </div>
+      <div class="owner-profile flex">
+        <div class="flex column">
           <div class="flex space-between align-center content-center">
-            <img class="star" :src="starUrl" alt="" /><span class="rating-num"
-              >{{ ratingAvg }}
-            </span>
-            <span class="number-of-ratings"
-              >({{ owner.ownerData.reviews.length }})
-            </span>
+            <h1 v-if="checkIfOwner" class="welcome">
+              Welcome {{ owner.fullName }}
+            </h1>
+            <h1 v-else>{{ owner.fullName }}</h1>
+            <div class="flex space-between align-center content-center">
+              <img class="star" :src="starUrl" alt="" /><span class="rating-num"
+                >{{ ratingAvg }}
+              </span>
+              <span class="number-of-ratings"
+                >({{ owner.ownerData.reviews.length }})
+              </span>
+            </div>
           </div>
+          <p class="ownerDescription">
+            <span class="bold"></span>
+            {{ owner.ownerData.desc }}
+          </p>
         </div>
-        <p class="ownerDescription">
-          <span class="bold"></span>
-          {{ owner.ownerData.desc }}
-        </p>
+        <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
+        <div class="owner-info flex column">
+          <img class="user-profile-picture" :src="imgUrlProfile" />
+          <p class="location-details flex flex-start">
+            <img
+              src="../../assets/svgs/location.svg"
+              alt=""
+              class="location-svg"
+            />
+            {{ owner.ownerData.location.name }}
+          </p>
+          <!-- <hr /> -->
+          <p class="flex">
+            <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
+            {{ owner.email }}
+          </p>
+          <!-- <hr /> -->
+          <p class="flex">
+            <img
+              src="../../assets/svgs/phone.svg"
+              alt=""
+              class="phone-svg"
+            />Telephone: {{ owner.tel }}
+          </p>
+          <!-- <hr /> -->
+          <p>
+            <span class="bold">Established since:</span>
+            {{ owner.ownerData.established }}
+          </p>
+          <!-- <p><span class="bold">Title:</span> {{ owner.ownerData.title }}</p> -->
+          <!-- Add tags from elemnts -->
+        </div>
       </div>
-      <!-- :src="require(`@/assets/imgs/person/${pet.owner.imgUrl}`)" -->
-      <div class="owner-info flex column">
-        <img class="user-profile-picture" :src="imgUrlProfile" />
-        <p class="location-details flex flex-start">
-          <img
-            src="../../assets/svgs/location.svg"
-            alt=""
-            class="location-svg"
-          />
-          {{ owner.ownerData.location.name }}
-        </p>
-        <!-- <hr /> -->
-        <p class="flex">
-          <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
-          {{ owner.email }}
-        </p>
-        <!-- <hr /> -->
-        <p class="flex">
-          <img
-            src="../../assets/svgs/phone.svg"
-            alt=""
-            class="phone-svg"
-          />Telephone: {{ owner.tel }}
-        </p>
-        <!-- <hr /> -->
-        <p>
-          <span class="bold">Established since:</span>
-          {{ owner.ownerData.established }}
-        </p>
-        <!-- <p><span class="bold">Title:</span> {{ owner.ownerData.title }}</p> -->
-        <!-- Add tags from elemnts -->
-      </div>
-    </div>
 
-    <owner-review-updated
-      :reviews="owner.ownerData.reviews"
-      :loggedInUser="getLoggedInUser"
-      @addReview="addReview"
-    />
-    <div class="flex content-center">
-      <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
-        >Add Pet</router-link
-      >
+      <owner-review-updated
+        :reviews="owner.ownerData.reviews"
+        :loggedInUser="getLoggedInUser"
+        @addReview="addReview"
+      />
+      <div class="flex content-center">
+        <router-link v-if="checkIfOwner" class="addPet" to="/pet/edit"
+          >Add Pet</router-link
+        >
+      </div>
+      <pet-list :pets="ownerPetsForPreview" />
     </div>
-    <pet-list :pets="ownerPetsForPreview" />
   </section>
 </template>
 
@@ -114,6 +130,7 @@ export default {
   data() {
     return {
       pets: null,
+      showAdoptions: false,
     };
   },
   methods: {
@@ -123,6 +140,9 @@ export default {
         review: JSON.parse(JSON.stringify(review)),
         ownerId: this.owner._id,
       });
+    },
+    togleShowAdoptions() {
+      this.showAdoptions = !this.showAdoptions;
     },
     async updateAdoption(adoptionRequest) {
       await this.$store.dispatch({
@@ -137,7 +157,7 @@ export default {
       });
     },
     async addMessage(adoptionId, message) {
-      debugger
+      debugger;
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId,

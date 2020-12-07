@@ -1,8 +1,13 @@
-// $nameColumnWidth:200px;
+$nameColumnWidth:2fr;
+$petColumnWidth:1fr;
+$dateColumnWidth:1fr;
+$statusColumnWidth:1fr;
+$actionsColumnWidth:1fr;
 .adoption-request {
-    margin: 10px 0px;
-    margin-left: 20px;
-    width: 80%;
+    margin: 0px 0px;
+    // margin-left: 20px;
+    width: 100%;
+    font-size: large;
     &-adopter {
         width: 80%;
     }
@@ -11,14 +16,14 @@
         margin: 10px 0;
         font-weight: bold;
         font-size: 25px;
-        padding: 10px 5px;
+        padding: 10px 0px;
         border: none;
-        color: orange;
+        color: rgb(47, 47, 45);
+        font-family: quicksand;
     }
-    .request-togle:hover {
-        cursor: pointer;
-        text-shadow: 3px 0px 7px rgba(101, 204, 207, 0.7);
-    }
+    // .request-togle:hover {
+    //     cursor: pointer;
+    // }
     &-list {
         border-bottom: 1px solid black;
         // width: 300px;
@@ -28,12 +33,17 @@
         color: #000;
     }
     & .adoption-request-preview {
-        padding: 5px 0;
+        margin: unset;
+        padding: 10px 0;
+        display: grid;
+        grid: auto-flow dense / $nameColumnWidth $petColumnWidth $dateColumnWidth $statusColumnWidth $actionsColumnWidth 1fr
     }
     & .adoption-request-preview:nth-child(even) {
         background-color: rgba(243, 193, 127, 0.452);
     }
     & .adoption-request-list {
+        display: grid;
+        grid: auto-flow dense / $nameColumnWidth $petColumnWidth $dateColumnWidth $statusColumnWidth $actionsColumnWidth 1fr;
         & .requests-header {
             font-weight: bold;
             padding: 10px 0;
@@ -41,7 +51,7 @@
             white-space: nowrap;
         }
         & li {
-            margin-bottom: 16px;
+            // margin-bottom: 16px;
             & .request-info {
                 overflow: auto;
                 white-space: nowrap;
@@ -70,19 +80,28 @@
 //     display: none;
 // }
 .requsted-by {
-    flex: 0 0 150px;
+    // flex: 1 0 250px;
 }
 
 .requsted-pet {
-    flex: 1 0 0px;
+    flex: 1 0 200px;
 }
 
 .requsted-at {
-    flex: 1 0 120px;
+    flex: 1 0 150px;
 }
 
 .requsted-status {
-    flex: 0 0 120px;
+    flex: 1 0 200px;
+}
+
+.requsted-actions {
+    flex: 1 0 250px;
+}
+
+.requsted-lastBtns {
+    // flex: 0 0 60px;
+    justify-self: end;
 }
 
 .approve,
@@ -187,48 +206,65 @@
 //     }
 // }
 @media only screen and (max-width: 375px) {
-    .adoption-request-preview {
-        flex-direction: column;
-    }
+    $nameColumnWidth: 100px;
     .adoption-request {
         margin: 0 auto;
         padding-top: 0px;
+        & .adoption-request-preview {
+            display: grid;
+            grid-row-gap: 20px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: $statusColumnWidth $actionsColumnWidth;
+        }
         & .request-togle {
             font-weight: bold;
             font-size: 20px;
             padding: 5px 5px;
         }
         & .adoption-request-list {
-            display: flex;
-            flex-flow: wrap;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             & .requests-header {
                 font-weight: bold;
                 padding: 10px 0;
                 overflow: visible;
                 white-space: unset;
             }
-            & .adoption-request-preview {
-                align-items: flex-start;
+            & .requsted-actions-header {
+                display: none;
             }
         }
     }
     .requsted-by {
-        width: 100px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        grid-column: 1 / 3;
     }
     .requsted-pet {
-        width: 100px;
+        flex: 0 0 70px;
+        grid-column: 3 / 6;
     }
     .requsted-at {
-        width: 80px;
+        flex: 0 0 75px;
+        grid-column: 6 / 9;
     }
     .requsted-status {
-        width: 80px;
+        grid-column: 0 / 3;
+        grid-row: 2/3
     }
-    .prev-content {
-        flex-flow: wrap;
+    .requsted-actions {
+        $actionsColumnWidth: 250px;
+        grid-column: 3 / 6;
+        grid-row: 2/3
+    }
+    .requsted-actions.requsted-actions-header {
+        display: none;
+        grid-column: 4 / 5;
+        grid-row: 9/10
+    }
+    .requsted-lastBtns {
+        grid-column: 7 / 8;
+        grid-row: 2/3
     }
     .request-togle {
         font-weight: bold;

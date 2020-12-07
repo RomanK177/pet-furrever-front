@@ -1,5 +1,5 @@
  <template>
-  <ul class="adoption-request-preview flex">
+  <ul class="adoption-request-preview">
     <li class="requsted-by" v-if="isOwner">
       <router-link :to="`/user/${request.adopter._id}`">{{
         request.adopter.name
@@ -17,7 +17,9 @@
     </li>
     <li class="requsted-at">{{ sentTime }}</li>
     <li class="bold requsted-status" :class="statusColor">{{ statusCap }}</li>
-    <li>
+
+    <!-- <div class="resp=grp flex flex-end"> -->
+    <li class="requsted-actions flex align-center content-center">
       <!-- <messages v-if="isShown" :request="request" :user="user" @addMessage="emitAddMessage">Message</messages> -->
       <button
         class="approve-btn"
@@ -50,7 +52,8 @@
       >
         Cancel
       </button>
-
+    </li>
+    <li class="requsted-lastBtns flex align-center content-center">
       <button
         class="delete-btn button-none"
         v-if="canDelete"
@@ -68,6 +71,7 @@
         <messages-status :messages="request.messages" />
       </button>
     </li>
+
     <!-- <el-button
           class="delete-adoption-request"
           @click="emitRemoveAdoptionRequest"
@@ -122,7 +126,7 @@ export default {
       }
     },
     emitAddMessage(adoptionId, message) {
-      debugger
+      debugger;
       this.$emit("addMessage", adoptionId, message);
     },
     toggleShowMessages() {
