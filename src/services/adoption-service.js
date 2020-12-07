@@ -9,7 +9,7 @@ export const adoptionService = {
     removeAdoptionRequest,
     addMessage,
     getAdoptionRequestById,
-    markMessageAsUnread
+    // markMessageAsUnread
 }
 
 
@@ -39,10 +39,10 @@ async function addMessage(adoptionId, message) {
     return httpService.post(`adoptions/${adoptionId}/messages`, { message });
 }
 
-async function markMessageAsUnread(message, adoptionId) {
-    debugger
-    return httpService.post(`adoptions/${adoptionId}/messages/read`, message)
-}
+// async function markMessageAsUnread(message, adoptionId) {
+//     debugger
+//     return httpService.post(`adoptions/${adoptionId}/messages/read`, message)
+// }
 
 
 

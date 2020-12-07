@@ -40,7 +40,7 @@
       <p>{{ adopter.houseStatus }}</p>
       <!-- Add tags from elemnts -->
     </div>
-    <div class="asoption-requests-adopter">
+    <div class="adoption-request-adopter">
       <adoption-request
         :requests="requests"
         :user="adopter"

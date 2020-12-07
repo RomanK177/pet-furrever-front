@@ -53,25 +53,26 @@ export default {
       this.user = user;
     },
     addNewMessage() {
-      this.messageToAdd.date = Date.now();
-      this.messageToAdd.from = this.user.fullName;
+      debugger
+      // this.messageToAdd.date = Date.now();
+      // this.messageToAdd.from = this.user.fullName;
       // const currRequest = {request: this.request, message: this.messageToAdd}
       // console.log('updated request', updatedReq)
       socketService.emit("chat newMsg", this.messageToAdd);
     },
-    async addMessage(message) {
-      console.log("messagexxxxxxx", message);
-      console.log("req", this.request._id);
-      this.request.messages.push(message);
-      await this.$store.dispatch({
-        type: "addMessage",
-        adoptionId: this.request._id,
-        message: message,
-      });
-      // this.updateRequest();
-      this.messageToAdd.txt = "";
-      this.messageToAdd.date = "";
-    },
+    // async addMessage(message) {
+    //   console.log("messagexxxxxxx", message);
+    //   console.log("req", this.request._id);
+    //   this.request.messages.push(message);
+    //   await this.$store.dispatch({
+    //     type: "addMessage",
+    //     adoptionId: this.request._id,
+    //     message: message,
+    //   });
+    //   // this.updateRequest();
+    //   this.messageToAdd.txt = "";
+    //   this.messageToAdd.date = "";
+    // },
     async updateRequest() {
       const requestId = this.$route.params.id;
       const request = await this.$store.dispatch({

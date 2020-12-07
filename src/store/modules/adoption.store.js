@@ -80,17 +80,17 @@ export const adoptionStore = {
                 console.error('Cannot send message.', err)
             }
         },
-        async markMessageAsUnread({ commit }, { message, adoptionRequestId }) {
-            debugger
-            try {
-                const readedMessage = await adoptionService.markMessageAsUnread(message, adoptionRequestId);
-                var adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionRequestId);
-                commit({ type: 'updateAdoption', adoptionRequest });
-                return readedMessage;
-            } catch (err) {
-                console.error('Messages cannot unread.', err)
-            }
-        },
+        // async markMessageAsUnread({commit} , {message, adoptionRequestId}) {
+        //     debugger
+        //     try {
+        //         const readedMessage = await adoptionService.markMessageAsUnread(message, adoptionRequestId);
+        //         var adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionRequestId);
+        //         commit({type: 'updateAdoption', adoptionRequest});
+        //         return readedMessage;
+        //     } catch (err) {
+        //         console.error('Messages cannot unread.', err)
+        //     }
+        // },
         async getAdoptionById(context, { adoptionId }) {
             console.log('in update request in store')
             const adoption = await adoptionService.getAdoptionRequestById(adoptionId)
