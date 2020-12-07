@@ -3,51 +3,37 @@
     <h2>
       Lets Chat About <span class="bold orange">{{ request.pet.name }}</span>
     </h2>
-    <!-- <img :src="pet.imageUrls[0]" alt=""> -->
-    <!-- <div class="flex">
-      <div>Messages Between <span class="bold">{{request.owner.name}}</span> and <span class="bold">{{request.adopter.name}}</span></div>
-      <div> -->
-    <!-- <ul class="bold flex space-between rendered-messages-header">
-        <li>From</li>
-        <li>Message</li>
-        <li>Date</li>
-      </ul> -->
     <div class="all-messages flex column">
       <div v-for="(message, index) in request.messages" :key="index">
         <messages-preview :message="message" :user="user" />
-        <!-- <messages-preview :message="message" @markMessageAsUnread="markMessageAsUnread" /> -->
       </div>
     </div>
     <form @submit.prevent="addNewMessage" class="message-send flex">
       <input type="text" v-model="messageToAdd.txt" placeholder="Message" />
       <img class="plane" src="../../assets/svgs/plane.svg" alt="">
     </form>
-    <!-- </div> -->
-    <!-- </div> -->
   </section>
 </template>
 <script>
 import messagesPreview from "../../cmps/user/messages-preview.vue";
 import socketService from "../../services/socket-service.js";
-// import adopterDetails from "./../../cmps/user/adopter-details.vue";
-// import ownerDetails from "./../../cmps/user/owner-details.vue";
 export default {
   components: { messagesPreview },
   props: {
-    // user: Object,
-    // request: Object
+    user: Object,
+    request: Object
   },
   data() {
     return {
-      request: null,
-      user: null,
+    //   request: null,
+    //   user: null,
       allMessages: [],
       messageToAdd: {
         txt: "",
         date: "",
         from: "",
       },
-      pet: null
+    //   pet: null
     };
   },
   methods: {
@@ -59,12 +45,10 @@ export default {
       this.user = user;
     },
     addNewMessage() {
-      // this.messageToAdd.date = Date.now();
-      // this.messageToAdd.from = this.user.fullName;
-      // const currRequest = {request: this.request, message: this.messageToAdd}
       socketService.emit("chat newMsg", this.messageToAdd.txt);
     },
     async addMessage(message) {
+
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId: this.request._id,
@@ -98,15 +82,6 @@ export default {
     });
     this.request = request;
     const user = this.$store.getters.getLoggedInUser;
-    // const pet = await this.$store.dispatch({
-    //   type: "loadPets",
-    // });
-    // pet = this.pet
-
-    // const user = await this.$store.dispatch({
-    //   type: "getUserById",
-    //   userId: userId,
-    // });
     this.user = user;
     socketService.setup();
     socketService.emit("chat topic", this.request._id);

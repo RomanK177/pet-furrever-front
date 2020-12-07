@@ -9,7 +9,7 @@ export const adoptionService = {
     removeAdoptionRequest,
     addMessage,
     getAdoptionRequestById,
-    markMessageAsUnread
+    // markMessageAsUnread
 }
 
 
@@ -26,8 +26,10 @@ function getAdoptionRequestById(adoptionRequestId) {
 }
 
 function updateAdoptionRequest(adoptionRequest) {
+
     return httpService.put(`adoptions/${adoptionRequest._id}`, adoptionRequest);
 }
+
 
 function removeAdoptionRequest(adoptionRequestId) {
     return httpService.delete(`adoptions/${adoptionRequestId}`);
@@ -41,10 +43,9 @@ async function addMessage(adoptionId) {
     return httpService.post(`adoptions/${adoptionId}/messages`);
 }
 
-async function markMessageAsUnread(message, adoptionId) {
-    debugger
-    return httpService.post(`adoptions/${adoptionId}/messages/read`, message)
-}
+// async function markMessageAsUnread(message, adoptionId) {
+//     return httpService.post(`adoptions/${adoptionId}/messages/read`, message)
+// }
 
 
 

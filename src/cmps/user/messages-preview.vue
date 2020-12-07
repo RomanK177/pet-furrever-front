@@ -1,9 +1,7 @@
 <template>
   <section class="message-preview">
-    <!-- <ul class="flex space-between" :class="readUnread"> -->
     <div class="messages flex column">
       <div class="message-from-date">
-        <img :src="user.imgUrlProfile" alt="">
         <span class="bold"> {{ message.from }}</span>
         <span class="message-date">{{ sentTime }}</span>
       </div>

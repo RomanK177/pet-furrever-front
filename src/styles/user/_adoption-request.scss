@@ -1,6 +1,10 @@
 .adoption-request {
     margin: 10px 0px;
-    padding-top: 60px;
+    margin-left: 20px;
+    width: 80%;
+    &-adopter {
+        width: 80%;
+    }
     .request-togle {
         background: none;
         margin: 10px 0;
@@ -119,8 +123,8 @@
     font-size: 1rem;
 }
 
-.delete-btn{
-    & img{
+.delete-btn {
+    & img {
         width: unset;
     }
 }
@@ -136,7 +140,7 @@
     margin-left: 5px;
     padding: 1px 6px;
 
-    & img{
+    & img {
         width: unset;
     }
 }
@@ -241,13 +245,13 @@
 
 .button-badge:hover {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  }
+}
 
-  .badge {
+.badge {
     position: absolute;
     top: -14px;
     right: -4px;
-    font-size: .8em;
+    font-size: 0.8em;
     border: 1px solid black;
     border-radius: 50%;
     width: 16px;
@@ -256,4 +260,4 @@
     background: red;
     color: white;
     font-weight: bold;
-  }
+}

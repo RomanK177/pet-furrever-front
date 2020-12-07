@@ -1,37 +1,28 @@
 
 <template>
-  <section v-if="adopter" class="adopter-details">
-    <adoption-request
-      :requests="requests"
-      :user="adopter"
-      @addMessage="addMessage"
-      @updateAdoption="updateAdoption"
-      v-if="checkIfOwner"
-    />
-    <div class="adopter-content">
+  <section v-if="adopter" class="adopter-details flex">
+    <div class="adopter-content flex column">
       <h1>Hi, I'm {{ adopter.fullName }}!</h1>
       <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
       >Edit your profile</router-link
     > -->
-      <br />
+
       <img
         class="user-profile-picture"
         :src="imgUrlProfile"
         alt="profile logo"
       />
-      <!-- <p><span class="bold">Full name:</span> {{ adopter.fullName }}</p>
-      <p> -->
-      <br />
-      <span class="bold"
-        ><img src="../../assets/svgs/email.svg" alt="" class="email-svg"
-      /></span>
-      {{ adopter.email }}
-      <!-- </p> -->
-      <p>
-        <span class="bold">
-          <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg"
-        /></span>
-        {{ adopter.tel }}
+
+      <p class="flex">
+        <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
+        <span>
+          {{ adopter.email }}
+        </span>
+      </p>
+
+      <p class="flex align-center content-center">
+        <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
+        <span> {{ adopter.tel }}</span>
       </p>
       <p>
         <span class="bold">Date of birth:</span>
@@ -49,6 +40,15 @@
       <p>{{ adopter.houseStatus }}</p>
       <!-- Add tags from elemnts -->
     </div>
+    <div class="adoption-request-adopter">
+      <adoption-request
+        :requests="requests"
+        :user="adopter"
+        @addMessage="addMessage"
+        @updateAdoption="updateAdoption"
+        v-if="checkIfOwner"
+      />
+    </div>
   </section>
 </template>
 
@@ -58,11 +58,16 @@ export default {
   props: {
     adopter: Object,
   },
-  created() {
-    this.$store.dispatch({
-      type: "loadAdoptionRequests",
-    });
+  data() {
+    return{
+      user: null
+    }
   },
+  // created() {
+  //   this.$store.dispatch({
+  //     type: "loadAdoptionRequests",
+  //   });
+  // },
   methods: {
     async updateAdoption(adoptionRequest) {
       await this.$store.dispatch({
@@ -71,12 +76,15 @@ export default {
       });
     },
     async addMessage(adoptionId, message) {
+      debugger
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId,
         message,
       });
+      
     },
+    
   },
   computed: {
     imgUrlProfile() {
@@ -101,6 +109,26 @@ export default {
       );
       return filteredReqs;
     },
+  },
+  async created() {
+     this.$store.dispatch({
+      type: "loadAdoptionRequests",
+    });
+    const requestId = this.$route.params.id;
+    const request = await this.$store.dispatch({
+      type: "getAdoptionById",
+      adoptionId: requestId,
+    });
+    this.request = request;
+    const user = this.$store.getters.getLoggedInUser;
+    this.user = user;
+    socketService.setup();
+    socketService.emit("chat topic", this.request._id);
+    socketService.on("chat addMsg", this.addMessage);
+  },
+  destroyed() {
+    socketService.off("chat addMsg", this.addMessage);
+    socketService.terminate();
   },
   components: {
     adoptionRequest,

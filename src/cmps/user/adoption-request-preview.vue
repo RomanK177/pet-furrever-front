@@ -33,23 +33,13 @@
       >
         Decline
       </button>
-      <!-- <button class="relative button-none">
-        <router-link
-          class="message-btn"
-          :request="request"
-          :user="user"
-          :to="`/adoption/${request._id}`"
-          >Message</router-link
-        >
-        <messages-status :messages="request.messages" />
-      </button> -->
       <button
         class="relative button-none message-btn"
         :request="request"
         :user="user"
         @click="messages"
       >
-      <adoption-messages v-if="showMessage"></adoption-messages>
+      <!-- <testing :user="user" v-if="showMessage"></testing> -->
         <img src="../../assets/imgs/message.png" width="20" height="20"/>
       <messages-status :messages="request.messages" />
       </button>
@@ -79,8 +69,9 @@
 <script>
 import { petService } from "../../services/pet-service.js";
 import messagesStatus from "../../cmps/user/messages-status.vue";
-import adoptionMessages from '../../views/user/adoption-messages.vue'
-import messagesPreview from '../user/messages-preview.vue'
+// import adoptionMessages from '../../views/user/adoption-messages.vue'
+import testing from '../user/testing.vue';
+import messagesPreview from '../user/messages-preview.vue';
 
 export default {
   name: "adoptionrequestPreview",
@@ -133,8 +124,8 @@ export default {
       this.isShown = !this.isShown;
     },
     messages() {
-      // this.$router.push(`/adoption/${this.request._id}`);
-      this.showMessage = true
+      this.$router.push(`/adoption/${this.request._id}`);
+      // this.showMessage = true
     },
   },
   computed: {
@@ -258,8 +249,9 @@ export default {
   },
   components: {
     messagesStatus,
-    adoptionMessages,
-    messagesPreview
+    // adoptionMessages,
+    messagesPreview,
+    testing
   },
 };
 </script>
