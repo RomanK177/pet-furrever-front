@@ -12,32 +12,33 @@
         :src="imgUrlProfile"
         alt="profile logo"
       />
+      <div class="flex column justify-center align-center content-center">
+        <p class="flex">
+          <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
+          <span>
+            {{ adopter.email }}
+          </span>
+        </p>
 
-      <p class="flex">
-        <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
-        <span>
-          {{ adopter.email }}
-        </span>
-      </p>
-
-      <p class="flex align-center content-center">
-        <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
-        <span> {{ adopter.tel }}</span>
-      </p>
-      <p>
-        <span class="bold">Date of birth:</span>
-        {{ adopter.adopterData.dateOfBirth }}
-      </p>
-      <p class="bold">
-        <span v-if="adopter.ownPet">Currrently owns a pet</span
-        ><span v-else>Doesnt own a pet at the moment</span>
-      </p>
-      <p class="bold">
-        <span v-if="adopter.ownedPet">Has owned a pet before</span
-        ><span v-else>Has never owned a pet before</span>
-      </p>
-      <p>{{ adopter.familyStatus }}</p>
-      <p>{{ adopter.houseStatus }}</p>
+        <p class="flex align-center content-center">
+          <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
+          <span> {{ adopter.tel }}</span>
+        </p>
+        <p>
+          <span class="bold">Date of birth:</span>
+          {{ adopter.adopterData.dateOfBirth }}
+        </p>
+        <p class="bold">
+          <span v-if="adopter.ownPet">Currrently owns a pet</span
+          ><span v-else>Doesnt own a pet at the moment</span>
+        </p>
+        <p class="bold">
+          <span v-if="adopter.ownedPet">Has owned a pet before</span
+          ><span v-else>Has never owned a pet before</span>
+        </p>
+        <p>{{ adopter.familyStatus }}</p>
+        <p>{{ adopter.houseStatus }}</p>
+      </div>
       <!-- Add tags from elemnts -->
     </div>
     <div class="adoption-request-adopter">
@@ -71,7 +72,7 @@ export default {
       });
     },
     async addMessage(adoptionId, message) {
-      debugger
+      debugger;
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId,

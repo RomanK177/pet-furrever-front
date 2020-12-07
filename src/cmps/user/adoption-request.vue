@@ -2,9 +2,8 @@
 <template>
   <section class="adoption-request">
     <p class="request-togle">
-      Adoption requests: All: ({{ requests.length }}) Pending: ({{
-        amountOfRequests
-      }})
+      All adoption requests: ({{ requests.length }}) <br />
+      Pending: ({{ amountOfRequests }})
     </p>
     <section v-if="requests">
       <ul class="adoption-request-list requests-header">
