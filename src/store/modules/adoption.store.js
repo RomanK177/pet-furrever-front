@@ -80,7 +80,6 @@ export const adoptionStore = {
             }
         },
         // async markMessageAsUnread({commit} , {message, adoptionRequestId}) {
-        //     debugger
         //     try {
         //         const readedMessage = await adoptionService.markMessageAsUnread(message, adoptionRequestId);
         //         var adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionRequestId);
