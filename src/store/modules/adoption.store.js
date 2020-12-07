@@ -71,7 +71,6 @@ export const adoptionStore = {
         },
         async addMessage({ commit }, { adoptionId, message }) {
             try {
-                console.log('in add message in store')
                 const addedMessage = await adoptionService.addMessage(adoptionId, message);
                 const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionId);
                 commit({ type: 'updateAdoption', adoptionRequest })
