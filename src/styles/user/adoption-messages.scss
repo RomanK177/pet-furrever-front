@@ -1,8 +1,8 @@
 
-.adoption-messages{
-    padding-top: 100px;
+// .adoption-messages{
+//     padding-top: 100px;
 
-}
+// }
 
 .rendered-messages-header {
     border-bottom: 1px solid gray;;
@@ -32,6 +32,28 @@
 
 .message-send{
     margin-top: .83em;
-    margin-bottom: 600px;
+    // margin-bottom: 600px;
+}
+
+
+.message-send input{
+    font-family: quicksand;
+    font-size: 1.2rem;
+}
+.plane{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    margin-left: 4px;
+}
+.adoption-messages{
+
+    position: absolute;
+    right: 3px;
+    /* height: 100%; */
+    background-color: beige;
+    z-index: 10;
 }
 

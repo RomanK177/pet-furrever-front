@@ -13,14 +13,14 @@
       </ul> -->
     <div class="all-messages">
       <div v-for="(message, index) in request.messages" :key="index">
-        <messages-preview :message="message" />
+        <messages-preview :message="message" :user="user" />
         <!-- <messages-preview :message="message" @markMessageAsUnread="markMessageAsUnread" /> -->
       </div>
     </div>
 
-    <form @submit.prevent="addNewMessage" class="message-send">
+    <form @submit.prevent="addNewMessage" class="message-send flex">
       <input type="text" v-model="messageToAdd.txt" placeholder="Message" />
-      <button>Send</button>
+      <img class="plane" src="../../assets/svgs/plane.svg" alt="">
     </form>
     <!-- </div> -->
     <!-- </div> -->
@@ -34,11 +34,15 @@ import socketService from "../../services/socket-service.js";
 // import ownerDetails from "./../../cmps/user/owner-details.vue";
 export default {
   components: { messagesPreview },
+  props: {
+    // user: Object,
+    // request: Object
+  },
   data() {
     return {
       request: null,
       user: null,
-      // allMessages: [],
+      allMessages: [],
       messageToAdd: {
         txt: "",
         date: "",
@@ -57,14 +61,11 @@ export default {
     addNewMessage() {
       this.messageToAdd.date = Date.now();
       this.messageToAdd.from = this.user.fullName;
-      // const currRequest = {request: this.request, message: this.messageToAdd}
+      const currRequest = {request: this.request, message: this.messageToAdd}
       // console.log('updated request', updatedReq)
-      socketService.emit("chat newMsg", this.messageToAdd);
+      socketService.emit("chat newMsg", currRequest);
     },
     async addMessage(adoptionId, message) {
-      console.log("adoptionid", adoptionId);
-      console.log("message", message);
-      console.log('req', this.request._id )
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId: this.request._id,
@@ -102,13 +103,14 @@ export default {
     });
     this.request = request;
     console.log("req", this.request);
-
     const user = this.$store.getters.getLoggedInUser;
     // const user = await this.$store.dispatch({
     //   type: "getUserById",
     //   userId: userId,
     // });
     this.user = user;
+        console.log(this.user)
+
 
     socketService.setup();
     socketService.emit("chat topic", this.request._id);

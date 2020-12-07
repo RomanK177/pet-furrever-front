@@ -3,6 +3,7 @@
     <!-- <ul class="flex space-between" :class="readUnread"> -->
     <div class="messages flex column">
       <div class="message-from-date">
+        <img :src="user.imgUrlProfile" alt="">
         <span class="bold"> {{ message.from }}</span>
         <span class="message-date">{{ sentTime }}</span>
       </div>
@@ -22,6 +23,7 @@
 export default {
   props: {
     message: Object,
+    user: Object
   },
   methods: {
     // markMessageAsUnread() {
@@ -29,6 +31,7 @@ export default {
     // },
   },
   created() {
+    console.log(this.user)
     // this.markMessageAsUnread();
   },
   computed: {
