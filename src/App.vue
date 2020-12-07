@@ -15,7 +15,7 @@ import appHeader from "./cmps/app-header.vue";
 import appFooter from "./cmps/app-footer.vue";
 export default {
   async created() {
-    console.log('!')
+    console.log('!!')
     if (sessionStorage.user) {
       var localLoggedinUser = JSON.parse(sessionStorage.user);
       this.$store.dispatch({
