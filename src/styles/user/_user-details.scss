@@ -12,7 +12,7 @@
 }
 
 .owner-details {
-    padding-top: 100px;
+    padding-top: 80px;
 }
 
 .ownerDescription {
@@ -64,22 +64,18 @@
 // .requsted-id {
 //     width: 50px;
 // }
-.requsted-by {
-    width: 100px;
-}
-
-.requsted-pet {
-    width: 100px;
-}
-
-.requsted-at {
-    width: 150px;
-}
-
-.adoption-request-list {
-    padding: unset;
-}
-
+// .requsted-by {
+//     width: 100px;
+// }
+// .requsted-pet {
+//     width: 100px;
+// }
+// .requsted-at {
+//     width: 150px;
+// }
+// .adoption-request-list {
+//     padding: unset;
+// }
 .addPet {
     text-align: center;
     padding: 10px;
@@ -131,7 +127,7 @@
 // }
 @media only screen and (max-width: 375px) {
     .owner-details {
-        padding-top: 40px;
+        padding-top: 60px;
         & h1 {
             font-size: 1.2rem;
         }

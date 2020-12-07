@@ -1,23 +1,30 @@
+$nameColumnWidth:2fr;
+$petColumnWidth:1fr;
+$dateColumnWidth:1fr;
+$statusColumnWidth:1fr;
+$actionsColumnWidth:1fr;
 .adoption-request {
-    margin: 10px 0px;
-    margin-left: 20px;
-    width: 80%;
-    &-adopter {
-        width: 80%;
-    }
+    margin: 0px 0px;
+    // margin-left: 20px;
+    width: 100%;
+    padding-bottom: 100px;
+    font-size: large;
     .request-togle {
+        width: 400px;
         background: none;
-        margin: 10px 0;
+        margin: 10px auto;
         font-weight: bold;
         font-size: 25px;
-        padding: 10px 5px;
-        border: none;
-        color: orange;
+        padding: 10px 0px;
+        border: 1px solid orange;
+        border-radius: 5px;
+        color: rgba(71, 71, 52, 0.883);
+        font-family: quicksand;
+        text-align: center;
     }
-    .request-togle:hover {
-        cursor: pointer;
-        text-shadow: 3px 0px 7px rgba(101, 204, 207, 0.7);
-    }
+    // .request-togle:hover {
+    //     cursor: pointer;
+    // }
     &-list {
         border-bottom: 1px solid black;
         // width: 300px;
@@ -26,7 +33,18 @@
         text-decoration: none;
         color: #000;
     }
+    & .adoption-request-preview {
+        margin: unset;
+        padding: 10px 0;
+        display: grid;
+        grid: auto-flow dense / $nameColumnWidth $petColumnWidth $dateColumnWidth $statusColumnWidth $actionsColumnWidth 1fr
+    }
+    & .adoption-request-preview:nth-child(even) {
+        background-color: rgba(243, 174, 117, 0.452);
+    }
     & .adoption-request-list {
+        display: grid;
+        grid: auto-flow dense / $nameColumnWidth $petColumnWidth $dateColumnWidth $statusColumnWidth $actionsColumnWidth 1fr;
         & .requests-header {
             font-weight: bold;
             padding: 10px 0;
@@ -34,7 +52,7 @@
             white-space: nowrap;
         }
         & li {
-            margin-bottom: 16px;
+            // margin-bottom: 16px;
             & .request-info {
                 overflow: auto;
                 white-space: nowrap;
@@ -62,23 +80,26 @@
 //     width: 120px;
 //     display: none;
 // }
+.requsted-pet {
+    flex: 1 0 200px;
+}
 
-// .requsted-by {
-//     display: inline-block;
-// }
+.requsted-at {
+    flex: 1 0 150px;
+}
 
-// .requsted-pet {
-//     display: inline-block;
-// }
+.requsted-status {
+    flex: 1 0 200px;
+}
 
-// .requsted-at {
-//     display: inline-block;
-// }
+.requsted-actions {
+    flex: 1 0 250px;
+}
 
-// .requsted-status {
-//     width: 80px;
-//     display: inline-block;
-// }
+.requsted-lastBtns {
+    // flex: 0 0 60px;
+    justify-self: end;
+}
 
 .approve,
 .decline {
@@ -104,6 +125,7 @@
 }
 
 .approve-btn {
+    width: 75px;
     background-color: rgba(1, 218, 1, 0.822);
     color: white;
     border: 1px solid rgba(1, 218, 1, 0.822);
@@ -114,6 +136,7 @@
 }
 
 .decline-btn {
+    width: 75px;
     background-color: rgb(240, 66, 66);
     color: white;
     border: 1px solid rgb(240, 66, 66);
@@ -124,13 +147,14 @@
 }
 
 .delete-btn {
+    background-color: unset;
     & img {
         width: unset;
     }
 }
 
 .message-btn {
-    // background-color: orange;
+    background-color: unset;
     // border: 1px solid orange;
     // color: white;
     border-radius: 3px;
@@ -139,92 +163,81 @@
     border-radius: 3px;
     margin-left: 5px;
     padding: 1px 6px;
-
     & img {
         width: unset;
     }
 }
 
-// @media only screen and (max-width: 650px) {
-//     .adoption-request {
-//         margin: 0 auto;
-//     }
-//     .adoption-request-list {
-//         display: flex;
-//         flex-flow: wrap;
-//     }
-//     .requests-header {
-//         font-weight: bold;
-//         padding: 10px 0;
-//     }
-//     .requsted-id {
-//         width: 80px;
-//         display: none;
-//     }
-//     .requsted-by {
-//         width: 80px;
-//     }
-//     .requsted-pet {
-//         width: 150px;
-//     }
-//     .requsted-at {
-//         width: 150px;
-//     }
-//     .requsted-status {
-//         width: 80px;
-//     }
-//     .prev-content {
-//         flex-flow: wrap;
-//     }
-//     .request-togle {
-//         font-weight: bold;
-//         font-size: medium;
-//         padding: 3px 0;
-//     }
-// }
 @media only screen and (max-width: 375px) {
-    .adoption-request-preview {
-        flex-direction: column;
+    #requsted-actions-header {
+        display: none;
     }
+    .requsted-status-header {
+        display: none;
+    }
+    $nameColumnWidth: 100px;
     .adoption-request {
         margin: 0 auto;
         padding-top: 0px;
+        text-align: center;
+        & .adoption-request-preview {
+            display: grid;
+            grid-row-gap: 20px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: $statusColumnWidth $actionsColumnWidth;
+        }
         & .request-togle {
+            width: 300px;
             font-weight: bold;
             font-size: 20px;
             padding: 5px 5px;
         }
         & .adoption-request-list {
-            display: flex;
-            flex-flow: wrap;
+            text-align: center;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             & .requests-header {
                 font-weight: bold;
                 padding: 10px 0;
                 overflow: visible;
                 white-space: unset;
             }
-            & .adoption-request-preview {
-                align-items: flex-start;
-            }
         }
     }
     .requsted-by {
-        width: 100px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        grid-column: 1 / 3;
     }
     .requsted-pet {
-        width: 100px;
+        flex: 0 0 70px;
+        grid-column: 4 / 6;
+    }
+    .requsted-pet-header {
+        grid-column: 3 / 6;
     }
     .requsted-at {
-        width: 80px;
+        flex: 0 0 75px;
+        grid-column: 6 / 9;
     }
     .requsted-status {
-        width: 80px;
+        grid-column: 1 / 3;
+        grid-row: 2/3
     }
-    .prev-content {
-        flex-flow: wrap;
+    .requsted-actions {
+        // display: none;
+        $actionsColumnWidth: 250px;
+        grid-column: 3 / 6;
+        grid-row: 2/3
+    }
+    .requsted-actions-header {
+        display: none;
+        // grid-column: 4 / 5;
+        // grid-row: 9/10
+    }
+    .requsted-lastBtns {
+        grid-column: 7 / 8;
+        grid-row: 2/3
     }
     .request-togle {
         font-weight: bold;
@@ -242,7 +255,6 @@
 //     border-radius: .2rem;
 //     transition: all ease 0.4s;
 //   }
-
 .button-badge:hover {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
 }

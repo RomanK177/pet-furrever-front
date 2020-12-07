@@ -17,7 +17,11 @@
         :key="index"
         class="pet-details-comments"
       >
-        <span class="bold"> {{ comment.by.fullName }}:</span> {{ comment.txt }}
+          <img class="user-profile" v-if="comment.by.fullName === 'Guest'" :src="require('../../assets/imgs/person/guest.png')" />
+          <img class="user-profile" v-else :src="require(`../../assets/imgs/person/${comment.by.imgUrl}`)" />
+        <span class="bold">
+         {{ comment.by.fullName }}:</span>
+        {{ comment.txt }}
       </li>
     </ul>
   </div>
@@ -37,7 +41,7 @@ export default {
     return {
       commentToAdd: {
         txt: "",
-      },
+      } 
     };
   },
   methods: {

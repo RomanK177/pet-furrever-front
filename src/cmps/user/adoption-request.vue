@@ -1,23 +1,22 @@
 <template>
   <section class="adoption-request">
-    <p class="request-togle" @click="toggleListShow">
-      Adoption requests: All({{ requests.length }}) Pending: ({{
-        amountOfRequests
-      }})
+    <p class="request-togle">
+      All adoption requests: ({{ requests.length }}) <br />
+      Pending: ({{ amountOfRequests }})
     </p>
-    <section v-if="requests && showList">
-      <ul class="adoption-request-list requests-header flex">
+    <section v-if="requests">
+      <ul class="adoption-request-list requests-header">
         <li class="requsted-by">From</li>
-        <li class="requsted-pet">Pet to adopt</li>
+        <li class="requsted-pet requsted-pet-header">Pet to adopt</li>
         <li class="requsted-at">Date</li>
-        <li class="requsted-status">Status</li>
-        <li clas="requsted-actions">Actions</li>
+        <li class="requsted-status requsted-status-header">Status</li>
+
+        <li id="requsted-actions-header" clas="requsted-actions ">Actions</li>
         <li clas="requsted-lastBtns"></li>
       </ul>
       <adoption-request-preview
         v-for="(request, idx) in requests"
         :key="idx"
-        @addMessage="emitAddMessage"
         @updateAdoption="emitUpdateAdoptionRequest"
         @removeAdoption="emitRemoveAdoptionRequest"
         :request="request"
@@ -54,10 +53,10 @@ export default {
       this.$emit("updateAdoption", adoption);
       // this.$emit("updatePet", pet);
     },
-    emitAddMessage(adoptionId, message) {
-      debugger;
-      this.$emit("addMessage", adoptionId, message);
-    },
+    // emitAddMessage(adoptionId, message) {
+    //   debugger
+    //   this.$emit("addMessage", adoptionId, message);
+    // },
     emitRemoveAdoptionRequest(adoption) {
       this.$emit("removeAdoption", adoption);
     },
