@@ -3,12 +3,24 @@
     // margin: 0 auto;
     & .adopter-content {
         // width: 300px;
-        padding: 0 10px;
+        padding: 0 30px;
         // margin: 10px auto;
         border-radius: 5px;
         border: 1px solid rgba(124, 121, 121, 0.657);
         & h1 {
             font-size: 25px;
+            text-align: center;
+        }
+        & p {
+            margin: 5 auto;
+            & .email-svg,
+            .phone-svg {
+                margin: 0px;
+                margin-right: 10px;
+            }
+        }
+        & img {
+            margin: 0 auto;
         }
     }
 }

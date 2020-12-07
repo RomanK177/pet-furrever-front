@@ -1,30 +1,28 @@
 
 <template>
   <section v-if="adopter" class="adopter-details flex">
-    <div class="adopter-content">
+    <div class="adopter-content flex column">
       <h1>Hi, I'm {{ adopter.fullName }}!</h1>
       <!-- <router-link v-if="checkIfOwner" :to="'/adopter/edit/' + adopter._id"
       >Edit your profile</router-link
     > -->
-      <br />
+
       <img
         class="user-profile-picture"
         :src="imgUrlProfile"
         alt="profile logo"
       />
-      <!-- <p><span class="bold">Full name:</span> {{ adopter.fullName }}</p>
-      <p> -->
-      <br />
-      <span class="bold"
-        ><img src="../../assets/svgs/email.svg" alt="" class="email-svg"
-      /></span>
-      {{ adopter.email }}
-      <!-- </p> -->
-      <p>
-        <span class="bold">
-          <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg"
-        /></span>
-        {{ adopter.tel }}
+
+      <p class="flex">
+        <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
+        <span>
+          {{ adopter.email }}
+        </span>
+      </p>
+
+      <p class="flex align-center content-center">
+        <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
+        <span> {{ adopter.tel }}</span>
       </p>
       <p>
         <span class="bold">Date of birth:</span>
@@ -42,13 +40,15 @@
       <p>{{ adopter.houseStatus }}</p>
       <!-- Add tags from elemnts -->
     </div>
-    <adoption-request
-      :requests="requests"
-      :user="adopter"
-      @addMessage="addMessage"
-      @updateAdoption="updateAdoption"
-      v-if="checkIfOwner"
-    />
+    <div class="asoption-requests-adopter">
+      <adoption-request
+        :requests="requests"
+        :user="adopter"
+        @addMessage="addMessage"
+        @updateAdoption="updateAdoption"
+        v-if="checkIfOwner"
+      />
+    </div>
   </section>
 </template>
 
