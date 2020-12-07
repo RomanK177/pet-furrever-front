@@ -6,9 +6,7 @@
       }}</router-link>
     </li>
     <li v-if="isAdopter">
-      <router-link :to="`/user/${request.owner._id}`">{{
-        request.owner.name
-      }}</router-link>
+      <button @click="ownerName">{{ request.owner.name }}</button>
     </li>
     <li>
       <router-link :to="`/pet/${request.pet._id}`">{{
@@ -49,15 +47,15 @@
         :user="user"
         @click="messages"
       >
-        <img src="../../assets/imgs/message.png" width="20" height="20"/>
-      <messages-status :messages="request.messages" />
+        <img src="../../assets/imgs/message.png" width="20" height="20" />
+        <messages-status :messages="request.messages" />
       </button>
       <button
         class="delete-btn button-none"
         v-if="canDelete"
         @click="emitRemoveAdoptionRequest"
       >
-       <img src="../../assets/imgs/garbage.png" width="20" height="20"/>
+        <img src="../../assets/imgs/garbage.png" width="20" height="20" />
       </button>
       <button
         class="decline-btn"
@@ -131,6 +129,11 @@ export default {
     messages() {
       this.$router.push(`/adoption/${this.request._id}`);
     },
+    ownerName() {
+      // if (this.$router.path != `/user/${request.owner._id}`) {
+        this.$router.push(`/user/${request.owner._id}`);
+      // }
+    },
   },
   computed: {
     sentTime() {
@@ -163,13 +166,13 @@ export default {
         this.request.status.slice(1)
       );
     },
-    statusColor(){
-      if(this.request.status === 'pending'){
-        return 'orange';
-      } else if (this.request.status === 'approved'){
-        return 'green';
+    statusColor() {
+      if (this.request.status === "pending") {
+        return "orange";
+      } else if (this.request.status === "approved") {
+        return "green";
       } else {
-        return 'red';
+        return "red";
       }
     },
     getPetById() {
