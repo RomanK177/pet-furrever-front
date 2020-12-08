@@ -132,7 +132,6 @@ export default {
   },
   methods: {
     async addReview(review) {
-      debugger;
       await this.$store.dispatch({
         type: "addReview",
         review: JSON.parse(JSON.stringify(review)),

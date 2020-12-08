@@ -78,7 +78,6 @@ export const adoptionStore = {
             }
         },
         async markMessageAsUnread({commit} , {adoptionRequestId}) {
-            debugger
             try {
                 const readedMessage = await adoptionService.markMessageAsUnread(adoptionRequestId);
                 const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionRequestId);

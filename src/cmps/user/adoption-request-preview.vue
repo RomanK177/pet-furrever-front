@@ -116,7 +116,6 @@ export default {
       }
     },
     emitAddMessage(adoptionId, message) {
-      debugger;
       this.$emit("addMessage", adoptionId, message);
     },
     toggleShowMessages() {

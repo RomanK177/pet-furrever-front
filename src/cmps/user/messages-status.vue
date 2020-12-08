@@ -17,7 +17,6 @@ export default {
   },
   computed: {
     unreadCount() {
-      debugger;
       if (!this.adoptionRequest.isReadReceiver) {
         return;
         if (this.adoptionRequest.isReadReceiver === false) {

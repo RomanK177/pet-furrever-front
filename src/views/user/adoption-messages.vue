@@ -180,15 +180,6 @@ export default {
       this.request = request;
     },
 
-    markMessageAsUnread(message) {
-      debugger
-      this.$store.dispatch({
-        type: "markMessageAsUnread",
-        message,
-        adoptionRequestId: this.request._id,
-      });
-    },
-
     async getOppositeUser() {
       const ownerId = this.request.owner._id;
       const owner = await this.$store.dispatch({
@@ -276,12 +267,12 @@ export default {
 
     this.getOppositeUser();
     // console.log("this opposite user", this.oppositeUser.name);
-    this.markMessageAsUnread();
+      this.$store.dispatch({
+        type: "markMessageAsUnread",
+        adoptionRequestId: this.request._id,
+      });
   },
   computed: {
-    readUnRead() {
-      if (this.message) return bold;
-    },
     // getUser() {
     //   const user = this.$store.getters.getLoggedInUser;
     //   console.log('get user function loggedin user', user)
