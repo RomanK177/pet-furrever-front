@@ -174,13 +174,10 @@ export default {
       if (!this.isOwner) return;
       else if (this.request.adopter.name.length > 12) {
         let strs = this.request.adopter.name.split(" ");
-        let abrv =
-          strs[0].charAt(0) +
-          "." +
-          strs[1].charAt(0) +
-          "." +
-          strs[2].charAt(0) +
-          ".";
+        let abrv = "";
+        strs.forEach((str) => {
+          abrv += str[0] + ".";
+        });
         return abrv;
       } else return this.request.adopter.name;
     },
@@ -190,15 +187,13 @@ export default {
         this.request.owner.name
       );
       if (this.isOwner) return;
-      else if (this.request.owner.name.length > 12) {
-        let strs = this.request.adopter.name.split(" ");
-        let abrv =
-          strs[0].charAt(0) +
-          "." +
-          strs[1].charAt(0) +
-          "." +
-          strs[2].charAt(0) +
-          ".";
+      else if (this.request.owner.name.length > 10) {
+        let strs = this.request.owner.name.split(" ");
+        let abrv = "";
+        strs.forEach((str) => {
+          abrv += str[0] + ".";
+        });
+
         return abrv;
       } else return this.request.owner.name;
     },
@@ -223,10 +218,11 @@ export default {
     },
     canDecline() {
       const declinable =
-        this.user.userType === "owner" &&
-        (this.request.status === "pending" ||
-          this.request.status === "approved")
-          ? true
+        this.user.userType === "owner"
+          ? // this.user.userType === "owner" &&
+            // (this.request.status === "pending" ||
+            //   this.request.status === "approved")
+            true
           : false;
       return declinable;
     },
@@ -241,10 +237,11 @@ export default {
     },
     canCancel() {
       const canCancel =
-        this.user.userType === "adopter" &&
-        (this.request.status === "pending" ||
-          this.request.status === "approved")
-          ? true
+        this.user.userType === "adopter"
+          ? // this.user.userType === "adopter" &&
+            // (this.request.status === "pending" ||
+            //   this.request.status === "approved")
+            true
           : false;
       return canCancel;
     },
