@@ -45,7 +45,7 @@
               v-for="(message, index) in request.messages"
               :key="index"
             >
-              <messages-preview :message="message" :user="user" />
+              <messages-preview :message="message" :user="getCurrUser" />
             </div>
           </div>
         </div>
@@ -161,6 +161,7 @@ export default {
         type: "getUserById",
         userId,
       });
+      console.log(user, 'user in get user methods')
       this.user = user;
       
     },
