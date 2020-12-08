@@ -22,6 +22,7 @@
 </template>
 <script>
 import eventBus from './../../services/event-bus-service.js';
+
 export default {
   props: {
     message: Object,
@@ -63,5 +64,8 @@ export default {
       return output;
     },
   },
+  created:{
+    // moment().format(LT);
+  }
 };
 </script>
