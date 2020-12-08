@@ -30,7 +30,7 @@
       <div class="details-images">
         <img
           id="imgUploader2"
-          v-for="(imgUrl, idx) in owner.ownerData.imgUrls"
+          v-for="(imgUrl, idx) in imgUrls"
           :key="idx"
           :src="imgUrl"
           :class="{
@@ -216,6 +216,14 @@ export default {
       const loggedInUser = this.$store.getters.getLoggedInUser;
       return loggedInUser;
     },
+    imgUrls(){
+    let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
+      let urlStart = imgUrl.slice(0, 4);
+      if (urlStart === "http") return imgUrl;
+      else return require(`../../assets/imgs/owners/${imgUrl}`);
+    });
+    return newUrls;
+    }
   },
 
   async created() {
@@ -228,18 +236,21 @@ export default {
     //   this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
     // }
 
-    let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
-      let urlStart = imgUrl.slice(0, 4);
-      if (urlStart === "http") return imgUrl;
-      else return require(`../../assets/imgs/owners/${imgUrl}`);
-    });
-    this.owner.ownerData.imgUrls = newUrls;
+
     socketService.setup();
     socketService.emit("treats topic", "owner-details");
     socketService.on("treats addTreat", this.addTreat);
     const pets = await this.$store.dispatch({ type: "loadPets" });
     this.pets = pets;
   },
+  // mounted() {
+  //   let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
+  //     let urlStart = imgUrl.slice(0, 4);
+  //     if (urlStart === "http") return imgUrl;
+  //     else return require(`../../assets/imgs/owners/${imgUrl}`);
+  //   });
+  //   this.owner.ownerData.imgUrls = newUrls;
+  // },
   components: {
     ownerReview,
     adoptionRequest,
