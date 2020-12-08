@@ -274,12 +274,12 @@ export default {
       // });
   },
   computed: {
-    // getUser() {
-    //   const user = this.$store.getters.getLoggedInUser;
-    //   console.log('get user function loggedin user', user)
-    //   return user;
+    getCurrUser() {
+      const user = this.$store.getters.getLoggedInUser;
+      console.log('get user function loggedin user', user)
+      return user;
 
-    // },
+    },
   },
   destroyed() {
     socketService.emit("leave chat room", this.request._id);

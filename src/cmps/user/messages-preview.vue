@@ -22,10 +22,14 @@
 </template>
 <script>
 import eventBus from './../../services/event-bus-service.js';
+
 export default {
   props: {
     message: Object,
     user: Object,
+  },
+  created(){
+    console.log('rpevie user', this.user)
   },
   computed: {
     isSender() {
@@ -63,5 +67,6 @@ export default {
       return output;
     },
   },
+  
 };
 </script>
