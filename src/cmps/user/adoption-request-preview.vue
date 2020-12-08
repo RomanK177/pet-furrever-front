@@ -167,7 +167,12 @@ export default {
       }
     },
     abriviateAdopterName() {
-      if (this.request.adopter.name.length > 10) {
+      console.log(
+        "🚀 ~ file: adoption-request-preview.vue ~ line 172 ~ abriviateAdopterName ~ this.request.adopter.name",
+        this.request.adopter.name
+      );
+      if (!this.isOwner) return;
+      else if (this.request.adopter.name.length > 12) {
         let strs = this.request.adopter.name.split(" ");
         let abrv =
           strs[0].charAt(0) +
@@ -180,7 +185,12 @@ export default {
       } else return this.request.adopter.name;
     },
     abriviateOwnerName() {
-      if (this.request.owner.name.length > 8) {
+      console.log(
+        "🚀 ~ file: adoption-request-preview.vue ~ line 187 ~ abriviateOwnerName ~ this.request.owner.name",
+        this.request.owner.name
+      );
+      if (this.isOwner) return;
+      else if (this.request.owner.name.length > 12) {
         let strs = this.request.adopter.name.split(" ");
         let abrv =
           strs[0].charAt(0) +
