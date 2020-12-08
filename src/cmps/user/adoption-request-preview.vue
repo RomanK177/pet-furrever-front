@@ -60,7 +60,7 @@
         @click="messages"
       >
         <img src="../../assets/imgs/message.png" width="20" height="20" />
-        <messages-status :adoptionRequest="request" />
+        <!-- <messages-status :adoptionRequest="request" /> -->
       </button>
     </li>
 
@@ -265,7 +265,7 @@ export default {
     this.pet = pet;
   },
   components: {
-    messagesStatus,
+    // messagesStatus,
   },
 };
 </script>
