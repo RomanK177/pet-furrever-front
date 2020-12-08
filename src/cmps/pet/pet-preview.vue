@@ -7,13 +7,13 @@
       <h3 class="flex">{{ pet.name }}</h3>
       <img
         class="svg-symbol male"
-        v-if="pet.gender === 'male'"
+        v-if="pet.gender === 'Male'"
         src="../../assets/svgs/male-symbol.svg"
         alt=""
       />
       <img
         class="svg-symbol female"
-        v-if="pet.gender === 'female'"
+        v-if="pet.gender === 'Female'"
         src="../../assets/svgs/female-symbol.svg"
         alt=""
       />
