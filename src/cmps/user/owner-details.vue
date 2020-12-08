@@ -5,14 +5,14 @@
       v-if="!showAdoptions && checkIfOwner"
       @click="togleShowAdoptions"
     >
-      Show adoption requests
+      Show Adoption Requests
     </button>
     <button
       class="btn"
       v-if="showAdoptions && checkIfOwner"
       @click="togleShowAdoptions"
     >
-      Back to profile
+      Back To Profile
     </button>
     <adoption-request
       @updateAdoption="updateAdoption"
@@ -132,7 +132,6 @@ export default {
   },
   methods: {
     async addReview(review) {
-      debugger;
       await this.$store.dispatch({
         type: "addReview",
         review: JSON.parse(JSON.stringify(review)),
@@ -216,14 +215,14 @@ export default {
       const loggedInUser = this.$store.getters.getLoggedInUser;
       return loggedInUser;
     },
-    imgUrls(){
-    let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
-      let urlStart = imgUrl.slice(0, 4);
-      if (urlStart === "http") return imgUrl;
-      else return require(`../../assets/imgs/owners/${imgUrl}`);
-    });
-    return newUrls;
-    }
+    imgUrls() {
+      let newUrls = this.owner.ownerData.imgUrls.map((imgUrl) => {
+        let urlStart = imgUrl.slice(0, 4);
+        if (urlStart === "http") return imgUrl;
+        else return require(`../../assets/imgs/owners/${imgUrl}`);
+      });
+      return newUrls;
+    },
   },
 
   async created() {
@@ -235,7 +234,6 @@ export default {
     // if (urlStart !== "http") {
     //   this.owner.imgUrlProfile = require(`../../assets/imgs/person/${this.owner.imgUrlProfile}`);
     // }
-
 
     socketService.setup();
     socketService.emit("treats topic", "owner-details");

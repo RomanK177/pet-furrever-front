@@ -8,7 +8,7 @@
 import { eventBus } from "../../services/event-bus-service.js";
 export default {
   props: {
-    messages: Array,
+    adoptionRequest: Object,
   },
   data() {
     return {
@@ -17,29 +17,13 @@ export default {
   },
   computed: {
     unreadCount() {
-      var loggedInUser = this.$store.getters.getLoggedInUser;
-      if (!this.messages || !this.messages.length) {
+      if (!this.adoptionRequest.isReadReceiver) {
         return;
-      } else {
-        let unreadMessages = this.messages.filter((message) => {
-          return message.isReadReceiver === false && loggedInUser.fullName !== message.from;
-        });
-        // this.unreadMessages.push(unreadMessages.length)
-        return unreadMessages.length;
+        if (this.adoptionRequest.isReadReceiver === false) {
+          return "1";
+        }
       }
     },
-  },
-  created() {
-    // eventBus.$on("mail-readed", () => {
-    //   mailService.getMails().then((mails) => {
-    //     this.mails = mails;
-    //   });
-    // }),
-    //   eventBus.$on("mail-added", () => {
-    //     mailService.getMails().then((mails) => {
-    //       this.mails = mails;
-    //     });
-    //   });
   },
 };
 </script>

@@ -5,14 +5,14 @@
       v-if="!showAdoptions && checkIfOwner"
       @click="togleShowAdoptions"
     >
-      Show adoption requests
+      Show Adoption Requests
     </button>
     <button
       class="btn"
       v-if="showAdoptions && checkIfOwner"
       @click="togleShowAdoptions"
     >
-      Back to profile
+      Back To Profile
     </button>
     <div v-if="!showAdoptions" class="adopter-content flex column">
       <h1>Hi, I'm {{ adopter.fullName }}!</h1>
@@ -121,6 +121,11 @@ export default {
       );
       return filteredReqs;
     },
+  },
+  created() {
+    this.$store.dispatch({
+      type: "loadAdoptionRequests",
+    });
   },
   components: {
     adoptionRequest,

@@ -45,7 +45,7 @@
               v-for="(message, index) in request.messages"
               :key="index"
             >
-              <messages-preview v-if="user" :message="message" :user="user" />
+              <messages-preview :message="message" :user="user" />
             </div>
           </div>
         </div>
@@ -161,7 +161,6 @@ export default {
         type: "getUserById",
         userId,
       });
-      console.log('method, user', user)
       this.user = user;
       
     },
@@ -181,14 +180,6 @@ export default {
       });
       this.request = request;
     },
-
-    // markMessageAsUnread(message) {
-    //   this.$store.dispatch({
-    //     type: "markMessageAsUnread",
-    //     message,
-    //     adoptionRequestId: this.request._id,
-    //   });
-    // },
 
     async getOppositeUser() {
       const ownerId = this.request.owner._id;
@@ -277,15 +268,17 @@ export default {
 
     this.getOppositeUser();
     // console.log("this opposite user", this.oppositeUser.name);
+      this.$store.dispatch({
+        type: "markMessageAsUnread",
+        adoptionRequestId: this.request._id,
+      });
   },
   computed: {
-    readUnRead() {
-      if (this.message) return bold;
-    },
     // getUser() {
     //   const user = this.$store.getters.getLoggedInUser;
     //   console.log('get user function loggedin user', user)
     //   return user;
+
     // },
   },
   destroyed() {
