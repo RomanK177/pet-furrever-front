@@ -45,7 +45,7 @@
               v-for="(message, index) in request.messages"
               :key="index"
             >
-              <messages-preview :message="message" :user="user" />
+              <messages-preview v-if="user" :message="message" :user="user" />
             </div>
           </div>
         </div>
@@ -160,6 +160,7 @@ export default {
         type: "getUserById",
         userId,
       });
+      console.log('method, user', user)
       this.user = user;
       
     },
@@ -284,7 +285,6 @@ export default {
     //   const user = this.$store.getters.getLoggedInUser;
     //   console.log('get user function loggedin user', user)
     //   return user;
-
     // },
   },
   destroyed() {
