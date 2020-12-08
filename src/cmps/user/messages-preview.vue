@@ -28,6 +28,9 @@ export default {
     message: Object,
     user: Object,
   },
+  created(){
+    console.log('rpevie user', this.user)
+  },
   computed: {
     isSender() {
       const sender = this.message.from === this.user.fullName ? true : false;
@@ -64,8 +67,6 @@ export default {
       return output;
     },
   },
-  created:{
-    // moment().format(LT);
-  }
+  
 };
 </script>
