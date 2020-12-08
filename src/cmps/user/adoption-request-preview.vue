@@ -60,7 +60,7 @@
         @click="messages"
       >
         <img src="../../assets/imgs/message.png" width="20" height="20" />
-        <messages-status :messages="request.messages" />
+        <messages-status :adoptionRequest="request" />
       </button>
     </li>
 

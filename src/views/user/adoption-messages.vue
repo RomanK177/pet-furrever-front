@@ -45,7 +45,7 @@
               v-for="(message, index) in request.messages"
               :key="index"
             >
-              <messages-preview :message="message" :user="user" @markMessageAsUnread="markMessageAsUnread" />
+              <messages-preview :message="message" :user="user" />
             </div>
           </div>
         </div>
@@ -160,7 +160,6 @@ export default {
         type: "getUserById",
         userId,
       });
-      console.log('method, user', user)
       this.user = user;
       
     },
@@ -277,6 +276,7 @@ export default {
 
     this.getOppositeUser();
     // console.log("this opposite user", this.oppositeUser.name);
+    this.markMessageAsUnread();
   },
   computed: {
     readUnRead() {
@@ -286,6 +286,7 @@ export default {
     //   const user = this.$store.getters.getLoggedInUser;
     //   console.log('get user function loggedin user', user)
     //   return user;
+
     // },
   },
   destroyed() {

@@ -77,13 +77,13 @@ export const adoptionStore = {
                 console.error('Cannot send message.', err)
             }
         },
-        async markMessageAsUnread({commit} , {message, adoptionRequestId}) {
+        async markMessageAsUnread({commit} , {adoptionRequestId}) {
             debugger
             try {
-                const readedMessage = await adoptionService.markMessageAsUnread(message, adoptionRequestId);
-                var adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionRequestId);
+                const readedMessage = await adoptionService.markMessageAsUnread(adoptionRequestId);
+                const adoptionRequest = await adoptionService.getAdoptionRequestById(adoptionRequestId);
                 commit({type: 'updateAdoption', adoptionRequest});
-                return readedMessage;
+                return adoptionRequest;
             } catch (err) {
                 console.error('Messages cannot unread.', err)
             }

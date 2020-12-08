@@ -122,6 +122,11 @@ export default {
       return filteredReqs;
     },
   },
+  created() {
+    this.$store.dispatch({
+      type: "loadAdoptionRequests",
+    });
+  },
   components: {
     adoptionRequest,
   },

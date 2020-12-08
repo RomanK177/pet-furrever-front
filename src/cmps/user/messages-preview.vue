@@ -1,7 +1,10 @@
 <template>
   <section v-if="user" class="message-preview">
     <!-- <ul class="flex space-between" :class="readUnread"> -->
-    <div class="messages flex column" :class="{greymsg: isReciever, bluemsg: isSender}" >
+    <div
+      class="messages flex column"
+      :class="{ greymsg: isReciever, bluemsg: isSender }"
+    >
       <div class="message-from-date">
         <span class="bold"> {{ message.from }}</span>
         <span class="message-date">{{ sentTime }}</span>
@@ -18,37 +21,23 @@
   </section>
 </template>
 <script>
+import eventBus from './../../services/event-bus-service.js';
 export default {
   props: {
     message: Object,
-    user: Object
-  },
-  methods: {
-    markMessageAsUnread() {
-      this.$emit("markMessageAsUnread", this.message);
-    },
-  },
-  created() {
-    console.log('user in preview', this.user)
-    console.log(this.message)
+    user: Object,
   },
   computed: {
-    isSender(){
-      const sender = (this.message.from === this.user.fullName) ? true : false
-      return sender
+    isSender() {
+      const sender = this.message.from === this.user.fullName ? true : false;
+      return sender;
 
       // if (this.user.userType === )
-
     },
-    isReciever(){
-     const reciever = (this.message.from !== this.user.fullName) ? true : false
-     return reciever
+    isReciever() {
+      const reciever = this.message.from !== this.user.fullName ? true : false;
+      return reciever;
     },
-    // readUnread() {
-    //   const loggedInUser = this.$store.getters.getLoggedInUser;
-    //   if (this.message.from !== loggedInUser.fullName)
-    //     return { bold: !this.message.isRead };
-    // },
     sentTime() {
       let d = new Date(this.message.date);
       // return d.toDateString();
@@ -72,7 +61,7 @@ export default {
       const year = dateObj.getFullYear();
       const output = day + "." + month + "." + year;
       return output;
-    }
+    },
   },
 };
 </script>

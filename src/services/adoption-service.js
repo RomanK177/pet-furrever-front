@@ -39,9 +39,9 @@ async function addMessage(adoptionId, message) {
     return httpService.post(`adoptions/${adoptionId}/messages`, { message });
 }
 
-async function markMessageAsUnread(message, adoptionId) {
+async function markMessageAsUnread(adoptionId) {
     debugger
-    return httpService.post(`adoptions/${adoptionId}/messages/read`, message)
+    return httpService.post(`adoptions/${adoptionId}/messages`)
 }
 
 
