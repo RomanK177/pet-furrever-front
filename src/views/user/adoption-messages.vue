@@ -45,7 +45,7 @@
               v-for="(message, index) in request.messages"
               :key="index"
             >
-              <messages-preview :message="message" :user="getUser" />
+              <messages-preview :message="message" :user="user" />
             </div>
           </div>
         </div>
@@ -115,10 +115,10 @@
             </a>
           </li>
         </ul>
-        <!-- <small class="small" v-if="isAdopter"
+        <small class="small" v-if="oppositeUser.type === 'owner'"
           >Please contact us if you have any other
-          questions about the adoption! We are open Monday through Friday 8am- 6pm!</small> -->
-           <small class="small" v-if="isOwner"
+          questions about the adoption! We are open Monday through Friday 8am- 6pm!</small>
+           <small class="small" v-if="oppositeUser.type === 'adopter'"
           >Please contact me if you have any other
           questions. I would prefer to be contacted by email for any further questions.</small>
       </div>
@@ -142,6 +142,7 @@ export default {
         tel: "",
         email: "",
         location: { name: "" },
+        type: '',
         ownedAPet: null,
       },
       // allMessages: [],
@@ -160,6 +161,7 @@ export default {
         userId,
       });
       this.user = user;
+      
     },
     async addMessage() {
       await this.$store.dispatch({
@@ -207,6 +209,7 @@ export default {
         this.oppositeUser.email = adopter.email;
         this.oppositeUser.location = adopter.adopterData.location;
         this.oppositeUser.ownedAPet = adopter.adopterData.ownedAPet;
+        this.oppositeUser.type = adopter.userType
         return this.oppositeUser;
       } else {
         this.oppositeUser.name = owner.fullName;
@@ -214,7 +217,7 @@ export default {
         this.oppositeUser.tel = owner.tel;
         this.oppositeUser.email = owner.email;
         this.oppositeUser.location = owner.ownerData.location;
-
+        this.oppositeUser.type = owner.userType
         return this.oppositeUser;
       }
     },
@@ -236,11 +239,12 @@ export default {
     this.$nextTick(() => this.scrollToEnd());
   },
 
-  mounted() {
-    this.$nextTick(() => this.scrollToEnd());
-  },
+  // mounted() {
+  //   this.$nextTick(() => this.scrollToEnd());
+  // },
   async created() {
     await this.updateRequest();
+    this.getUser()
     const user = this.$store.getters.getLoggedInUser;
     this.user = user;
     // const user = this.$store.getters.getLoggedInUser;
@@ -276,10 +280,12 @@ export default {
     readUnRead() {
       if (this.message) return bold;
     },
-    getUser() {
-      const user = this.$store.getters.getLoggedInUser;
-      return user;
-    },
+    // getUser() {
+    //   const user = this.$store.getters.getLoggedInUser;
+    //   console.log('get user function loggedin user', user)
+    //   return user;
+
+    // },
   },
   destroyed() {
     socketService.emit("leave chat room", this.request._id);
