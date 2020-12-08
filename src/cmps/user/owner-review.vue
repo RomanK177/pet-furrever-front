@@ -3,7 +3,6 @@
     <h1 class="pet-details-comments-title">Reviews</h1>
     <hr />
     <form @submit.prevent="addReview" class="flex column">
-      <span class="bold">Rate: </span>
       <div class="star-widget align-self-center">
         <input
           type="radio"
@@ -81,8 +80,10 @@
   </section>
 </template>
 <script>
+import eventBus from './../../services/event-bus-service.js';
 export default {
   props: {
+    owner: Object,
     reviews: {
       type: Array,
     },
@@ -110,6 +111,4 @@ export default {
     },
   },
 };
-</script>
-
-
+</script> 
