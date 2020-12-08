@@ -45,7 +45,7 @@
               v-for="(message, index) in request.messages"
               :key="index"
             >
-              <messages-preview :message="message" :user="user" />
+              <messages-preview :message="message" :user="user" @markMessageAsUnread="markMessageAsUnread" />
             </div>
           </div>
         </div>
@@ -180,13 +180,14 @@ export default {
       this.request = request;
     },
 
-    // markMessageAsUnread(message) {
-    //   this.$store.dispatch({
-    //     type: "markMessageAsUnread",
-    //     message,
-    //     adoptionRequestId: this.request._id,
-    //   });
-    // },
+    markMessageAsUnread(message) {
+      debugger
+      this.$store.dispatch({
+        type: "markMessageAsUnread",
+        message,
+        adoptionRequestId: this.request._id,
+      });
+    },
 
     async getOppositeUser() {
       const ownerId = this.request.owner._id;

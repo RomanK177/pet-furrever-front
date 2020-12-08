@@ -24,9 +24,9 @@ export default {
     user: Object
   },
   methods: {
-    // markMessageAsUnread() {
-    //   this.$emit("markMessageAsUnread", this.message);
-    // },
+    markMessageAsUnread() {
+      this.$emit("markMessageAsUnread", this.message);
+    },
   },
   created() {
     console.log('user in preview', this.user)
