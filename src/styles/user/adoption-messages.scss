@@ -6,6 +6,7 @@
     background: url(../assets/imgs/messages-bg.jpg) no-repeat center / cover fixed ;
     height: 100%;
     padding-bottom: 200px;
+    
 
 }
 
@@ -84,21 +85,31 @@
     // border: none
     color: unset;
     // border-inline-color: unset;
-    border-color: unset;
-    border-style: unset;
+    // border-color: unset;
+    // border-style: unset;
     border: 1px solid #EEE;
     color: white;
 
     background-color: unset;
 
+    &::placeholder{
+        color: white;
+    }
+
+    &:focus :active{
+        border-inline-color: orange;
+
+    }
+
+   
 
 }
 .plane{
     background-color: white;
     border: none;
     cursor: pointer;
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     margin-left: 4px;
 }
 
@@ -121,6 +132,8 @@
     padding: 10px;
     border-radius: 5px;
     background-color: #ffffff78;
+    margin-right: 15px;
+    max-width: 300px;
     // margin-left: 10px;
 }
 
@@ -175,6 +188,8 @@ align-self: center;
     /* border: solid 1px #EEE; */
     background-color: #ffffff78;
     border-radius: 5px;
+    margin-left: 15px;
+    max-width: 300px;
 
 }
 
@@ -228,6 +243,21 @@ align-self: center;
       color: rgb(51, 51, 51)
   }
 
+  .adoption-msg-send{
+      background-color: orange;
+      color: white;
+    //   border: 1px solid white;
+      ;
+  }
+
+  .message-date{
+      margin-left: 5px;
+  }
+
+  .adoption-msg-gender, .adoption-msg-age, .adoption-msg-breed{
+      padding-top: 10px;
+  }
+
   @media only screen and (max-width: 970px) {
     .adoption-messages-all{
         flex-direction: column;
@@ -242,12 +272,18 @@ align-self: center;
 
     .adopt-msg-pet-info{
         width: unset;
+        max-width: unset;
         order: 3;
-        margin-top: 10px
+        margin: unset;
+        margin-top: 10px;
+        width: 100%;
     }
 
     .opposite-user-details{
-        margin-top: 10px
+        margin: unset;
+        margin-top: 10px;
+        max-width: unset;
+        width: 100%
 
     }
 

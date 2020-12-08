@@ -7,20 +7,20 @@
         </h3>
         <img class="adoption-message-pet-img" :src="this.urls[0]" alt="" />
         <p class="adoption-msg-pet-bio">{{ pet.about }}</p>
-        <div class="pet-bio-container flex wrap space-between">
-          <div class="pet-details-age flex column align-center">
+        <div class="adoption-msg-container flex column">
+          <div class="adoption-msg-age flex column align-center">
             <img class="age-svg" src="../../assets/svgs/age.svg" alt="" />
             <p class="pet-details-p">
               <span class="bold">Age:</span> {{ pet.age }}
             </p>
           </div>
-          <div class="pet-details-gender flex column align-center">
+          <div class="adoption-msg-gender flex column align-center">
             <img class="gender-svg" src="../../assets/svgs/gender.svg" alt="" />
             <p class="pet-details-p">
               <span class="bold">Gender:</span> {{ pet.gender }}
             </p>
           </div>
-          <div class="pet-details-breed flex column align-center">
+          <div class="adoption-msg-breed flex column align-center">
             <img src="../../assets/svgs/breed.svg" alt="" class="breed-svg" />
             <p class="pet-details-p">
               <span class="bold">Breed:</span> {{ pet.breed }}
@@ -51,7 +51,8 @@
         </div>
         <form @submit.prevent="addMessage" class="message-send">
           <input type="text" v-model="messageToAdd.txt" placeholder="Message" />
-          <button>Send</button>
+          <!-- <button><img class="plane" :src="require('../../assets/svgs/plane.svg')" alt=""></button> -->
+          <button class="adoption-msg-send btn">Send</button>
         </form>
       </div>
       <div class="opposite-user-details flex column">
