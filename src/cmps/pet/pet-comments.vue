@@ -17,7 +17,7 @@
         :key="index"
         class="pet-details-comments"
       >
-          <img class="user-profile" v-if="comment.by.fullName === 'Guest'" :src="require('../../assets/imgs/person/guest.png')" />
+          <img class="user-profile" v-if="!comment.by.imgUrl" :src="require('../../assets/imgs/person/guest.png')" />
           <img class="user-profile" v-else :src="require(`../../assets/imgs/person/${comment.by.imgUrl}`)" />
         <span class="bold">
          {{ comment.by.fullName }}:</span>
