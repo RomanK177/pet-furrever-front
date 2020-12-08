@@ -267,10 +267,10 @@ export default {
 
     this.getOppositeUser();
     // console.log("this opposite user", this.oppositeUser.name);
-      this.$store.dispatch({
-        type: "markMessageAsUnread",
-        adoptionRequestId: this.request._id,
-      });
+      // this.$store.dispatch({
+      //   type: "markMessageAsUnread",
+      //   adoptionRequestId: this.request._id,
+      // });
   },
   computed: {
     // getUser() {
