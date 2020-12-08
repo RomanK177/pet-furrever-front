@@ -167,10 +167,6 @@ export default {
       }
     },
     abriviateAdopterName() {
-      console.log(
-        "🚀 ~ file: adoption-request-preview.vue ~ line 172 ~ abriviateAdopterName ~ this.request.adopter.name",
-        this.request.adopter.name
-      );
       if (!this.isOwner) return;
       else if (this.request.adopter.name.length > 12) {
         let strs = this.request.adopter.name.split(" ");
@@ -182,10 +178,6 @@ export default {
       } else return this.request.adopter.name;
     },
     abriviateOwnerName() {
-      console.log(
-        "🚀 ~ file: adoption-request-preview.vue ~ line 187 ~ abriviateOwnerName ~ this.request.owner.name",
-        this.request.owner.name
-      );
       if (this.isOwner) return;
       else if (this.request.owner.name.length > 10) {
         let strs = this.request.owner.name.split(" ");
