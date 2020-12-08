@@ -16,7 +16,7 @@
     <div class="homepage-pet-list container">
       <div class="most-liked-pets flex align-end space-between">
         <h2 class="most-liked-of-the-week">
-          Most liked Pets Available For Adoption
+          Most Liked Pets Available For Adoption
         </h2>
         <router-link to="/pet" class="all-pets-link">View All Pets</router-link>
       </div>

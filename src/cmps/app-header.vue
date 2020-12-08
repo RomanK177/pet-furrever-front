@@ -43,7 +43,7 @@
 import eventBus from "../services/event-bus-service.js";
 import login from "./login.vue";
 import avatar from "../../src/cmps/user/avatar";
-import messagesStatus from "./../cmps/user/messages-status.vue";
+// import messagesStatus from "./../cmps/user/messages-status.vue";
 
 export default {
   props: {
@@ -101,7 +101,7 @@ export default {
   components: {
     login,
     avatar,
-    messagesStatus,
+    // messagesStatus,
   },
 };
 </script>
