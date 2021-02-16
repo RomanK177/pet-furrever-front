@@ -5,7 +5,7 @@
     <!-- <div class="card-info flex column space-between"> -->
     <div class="card-info flex column space-between">
       <h3 class="flex">{{ pet.name }}</h3>
-      <img
+      <!-- <img
         class="svg-symbol male"
         v-if="pet.gender === 'Male'"
         src="../../assets/svgs/male-symbol.svg"
@@ -16,7 +16,7 @@
         v-if="pet.gender === 'Female'"
         src="../../assets/svgs/female-symbol.svg"
         alt=""
-      />
+      /> -->
       <p class="pet-description">{{ pet.description }}</p>
       <div class="owner-treats flex space-between align-center">
         <router-link
