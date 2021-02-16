@@ -1,6 +1,6 @@
 <template>
   <section class="header flex space-between container">
-    <router-link to="/" class="logo">Pet <span>Furr</span>Ever</router-link>
+    <router-link to="/" class="logo"><span>Fur</span>Ever</router-link>
     <nav class="navbar flex align-center content-center">
       <router-link to="/pet" class="nav-link">All Pets</router-link>
       <div @click.stop="toggleUserMenu">
