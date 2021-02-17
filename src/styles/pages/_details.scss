@@ -1,5 +1,5 @@
 .details {
-  padding-top: 100px;
+  // padding-top: 100px;
 }
 
 .details-container {
@@ -37,11 +37,11 @@
   height: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 40%);
+  grid-template-rows: repeat(2, 1fr);
   grid-gap: 10px;
   grid-auto-flow: dense;
   object-fit: cover;
-  margin-top: 20px;
+  // margin-top: 20px;
   margin-bottom: 20px;
   img {
     border-radius: 10px;

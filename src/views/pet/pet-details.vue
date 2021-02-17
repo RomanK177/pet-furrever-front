@@ -50,6 +50,7 @@
               {{ pet.owner.ownerData.location.name }}
               <!-- Location Address -->
             </p>
+            <gMap :location="pet.owner.ownerData.location" />
             <!-- <p class="pet-details-owner-location">
               {{ pet.owner.ownerData.location.name }}
             </p> -->
@@ -82,9 +83,10 @@ import detailsImages from "../../cmps/pet/details-images.vue";
 import detailsAbout from "../../cmps/pet/details-about.vue";
 import petComments from "../../cmps/pet/pet-comments.vue";
 import petFavorite from "../../cmps/pet/pet-favorite";
+import gMap from "../../cmps/map";
 import { utilService } from "../../services/util-service.js";
 import { userService } from "../../services/user-service.js";
-import socketService from '../../services/socket-service.js'
+import socketService from "../../services/socket-service.js";
 export default {
   name: "petDetails",
   data() {
@@ -112,7 +114,8 @@ export default {
       await this.$store.dispatch({
         type: "savePet",
         pet: newPet,
-      });    },
+      });
+    },
     // addTreat(petId) {
     //   this.$store.dispatch({
     //     type: "addTreat",
@@ -183,7 +186,7 @@ export default {
       petId,
     });
     this.pet = pet;
-     socketService.setup();
+    socketService.setup();
     socketService.emit("treats topic", this.pet._id);
     socketService.on("treats addTreat", this.addTreat);
     this.pet.adoptedAt ? (this.isAdopted = true) : (this.isAdopted = false);
@@ -206,6 +209,7 @@ export default {
     detailsAbout,
     petComments,
     petFavorite,
+    gMap,
   },
 };
 </script>
