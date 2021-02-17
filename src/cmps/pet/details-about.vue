@@ -5,24 +5,17 @@
         Hi, I'm {{ pet.name }}!
       </h1>
       <div class="fav-treat-share flex align-center">
-        <pet-likes
-          :pet="pet"
-          class="details-treat-likes"
-        />
         <!-- <pet-favorite
           :pet="pet"
           :loggedInUser="loggedInUser"
           @updateFavorites="emitUpdateFavorites"
         /> -->
-        <a href="https://www.facebook.com/login" target="_blank" class="share">
-          <img src="../../assets/svgs/share.svg" alt="" class="share-svg" />
-        </a>
       </div>
     </div>
     <!-- <hr /> -->
     <div class="pet-about-container">
-      <div class="pet-about-details flex wrap space-between align-end">
-        <h4 class="pet-about">Meet {{ pet.name }}!</h4>
+      <div class="pet-about-details flex wrap space-between align-center">
+        <!-- <h4 class="pet-about">Meet {{ pet.name }}!</h4> -->
         <div class="pet-bio-container flex wrap space-between">
           <div class="pet-details-age flex column align-center">
             <img class="age-svg" src="../../assets/svgs/age.svg" alt="" />
@@ -43,6 +36,16 @@
             </p>
           </div>
         </div>
+        <div class="flex align-center">
+          <pet-likes :pet="pet" class="details-treat-likes" />
+          <a
+            href="https://www.facebook.com/login"
+            target="_blank"
+            class="share"
+          >
+            <img src="../../assets/svgs/share.svg" alt="" class="share-svg" />
+          </a>
+        </div>
       </div>
       <p class="pet-about-p">{{ pet.about }}</p>
       <hr />
@@ -58,7 +61,7 @@
 <script>
 import petLikes from "../pet/pet-likes.vue";
 import petFavorite from "../pet/pet-favorite.vue";
-import socketService from '../../services/socket-service.js';
+import socketService from "../../services/socket-service.js";
 export default {
   name: "detailAbout",
   props: {
@@ -86,5 +89,3 @@ export default {
   },
 };
 </script>
-
-  

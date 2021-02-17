@@ -1,73 +1,73 @@
 .header {
-    padding: 20px 0px;
-    z-index: 1;
-    .logo {
-        font-size: 2rem;
-        font-weight: 400;
-        text-decoration: none;
-        color: #292929;
-        span {
-            color: orange;
-        }
+  padding: 20px 0px;
+  //   z-index: 1;
+  .logo {
+    font-size: 2rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: #292929;
+    span {
+      color: orange;
     }
-    .navbar {
-        display: flex;
-        align-self: center;
-        .nav-link {
-            background-color: white;
-            color: orange;
-            text-decoration: none;
-            padding: 5px;
-            margin-left: 2px;
-            margin-right: 2px;
-            border-radius: 5px;
-            cursor: pointer;
-            &:hover {
-                color: white;
-                background-color: orange;
-            }
-        }
+  }
+  .navbar {
+    display: flex;
+    align-self: center;
+    .nav-link {
+      background-color: white;
+      color: orange;
+      text-decoration: none;
+      padding: 5px;
+      margin-left: 2px;
+      margin-right: 2px;
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        color: white;
+        background-color: orange;
+      }
     }
+  }
 }
 
 .userDropedMenu {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    transform: translateX(-40px);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-40px);
 }
 
-.nav {
-    background-color: white;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-}
+// .nav {
+//   background-color: white;
+//   position: fixed;
+//   width: 100%;
+//   z-index: 1;
+// }
 
 .avatar table td[data-v-4ffd1741] {
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
 }
 
 .user-avatar {
-    margin-bottom: -7px;
+  margin-bottom: -7px;
 }
 
 .user-avatar .avatar:hover[data-v-4ffd1741] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .avatar:hover[data-v-4ffd1741] {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 375px) {
-    .header {
-        max-width: 370px;
-        margin: 0 0;
-        padding: 5px 0;
-    }
-    a {
-        font-size: 15px;
-    }
+  .header {
+    max-width: 370px;
+    margin: 0 0;
+    padding: 5px 0;
+  }
+  a {
+    font-size: 15px;
+  }
 }
