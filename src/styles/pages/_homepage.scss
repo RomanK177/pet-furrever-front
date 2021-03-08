@@ -1,271 +1,379 @@
-// .home {
-//     margin: auto 0;
-// }
+.home {
+  margin: 0 auto;
+}
 .hero {
-    background: url(../assets/imgs/homepage/dogHero1.jpg) no-repeat center / cover fixed;
-    width: 100%;
-    height: 700px;
+  background: url(../assets/imgs/homepage/dogHero1.jpg) no-repeat center / cover
+    fixed;
+  width: 100%;
+  height: 700px;
 }
 .hero-content {
-    color: rgb(243, 215, 122);
-    font-size: 2rem;
-    display: flex;
-    flex-direction: column;
-    font-family: quicksand-bold;
-    position: absolute;
-    align-self: flex-end;
+  color: rgb(243, 215, 122);
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  font-family: quicksand-bold;
+  //   position: absolute;
+  align-self: flex-end;
+  margin: 10px auto;
+  width: 98%;
+  line-height: 1;
+
+  h1 {
     width: 100%;
-    line-height: 1;
-    margin-bottom: 10px;
-    h1 {
-        width: 100%;
-    }
+  }
+}
+.most-liked-pets {
+  //   width: 98%;
+  //   margin: 0 auto;
 }
 .most-liked-of-the-week {
-    text-align: center;
-    color: orange;
-    margin: unset;
-    font-size: 1.6rem;
+  text-align: center;
+  color: orange;
+  margin: unset;
+  font-size: 1.6rem;
 }
 .pets-of-the-week {
-    // text-align: center;
-    color: orange;
-    margin: unset;
-    font-size: 1.6rem;
+  padding-bottom: 10px;
+  color: orange;
+  margin: unset;
+  font-size: 1.6rem;
 }
 .all-pets-link {
-    color: orange;
-    margin-left: 10px;
-    font-size: 0.9rem;
+  color: orange;
+  margin-left: 10px;
+  font-size: 0.9rem;
+  white-space: nowrap;
 }
 .our-pets-btn {
-    background-color: orange;
+  background-color: orange;
+  border: 1px solid orange;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: quicksand-medium;
+  font-size: 1.2rem;
+  &:hover {
+    background-color: white;
+    color: orange;
     border: 1px solid orange;
-    color: white;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-family: quicksand-medium;
-    font-size: 1.2rem;
-    &:hover {
+  }
+}
+.view-pets {
+  width: 100%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.pet-carousel {
+  & .pet-card {
+    margin-right: 3px;
+  }
+  & .VueCarousel-wrapper {
+    overflow-y: visible;
+    padding-bottom: 10px;
+  }
+}
+.homepage-pet-list {
+  width: 98%;
+  height: 100%;
+  // padding: 15px;
+  & .pet-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(240px, 1fr));
+    gap: 15px;
+    overflow-x: auto;
+  }
+}
+.svg-symbol {
+  height: unset;
+  width: 20px;
+}
+.most-liked-pets {
+  margin: 10px 0;
+}
+.heart li {
+  list-style-type: circle;
+  font-size: 1.5rem;
+}
+.adopt-container {
+  width: 98%;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+.adopt-reasons {
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  font-family: quicksand;
+  background-image: linear-gradient(
+    to top,
+    #ffb188,
+    #ffb391,
+    #ffb69b,
+    #ffb9a4,
+    #ffbcac,
+    #ffb9a6,
+    #ffb79f,
+    #ffb499,
+    #ffad7f,
+    #ffa862,
+    #ffa540,
+    #ffa500
+  );
+  color: #292929;
+  font-size: 1.2rem;
+  // max-width: 600px;
+  // padding: 20px;
+  border: 1px solid orange;
+  border-radius: 5px;
+  // margin: 10px;
+  p {
+    // margin: 10px;
+    font-size: 1.3rem;
+    // padding: 10px;
+    border-radius: 10px;
+    height: fit-content;
+  }
+}
+.adopt-reasons button {
+  color: orange;
+  text-decoration: none;
+  border: 1px solid orange;
+  padding: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 5px;
+  font-size: large;
+  font-family: quicksand-bold;
+  font-size: bold;
+}
+.adopt-reasons button:hover {
+  background-color: palegoldenrod;
+}
+.adopt-reasons h1 {
+  width: 250px;
+  height: 250px;
+  background-color: #fff;
+  border-radius: 50%;
+  background-color: seashell;
+  color: orange;
+  text-align: center;
+  display: flex;
+  margin: auto 0;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  font-size: 2rem;
+  margin-top: 10px;
+  .adopt-circle {
+    font-weight: quicksand-medium;
+  }
+}
+.testimonies {
+  display: flex;
+  // justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 10px;
+}
+.testimony {
+  display: flex;
+  line-height: 1.5;
+  height: 100%;
+  // padding: 20px;
+  border: 1px solid orange;
+  border-radius: 5px;
+  // margin: 10px;
+  // width: 600px;
+  font-size: 1.1rem;
+  // background-color: sandybrown;
+  background-image: linear-gradient(
+    to top,
+    #ffb188,
+    #ffb391,
+    #ffb69b,
+    #ffb9a4,
+    #ffbcac,
+    #ffb9a6,
+    #ffb79f,
+    #ffb499,
+    #ffad7f,
+    #ffa862,
+    #ffa540,
+    #ffa500
+  );
+  p {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #464545;
+  }
+  h1 {
+    text-align: center;
+  }
+  img {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
+.testimony-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  h1 {
+    color: #5f5f5f;
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .testimony-p {
+    font-size: 1rem;
+  }
+
+  .heart {
+    & li {
+      font-size: 1.3rem;
+    }
+  }
+}
+@media only screen and (max-width: 860px) {
+  .testimony-p {
+    font-size: 0.9rem;
+    & h3 {
+      font-size: 1.1rem;
+    }
+  }
+
+  .heart {
+    & li {
+      font-size: 1rem;
+    }
+  }
+}
+@media only screen and (max-width: 720px) {
+  .adopt-container {
+    flex-direction: column;
+  }
+}
+@media only screen and (max-width: 570px) {
+  .hero {
+    height: 500px;
+    & h1 {
+      font-size: 1.9rem;
+    }
+  }
+  .most-liked-of-the-week,
+  .pets-of-the-week {
+    font-size: 1rem;
+  }
+  .pet-carousel {
+    & .pet-card {
+      & .card-img {
+        //   height: 150px;
+      }
+      & .card-info {
+        //   padding: 1px;
+        & h3 {
+          // margin: 10px 0;
+          // font-size: 16px;
+        }
+        & .pet-description {
+          // display: none;
+        }
+        & .pet-card-owner-link {
+          max-width: 100px;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 375px) {
+  .hero {
+    background: url(../assets/imgs/homepage/dogHero1.jpg);
+    background-repeat: no-repeat;
+    // background-attachment: fixed;
+    // background-position: center;
+    background-size: 100% 100%;
+
+    margin: 0 auto;
+    height: 280px;
+    & h1 {
+      font-size: 1rem;
+    }
+    & .view-pets {
+      width: 100%;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    & .our-pets-btn {
+      padding: 5px;
+      border-radius: 5px;
+      font-family: quicksand-medium;
+      font-size: 1rem;
+      &:hover {
         background-color: white;
         color: orange;
         border: 1px solid orange;
+      }
     }
-}
-.view-pets {
-    width: 100%;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-.homepage-pet-list {
-    // background-color: #F8F8F8;
-    height: 100%;
-    // padding: 15px;
-    & .pet-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 15px;
-    }
-}
-.svg-symbol {
-    height: unset;
-    width: 20px;
-}
-.most-liked-pets {
-    margin-top: 20px;
-}
-.heart li {
-    list-style-type: circle;
-    font-size: 1.5rem;
-}
-.adopt-container {
-    justify-content: center;
-    gap: 10px;
-    padding-top: 10px;
-    margin-bottom: 20px;
-}
-.adopt-reasons {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    font-family: quicksand;
-    background-image: linear-gradient(to top, #FFB188, #FFB391, #FFB69B, #FFB9A4, #FFBCAC, #FFB9A6, #FFB79F, #FFB499, #FFAD7F, #FFA862, #FFA540, #FFA500);
-    color: #292929;
-    font-size: 1.2rem;
-    // max-width: 600px;
-    // padding: 20px;
-    border: 1px solid orange;
-    border-radius: 5px;
-    // margin: 10px;
-    p {
-        // margin: 10px;
-        font-size: 1.3rem;
-        // padding: 10px;
-        border-radius: 10px;
-        height: fit-content;
-    }
-}
-.adopt-reasons button {
-    color: orange;
-    text-decoration: none;
-    border: 1px solid orange;
-    padding: 5px;
-    margin-left: 2px;
-    margin-right: 2px;
-    border-radius: 5px;
-    font-size: large;
-    font-family: quicksand-bold;
-    font-size: bold;
-}
-.adopt-reasons button:hover {
-    background-color: palegoldenrod;
-}
-.adopt-reasons h1 {
-    width: 250px;
-    height: 250px;
-    background-color: #fff;
-    border-radius: 50%;
-    background-color: seashell;
-    color: orange;
-    text-align: center;
-    display: flex;
-    margin: auto 0;
-    justify-content: center;
-    align-self: center;
-    align-items: center;
-    font-size: 2rem;
-    margin-top: 10px;
-    .adopt-circle {
-        font-weight: quicksand-medium;
-    }
-}
-.testimonies {
-    display: flex;
-    // justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-}
-.testimony {
-    display: flex;
-    line-height: 1.5;
-    height: 100%;
-    // padding: 20px;
-    border: 1px solid orange;
-    border-radius: 5px;
-    // margin: 10px;
-    // width: 600px;
-    font-size: 1.1rem;
-    // background-color: sandybrown;
-    background-image: linear-gradient(to top, #FFB188, #FFB391, #FFB69B, #FFB9A4, #FFBCAC, #FFB9A6, #FFB79F, #FFB499, #FFAD7F, #FFA862, #FFA540, #FFA500);
-    p {
-        padding-left: 20px;
-        padding-right: 20px;
-        color: #464545;
-    }
-    h1 {
-        text-align: center;
-    }
-    img {
+  }
+  & .all-pets-link {
+    font-size: 12px;
+    margin-left: unset;
+  }
+  .pet-carousel {
+    & .pet-card {
+      & .card-img {
         height: 150px;
-        width: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-}
-.testimony-img {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-    h1 {
-        color: #5F5F5F;
-        font-size: 1rem
-    }
-}
-@media only screen and (max-width: 375px) {
-    .hero {
-        background: url(../assets/imgs/homepage/dogHero1.jpg);
-        background-repeat: no-repeat;
-        // background-attachment: fixed;
-        // background-position: center;
-        background-size: 100% 100%;
-        width: 360px;
-        margin: 0 auto;
-        height: 280px;
-        & h1 {
-            font-size: 1rem;
+      }
+      & .card-info {
+        padding: 1px;
+        & h3 {
+          margin: 10px 0;
+          font-size: 16px;
         }
-        & .view-pets {
-            width: 100%;
-            padding-top: 5px;
-            padding-bottom: 5px;
+        & .pet-description {
+          display: none;
         }
-        & .our-pets-btn {
-            padding: 5px;
-            border-radius: 5px;
-            font-family: quicksand-medium;
-            font-size: 1rem;
-            &:hover {
-                background-color: white;
-                color: orange;
-                border: 1px solid orange;
-            }
+        & .pet-card-owner-link {
         }
+      }
     }
-    .homepage-pet-list .pet-list {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        padding: 5px;
-        & .pet-card:nth-last-child(-n+2) {
-            display: none;
-        }
-        & .pet-card {
-            & .card-info {
-                padding: 1px;
-                & h3 {
-                    margin: 10px 0;
-                    font-size: 16px;
-                }
-                & .pet-description {
-                    display: none
-                }
-            }
-        }
-    }
-    .adopt-container {
-        flex-direction: column;
-    }
-    .most-liked-pets {
-        margin-top: 5px;
-        font-size: 16px;
-    }
-    .most-liked-of-the-week,
-    .pets-of-the-week {
-        margin-top: 5px;
-        font-size: 13px;
-    }
-    .heart{
-        text-align: center;
-    }
-    .testimony{
-        flex-direction: column;
-        h1{
-            margin-bottom: 0;
-        }
-        p{
-            margin-top: 0;
-        }
-    }
-    .testimony img{
-        height: 100px;
-        width: 100px;
-        margin: 0 auto 
-    }
+  }
 
-    .adopt-reasons h3{
-        text-align: center;
+  .most-liked-pets {
+    margin-top: 5px;
+    font-size: 16px;
+  }
+  .most-liked-of-the-week,
+  .pets-of-the-week {
+    margin-top: 5px;
+    font-size: 13px;
+  }
+  .heart {
+    text-align: center;
+  }
+  .testimony {
+    flex-direction: column;
+    h1 {
+      margin-bottom: 0;
     }
+    p {
+      margin-top: 0;
+    }
+  }
+  .testimony img {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+  }
+
+  .adopt-reasons h3 {
+    text-align: center;
+  }
 }

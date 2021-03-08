@@ -1,7 +1,7 @@
 <template>
   <section v-if="adopter" class="adopter-details">
     <button
-      class="togle-adopstion-btn btn"
+      class="togle-adoption-btn btn"
       v-if="!showAdoptions && checkIfOwner"
       @click="togleShowAdoptions"
     >
