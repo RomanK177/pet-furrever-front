@@ -160,20 +160,28 @@
 }
 
 .pet-details-container {
-  width: 100%;
-  height: 100%;
-  margin-inline-end: 20px;
-  .details h1 {
-    background-color: white;
-  }
-  hr {
-    border: 1px solid beige;
-  }
+  // width: 100%;
+  // height: 100%;
+  // margin-inline-end: 20px;
+  // .details h1 {
+  //   background-color: white;
+  // }
+  // hr {
+  //   border: 1px solid beige;
+  // }
+  position: relative;
+    // width: 58.333333333333336%;
+    width: 95%;
+    margin-left: 0%;
+    margin-right: 0%;
+ 
+  
 }
 
 .petowner-details-container {
   // text-align: center;
   padding: 5px;
+  
 }
 
 // .comment-input {
@@ -281,9 +289,23 @@ hr {
 }
 
 .likes-adopt-container {
-  height: 100%;
-  width: 40%;
-  margin-inline-start: 30px;
+  // height: 100%;
+  // width: 40%;
+  // margin-inline-start: 30px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  // position: absolute;
+  // // overflow-y:scroll;
+  position: sticky;
+  top: 80px;
+  z-index: 1;
+  display: inline-block;
+  width: 100%;
+  padding-right: 1px;
+  // padding-left: 1px;
+
+
 }
 
 .pet-details-owner-name {

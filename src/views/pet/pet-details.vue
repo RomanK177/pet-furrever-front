@@ -1,6 +1,15 @@
 <template>
   <section class="pet-details" v-if="pet">
     <div class="details container">
+      <h1>Meet {{pet.name}}!</h1>
+      <p>Rescued by: <router-link
+                class="pet-details-owner-name"
+                :to="`/user/${pet.owner._id}`"
+                >{{ pet.owner.fullName }}</router-link
+              > <img class="star1" :src="starUrl" alt="" /> <span class="rating-num"
+                >{{ ratingAvg }}</span><small class="number-of-ratings"
+                >({{ pet.owner.ownerData.reviews.length }} reviews) 
+              </small></p> 
       <details-images :pet="pet"></details-images>
       <div class="bio-adoption-container flex justify-center">
         <div class="flex column">
@@ -50,7 +59,7 @@
               {{ pet.owner.ownerData.location.name }}
               <!-- Location Address -->
             </p>
-            <gMap :location="pet.owner.ownerData.location" />
+            <!-- <gMap :location="pet.owner.ownerData.location" /> -->
             <!-- <p class="pet-details-owner-location">
               {{ pet.owner.ownerData.location.name }}
             </p> -->
@@ -68,6 +77,7 @@
           </div>
         </div>
       </div>
+          <calendar></calendar>
       <pet-comments
         :comments="pet.comments"
         :loggedInUser="getLoggedInUser"
@@ -86,6 +96,7 @@ import petFavorite from "../../cmps/pet/pet-favorite";
 import gMap from "../../cmps/map";
 import { utilService } from "../../services/util-service.js";
 import { userService } from "../../services/user-service.js";
+import calendar from '../../cmps/pet/calendar.vue'
 import socketService from "../../services/socket-service.js";
 export default {
   name: "petDetails",
@@ -178,6 +189,15 @@ export default {
       // return this.loggedInUser;
       return this.$store.getters.getLoggedInUser;
     },
+     starUrl() {
+      return require("../../assets/svgs/star1.svg");
+    },
+      ratingAvg() {
+      let sum = this.pet.owner.ownerData.reviews.reduce((acc, curr) => {
+        return acc + curr.rate;
+      }, 0);
+      return sum / this.pet.owner.ownerData.reviews.length;
+    }
   },
   async created() {
     const petId = this.$route.params.id;
@@ -210,6 +230,7 @@ export default {
     petComments,
     petFavorite,
     gMap,
+    calendar
   },
 };
 </script>
