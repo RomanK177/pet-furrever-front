@@ -1,6 +1,6 @@
 <template>
   <section class="header flex space-between container">
-    <router-link to="/" class="logo">Pet <span>Furr</span>Ever</router-link>
+    <router-link to="/" class="logo"><span>Fur</span>Ever</router-link>
     <nav class="navbar flex align-center content-center">
       <router-link to="/pet" class="nav-link">All Pets</router-link>
       <div @click.stop="toggleUserMenu">
@@ -40,9 +40,9 @@
 </template>
 
 <script>
-import eventBus from "../services/event-bus-service.js";
-import login from "./login.vue";
-import avatar from "../../src/cmps/user/avatar";
+import eventBus from '../services/event-bus-service.js';
+import login from './login.vue';
+import avatar from '../../src/cmps/user/avatar';
 // import messagesStatus from "./../cmps/user/messages-status.vue";
 
 export default {
@@ -66,7 +66,7 @@ export default {
       if (this.$store.getters.getLoggedInUser) {
         return this.$store.getters.getLoggedInUser.fullName;
       } else {
-        return "Guest";
+        return 'Guest';
       }
     },
     requests() {
@@ -76,10 +76,10 @@ export default {
   methods: {
     logout() {
       this.$store.dispatch({
-        type: "logout",
+        type: 'logout',
       });
-      if (this.$route.path != "/pet") {
-        this.$router.push("/pet");
+      if (this.$route.path != '/pet') {
+        this.$router.push('/pet');
       }
     },
     toggleUserMenu() {
@@ -90,10 +90,10 @@ export default {
     },
   },
   created() {
-    eventBus.$on("login", () => {
+    eventBus.$on('login', () => {
       this.loginOpen = false;
     }),
-      eventBus.$on("closeModal", () => {
+      eventBus.$on('closeModal', () => {
         this.loginOpen = false;
       });
   },

@@ -1,64 +1,66 @@
 .user {
-    &-profile-picture {
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 50%;
-    }
+  &-profile-picture {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
 }
 
 .bold {
-    font-family: quicksand-medium;
+  font-family: quicksand-medium;
 }
-
+.togle-adoption-btn {
+  margin-bottom: 10px;
+}
 .owner-details {
-    padding-top: 80px;
+  // padding-top: 80px;
 }
 
 .ownerDescription {
-    line-height: 1.5;
+  line-height: 1.5;
 }
 
 .star {
-    width: 30px;
-    // filter: invert(87%) sepia(24%) saturate(3762%) hue-rotate(358deg) brightness(102%) contrast(103%);
+  width: 30px;
+  // filter: invert(87%) sepia(24%) saturate(3762%) hue-rotate(358deg) brightness(102%) contrast(103%);
 }
 
 .rating-num {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .number-of-ratings {
-    color: lightgray;
-    padding: 5px;
+  color: lightgray;
+  padding: 5px;
 }
 
 .welcome {
-    text-align: center;
-    font-size: 2rem;
+  text-align: center;
+  font-size: 2rem;
 }
 
 .owner-action {
-    float: right;
+  float: right;
 }
 
 .owner-info {
-    padding: 0 20px;
-    margin-left: 20px;
-    & .user-profile-picture {
-        width: 120px;
-        height: 120px;
-        align-self: center;
-        justify-self: center;
-    }
-    & p {
-        margin: 5px 0;
-    }
+  padding: 0 20px;
+  margin-left: 20px;
+  & .user-profile-picture {
+    width: 120px;
+    height: 120px;
+    align-self: center;
+    justify-self: center;
+  }
+  & p {
+    margin: 5px 0;
+  }
 }
 
 .requests-header {
-    font-weight: bold;
-    padding: 10px 0;
+  font-weight: bold;
+  padding: 10px 0;
 }
 
 // .requsted-id {
@@ -77,24 +79,24 @@
 //     padding: unset;
 // }
 .addPet {
-    text-align: center;
-    padding: 10px;
-    font-size: 2rem;
-    color: white;
-    border: 1px solid orange;
-    background-color: orange;
-    font-family: quicksand-bold;
-    text-align: center;
-    display: flex;
-    text-decoration: none;
-    border-radius: 4px;
+  text-align: center;
+  padding: 10px;
+  font-size: 2rem;
+  color: white;
+  border: 1px solid orange;
+  background-color: orange;
+  font-family: quicksand-bold;
+  text-align: center;
+  display: flex;
+  text-decoration: none;
+  border-radius: 4px;
 }
 
 .addPet:focus,
 .addPet:hover {
-    background-color: white;
-    border: 1px solid orange;
-    color: orange;
+  background-color: white;
+  border: 1px solid orange;
+  color: orange;
 }
 
 // .decline {
@@ -126,23 +128,23 @@
 //     margin-top: 20px;
 // }
 @media only screen and (max-width: 375px) {
-    .owner-details {
-        padding-top: 60px;
-        & h1 {
-            font-size: 1.2rem;
-        }
-        & .owner-profile {
-            flex-direction: column;
-        }
-        & .addPet {
-            font-size: 1rem;
-        }
+  .owner-details {
+    padding-top: 60px;
+    & h1 {
+      font-size: 1.2rem;
     }
-    .user-profile-picture {
-        width: 100px;
-        height: 100px;
+    & .owner-profile {
+      flex-direction: column;
     }
-    .adopter-details {
-        padding-top: 50px;
+    & .addPet {
+      font-size: 1rem;
     }
+  }
+  .user-profile-picture {
+    width: 100px;
+    height: 100px;
+  }
+  .adopter-details {
+    padding-top: 50px;
+  }
 }

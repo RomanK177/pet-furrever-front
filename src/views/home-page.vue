@@ -1,6 +1,6 @@
 <template>
   <section class="home">
-    <div class="hero flex">
+    <div class="hero  flex">
       <div class="hero-content">
         <h1 class="container">Find your furry best friend.</h1>
         <div class="view-pets container">
@@ -20,18 +20,17 @@
         </h2>
         <router-link to="/pet" class="all-pets-link">View All Pets</router-link>
       </div>
-      <pet-list
-        v-if="petsForPreview"
-        :pets="mostLiked"
-      ></pet-list>
+      <pet-carousel v-if="petsForPreview" :pets="mostLiked"></pet-carousel>
+      <!-- <pet-list v-if="petsForPreview" :pets="mostLiked"></pet-list> -->
       <h2 class="pets-of-the-week">Recently Adopted Pets</h2>
-      <pet-list
+      <pet-carousel
         v-if="petsForPreview"
         :pets="recentlyAdopted"
-      ></pet-list>
+      ></pet-carousel>
+      <!-- <pet-list v-if="petsForPreview" :pets="recentlyAdopted"></pet-list> -->
     </div>
     <div class="adopt-container flex container">
-      <section class="adopt-reasons">
+      <section class="adopt-reasons flex column space-around">
         <h3>We Can Help You Find The <span>Purr</span>fect Pet!</h3>
         <div class="heart">
           <h1 class="adopt-circle">Why Should I Adopt?</h1>
@@ -82,13 +81,14 @@
 </template>
 
 <script>
-import appHeader from "../cmps/app-header.vue";
-import carousel from "../cmps/carousel.vue";
-import petList from "../cmps/pet/pet-list.vue";
-import socketService from "../services/socket-service.js";
+import appHeader from '../cmps/app-header.vue';
+import carousel from '../cmps/carousel.vue';
+import petList from '../cmps/pet/pet-list.vue';
+import petCarousel from '../cmps/pet/pet-carousel.vue';
+import socketService from '../services/socket-service.js';
 
 export default {
-  name: "Home",
+  name: 'Home',
   data() {
     return {
       pets: null,
@@ -102,37 +102,37 @@ export default {
       let notAdopted = this.petsForPreview.filter(
         (pet) => pet.adoptedAt === null
       );
-      let mostLiked = notAdopted.sort(function (a, b) {
+      let mostLiked = notAdopted.sort(function(a, b) {
         return b.numOfTreats - a.numOfTreats;
       });
-      return mostLiked.slice(0, 4);
+      return mostLiked.slice(0, 6);
     },
     recentlyAdopted() {
       let adopted = this.petsForPreview.filter((pet) => pet.adoptedAt);
-      let mostRecent = adopted.sort(function (a, b) {
+      let mostRecent = adopted.sort(function(a, b) {
         return b.adoptedAt - a.adoptedAt;
       });
-      return mostRecent.slice(0, 4);
+      return mostRecent.slice(0, 6);
     },
   },
   async created() {
-    await this.$store.dispatch({ type: "loadUsers" });
+    await this.$store.dispatch({ type: 'loadUsers' });
     // const pets = await this.$store.dispatch({type: 'loadPets'})
     // this.pets = pets
     socketService.setup();
-    socketService.emit("treats topic", "home-page");
-    socketService.on("treats addTreat", this.addTreat);
-    await this.$store.dispatch({ type: "loadPets" });
+    socketService.emit('treats topic', 'home-page');
+    socketService.on('treats addTreat', this.addTreat);
+    await this.$store.dispatch({ type: 'loadPets' });
   },
   methods: {
     async addTreat(pet) {
       debugger
       const newPet = await this.$store.dispatch({
-        type: "addTreat",
+        type: 'addTreat',
         petId: pet._id,
       });
       await this.$store.dispatch({
-        type: "savePet",
+        type: 'savePet',
         pet: newPet,
       });
     },
@@ -141,9 +141,10 @@ export default {
     appHeader,
     carousel,
     petList,
+    petCarousel,
   },
   destroyed() {
-    socketService.off("treats addTreat", this.addTreat);
+    socketService.off('treats addTreat', this.addTreat);
     socketService.terminate();
   },
 };

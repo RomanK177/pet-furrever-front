@@ -1,15 +1,14 @@
 .pet-app {
-    // width: 80%;
-    padding-top: 100px;
-    margin-right: auto;
-    margin-left: auto;
+  width: 98%;
+  // padding-top: 100px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 @media only screen and (max-width: 375px) {
-    .pet-app {
-        // width: 80%;
-        padding-top: 50px;
-        margin-right: auto;
-        margin-left: auto;
-    }
+  .pet-app {
+    width: 98%;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }

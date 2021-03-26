@@ -64,28 +64,28 @@
           alt=""
         />
         <div class="opposite-owner-contact flex column">
-        <p class="pet-details-owner-email flex flex-start">
-          <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
-          {{ oppositeUser.email }}
-        </p>
-        <p class="pet-details-owner-tel flex flex-start">
-          <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
-          {{ oppositeUser.tel }}
-        </p>
-        <p
-          v-if="oppositeUser.location.name"
-          class="location-details flex flex-start"
-        >
-          <img
-            src="../../assets/svgs/location.svg"
-            alt=""
-            class="location-svg"
-          />
-          {{ oppositeUser.location.name }}
-        </p>
-        <div v-if="oppositeUser.ownedAPet">
-          <p>Has Owned a pet</p>
-        </div>
+          <p class="pet-details-owner-email flex flex-start">
+            <img src="../../assets/svgs/email.svg" alt="" class="email-svg" />
+            {{ oppositeUser.email }}
+          </p>
+          <p class="pet-details-owner-tel flex flex-start">
+            <img src="../../assets/svgs/phone.svg" alt="" class="phone-svg" />
+            {{ oppositeUser.tel }}
+          </p>
+          <p
+            v-if="oppositeUser.location.name"
+            class="location-details flex flex-start"
+          >
+            <img
+              src="../../assets/svgs/location.svg"
+              alt=""
+              class="location-svg"
+            />
+            {{ oppositeUser.location.name }}
+          </p>
+          <div v-if="oppositeUser.ownedAPet">
+            <p>Has Owned a pet</p>
+          </div>
         </div>
         <ul class="nav-social flex justify-center">
           <li>
@@ -117,11 +117,13 @@
           </li>
         </ul>
         <small class="small" v-if="oppositeUser.type === 'owner'"
-          >Please contact us if you have any other
-          questions about the adoption! We are open Monday through Friday 8am- 6pm!</small>
-           <small class="small" v-if="oppositeUser.type === 'adopter'"
-          >Please contact me if you have any other
-          questions. I would prefer to be contacted by email for any further questions.</small>
+          >Please contact us if you have any other questions about the adoption!
+          We are open Monday through Friday 8am- 6pm!</small
+        >
+        <small class="small" v-if="oppositeUser.type === 'adopter'"
+          >Please contact me if you have any other questions. I would prefer to
+          be contacted by email for any further questions.</small
+        >
       </div>
     </div>
   </section>
@@ -143,7 +145,7 @@ export default {
         tel: "",
         email: "",
         location: { name: "" },
-        type: '',
+        type: "",
         ownedAPet: null,
       },
       // allMessages: [],
@@ -161,15 +163,14 @@ export default {
         type: "getUserById",
         userId,
       });
-      console.log(user, 'user in get user methods')
+      console.log(user, "user in get user methods");
       this.user = user;
-      
     },
     async addMessage() {
       await this.$store.dispatch({
         type: "addMessage",
         adoptionId: this.request._id,
-        message: this.messageToAdd.txt,
+        message: this.messageToAdd,
       });
       this.messageToAdd.txt = "";
     },
@@ -203,7 +204,7 @@ export default {
         this.oppositeUser.email = adopter.email;
         this.oppositeUser.location = adopter.adopterData.location;
         this.oppositeUser.ownedAPet = adopter.adopterData.ownedAPet;
-        this.oppositeUser.type = adopter.userType
+        this.oppositeUser.type = adopter.userType;
         return this.oppositeUser;
       } else {
         this.oppositeUser.name = owner.fullName;
@@ -211,7 +212,7 @@ export default {
         this.oppositeUser.tel = owner.tel;
         this.oppositeUser.email = owner.email;
         this.oppositeUser.location = owner.ownerData.location;
-        this.oppositeUser.type = owner.userType
+        this.oppositeUser.type = owner.userType;
         return this.oppositeUser;
       }
     },
@@ -224,7 +225,7 @@ export default {
       const adopter = this.user.userType !== "adopter" ? true : false;
       return adopter;
     },
-    scrollToEnd: function () {
+    scrollToEnd: function() {
       var content = this.$refs.messagesContainer;
       content.scrollTop = content.scrollHeight;
     },
@@ -238,9 +239,10 @@ export default {
   // },
   async created() {
     await this.updateRequest();
-    this.getUser()
+    this.getUser();
     const user = this.$store.getters.getLoggedInUser;
     this.user = user;
+    this.messageToAdd.from = user.fullName;
     // const user = this.$store.getters.getLoggedInUser;
     // this.user = user;
     console.log("user in am", this.user);
@@ -269,17 +271,16 @@ export default {
 
     this.getOppositeUser();
     // console.log("this opposite user", this.oppositeUser.name);
-      // this.$store.dispatch({
-      //   type: "markMessageAsUnread",
-      //   adoptionRequestId: this.request._id,
-      // });
+    // this.$store.dispatch({
+    //   type: "markMessageAsUnread",
+    //   adoptionRequestId: this.request._id,
+    // });
   },
   computed: {
     getCurrUser() {
       const user = this.$store.getters.getLoggedInUser;
-      console.log('get user function loggedin user', user)
+      console.log("get user function loggedin user", user);
       return user;
-
     },
   },
   destroyed() {

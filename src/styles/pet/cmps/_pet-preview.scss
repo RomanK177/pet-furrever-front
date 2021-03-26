@@ -1,93 +1,100 @@
-$cardWidth:300px;
-$sexSymbolSize:20px;
+$cardWidth: 300px;
+$sexSymbolSize: 20px;
 .pet-card {
-    position: relative;
-    height: 100%;
-    -webkit-box-shadow: 1px 4px 5px -2px #949494;
-    box-shadow: 1px 4px 5px -2px #949494;
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    & .card-info {
-        padding: 10px;
-        & h3 {
-            height: 10px;
-        }
-        & .pet-description {
-            // margin: 5px 10px;
-            height: 45px;
-            flex-grow: 1;
-            line-height: 1.5;
-            color: rgb(83, 83, 83);
-        }
-        & .male {
-            width: $sexSymbolSize;
-            height: $sexSymbolSize;
-            filter: invert(34%) sepia(13%) saturate(2927%) hue-rotate(183deg) brightness(92%) contrast(95%);
-        }
-        & .female {
-            width: $sexSymbolSize;
-            height: $sexSymbolSize;
-            filter: invert(23%) sepia(39%) saturate(4216%) hue-rotate(287deg) brightness(95%) contrast(84%);
-        }
-        // & .treats-count {
-        //     // padding: 10px;
-        // }
-        & a {
-            text-decoration: none;
-            color: rgb(114, 114, 114);
-            font-weight: bold;
-            // padding-left: 10px;
-        }
-        & .pet-card-owner-link {
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-        }
+  position: relative;
+  height: 100%;
+  -webkit-box-shadow: 1px 4px 5px -2px #949494;
+  box-shadow: 1px 4px 5px -2px #949494;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  & .card-info {
+    padding: 10px;
+    & h3 {
+      height: 10px;
+      margin: unset;
     }
-    & .adopted {
-        position: absolute;
-        text-align: center;
-        top: 40px;
-        left: ($cardWidth/2);
-        transform-origin: left;
-        transform: translate(-140%, 60%) rotate(-45deg);
-        background-color: rgba(253, 169, 13, 0.931);
-        border-radius: 5px;
-        padding: 5px 20px 5px 20px;
+    & .pet-description {
+      // margin: 5px 10px;
+      height: 60px;
+      flex-grow: 1;
+      line-height: 1.5;
+      color: rgb(83, 83, 83);
     }
+    & .male,
+    .female {
+      width: $sexSymbolSize;
+      height: $sexSymbolSize;
+      margin-right: 15px;
+    }
+    & .male {
+      filter: invert(34%) sepia(13%) saturate(2927%) hue-rotate(183deg)
+        brightness(92%) contrast(95%);
+    }
+    & .female {
+      filter: invert(23%) sepia(39%) saturate(4216%) hue-rotate(287deg)
+        brightness(95%) contrast(84%);
+    }
+    // & .treats-count {
+    //     // padding: 10px;
+    // }
+    & a {
+      text-decoration: none;
+      color: rgb(114, 114, 114);
+      font-weight: bold;
+      // padding-left: 10px;
+    }
+    & .pet-card-owner-link {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+  & .adopted {
+    position: absolute;
+    text-align: center;
+    top: 40px;
+    left: ($cardWidth/2);
+    transform-origin: left;
+    transform: translate(-140%, 60%) rotate(-45deg);
+    background-color: rgba(253, 169, 13, 0.931);
+    border-radius: 5px;
+    padding: 5px 20px 5px 20px;
+  }
 }
 
 .owner-treats {
-    font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .card-img {
-    // height: 260px;
-    height: 230px;
-    // height: 100%;
-    object-fit: cover;
+  // height: 260px;
+  height: 230px;
+  // height: 100%;
+  object-fit: cover;
 }
 
 .card-img:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .svg-symbol {
-    width: 30px;
-    height: 30px;
-    filter: invert(100%) sepia(2%) saturate(1048%) hue-rotate(111deg) brightness(77%) contrast(98%);
+  width: 30px;
+  height: 30px;
+  filter: invert(100%) sepia(2%) saturate(1048%) hue-rotate(111deg)
+    brightness(77%) contrast(98%);
 }
 
 // .treat {
 //     // margin-right: 10px;
 // }
 .treat:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .treatClicked {
-    // filter: invert(70%) sepia(43%) saturate(3723%) hue-rotate(65deg) brightness(113%) contrast(96%);
-    // filter: invert(78%) sepia(9%) saturate(2434%) hue-rotate(115deg) brightness(78%) contrast(92%);
-    filter: invert(59%) sepia(82%) saturate(962%) hue-rotate(359deg) brightness(101%) contrast(106%);
+  // filter: invert(70%) sepia(43%) saturate(3723%) hue-rotate(65deg) brightness(113%) contrast(96%);
+  // filter: invert(78%) sepia(9%) saturate(2434%) hue-rotate(115deg) brightness(78%) contrast(92%);
+  filter: invert(59%) sepia(82%) saturate(962%) hue-rotate(359deg)
+    brightness(101%) contrast(106%);
 }

@@ -1,37 +1,36 @@
 .adopter-details {
-    padding-top: 80px;
-    & .adoption-request-adopter {
-        flex-grow: 1;
+  & .adoption-request-adopter {
+    flex-grow: 1;
+  }
+  & .togle-adoption-btn {
+    margin-bottom: 10px;
+  }
+  & .adopter-content {
+    // width: 300px;
+    padding: 0 30px;
+    // margin: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(124, 121, 121, 0.657);
+    & h1 {
+      font-size: 25px;
+      text-align: center;
     }
-    // & .togle-adopstion-btn {
-    //     margin-top: 60px;
-    // }
-    & .adopter-content {
-        // width: 300px;
-        padding: 0 30px;
-        margin: 10px 10px;
-        border-radius: 5px;
-        border: 1px solid rgba(124, 121, 121, 0.657);
-        & h1 {
-            font-size: 25px;
-            text-align: center;
-        }
-        & p {
-            margin: 5 auto;
-            & .email-svg,
-            .phone-svg {
-                margin: 0px;
-                margin-right: 10px;
-            }
-        }
-        & img {
-            margin: 0 auto;
-        }
+    & p {
+      margin: 5 auto;
+      & .email-svg,
+      .phone-svg {
+        margin: 0px;
+        margin-right: 10px;
+      }
     }
+    & img {
+      margin: 0 auto;
+    }
+  }
 }
 
 @media only screen and (max-width: 375px) {
-    .adopter-details {
-        flex-direction: column;
-    }
+  .adopter-details {
+    flex-direction: column;
+  }
 }

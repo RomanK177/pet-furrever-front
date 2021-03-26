@@ -1,301 +1,342 @@
+.pet-details {
+  box-sizing: border-box;
+}
+
 .pet-details-age {
-    margin-right: 20px
+  margin-right: 20px;
 }
 
 .pet-details-gender {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .pet-details-p {
-    margin: unset;
-    margin-top: 10px;
+  margin: unset;
+  margin-top: 10px;
 }
 
 .comments-container {
-    background-color: white;
+  background-color: white;
 }
 
 // .pet-like-btns{
 //     margin: 10px;
 // }
 .el-button {
+  border: 1px solid orange;
+  background-color: orange;
+  color: white;
+  &.add-pet {
+    padding: 10px;
+    font-size: 2rem;
+    color: white;
     border: 1px solid orange;
     background-color: orange;
-    color: white;
-    &.add-pet {
-        padding: 10px;
-        font-size: 2rem;
-        color: white;
-        border: 1px solid orange;
-        background-color: orange;
-        font-family: quicksand-bold;
-        text-align: center;
-        display: flex;
-        .el-message-box__close:hover {
-            color: orange;
-        }
+    font-family: quicksand-bold;
+    text-align: center;
+    display: flex;
+    margin: auto;
+    .el-message-box__close:hover {
+      color: orange;
     }
-    &.delete-adoption-request {
-        font-size: 13px;
-        padding: 4.5px 6px;
-        color: orange;
-        background-color: white;
-        border-radius: unset;
-        font-family: quicksand;
-        display: flex;
-        text-indent: 0px;
-        margin: 0em;
-        border-inline: 1px solid orange;
-        display: inline-block;
-        text-align: center;
-        align-items: flex-start;
-    }
+  }
+  &.delete-adoption-request {
+    font-size: 13px;
+    padding: 4.5px 6px;
+    color: orange;
+    background-color: white;
+    border-radius: unset;
+    font-family: quicksand;
+    display: flex;
+    text-indent: 0px;
+    margin: 0em;
+    border-inline: 1px solid orange;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+  }
 }
 
 .el-button--primary:focus,
 .el-button--primary:hover,
 .delete-adoption-request:hover {
-    background-color: orange;
-    border: 1px solid orange;
-    color: white;
-    // &.delete-adoption-request:hover{
-    //     background-color: orange;
-    //     border: 1px solid orange;
-    // }
+  background-color: orange;
+  border: 1px solid orange;
+  color: white;
+  // &.delete-adoption-request:hover{
+  //     background-color: orange;
+  //     border: 1px solid orange;
+  // }
 }
 
 .el-button--primary.is-active,
 .el-button--primary:active,
 .el-button--primary:focus,
 .el-button--primary {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .el-button--text:focus,
 .el-button--text:hover {
+  background-color: white;
+  border: 1px solid orange;
+  color: orange;
+  &.delete-adoption-request:hover {
     background-color: white;
     border: 1px solid orange;
     color: orange;
-    &.delete-adoption-request:hover {
-        background-color: white;
-        border: 1px solid orange;
-        color: orange;
-    }
+  }
 }
 
 .el-message-box__headerbtn:hover .el-message-box__close:hover {
-    color: orange;
+  color: orange;
 }
 
 .el-message-box__headerbtn:active .el-message-box__close:active {
-    color: orange;
+  color: orange;
 }
 
 .el-message-box__message {
-    font-family: quicksand-bold;
+  font-family: quicksand-bold;
 }
 
 .treats-count {
-    margin-left: 5px;
-    margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 10px;
 }
 
 .treat-btn {
-    background-color: orange;
+  background-color: orange;
+  border: 1px solid orange;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: quicksand;
+  font-size: 1.2rem;
+  outline: none;
+  &:hover {
+    background-color: white;
+    color: orange;
+  }
+  :focus {
     border: 1px solid orange;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-family: quicksand;
-    font-size: 1.2rem;
-    outline: none;
-    &:hover {
-        background-color: white;
-        color: orange;
-    }
-     :focus {
-        border: 1px solid orange;
-    }
+  }
 }
 
 .pet-details-name {
-    font-family: quicksand-medium;
-    font-size: 2rem;
-    margin-top: 0;
-    margin-bottom: 2px;
-    .details h1 {
-        background-color: white;
-    }
+  font-family: quicksand-medium;
+  font-size: 2rem;
+  margin-top: 0;
+  margin-bottom: 2px;
+  .details h1 {
+    background-color: white;
+  }
 }
 
 .pet-about {
-    font-size: 25px;
-    align-items: flex-end;
-    margin: unset;
-    // color: orange;
-    // text-decoration: underline;
-    // margin-bottom: 0;
-    // padding-left: 10px;
+  font-size: 25px;
+  align-items: flex-end;
+  margin: unset;
+  // color: orange;
+  // text-decoration: underline;
+  // margin-bottom: 0;
+  // padding-left: 10px;
 }
 
 .svg-symbol .details-treat-likes {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .pet-about-details {
-    margin-top: 20px;
-    align-items: flex-end;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  align-items: flex-end;
+  margin-bottom: 20px;
 }
 
 .pet-about-p {
-    // padding: 10px;
-    line-height: 1.5;
-    color: rgb(56, 56, 56);
+  // padding: 10px;
+  line-height: 1.5;
+  color: rgb(56, 56, 56);
 }
 
-.pet-details-container {
+.bio-adoption-container {
+  //   display: grid;
+  //   grid-template-columns: repeat(4, 1fr);
+  //   grid-template-rows: auto;
+  //   grid-gap: 10px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  & .pet-details-container {
+    // grid-column-start: 1;
+    // grid-column-end: 4;
     width: 100%;
-    height: 100%;
-    margin-inline-end: 20px;
-    .details h1 {
-        background-color: white;
+    // margin-right: 10px;
+    padding: 24px;
+  }
+  & .likes-adopt-container {
+    height: 90%;
+    margin: 25px;
+    // margin: 10px;
+    // border: 1px solid rgb(221, 221, 221);
+    box-shadow: -2px 5px 14px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 24px;
+    display: inline-block;
+    // width: 95%;
+    max-width: 350px;
+    margin: auto 20px auto auto;
+    & .adopted {
+      width: 150px;
+      text-align: center;
+      border: 1px solid rgba(128, 128, 128, 0.801);
+      background-color: rgb(240, 236, 236);
+      font-family: quicksand-bold;
+      font-size: 1.5rem;
+      border-radius: 4px;
+      margin: 0 auto;
     }
-    hr {
-        border: 1px solid beige;
+    & > * {
+      padding: 10px;
     }
+    & .adopt-fav {
+      padding: unset;
+    }
+  }
 }
 
 .petowner-details-container {
-    // text-align: center;
-    padding: 5px;
+  padding: 5px;
+  & p {
+    margin: 12px auto;
+  }
+  //   position: absolute;
+  //   bottom: 56px;
 }
 
 // .comment-input {
 //     margin-left: 40px;
 // }
 .rendered-comments {
-    padding: 0;
+  padding: 0;
 }
 
 .enter-comment-btn {
-    background-color: orange;
+  background-color: orange;
+  border: 1px solid orange;
+  color: white;
+  border-radius: 5px;
+  padding: 2px;
+  margin-left: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: quicksand;
+  font-size: 1rem;
+  &:hover {
+    color: orange;
+    background-color: white;
     border: 1px solid orange;
-    color: white;
-    border-radius: 5px;
-    padding: 2px;
-    margin-left: 2px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-family: quicksand;
-    font-size: 1rem;
-    &:hover {
-        color: orange;
-        background-color: white;
-        border: 1px solid orange;
-    }
+  }
 }
 
 .comment-input {
-    font-family: quicksand;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid orange
+  font-family: quicksand;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid orange;
 }
 
 .help-pet {
-    button,
-    .share {
-        padding: 10px;
-        margin: 10px;
-        color: orange;
-        background-color: white;
-        text-align: center;
-        display: flex;
-        border-radius: 5px;
-        border: 1px solid orange;
-        text-decoration: none;
-    }
-    .sponsor {
-        font-family: quicksand;
-        font-size: 1rem;
-    }
-     :hover {
-        // color: white;
-        // background-color: orange;
-        cursor: pointer;
-    }
+  button,
+  .share {
+    padding: 10px;
+    margin: 10px;
+    color: orange;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    border-radius: 5px;
+    border: 1px solid orange;
+    text-decoration: none;
+  }
+  .sponsor {
+    font-family: quicksand;
+    font-size: 1rem;
+  }
+  :hover {
+    // color: white;
+    // background-color: orange;
+    cursor: pointer;
+  }
 }
 
 hr {
-    border: 1px solid beige;
+  border: 1px solid beige;
 }
 
 .location-svg,
 .email-svg,
 .phone-svg {
-    height: 20px;
-    width: 20px;
-    margin-right: 5px;
+  height: 20px;
+  width: 20px;
+  margin-right: 5px;
+}
+
+.location-svg:hover {
+  cursor: pointer;
 }
 
 .share-svg {
-    filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg) brightness(103%) contrast(105%);
-    height: 20px;
-    width: 20px;
-    margin: 10px;
-    // &::after{
-    // }
+  filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg)
+    brightness(103%) contrast(105%);
+  height: 20px;
+  width: 20px;
+  margin: 10px;
+  // &::after{
+  // }
 }
 
 .like-svg {
-    height: 30px;
-    width: 30px;
+  height: 30px;
+  width: 30px;
 }
 
 .gender-svg,
 .age-svg,
 .breed-svg {
-    height: 30px;
-    width: 50px;
+  height: 30px;
+  width: 50px;
 }
 
 .save-pet {
-    margin-top: 10px;
+  margin-top: 10px;
+  background-color: orange;
+  padding: 10px;
+  button {
+    border: none;
     background-color: orange;
-    padding: 10px;
-    button {
-        border: none;
-        background-color: orange;
-    }
+  }
 }
 
 .like-svg .favorite {
-    margin: 10px;
-}
-
-.likes-adopt-container {
-    height: 100%;
-    width: 40%;
-    margin-inline-start: 30px;
+  margin: 10px;
 }
 
 .pet-details-owner-name {
-    font-size: 1rem;
-    text-decoration: none;
-    background-color: white;
-    padding-top: 10px;
-    color: orange;
-    font-family: quicksand-medium;
-    cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  background-color: white;
+  color: orange;
+  font-family: quicksand-medium;
+  cursor: pointer;
 }
 
 .pet-owner-img {
-    height: 80px;
-    width: 80px;
-    border-radius: 50%;
-    object-fit: cover;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 // .petowner-details-container{
@@ -304,63 +345,82 @@ hr {
 //     flex-direction: column;
 //     width: fit-content;
 // }
+// @media only screen and (max-width: 850px) {
+//   .bio-adoption-container {
+//     & .likes-adopt-container {
+//       margin: auto 10px auto auto;
+//     }
+//   }
+// }
+@media only screen and (max-width: 700px) {
+  .bio-adoption-container {
+    // max-width: 350px;
+    flex-direction: column;
+    margin: auto auto;
+    & .likes-adopt-container {
+      margin: auto auto 10px auto;
+    }
+  }
+}
 @media only screen and (max-width: 375px) {
-    .bio-adoption-container {
-        max-width: 350px;
-        flex-direction: column;
-        margin: 0 auto;
-        & h1 {
-            font-size: 1.2rem;
-        }
-        & h4 {
-            display: none;
-        }
-        & .pet-bio-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            justify-items: center;
-        }
-        & .pet-details-age {
-            margin-right: 5px;
-            font-size: small;
-            & img {
-                width: 15px;
-            }
-        }
-        & .pet-details-gender {
-            margin-right: 5px;
-            font-size: small;
-            & img {
-                width: 15px;
-            }
-        }
-        & .pet-details-p {
-            margin: unset;
-            margin-top: 0px;
-            font-size: small;
-            & img {
-                width: 15px;
-            }
-        }
-        & .pet-details-breed {
-            margin: unset;
-            font-size: small;
-            & img {
-                width: 15px;
-            }
-        }
-        & small {
-            display: none;
-        }
-        & .pet-about-details {
-            margin: 0 auto;
-            justify-content: space-around;
-        }
+  .meet-pet {
+    flex-direction: column;
+  }
+  .bio-adoption-container {
+    flex-direction: column;
+    margin: 0 auto;
+    & h1 {
+      font-size: 1.2rem;
     }
-    .likes-adopt-container {
-        margin: 0 auto;
-        // & .petowner-details-container {
-        // }
+    & h4 {
+      display: none;
     }
+    & .pet-bio-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      justify-items: center;
+    }
+    & .pet-details-age {
+      margin-right: 5px;
+      font-size: small;
+      & img {
+        width: 15px;
+      }
+    }
+    & .pet-details-gender {
+      margin-right: 5px;
+      font-size: small;
+      & img {
+        width: 15px;
+      }
+    }
+    & .pet-details-p {
+      margin: unset;
+      margin-top: 0px;
+      font-size: small;
+      & img {
+        width: 15px;
+      }
+    }
+    & .pet-details-breed {
+      margin: unset;
+      font-size: small;
+      & img {
+        width: 15px;
+      }
+    }
+    & small {
+      display: none;
+    }
+    & .pet-about-details {
+      margin: 0 auto;
+      justify-content: space-around;
+    }
+  }
+  .likes-adopt-container {
+    margin: 0 auto;
+    // & .petowner-details-container {
+    // }
+  }
 }

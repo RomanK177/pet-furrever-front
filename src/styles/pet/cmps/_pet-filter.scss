@@ -1,95 +1,96 @@
 .pet-filter {
-    // position: relative;
-    // margin: 10px;
-    & div {
-        // flex: 1 1 0px
-        display: flex;
-        justify-content: center;
-    }
+  margin-bottom: 10px;
 }
 
 .filters-togglebutton {
-    cursor: pointer;
-    font-family: quicksand-medium;
-    font-size: 1rem;
-    color: gray;
-    align-items: center;
-    margin-inline-start: 10px;
-    text-decoration: underline;
+  cursor: pointer;
+  font-family: quicksand-medium;
+  font-size: 15px;
+  color: gray;
+  align-items: center;
+  margin-inline-start: 10px;
+  text-decoration: underline;
+  white-space: nowrap;
+  margin-bottom: 5px;
 }
 
 .favorite-btn .like-svg .favorite {
-    margin: 0;
+  margin: 0;
+}
+
+.search-input,
+.el-select {
+  max-width: 250px;
+  margin-right: 5px;
+  margin-bottom: 5px;
 }
 
 .el-input {
-    font-family: quicksand;
-    width: fit-content;
+  font-family: quicksand;
+  width: fit-content;
 }
 
 .el-input__inner {
-    border: 1px solid #c8cbd2;
-    font-family: quicksand;
-    width: fit-content;
-    font-size: 1rem;
+  border: 1px solid #c8cbd2;
+  font-family: quicksand;
+  width: fit-content;
+  max-width: 220px;
+  font-size: 1rem;
 }
 
 .el-input--suffix .el-input__inne {
-    // border: 1px solid orange;
-    border: 1px solid #c8cbd2;
-    width: fit-content;
+  // border: 1px solid orange;
+  border: 1px solid #c8cbd2;
+  //   width: fit-content;
 }
 
 .el-input.is-active .el-input__inner,
 .el-input__inner:focus {
-    border: 1px solid orange;
+  border: 1px solid orange;
 }
 
 .el-select .el-input.is-focus .el-input__inner {
-    border: 1px solid orange;
+  border: 1px solid orange;
 }
 
 .more-filters {
-    margin-block-start: 10px;
-}
-
-.filters {
-    width: 400px;
-    & div {
-        margin-right: 5px;
-    }
+  //   white-space: nowrap;
 }
 
 .favorite-btn {
-    border: 1px solid #c8cbd2;
-    border-radius: 4px;
-    padding-left: 5px;
-    padding-right: 5px;
-    color: #c8cbd2;
-    font-size: inherit;
+  border: 1px solid #c8cbd2;
+  border-radius: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #c8cbd2;
+  font-size: inherit;
 }
 
 .shown-filters {
-    width: fit-content;
+  width: fit-content;
 }
-
-@media only screen and (max-width: 375px) {
-    .pet-filter {
-        & div {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        & .search-input {
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        & .filters {
-            width: unset;
-            & div {
-                margin: 2px 0;
-            }
-        }
+@media only screen and (max-width: 1060px) {
+  .el-input__inner {
+    max-width: 160px;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .pet-filter {
+    & div {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
+    & .search-input {
+      //   flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    & .filters {
+      width: unset;
+      & div {
+        margin: 2px 0;
+      }
+    }
+  }
 }
