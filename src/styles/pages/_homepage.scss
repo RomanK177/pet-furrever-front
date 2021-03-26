@@ -2,8 +2,7 @@
   margin: 0 auto;
 }
 .hero {
-  background: url(../assets/imgs/homepage/dogHero1.jpg) no-repeat center / cover
-    fixed;
+  background: url(../assets/imgs/homepage/dogHero1.jpg) no-repeat center / cover fixed;
   width: 100%;
   height: 700px;
 }
@@ -273,21 +272,20 @@
   }
   .pet-carousel {
     & .pet-card {
-      & .card-img {
-        //   height: 150px;
-      }
-      & .card-info {
-        //   padding: 1px;
-        & h3 {
-          // margin: 10px 0;
-          // font-size: 16px;
-        }
-        & .pet-description {
-          // display: none;
-        }
-        & .pet-card-owner-link {
-          max-width: 100px;
-        }
+      // & .card-img {
+      //   //   height: 150px;
+      // }
+      // & .card-info {
+      //   //   padding: 1px;
+      //   & h3 {
+      //     // margin: 10px 0;
+      //     // font-size: 16px;
+      //   }
+      //   & .pet-description {
+      //     // display: none;
+      //   }
+      & .pet-card-owner-link {
+        max-width: 100px;
       }
     }
   }
@@ -340,8 +338,8 @@
         & .pet-description {
           display: none;
         }
-        & .pet-card-owner-link {
-        }
+        // & .pet-card-owner-link {
+        // }
       }
     }
   }
