@@ -1,17 +1,22 @@
 <template>
   <div class="pet-details-container">
-    <div class="details-header flex space-between align-center">
+    <!-- <div class="details-header flex space-between align-center">
       <h1 class="pet-details-name flex align center">
         Hi, I'm {{ pet.name }}!
       </h1>
-    </div>
+    </div> -->
     <div class="pet-stats-container">
       <div>
         <img class="age-svg" src="../../assets/svgs/age1.svg" alt="" />
         <span class="bold">Age:</span> {{ pet.age }}
-        <small v-if="pet.age < 1">{{pet.name}} is still a little baby, needs a lot of attention, love, care, and training.</small>
-        <small v-if="pet.age > 1 && pet.age< 3">{{pet.name}} is young.</small>
-        <small v-if="pet.age > 3 ">{{pet.name}} is an adult.</small>
+        <small v-if="pet.age < 1"
+          >{{ pet.name }} is still a little baby, needs a lot of attention,
+          love, care, and training.</small
+        >
+        <small v-if="pet.age > 1 && pet.age < 3"
+          >{{ pet.name }} is young.</small
+        >
+        <small v-if="pet.age > 3">{{ pet.name }} is an adult.</small>
       </div>
       <div>
         <img class="gender-svg" src="../../assets/svgs/gender1.svg" alt="" />
@@ -75,12 +80,12 @@
   <!-- </div> -->
 </template>
 <script>
-import petLikes from "../pet/pet-likes.vue";
-import petFavorite from "../pet/pet-favorite.vue";
-import calendar from '../pet/calendar.vue'
-import socketService from "../../services/socket-service.js";
+import petLikes from '../pet/pet-likes.vue';
+import petFavorite from '../pet/pet-favorite.vue';
+import calendar from '../pet/calendar.vue';
+import socketService from '../../services/socket-service.js';
 export default {
-  name: "detailAbout",
+  name: 'detailAbout',
   props: {
     pet: {
       type: Object,
@@ -96,14 +101,14 @@ export default {
 
     // },
     emitUpdateFavorites(user) {
-      this.$emit("updateFavorites", user);
+      this.$emit('updateFavorites', user);
     },
     // computed: {},
   },
   components: {
     petLikes,
     petFavorite,
-    calendar
+    calendar,
   },
 };
 </script>

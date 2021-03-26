@@ -1,10 +1,11 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router/router.js";
-import store from "./store/store.js";
-import { Button, Select } from "element-ui";
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router/router.js';
+import store from './store/store.js';
+import { Button, Select } from 'element-ui';
 import { createApp } from 'vue';
 import VCalendar from 'v-calendar';
+import VueCarousel from 'vue-carousel';
 
 import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en';
@@ -23,7 +24,7 @@ Vue.use(VueGoogleMaps, {
     libraries: ['...'],
   },
 });
-Vue.use(VCalendar)
+Vue.use(VCalendar);
 Vue.config.productionTip = false;
 Vue.component(Select.name, Select);
 new Vue({

@@ -35,6 +35,7 @@
     font-family: quicksand-bold;
     text-align: center;
     display: flex;
+    margin: auto;
     .el-message-box__close:hover {
       color: orange;
     }
@@ -159,29 +160,59 @@
   color: rgb(56, 56, 56);
 }
 
-.pet-details-container {
-  // width: 100%;
-  // height: 100%;
-  // margin-inline-end: 20px;
-  // .details h1 {
-  //   background-color: white;
-  // }
-  // hr {
-  //   border: 1px solid beige;
-  // }
-  position: relative;
-    // width: 58.333333333333336%;
-    width: 95%;
-    margin-left: 0%;
-    margin-right: 0%;
- 
-  
+.bio-adoption-container {
+  //   display: grid;
+  //   grid-template-columns: repeat(4, 1fr);
+  //   grid-template-rows: auto;
+  //   grid-gap: 10px;
+  margin-bottom: 20px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  & .pet-details-container {
+    // grid-column-start: 1;
+    // grid-column-end: 4;
+    width: 100%;
+    // margin-right: 10px;
+    padding: 24px;
+  }
+  & .likes-adopt-container {
+    height: 90%;
+    margin: 25px;
+    // margin: 10px;
+    // border: 1px solid rgb(221, 221, 221);
+    box-shadow: -2px 5px 14px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 24px;
+    display: inline-block;
+    // width: 95%;
+    max-width: 350px;
+    margin: auto 20px auto auto;
+    & .adopted {
+      width: 150px;
+      text-align: center;
+      border: 1px solid rgba(128, 128, 128, 0.801);
+      background-color: rgb(240, 236, 236);
+      font-family: quicksand-bold;
+      font-size: 1.5rem;
+      border-radius: 4px;
+      margin: 0 auto;
+    }
+    & > * {
+      padding: 10px;
+    }
+    & .adopt-fav {
+      padding: unset;
+    }
+  }
 }
 
 .petowner-details-container {
-  // text-align: center;
   padding: 5px;
-  
+  & p {
+    margin: 12px auto;
+  }
+  //   position: absolute;
+  //   bottom: 56px;
 }
 
 // .comment-input {
@@ -252,6 +283,10 @@ hr {
   margin-right: 5px;
 }
 
+.location-svg:hover {
+  cursor: pointer;
+}
+
 .share-svg {
   filter: invert(74%) sepia(25%) saturate(6714%) hue-rotate(360deg)
     brightness(103%) contrast(105%);
@@ -288,31 +323,10 @@ hr {
   margin: 10px;
 }
 
-.likes-adopt-container {
-  // height: 100%;
-  // width: 40%;
-  // margin-inline-start: 30px;
-  border: 1px solid rgb(221, 221, 221);
-  border-radius: 12px;
-  padding: 24px;
-  // position: absolute;
-  // // overflow-y:scroll;
-  position: sticky;
-  top: 80px;
-  z-index: 1;
-  display: inline-block;
-  width: 100%;
-  padding-right: 1px;
-  // padding-left: 1px;
-
-
-}
-
 .pet-details-owner-name {
   font-size: 1rem;
   text-decoration: none;
   background-color: white;
-  padding-top: 10px;
   color: orange;
   font-family: quicksand-medium;
   cursor: pointer;
@@ -331,9 +345,28 @@ hr {
 //     flex-direction: column;
 //     width: fit-content;
 // }
-@media only screen and (max-width: 375px) {
+// @media only screen and (max-width: 850px) {
+//   .bio-adoption-container {
+//     & .likes-adopt-container {
+//       margin: auto 10px auto auto;
+//     }
+//   }
+// }
+@media only screen and (max-width: 700px) {
   .bio-adoption-container {
-    max-width: 350px;
+    // max-width: 350px;
+    flex-direction: column;
+    margin: auto auto;
+    & .likes-adopt-container {
+      margin: auto auto 10px auto;
+    }
+  }
+}
+@media only screen and (max-width: 375px) {
+  .meet-pet {
+    flex-direction: column;
+  }
+  .bio-adoption-container {
     flex-direction: column;
     margin: 0 auto;
     & h1 {
