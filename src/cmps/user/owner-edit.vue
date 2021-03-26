@@ -107,7 +107,7 @@ export default {
   },
   created() {
     let urlStart = this.ownerToEdit.imgUrlProfile.slice(0, 4);
-    if (urlStart === "http") this.imgUrl = this.this.ownerToEdit.imgUrlProfile;
+    if (urlStart === "http") this.imgUrl = this.ownerToEdit.imgUrlProfile;
     else {
       this.ownerToEdit.imgUrlProfile = require(`../../assets/imgs/person/${this.ownerToEdit.imgUrlProfile}`);
     }
